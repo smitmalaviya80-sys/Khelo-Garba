@@ -1,0 +1,31 @@
+[
+  {
+    "id":"nortani-raat-kirtidan-anita-2025",
+    "title":"Nortani Raat (Garba)",
+    "artist":"Kirtidan Gadhvi & Anita Pandit",
+    "releaseDate":"2025-08-29",
+    "originalReleaseYear":2025,
+    "label":"Kirtidan Gadhvi",
+    "description":"A 14-track 2025 album by Kirtidan Gadhvi and Anita Pandit; the split edition is the canonical song release, while the separately published 33:10 continuous master remains a distinct Nonstop representation and is not used to infer 14 YouTube chapter starts.",
+    "categories":["modern-gujarati-garba","traditional-garba","mataji-devotional","krishna-garba","folk-lokgeet"],
+    "visualGenre":"traditional",
+    "entryType":"album",
+    "songCount":14,
+    "durationSeconds":1990,
+    "series":"Nortani Raat",
+    "volume":null,
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.in/albums/B0FP5R7P5D","kind":"official-14-track-album"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=bHW9wnLkhp8","kind":"official-artist-channel-continuous-master"},
+      {"platform":"Amazon Music","url":"https://music.amazon.in/albums/B0FP5QQP96","kind":"official-continuous-master"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-multi-source",
+    "audioAvailability":"external-source-only",
+    "durationPrecision":"amazon-displayed-track-sum",
+    "notes":"Amazon Music publishes a 14-track split edition credited to Kirtidan Gadhvi and Anita Pandit. The displayed durations sum to 33:10. Amazon and Kirtidan Gadhvi Official also publish a separate one-track 33:10 continuous master. The split album is the canonical song edition; the continuous master remains a distinct Nonstop listening representation and is not used to infer 14 YouTube chapter starts."
+  }
+]

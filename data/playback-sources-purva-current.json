@@ -1,0 +1,13 @@
+{
+  "version": "0.16.3",
+  "songSources": {
+    "purva-aavati-kalay-2024": {"provider":"youtube","videoId":"6wJxE_WfDTY","sourceUrl":"https://www.youtube.com/watch?v=6wJxE_WfDTY","sourceType":"official-artist-channel","alternate":{"provider":"apple-music","sourceUrl":"https://music.apple.com/ca/song/1772626909","sourceType":"official-stream-store"}},
+    "purva-rumjhum-2023": {"provider":"youtube","videoId":"T6_gSwR5S6c","sourceUrl":"https://www.youtube.com/watch?v=T6_gSwR5S6c","sourceType":"official-artist-channel","alternate":{"provider":"apple-music","sourceUrl":"https://music.apple.com/in/album/rumjhum-single/1708543530","sourceType":"official-stream-store"}},
+    "purva-vithal-vithal-vithala-2024": {"provider":"youtube","videoId":"sBudyaZPeBc","sourceUrl":"https://www.youtube.com/watch?v=sBudyaZPeBc","sourceType":"official-artist-channel","alternate":{"provider":"spotify","sourceUrl":"https://open.spotify.com/track/3AnYngqerCiQTpswBI5JjR","sourceType":"official-streaming-catalogue"}},
+    "purva-kanho-lage-rupalo-2025": {"provider":"youtube","videoId":"izU3m1eYibM","sourceUrl":"https://www.youtube.com/watch?v=izU3m1eYibM","sourceType":"official-artist-channel","alternate":{"provider":"apple-music","sourceUrl":"https://music.apple.com/in/song/1831292810","sourceType":"official-stream-store"}},
+    "purva-rasiyo-rupalo-house-edit-2026": {"provider":"youtube","videoId":"Dl3g954da4g","sourceUrl":"https://www.youtube.com/watch?v=Dl3g954da4g","sourceType":"official-artist-channel","alternate":{"provider":"apple-music","sourceUrl":"https://music.apple.com/in/song/1871092945","sourceType":"official-stream-store"}},
+    "paarne-jhulo-amit-aditya-2025": {"provider":"youtube","videoId":"0RiXNKnVL4M","sourceUrl":"https://www.youtube.com/watch?v=0RiXNKnVL4M","sourceType":"official-label-channel","alternate":{"provider":"spotify","sourceUrl":"https://open.spotify.com/track/6RZrXeFC3u8bwYOAqKSDyI","sourceType":"official-streaming-catalogue"}},
+    "dwarika-darbaar-bhoomi-2025": {"provider":"youtube","videoId":"8rt1pUn46s0","sourceUrl":"https://www.youtube.com/watch?v=8rt1pUn46s0","sourceType":"official-label-channel","alternate":{"provider":"amazon-music","sourceUrl":"https://music.amazon.in/albums/B0FJMSSX66","sourceType":"official-stream"}},
+    "vitthal-vitthal-balraj-denisha-2025": {"provider":"youtube","videoId":"Bb8GAxsaZfI","sourceUrl":"https://www.youtube.com/watch?v=Bb8GAxsaZfI","sourceType":"official-artist-channel","alternate":{"provider":"apple-music","sourceUrl":"https://music.apple.com/us/album/vitthal-vitthal-feat-denisha-ghumra-single/1826655188","sourceType":"official-stream-store"}}
+  }
+}

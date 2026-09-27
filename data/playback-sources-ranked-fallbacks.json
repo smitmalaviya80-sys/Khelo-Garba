@@ -1,0 +1,1282 @@
+{
+  "version": "0.20.0",
+  "updated": "2026-09-12",
+  "note": "Curated exact-selection routes for the highest-impact fallback releases. Ramzat 2017 now includes nine additional independently verified full-song YouTube routes from issue #341; its continuous master remains discovery/full-release evidence only. Ramzat 2 and Rangtaali chapter mappings come from indexed official-jukebox set records. Other entries preserve verified routes for Garbi 2, Thanganat, Zankaar 2.0, Khamma Tran Taali, and Palav. Every YouTube ID and timestamp is tied to provider evidence. Missing or ambiguous timestamps remain unmapped. Issue #550 adds five independently verified auto-generated Atul Purohit Official tracks from the 2025 Govaliyo Vol. 1 release; the other five canonical Govaliyo rows remain fail-closed. Issue #1400 adds the exact Kairavi Buch Official Artist Channel full-song route for Kana Mane Dwarika Dekhad (2021); its existing provider metadata remains provenance outside this override layer.",
+  "songSources": {
+    "ramzat-2017-36-ramzat-non-stop-garba": {
+      "provider": "youtube",
+      "videoId": "qRBix85kgvI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qRBix85kgvI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "evidenceType": "verified-full-release-video"
+    },
+    "ramzat-2-tran-taali-2018-37-ramzat-2-non-stop-trantaali-garba": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "evidenceType": "verified-full-release-video"
+    },
+    "rangtaali-2017-32-rangtaali-non-stop-garba": {
+      "provider": "youtube",
+      "videoId": "szzvM1ImRMA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=szzvM1ImRMA",
+      "sourceType": "verified-label-channel",
+      "releaseId": "rangtaali-2017",
+      "evidenceType": "verified-full-release-video"
+    },
+    "hardik-garbi2-2025-01": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "verified-full-release-video"
+    },
+    "hardik-garbi2-2025-02": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-03": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 221,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-04": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 390,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-05": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 445,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-06": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 555,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-07": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 774,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-08": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 897,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-09": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1035,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-10": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1112,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-11": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1197,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-12": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1348,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-13": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1444,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-14": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1645,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-15": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1785,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-16": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 1917,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-17": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2095,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-18": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2160,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-19": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2274,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-20": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2448,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-21": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2579,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-22": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2655,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-23": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2764,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-24": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2886,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-25": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 2943,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-26": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 3032,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-27": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 3136,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-28": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 3268,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-29": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 3328,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "hardik-garbi2-2025-30": {
+      "provider": "youtube",
+      "videoId": "3Loq2lcUQhs",
+      "startSeconds": 3517,
+      "sourceUrl": "https://www.youtube.com/watch?v=3Loq2lcUQhs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "hardik-garbi2-2025",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-01-chowk-sajavo-re-sakhi": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-02-aavi-ashoni-ajvali": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 140,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-03-khodiyar-mari-mavdi": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 332,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-04-sonano-garbo-rupano-garbo": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 534,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-05-he-tame-kum-kum-pagliya-pado": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 709,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-06-cheharmaa-garbe-ramva-nisarya": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 887,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-07-arji-sunine-vaheli": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1077,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-08-sonano-garbo-maane-riupla-indhoni": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1221,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-09-me-joi-re-rudi-sharad-puam": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1423,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-10-maa-tu-pawani-patrani": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1550,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-11-aavi-asho-sud-ajvali": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1719,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-12-re-ho-re-maani-chundadi-laheray": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1829,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-13-tildi-re-mara-nenoma": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 1929,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-14-pela-dungarvala-doshi": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2017,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-15-mor-bani-thangat-kare": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2112,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-16-mogal-chhedta-kalo-nag": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2217,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-17-he-maro-saybo": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2306,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-18-range-rame-anande-rame": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2418,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-19-bhala-mori-rama-bhai-bhai": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2478,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-20-aavo-aavone-madi": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2558,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-21-ghamgham-ghamgham-ghugarmal": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2745,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-22-savariyo-re-maro": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 2919,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-23-morli-te-kamangari": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3093,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-24-rudine-rangili-re": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3284,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-25-lili-lemdi-re-lilo": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3540,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-26-aavya-re-avya-navratri": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3668,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-27-aarti-utaro-mari-mahakali": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3766,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "thanganat-vol16-2012-28-ambar-gaje-ne-megha-dumbar": {
+      "provider": "youtube",
+      "videoId": "lD1FKKijEiY",
+      "startSeconds": 3922,
+      "sourceUrl": "https://www.youtube.com/watch?v=lD1FKKijEiY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "thanganat-vol16-2012",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-01": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-02": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 135,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-03": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 350,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-04": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 600,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-05": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 735,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-06": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 840,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-07": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1000,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-08": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1100,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-09": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1220,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-10": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1372,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-11": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1527,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-12": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1599,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-13": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1750,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-14": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1888,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-15": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 1965,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-16": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2090,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-17": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2220,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-18": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2359,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-19": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2500,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-20": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2630,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-21": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2731,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-22": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2810,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-23": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 2960,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-24": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 3138,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-26": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 3359,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-27": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 3489,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-28": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 3602,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "zankaar2-2023-29": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 432,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-album-2023",
+      "evidenceType": "provider-published-chapter"
+    },
+    "khamma-tran-01-roon-jhoon-karta-aavo-ne-2023": {
+      "provider": "youtube",
+      "videoId": "Pm9L_A-SSzY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Pm9L_A-SSzY",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-02-aasha-puri-kare-aashapura-2023": {
+      "provider": "youtube",
+      "videoId": "6GWYmLEfiHU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=6GWYmLEfiHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-03-maari-mata-to-anmol-chhe-2023": {
+      "provider": "youtube",
+      "videoId": "9JMIV4GtpZ0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9JMIV4GtpZ0",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-04-tari-marji-ma-mari-ha-2023": {
+      "provider": "youtube",
+      "videoId": "Vvzhc42H37I",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Vvzhc42H37I",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-05-tam-tam-tamakto-2023": {
+      "provider": "youtube",
+      "videoId": "Xgn6N0dBv04",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Xgn6N0dBv04",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-06-shehnai-trap-drop-2023": {
+      "provider": "youtube",
+      "videoId": "25SsG47k3nU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=25SsG47k3nU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-07-parcha-no-nai-paar-2023": {
+      "provider": "youtube",
+      "videoId": "BqMM5alOsP0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=BqMM5alOsP0",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-08-charno-ni-raaj-2023": {
+      "provider": "youtube",
+      "videoId": "gwcU7Zhm5r0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gwcU7Zhm5r0",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-09-jhulan-morali-2023": {
+      "provider": "youtube",
+      "videoId": "eiu6UGUuJnc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=eiu6UGUuJnc",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-10-jaavu-chhe-2023": {
+      "provider": "youtube",
+      "videoId": "oMdq40UOPks",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=oMdq40UOPks",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-11-aala-leela-vasaliya-re-2023": {
+      "provider": "youtube",
+      "videoId": "jIqdACsn5ZA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=jIqdACsn5ZA",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-12-rudi-ne-rangili-re-2023": {
+      "provider": "youtube",
+      "videoId": "BBnkDs23_qM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=BBnkDs23_qM",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "khamma-tran-13-sorath-tran-taali-version-2023": {
+      "provider": "youtube",
+      "videoId": "Uf2mW00uCsU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Uf2mW00uCsU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-01": {
+      "provider": "youtube",
+      "videoId": "lT1fhx22LHk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lT1fhx22LHk",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-02": {
+      "provider": "youtube",
+      "videoId": "dlGjut4sx3o",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=dlGjut4sx3o",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-03": {
+      "provider": "youtube",
+      "videoId": "4cXafX2AkBQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=4cXafX2AkBQ",
+      "sourceType": "verified-label-channel",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-04": {
+      "provider": "youtube",
+      "videoId": "rFzIXMrsM58",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=rFzIXMrsM58",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-05": {
+      "provider": "youtube",
+      "videoId": "DhkzMnR28Tw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=DhkzMnR28Tw",
+      "sourceType": "verified-label-channel",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-06": {
+      "provider": "youtube",
+      "videoId": "RYcilyzDEPU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=RYcilyzDEPU",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-07": {
+      "provider": "youtube",
+      "videoId": "Zb2t7KQE8ok",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Zb2t7KQE8ok",
+      "sourceType": "verified-label-channel",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-08": {
+      "provider": "youtube",
+      "videoId": "aLTBXH8QgOE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=aLTBXH8QgOE",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-09": {
+      "provider": "youtube",
+      "videoId": "tV-SzONTVdg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=tV-SzONTVdg",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-10": {
+      "provider": "youtube",
+      "videoId": "O9YiksMOgM8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=O9YiksMOgM8",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-11": {
+      "provider": "youtube",
+      "videoId": "gz2hwjOROtw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gz2hwjOROtw",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-12": {
+      "provider": "youtube",
+      "videoId": "RtZCC-sI9lA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=RtZCC-sI9lA",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-13": {
+      "provider": "youtube",
+      "videoId": "smvZb_KQ30Q",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=smvZb_KQ30Q",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-14": {
+      "provider": "youtube",
+      "videoId": "nJTXbOP2-gM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=nJTXbOP2-gM",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-15": {
+      "provider": "youtube",
+      "videoId": "7VU3LXhLKCM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=7VU3LXhLKCM",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-16": {
+      "provider": "youtube",
+      "videoId": "ICjB7TblcnY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ICjB7TblcnY",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-17": {
+      "provider": "youtube",
+      "videoId": "1tnZ4sUeCWo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=1tnZ4sUeCWo",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-18": {
+      "provider": "youtube",
+      "videoId": "b6tHoTsNlTA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=b6tHoTsNlTA",
+      "sourceType": "verified-label-channel",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-19": {
+      "provider": "youtube",
+      "videoId": "jEjQGjg8Hjk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=jEjQGjg8Hjk",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-20": {
+      "provider": "youtube",
+      "videoId": "_XLOuhejTjI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=_XLOuhejTjI",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-21": {
+      "provider": "youtube",
+      "videoId": "fKjMRuNaT0g",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=fKjMRuNaT0g",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-22": {
+      "provider": "youtube",
+      "videoId": "9Bt0Dq0jyMw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9Bt0Dq0jyMw",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "parthiv-palav-2007-23": {
+      "provider": "youtube",
+      "videoId": "FPi7vf_2vYc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FPi7vf_2vYc",
+      "sourceType": "official-streaming-catalogue",
+      "releaseId": "parthiv-palav-nonstop-garba-2007",
+      "evidenceType": "verified-release-track-video"
+    },
+    "ramzat-2017-01-sachi-re-mari-chhand-charni-sapakharu": {
+      "provider": "youtube",
+      "videoId": "jnfUfnDn9A8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=jnfUfnDn9A8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-07-tun-kaali-ne-kalyaani-ma": {
+      "provider": "youtube",
+      "videoId": "I2Qn0Xy86gI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=I2Qn0Xy86gI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 7,
+      "evidenceType": "official-label-full-song-original-album-track"
+    },
+    "ramzat-2017-14-sona-no-garbo": {
+      "provider": "youtube",
+      "videoId": "q7IPPJKWbgc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=q7IPPJKWbgc",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 14,
+      "evidenceType": "official-label-full-song-original-album-track"
+    },
+    "ramzat-2017-16-mer-karo-momai": {
+      "provider": "youtube",
+      "videoId": "n9K21NuxSQs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=n9K21NuxSQs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 16,
+      "evidenceType": "official-label-full-song-original-album-track"
+    },
+    "ramzat-2017-22-moj-ma-rehti-re-mahakali": {
+      "provider": "youtube",
+      "videoId": "cg0817MRoyM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=cg0817MRoyM",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 22,
+      "evidenceType": "official-label-full-song-original-album-track"
+    },
+    "ramzat-2017-27-bahuchar-maa-na-dera-pachhal": {
+      "provider": "youtube",
+      "videoId": "X7luwdfBjrI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=X7luwdfBjrI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 27,
+      "evidenceType": "official-label-full-song-original-album-track"
+    },
+    "ramzat-2017-30-dak-geet-meldi-ramti-aave": {
+      "provider": "youtube",
+      "videoId": "T4kBfImdscE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=T4kBfImdscE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 30,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-32-khel-khel-re-bhavani-maa": {
+      "provider": "youtube",
+      "videoId": "XSGJ7V4JTt0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=XSGJ7V4JTt0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 32,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-34-maadi-tara-mandiriye": {
+      "provider": "youtube",
+      "videoId": "qRbsjVxEDos",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qRbsjVxEDos",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 34,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-govaliyo-2025-02": {
+      "provider": "youtube",
+      "videoId": "EdA1Qhh5zJY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=EdA1Qhh5zJY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-govaliyo-live-uwb-vol1-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "atul-govaliyo-2025-04": {
+      "provider": "youtube",
+      "videoId": "pcEQGvkzmek",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=pcEQGvkzmek",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-govaliyo-live-uwb-vol1-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "atul-govaliyo-2025-07": {
+      "provider": "youtube",
+      "videoId": "NOJKFs2mSts",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=NOJKFs2mSts",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-govaliyo-live-uwb-vol1-2025",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "atul-govaliyo-2025-09": {
+      "provider": "youtube",
+      "videoId": "tR9n6rkFfZA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=tR9n6rkFfZA",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-govaliyo-live-uwb-vol1-2025",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "atul-govaliyo-2025-10": {
+      "provider": "youtube",
+      "videoId": "BnUgRGxH2sw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=BnUgRGxH2sw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-govaliyo-live-uwb-vol1-2025",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "kairavi-kana-mane-dwarika-dekhad-2021": {
+      "provider": "youtube",
+      "videoId": "U7kn53GBTRY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=U7kn53GBTRY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "kairavi-kana-mane-dwarika-dekhad-2021",
+      "trackNumber": 1,
+      "evidenceType": "verified-release-track-video"
+    }
+  }
+}

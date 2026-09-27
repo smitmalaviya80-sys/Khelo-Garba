@@ -1,0 +1,65 @@
+name: Missing song or release
+description: Help GARBA find and verify music that is not in the catalogue yet.
+title: "[Missing music] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping expand GARBA. A source URL is more valuable than guessing every field. Please do not upload copyrighted audio unless redistribution is clearly permitted.
+  - type: input
+    id: title
+    attributes:
+      label: Song / release / set title
+      placeholder: Title as it appears at the source
+    validations:
+      required: true
+  - type: input
+    id: artist
+    attributes:
+      label: Artist(s)
+      placeholder: Artist, group, orchestra, singer, etc.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of item is this?
+      options:
+        - Song / single
+        - Album / release
+        - Live Garba set
+        - Nonstop Garba set
+        - Timestamped chapter inside a set
+        - Historical / archive material
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Best source URL
+      description: Prefer official artist, label, distributor, streaming catalogue, archive, or another reliable primary source.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year, if verified
+      placeholder: Leave blank if unknown
+  - type: input
+    id: gujarati
+    attributes:
+      label: Gujarati title / spelling, if known
+      placeholder: Optional
+  - type: textarea
+    id: style
+    attributes:
+      label: Style / category notes
+      description: Traditional, Tran Taali, Be Taali, Raas/Dandiya, Mataji, Krishna, Folk, Sanedo, Modern, Fusion, etc.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else that helps verify it?
+      description: Alternate spellings, timestamps, release context, uncertain fields, or additional sources.

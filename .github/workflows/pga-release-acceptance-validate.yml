@@ -1,0 +1,71 @@
+name: Validate PGA release acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/release/**'
+      - '.github/workflows/pga-release-acceptance-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/release/**'
+      - '.github/workflows/pga-release-acceptance-validate.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-release-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax-check release acceptance model
+        run: node --check src/pga/release/acceptance.js
+
+      - name: Run deterministic release acceptance fixtures
+        run: node --test src/pga/release/tests/acceptance.test.mjs
+
+      - name: Guard release ledger purity
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='src/pga/release/acceptance.js'
+
+          if grep -En '\bfetch\s*\(|\bprocess\.env\b|\blocalStorage\b|\bsessionStorage\b|\bdocument\.|\bwindow\.' "$file"; then
+            echo 'Release acceptance model must stay pure and side-effect free.' >&2
+            exit 1
+          fi
+
+          if grep -Ein 'cf[_-]?authorization|access[_-]?assertion|github[_-]?token|cloudflare[_-]?token|raw[_-]?(listener|session|search)[_-]?telemetry' "$file"; then
+            echo 'Release acceptance model must not contain secret/assertion/raw-listener payload contracts.' >&2
+            exit 1
+          fi
+
+          node --input-type=module <<'NODE'
+          import {
+            acceptanceMatrix,
+            createAcceptanceLedger,
+          } from './src/pga/release/acceptance.js'
+
+          const revision = 'a'.repeat(40)
+          const ledger = createAcceptanceLedger({}, {
+            nowMs: Date.parse('2026-09-10T04:30:00.000Z'),
+            targetRevision: revision,
+          })
+
+          if (acceptanceMatrix().length !== 46) throw new Error('acceptance_matrix_size_changed')
+          if (ledger.status !== 'incomplete') throw new Error('empty_ledger_must_be_incomplete')
+          if (ledger.counts.not_inspected !== 46) throw new Error('empty_ledger_must_not_verify_items')
+          NODE

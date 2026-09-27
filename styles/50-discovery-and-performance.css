@@ -1,0 +1,135 @@
+/* Discovery, device and data-saver refinements layered after the core UI. */
+
+.enhanced-search-note {
+  padding: 8px 2px 11px;
+  color: rgba(246,236,215,.48);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.enhanced-search-row .enhanced-search-arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  min-height: 40px;
+  color: color-mix(in srgb, var(--accent) 72%, var(--ivory));
+  font-size: 18px;
+  opacity: .72;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+@media (hover: hover) {
+  .enhanced-search-row:hover .enhanced-search-arrow {
+    transform: translateX(3px);
+    opacity: 1;
+  }
+}
+
+.source-badge[data-metadata-only="true"] {
+  color: rgba(246,236,215,.52);
+}
+.source-badge[data-metadata-only="true"]::before {
+  background: rgba(246,236,215,.42);
+  box-shadow: none;
+}
+
+/* Pause purely decorative work while the page is hidden. */
+.app.page-hidden .world-ambient,
+.app.page-hidden .ambient-ring {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
+/* Respect Save-Data / very slow network hints without changing the product structure. */
+.app[data-save-data="true"] .world-ambient,
+.app[data-save-data="true"] .ambient-ring {
+  display: none;
+}
+.app[data-save-data="true"] .sheet,
+.app[data-save-data="true"] .utilities .icon-button,
+.app[data-save-data="true"] .source-badge,
+.app[data-save-data="true"] .network-status,
+.app[data-save-data="true"] .retry-catalogue {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.app[data-save-data="true"] .world-layer {
+  transition-duration: 180ms;
+}
+
+/*
+ * Production player artwork.
+ *
+ * Only the visible world is allowed to request a high-resolution WebP. The old
+ * selector matched hidden transition layers as soon as app.js wrote a genre SVG
+ * into their inline style, which let multiple 2K images join the cold-start
+ * waterfall even though only one world could be seen.
+ *
+ * The approved WebP is the only painted image while that world is visible. The
+ * legacy SVG remains an internal runtime identity/fallback token, but it is not
+ * stacked underneath the live artwork, so listeners never see the retired world
+ * flash while the 2K image is arriving.
+ */
+.world-layer.is-visible[style*="assets/backgrounds/traditional.svg"] {
+  background-image: url("/assets/backgrounds/library/11-master-dark-courtyard.webp") !important;
+}
+.world-layer.is-visible[style*="assets/backgrounds/dandiya.svg"] {
+  background-image: url("/assets/backgrounds/library/10-dandiya-silhouette-courtyard.webp") !important;
+}
+.world-layer.is-visible[style*="assets/backgrounds/devotional.svg"] {
+  background-image: url("/assets/backgrounds/library/03-devotional-garba-courtyard.webp") !important;
+}
+.world-layer.is-visible[style*="assets/backgrounds/folk.svg"] {
+  background-image: url("/assets/backgrounds/library/14-gujarati-folk-courtyard.webp") !important;
+}
+.world-layer.is-visible[style*="assets/backgrounds/sanedo.svg"] {
+  background-image: url("/assets/backgrounds/library/08-colourful-garba-courtyard-b.webp") !important;
+}
+.world-layer.is-visible[style*="assets/backgrounds/fusion.svg"] {
+  background-image: url("/assets/backgrounds/library/05-fusion-gujarati-neon.webp") !important;
+}
+.world-layer[style*="assets/backgrounds/"] {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  filter: none !important;
+  image-rendering: auto;
+}
+
+/* A listener who explicitly enables Save-Data, or is on the runtime's very-slow
+ * connection path, should not be forced to download a 2K background. Keep the
+ * stable dark world instead of reviving the retired SVG artwork. */
+.app[data-save-data="true"] .world-layer.is-visible[style*="assets/backgrounds/"] {
+  background-image: none !important;
+}
+
+.sheet-handle[aria-expanded="true"] span {
+  background: color-mix(in srgb, var(--accent) 42%, rgba(246,236,215,.34));
+}
+
+@media (max-width: 700px) {
+  .enhanced-search-note {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-inline: -2px;
+    padding: 9px 2px 10px;
+    background: linear-gradient(to bottom, rgba(12,16,29,.98), rgba(12,16,29,.88));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .enhanced-search-row {
+    min-height: 72px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .enhanced-search-note { color: rgba(246,236,215,.78); }
+  .enhanced-search-row .enhanced-search-arrow { color: var(--ivory); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enhanced-search-row .enhanced-search-arrow { transition: none; }
+}

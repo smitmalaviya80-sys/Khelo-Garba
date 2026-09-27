@@ -1,0 +1,137 @@
+{
+  "version": "0.4.0",
+  "updated": "2026-09-26",
+  "note": "YouTube-only migration pass for Maa Ni Chundadi (Gujarati Garba Songs) by Atul Purohit. All 11 canonical 1994 Sony Music tracks now use exact Atul Purohit Official Artist Channel and Sony Music auto-generated YouTube recordings whose descriptions identify Maa Ni Chundadi, the 1994 Sony Music copyright and the 1994-01-01 release date.",
+  "songSources": {
+    "atul-maa-ni-chundadi-1994-01": {
+      "provider": "youtube",
+      "videoId": "0Avliuu5ARs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=0Avliuu5ARs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-02": {
+      "provider": "youtube",
+      "videoId": "-vV4LQKJic4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=-vV4LQKJic4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-03": {
+      "provider": "youtube",
+      "videoId": "qa3UkqumfK8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qa3UkqumfK8",
+      "sourceType": "official-topic",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.com/tracks/B07YFRCLV2",
+        "sourceType": "verified-track-source"
+      }
+    },
+    "atul-maa-ni-chundadi-1994-04": {
+      "provider": "youtube",
+      "videoId": "duW-aukngfI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=duW-aukngfI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-05": {
+      "provider": "youtube",
+      "videoId": "sr39zsjZLAc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=sr39zsjZLAc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 5,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-06": {
+      "provider": "youtube",
+      "videoId": "6EcarV5a2Yo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=6EcarV5a2Yo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 6,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-07": {
+      "provider": "youtube",
+      "videoId": "PsBbIfFnqiI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=PsBbIfFnqiI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-08": {
+      "provider": "youtube",
+      "videoId": "bIQ4f4dzfWc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=bIQ4f4dzfWc",
+      "sourceType": "official-topic",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 8,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.com/tracks/B07YFR92HT",
+        "sourceType": "verified-track-source"
+      }
+    },
+    "atul-maa-ni-chundadi-1994-09": {
+      "provider": "youtube",
+      "videoId": "wW7PRdS5UY8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=wW7PRdS5UY8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.com/tracks/B07YFQJHN9",
+        "sourceType": "verified-track-source"
+      }
+    },
+    "atul-maa-ni-chundadi-1994-10": {
+      "provider": "youtube",
+      "videoId": "mKN6Zu3oi5U",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=mKN6Zu3oi5U",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-maa-ni-chundadi-1994-11": {
+      "provider": "youtube",
+      "videoId": "yIZ0vCtiW9s",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=yIZ0vCtiW9s",
+      "sourceType": "official-topic",
+      "releaseId": "atul-maa-ni-chundadi-1994",
+      "trackNumber": 11,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.com/tracks/B07YFQWMG1",
+        "sourceType": "verified-track-source"
+      }
+    }
+  }
+}

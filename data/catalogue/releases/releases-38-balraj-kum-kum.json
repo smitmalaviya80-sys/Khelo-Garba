@@ -1,0 +1,30 @@
+[
+  {
+    "id": "balraj-kum-kum-na-pagla-2016",
+    "title": "Kum Kum Na Pagla",
+    "artist": "Balraj Shastri",
+    "description": "A 12-song 2016 album by Balraj Shastri, released by Times Music.",
+    "releaseDate": "2016-09-27",
+    "originalReleaseYear": 2016,
+    "label": "Times Music",
+    "categories": ["traditional-garba", "raas-dandiya", "mataji-devotional", "krishna-garba", "folk-lokgeet"],
+    "visualGenre": "traditional",
+    "entryType": "album",
+    "songCount": 12,
+    "durationSeconds": 2892,
+    "series": null,
+    "volume": null,
+    "live": {"isLive": false, "venue": null},
+    "sources": [
+      {"platform": "YouTube", "url": "https://www.youtube.com/watch?v=CtaNT7Z8poQ", "kind": "verified-label-full-album-jukebox"},
+      {"platform": "Apple Music", "url": "https://music.apple.com/us/album/kum-kum-na-pagla/1158892219", "kind": "official-album-store"},
+      {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B01LZM0H7I", "kind": "official-track-and-album-context"}
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified-multi-source",
+    "audioAvailability": "external-source-only",
+    "notes": "Times Music's verified jukebox supplies the exact 12-song sequence and chapter starts; Amazon and Apple independently confirm the 2016 album and component durations."
+  }
+]

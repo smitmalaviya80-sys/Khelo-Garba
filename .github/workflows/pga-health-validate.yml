@@ -1,0 +1,43 @@
+name: PGA Health validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/health/**'
+      - 'scripts/lib/validate-pga-health.mjs'
+      - 'scripts/lib/validate-pga-health-evidence.mjs'
+      - 'scripts/lib/validate-pga-health-operational.mjs'
+      - '.github/workflows/pga-health-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/health/**'
+      - 'scripts/lib/validate-pga-health.mjs'
+      - 'scripts/lib/validate-pga-health-evidence.mjs'
+      - 'scripts/lib/validate-pga-health-operational.mjs'
+      - '.github/workflows/pga-health-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Run Health fixtures
+        run: node --test src/pga/health/tests/health.test.mjs src/pga/health/tests/evidence-adapters.test.mjs src/pga/health/tests/operational-adapters.test.mjs
+      - name: Validate Health contract
+        run: node scripts/lib/validate-pga-health.mjs
+      - name: Validate Health evidence adapters
+        run: node scripts/lib/validate-pga-health-evidence.mjs
+      - name: Validate Health operational adapters
+        run: node scripts/lib/validate-pga-health-operational.mjs

@@ -1,0 +1,144 @@
+name: Player rendered contrast evidence
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'styles/**'
+      - 'assets/backgrounds/**'
+      - 'assets/genre-icons/**'
+      - '.github/browser/player-contrast-rendered.mjs'
+      - '.github/workflows/player-contrast-rendered.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'styles/**'
+      - 'assets/backgrounds/**'
+      - 'assets/genre-icons/**'
+      - '.github/browser/player-contrast-rendered.mjs'
+      - '.github/workflows/player-contrast-rendered.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: player-rendered-contrast-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rendered-contrast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Validate static contrast floor
+        run: node scripts/lib/validate-player-contrast.mjs
+
+      - name: Build catalogue data
+        run: npm run catalogue
+
+      - name: Prepare production-equivalent player fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _contrast
+          mkdir -p _contrast
+
+          cp \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _contrast/
+          cp -R assets data _contrast/
+
+          cat app.js assets/runtime/seek-state.js > _contrast/app.js
+          grep -q 'GARBA_SEEK_STATE_RUNTIME' _contrast/app.js || { echo 'Seek-state runtime missing from contrast fixture'; exit 1; }
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _contrast/styles.css
+
+          if grep -q '@import' _contrast/styles.css; then
+            echo 'Contrast fixture still contains CSS @import'; exit 1
+          fi
+
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK" || { echo 'Required 15-image courtyard pack is missing'; exit 1; }
+
+          rm -rf _contrast/assets/backgrounds/library
+          mkdir -p _contrast/assets/backgrounds/library
+          unzip -oq "$PACK" -d _contrast/assets/backgrounds/library
+          test "$(find _contrast/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')" -eq 15 || { echo 'Contrast fixture must contain exactly 15 courtyard WebPs'; exit 1; }
+          rm -f _contrast/assets/backgrounds/garba15-*.zip
+
+          for genre in traditional dandiya devotional folk sanedo fusion; do
+            test -f "_contrast/assets/genre-icons/$genre.webp" || test "$genre" = 'folk' -a -f "_contrast/assets/genre-icons/folk-dhol.webp" || { echo "Missing genre icon: $genre"; exit 1; }
+          done
+
+      - name: Install rendered contrast runtime
+        run: npm install --no-save --no-package-lock playwright@1.63.0 pngjs@7.0.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start player fixture
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory _contrast >/tmp/playgarba-contrast.log 2>&1 &
+          echo $! > /tmp/playgarba-contrast.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/playgarba-contrast.log
+          exit 1
+
+      - name: Measure six courtyard worlds at mobile and desktop
+        run: node .github/browser/player-contrast-rendered.mjs
+
+      - name: Upload rendered contrast evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: player-rendered-contrast-evidence
+          path: |
+            test-results/player-contrast-rendered
+            /tmp/playgarba-contrast.log
+          if-no-files-found: warn
+          retention-days: 14

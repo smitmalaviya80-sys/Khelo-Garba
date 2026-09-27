@@ -1,0 +1,59 @@
+name: PGA Health route validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/README.md'
+      - 'src/pga/backend/tests/health-route.test.mjs'
+      - 'src/pga/health/collector.js'
+      - 'src/pga/health/presentation.js'
+      - 'src/pga/health/snapshot.js'
+      - 'src/pga/health/evidence-adapters.js'
+      - 'src/pga/health/operational-adapters.js'
+      - '.github/workflows/pga-health-route-validate.yml'
+  push:
+    branches: [main, 'pga/issue-844-health-backend']
+    paths:
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/README.md'
+      - 'src/pga/backend/tests/health-route.test.mjs'
+      - 'src/pga/health/collector.js'
+      - 'src/pga/health/presentation.js'
+      - 'src/pga/health/snapshot.js'
+      - 'src/pga/health/evidence-adapters.js'
+      - 'src/pga/health/operational-adapters.js'
+      - '.github/workflows/pga-health-route-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-health-route-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax-check protected Health route
+        run: node --check src/pga/backend/admin-worker.js
+
+      - name: Test protected Health route
+        run: node --test src/pga/backend/tests/health-route.test.mjs
+
+      - name: Re-run PGA backend regression suite
+        run: node --test src/pga/backend/tests/backend.test.mjs src/pga/backend/tests/live-api.test.mjs
+
+      - name: Re-run canonical Health truth stack
+        run: node --test src/pga/health/tests/collector.test.mjs src/pga/health/tests/evidence-adapters.test.mjs src/pga/health/tests/health.test.mjs src/pga/health/tests/operational-adapters.test.mjs src/pga/health/tests/presentation.test.mjs src/pga/health/tests/snapshot.test.mjs

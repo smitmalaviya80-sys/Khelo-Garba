@@ -1,0 +1,29 @@
+[
+  {
+    "id": "raag-mehta-norta-aave-re-2025",
+    "title": "Norta Aave Re",
+    "artist": "Raag Mehta",
+    "releaseDate": "2025-09-07",
+    "originalReleaseYear": 2025,
+    "label": "Raag Mehta",
+    "description": "A 2025 Raag Mehta single catalogued as modern Gujarati Garba.",
+    "categories": ["modern-gujarati-garba"],
+    "visualGenre": "traditional",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 234,
+    "series": null,
+    "volume": null,
+    "live": {"isLive": false, "venue": null},
+    "sources": [
+      {"platform": "YouTube", "url": "https://www.youtube.com/watch?v=WrToXG4wkQM", "kind": "official-artist-channel-video"},
+      {"platform": "Apple Music", "url": "https://music.apple.com/us/album/norta-aave-re-single/1838500978", "kind": "stream-store"},
+      {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B0FQ5SBQ96", "kind": "track"}
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only"
+  }
+]

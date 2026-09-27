@@ -1,0 +1,596 @@
+name: Agent pre-PR branch drift
+
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [closed, reopened]
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review, closed]
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+# Non-closed PR checks are read-only and use a PR-specific pending slot, so
+# unrelated PRs cannot replace one another. All mutating reconciliation
+# stays in the single `global` slot.
+concurrency:
+  group: agent-pre-pr-branch-drift-${{ github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.number || 'global' }}
+  cancel-in-progress: false
+
+jobs:
+  branch-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reconcile pre-PR branch drift
+        uses: actions/github-script@v7
+        env:
+          BOARD_ISSUE: "364"
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const boardIssue = Number(process.env.BOARD_ISSUE);
+            const driftLabel = 'agent:branch-drift';
+            const graphBatchSize = 20;
+
+            const claimRe = /<!--\s*agent-claim\s*\n([\s\S]*?)-->/i;
+            const releaseRe = /<!--\s*agent-release\s*\n([\s\S]*?)-->/i;
+            const overrideRe = /<!--\s*agent-claim-override\s*\n([\s\S]*?)-->/i;
+
+            if (context.eventName === 'issue_comment') {
+              const body = context.payload.comment?.body || '';
+              if (!claimRe.test(body) && !releaseRe.test(body) && !overrideRe.test(body)) return;
+            }
+
+            function field(block, name) {
+              const match = block.match(new RegExp(`^${name}:\\s*(.+?)\\s*$`, 'mi'));
+              return match ? match[1].trim() : '';
+            }
+
+            function parseEvent(comment) {
+              const body = comment.body || '';
+              const override = body.match(overrideRe);
+              if (override) return { type: 'override', author: comment.user?.login || 'unknown', commentId: comment.id };
+              const release = body.match(releaseRe);
+              if (release) {
+                return { type: 'release', agent: field(release[1], 'agent'), branch: field(release[1], 'branch'), commentId: comment.id };
+              }
+              const claim = body.match(claimRe);
+              if (claim) {
+                return {
+                  type: 'claim',
+                  agent: field(claim[1], 'agent'),
+                  branch: field(claim[1], 'branch'),
+                  scope: field(claim[1], 'scope'),
+                  files: field(claim[1], 'files'),
+                  commentId: comment.id,
+                };
+              }
+              return null;
+            }
+
+            function validClaim(event) {
+              return event?.type === 'claim' && event.agent && event.branch && event.scope && event.files;
+            }
+
+            function sameOwner(a, b) {
+              return Boolean(a && b && a.agent === b.agent && a.branch === b.branch);
+            }
+
+            function deriveState(comments) {
+              let active = null;
+              for (const comment of [...comments].sort((a, b) => a.id - b.id)) {
+                const event = parseEvent(comment);
+                if (!event) continue;
+                if (event.type === 'override') {
+                  if (event.author === owner) active = null;
+                  continue;
+                }
+                if (event.type === 'release') {
+                  if (active && sameOwner(active, event)) active = null;
+                  continue;
+                }
+                if (!validClaim(event)) continue;
+                if (!active) active = { ...event, ownershipCommentId: event.commentId };
+                else if (sameOwner(active, event)) active = { ...event, ownershipCommentId: active.ownershipCommentId };
+              }
+              return { active };
+            }
+
+            function normalizeFileToken(raw) {
+              let token = String(raw || '').trim().replace(/^`+|`+$/g, '').replace(/^\.\//, '');
+              token = token.replace(/^(?:expected|likely)\s+/i, '').trim();
+              return token;
+            }
+
+            function filePatterns(raw) {
+              return String(raw || '')
+                .split(';')
+                .map(normalizeFileToken)
+                .filter(Boolean)
+                .filter(token => !/^research-only\b/i.test(token))
+                .filter(token => !/^(?:none|n\/a)$/i.test(token));
+            }
+
+            function hasConcreteFiles(raw) {
+              return filePatterns(raw).length > 0;
+            }
+
+            function escapeRegex(char) {
+              return /[\\^$+?.()|{}[\]]/.test(char) ? `\\${char}` : char;
+            }
+
+            function globRegex(pattern) {
+              let out = '^';
+              for (let i = 0; i < pattern.length; i += 1) {
+                const char = pattern[i];
+                if (char === '*') {
+                  if (pattern[i + 1] === '*') {
+                    out += '.*';
+                    i += 1;
+                  } else out += '[^/]*';
+                } else if (char === '?') out += '[^/]';
+                else out += escapeRegex(char);
+              }
+              return new RegExp(`${out}$`);
+            }
+
+            function pathCovered(path, rawFiles) {
+              const normalized = normalizeFileToken(path);
+              return filePatterns(rawFiles).some(pattern => pattern === normalized || globRegex(pattern).test(normalized));
+            }
+
+            function changedPaths(files = []) {
+              const paths = [];
+              for (const file of files) {
+                for (const candidate of [file.filename, file.previous_filename]) {
+                  const normalized = normalizeFileToken(candidate);
+                  if (normalized && !paths.includes(normalized)) paths.push(normalized);
+                }
+              }
+              return paths;
+            }
+
+            function branchDecision({ missing, behindBy, outOfClaim }) {
+              return {
+                needsReconciliation: Boolean(missing || outOfClaim.length),
+                behindBy: Number(behindBy || 0),
+                behindOnly: !missing && !outOfClaim.length && Number(behindBy || 0) > 0,
+              };
+            }
+
+            function assert(condition, message) {
+              if (!condition) throw new Error(`Agent branch drift self-test failed: ${message}`);
+            }
+
+            function prClaimIssue(pr) {
+              const match = (pr.body || '').match(/^Agent-Claim:\s*#(\d+)\s*$/mi);
+              return match ? Number(match[1]) : null;
+            }
+
+            function prAgent(pr) {
+              const match = (pr.body || '').match(/^Agent-ID:\s*(.+?)\s*$/mi);
+              return match ? match[1].trim() : '';
+            }
+
+            function matchingOpenPr(row, pulls) {
+              return pulls.find(pr =>
+                pr.head?.ref === row.state.active.branch &&
+                prClaimIssue(pr) === row.issue.number &&
+                prAgent(pr) === row.state.active.agent
+              ) || null;
+            }
+
+            function normalizeGraphComment(node) {
+              return {
+                id: Number(node.databaseId),
+                body: node.body || '',
+                user: { login: node.author?.login || 'unknown', type: node.author?.__typename === 'Bot' ? 'Bot' : 'User' },
+              };
+            }
+
+            function buildGraphCommentPage(entries) {
+              const variableDefs = ['$owner: String!', '$repo: String!'];
+              const variables = { owner, repo };
+              const fields = [];
+              entries.forEach(([issueNumber, cursor], index) => {
+                const cursorName = `cursor${index}`;
+                if (cursor) {
+                  variableDefs.push(`$${cursorName}: String!`);
+                  variables[cursorName] = cursor;
+                }
+                fields.push([
+                  `i${index}: issue(number: ${issueNumber}) {`,
+                  '  number',
+                  `  comments(first: 100${cursor ? `, after: $${cursorName}` : ''}) {`,
+                  '    nodes { databaseId body author { __typename login } }',
+                  '    pageInfo { hasNextPage endCursor }',
+                  '  }',
+                  '}',
+                ].join('\n'));
+              });
+              return {
+                query: [`query(${variableDefs.join(', ')}) {`, '  repository(owner: $owner, name: $repo) {', fields.join('\n'), '  }', '}'].join('\n'),
+                variables,
+              };
+            }
+
+            async function listCommentsByIssue(issueNumbers) {
+              const unique = [...new Set(issueNumbers.filter(Boolean))];
+              const commentsByIssue = new Map(unique.map(issueNumber => [issueNumber, []]));
+              let pending = new Map(unique.map(issueNumber => [issueNumber, null]));
+              while (pending.size) {
+                const next = new Map();
+                const pendingEntries = [...pending.entries()];
+                for (let offset = 0; offset < pendingEntries.length; offset += graphBatchSize) {
+                  const chunk = pendingEntries.slice(offset, offset + graphBatchSize);
+                  const { query, variables } = buildGraphCommentPage(chunk);
+                  const response = await github.graphql(query, variables);
+                  const repository = response.repository || {};
+                  chunk.forEach(([expectedIssueNumber], index) => {
+                    const issue = repository[`i${index}`];
+                    if (!issue) return;
+                    if (Number(issue.number) !== Number(expectedIssueNumber)) {
+                      throw new Error(`GraphQL comment batch returned issue #${issue.number} for expected #${expectedIssueNumber}.`);
+                    }
+                    const connection = issue.comments;
+                    const bucket = commentsByIssue.get(expectedIssueNumber);
+                    for (const node of connection.nodes || []) bucket.push(normalizeGraphComment(node));
+                    if (connection.pageInfo?.hasNextPage) {
+                      const cursor = connection.pageInfo.endCursor;
+                      if (!cursor) throw new Error(`Issue #${expectedIssueNumber} reports another comment page without an end cursor.`);
+                      next.set(expectedIssueNumber, cursor);
+                    }
+                  });
+                }
+                pending = next;
+              }
+              for (const comments of commentsByIssue.values()) comments.sort((a, b) => a.id - b.id);
+              return commentsByIssue;
+            }
+
+            function normalizeIssueNode(node) {
+              return {
+                number: Number(node.number),
+                state: String(node.state || '').toLowerCase(),
+                labels: (node.labels?.nodes || []).map(label => ({ name: label.name })),
+                pull_request: null,
+              };
+            }
+
+            async function listClaimIssuesGraph(extraIssueNumbers = []) {
+              const byNumber = new Map();
+              let cursor = null;
+              do {
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!, $cursor: String) {
+                    repository(owner: $owner, name: $repo) {
+                      issues(first: 100, after: $cursor, states: OPEN, labels: ["agent:claimed"]) {
+                        nodes { number state labels(first: 50) { nodes { name } } }
+                        pageInfo { hasNextPage endCursor }
+                      }
+                    }
+                  }
+                `, { owner, repo, cursor });
+                const connection = response.repository?.issues;
+                for (const node of connection?.nodes || []) {
+                  if (Number(node.number) === boardIssue) continue;
+                  byNumber.set(Number(node.number), normalizeIssueNode(node));
+                }
+                cursor = connection?.pageInfo?.hasNextPage ? connection.pageInfo.endCursor : null;
+                if (connection?.pageInfo?.hasNextPage && !cursor) throw new Error('Claimed issue connection reports another page without an end cursor.');
+              } while (cursor);
+
+              const missing = [...new Set(extraIssueNumbers.filter(Boolean))]
+                .filter(issueNumber => issueNumber !== boardIssue && !byNumber.has(issueNumber));
+              for (let offset = 0; offset < missing.length; offset += graphBatchSize) {
+                const chunk = missing.slice(offset, offset + graphBatchSize);
+                const fields = chunk.map((issueNumber, index) => [
+                  `i${index}: issue(number: ${issueNumber}) {`,
+                  '  number',
+                  '  state',
+                  '  labels(first: 50) { nodes { name } }',
+                  '}',
+                ].join('\n'));
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!) {
+                    repository(owner: $owner, name: $repo) { ${fields.join('\n')} }
+                  }
+                `, { owner, repo });
+                const repository = response.repository || {};
+                chunk.forEach((issueNumber, index) => {
+                  const node = repository[`i${index}`];
+                  if (!node || String(node.state).toUpperCase() !== 'OPEN') return;
+                  byNumber.set(issueNumber, normalizeIssueNode(node));
+                });
+              }
+              return byNumber;
+            }
+
+            async function listOpenPullsGraph() {
+              const pulls = [];
+              let cursor = null;
+              do {
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!, $cursor: String) {
+                    repository(owner: $owner, name: $repo) {
+                      pullRequests(first: 100, after: $cursor, states: OPEN) {
+                        nodes { number body headRefName }
+                        pageInfo { hasNextPage endCursor }
+                      }
+                    }
+                  }
+                `, { owner, repo, cursor });
+                const connection = response.repository?.pullRequests;
+                for (const node of connection?.nodes || []) {
+                  pulls.push({ number: Number(node.number), body: node.body || '', head: { ref: node.headRefName || '' } });
+                }
+                cursor = connection?.pageInfo?.hasNextPage ? connection.pageInfo.endCursor : null;
+                if (connection?.pageInfo?.hasNextPage && !cursor) throw new Error('Open PR connection reports another page without an end cursor.');
+              } while (cursor);
+              return pulls;
+            }
+
+            function runSelfTests() {
+              assert(pathCovered('src/a.js', 'src/a.js'), 'exact claimed path is covered');
+              assert(pathCovered('data/releases/a.json', 'data/releases/**'), 'tree glob covers nested path');
+              assert(pathCovered('data/releases/release-falguni-1.json', 'data/releases/*falguni*'), 'filename glob covers matching path');
+              assert(!pathCovered('src/b.js', 'src/a.js'), 'undeclared path is not covered');
+              assert(!hasConcreteFiles('research-only'), 'research-only is exempt');
+              assert(hasConcreteFiles('research-only until evidence; docs/a.md'), 'mixed claim remains concrete');
+              assert(changedPaths([{ filename: 'new.js', previous_filename: 'old.js' }]).join(',') === 'new.js,old.js', 'rename checks both old and new paths');
+              assert(branchDecision({ missing: false, behindBy: 20, outOfClaim: [] }).needsReconciliation === false, 'behind-only is advisory');
+              assert(branchDecision({ missing: false, behindBy: 0, outOfClaim: ['b.js'] }).needsReconciliation === true, 'out-of-claim path needs reconciliation');
+              assert(branchDecision({ missing: true, behindBy: 0, outOfClaim: [] }).needsReconciliation === true, 'missing claimed branch needs reconciliation');
+              const normalized = normalizeGraphComment({ databaseId: 42, body: 'hello', author: { login: 'github-actions', __typename: 'Bot' } });
+              assert(normalized.id === 42 && normalized.user.type === 'Bot', 'GraphQL mapping preserves database ID and bot identity');
+              const firstPage = buildGraphCommentPage([[12, null]]);
+              const nextPage = buildGraphCommentPage([[12, 'cursor-value']]);
+              assert(firstPage.query.includes('comments(first: 100)') && !firstPage.query.includes('after:'), 'first GraphQL comment page omits cursor');
+              assert(nextPage.query.includes('after: $cursor0') && nextPage.variables.cursor0 === 'cursor-value', 'follow-up GraphQL comment page carries cursor');
+            }
+
+            async function collectRows(extraIssueNumbers = []) {
+              const byNumber = await listClaimIssuesGraph(extraIssueNumbers);
+              const commentsByIssue = await listCommentsByIssue([...byNumber.keys()]);
+              const rows = [];
+              for (const issue of byNumber.values()) {
+                const comments = commentsByIssue.get(issue.number) || [];
+                const state = deriveState(comments);
+                if (state.active) rows.push({ issue, comments, state });
+              }
+              return rows;
+            }
+
+            async function inspectBranch(row) {
+              try {
+                const response = await github.rest.repos.compareCommitsWithBasehead({
+                  owner,
+                  repo,
+                  basehead: `main...${row.state.active.branch}`,
+                  per_page: 100,
+                });
+                const data = response.data;
+                const paths = changedPaths(data.files || []);
+                const outOfClaim = paths.filter(path => !pathCovered(path, row.state.active.files));
+                return {
+                  missing: false,
+                  status: data.status || 'unknown',
+                  aheadBy: Number(data.ahead_by || 0),
+                  behindBy: Number(data.behind_by || 0),
+                  paths,
+                  outOfClaim,
+                };
+              } catch (error) {
+                if (error.status === 404) {
+                  return { missing: true, status: 'missing', aheadBy: 0, behindBy: 0, paths: [], outOfClaim: [] };
+                }
+                throw error;
+              }
+            }
+
+            function labelNames(issue) {
+              return new Set((issue.labels || []).map(label => typeof label === 'string' ? label : label?.name).filter(Boolean));
+            }
+
+            async function ensureDriftLabel() {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name: driftLabel });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                try {
+                  await github.rest.issues.createLabel({
+                    owner,
+                    repo,
+                    name: driftLabel,
+                    color: 'B42318',
+                    description: 'No-PR claimed branch is missing or contains changed paths outside its active agent claim; ownership is unchanged.',
+                  });
+                } catch (createError) {
+                  if (createError.status !== 422) throw createError;
+                }
+              }
+            }
+
+            async function addDriftLabel(issue) {
+              if (labelNames(issue).has(driftLabel)) return;
+              await github.rest.issues.addLabels({ owner, repo, issue_number: issue.number, labels: [driftLabel] });
+            }
+
+            async function removeDriftLabel(issue) {
+              if (!labelNames(issue).has(driftLabel)) return;
+              try {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: issue.number, name: driftLabel });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+            }
+
+            function driftStatus(row) {
+              const drift = row.branchDrift;
+              const lines = [
+                '<!-- agent-branch-drift-status -->',
+                '### Pre-PR branch reconciliation',
+                '',
+                row.needsReconciliation ? '**Status:** Needs reconciliation before opening a PR' : '**Status:** Clear',
+              ];
+              if (row.needsReconciliation) {
+                lines.push(`- claimed branch: \`${row.state.active.branch}\``);
+                if (drift.missing) lines.push('- branch state: claimed branch does not currently exist on the remote.');
+                else {
+                  lines.push(`- branch comparison: ${drift.aheadBy} ahead / ${drift.behindBy} behind current \`main\`.`);
+                  if (drift.outOfClaim.length) lines.push(`- changed paths outside the active claim: ${drift.outOfClaim.map(path => `\`${path}\``).join(', ')}`);
+                }
+                lines.push('');
+                lines.push('Ownership is unchanged. Reconcile or rebuild from current `main`, drop stale unrelated changes, and update the claim only if additional files are truly required and unowned. Do not widen a claim merely to make an old branch pass.');
+              } else {
+                lines.push('No missing branch or out-of-claim pre-PR changes are currently detected. Behind count by itself is advisory and does not change ownership.');
+              }
+              return lines.join('\n');
+            }
+
+            async function upsertDriftStatus(row) {
+              const existing = row.comments.find(comment =>
+                comment.body?.includes('<!-- agent-branch-drift-status -->') && comment.user?.type === 'Bot'
+              );
+              if (!row.needsReconciliation && !existing) return;
+              const wanted = driftStatus(row);
+              if (!existing) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: row.issue.number, body: wanted });
+              } else if ((existing.body || '').trim() !== wanted.trim()) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body: wanted });
+              }
+            }
+
+            async function clearStaleLabels(driftRows) {
+              const activeNumbers = new Set(driftRows.map(row => row.issue.number));
+              for (const state of ['open', 'closed']) {
+                const labelled = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state, labels: driftLabel, per_page: 100 });
+                for (const issue of labelled) {
+                  if (issue.pull_request || activeNumbers.has(issue.number)) continue;
+                  await removeDriftLabel(issue);
+                }
+              }
+            }
+
+            function esc(value) {
+              return String(value || '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+            }
+
+            function renderBoardBody(currentBody, table) {
+              const start = '<!-- agent-branch-drift:start -->';
+              const end = '<!-- agent-branch-drift:end -->';
+              const body = currentBody || '';
+              if (body.includes(start) && body.includes(end)) {
+                return body.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n${table}\n${end}`);
+              }
+              const reviewAnchor = '<!-- agent-claim-review:end -->';
+              const fileAnchor = '<!-- agent-file-conflicts:end -->';
+              const managedAnchor = '<!-- agent-work-board:managed-end -->';
+              const anchor = body.includes(reviewAnchor) ? reviewAnchor : body.includes(fileAnchor) ? fileAnchor : managedAnchor;
+              if (!body.includes(anchor)) throw new Error(`Board issue #${boardIssue} is missing a known coordination anchor.`);
+              const block = [
+                anchor,
+                '',
+                '## Pre-PR branch reconciliation',
+                '',
+                'These warnings are advisory and never release ownership. They identify claimed no-PR branches that are missing or already contain changed paths outside the active claim.',
+                '',
+                start,
+                table,
+                end,
+              ].join('\n');
+              return body.replace(anchor, block);
+            }
+
+            async function updateBoard(driftRows) {
+              const table = driftRows.length
+                ? [
+                    '| Issue | Agent | Branch | Main drift | Reconciliation problem |',
+                    '| --- | --- | --- | --- | --- |',
+                    ...driftRows.map(row => {
+                      const drift = row.branchDrift;
+                      const problem = drift.missing
+                        ? 'Claimed remote branch is missing'
+                        : `Out-of-claim paths: ${drift.outOfClaim.map(path => `\`${esc(path)}\``).join('<br>')}`;
+                      const distance = drift.missing ? 'n/a' : `${drift.aheadBy} ahead / ${drift.behindBy} behind`;
+                      return `| #${row.issue.number} | \`${esc(row.state.active.agent)}\` | \`${esc(row.state.active.branch)}\` | ${distance} | ${problem} |`;
+                    }),
+                  ].join('\n')
+                : '_No active no-PR branches currently have missing-branch or out-of-claim drift._';
+              const start = '<!-- agent-branch-drift:start -->';
+              const end = '<!-- agent-branch-drift:end -->';
+              const expectedBlock = `${start}\n${table}\n${end}`;
+
+              await new Promise(resolve => setTimeout(resolve, 500));
+              for (let attempt = 1; attempt <= 5; attempt += 1) {
+                const board = await github.rest.issues.get({ owner, repo, issue_number: boardIssue });
+                const current = board.data.body || '';
+                if (current.includes(expectedBlock)) return;
+                const wanted = renderBoardBody(current, table);
+                if (wanted !== current) await github.rest.issues.update({ owner, repo, issue_number: boardIssue, body: wanted });
+                await new Promise(resolve => setTimeout(resolve, attempt * 400));
+                const verify = await github.rest.issues.get({ owner, repo, issue_number: boardIssue });
+                if ((verify.data.body || '').includes(expectedBlock)) return;
+              }
+              throw new Error(`Could not persist pre-PR branch reconciliation section on board #${boardIssue} after retries.`);
+            }
+
+            runSelfTests();
+
+            // Non-closed PR runs are terminal read-only checks with their own
+            // per-PR pending slot. Global labels/status/#364 maintenance remains
+            // serialized on claim/release/close/schedule/manual events.
+            if (context.eventName === 'pull_request' && context.payload.action !== 'closed') {
+              const pr = context.payload.pull_request;
+              core.summary
+                .addHeading('Pre-PR branch drift')
+                .addRaw(`PR #${pr.number} completed its PR-scoped coordination check. Repository-wide no-PR drift reconciliation remains serialized in the global lane.`)
+                .write();
+              return;
+            }
+
+            await ensureDriftLabel();
+
+            const extraIssueNumbers = [];
+            if (context.eventName === 'issue_comment' || context.eventName === 'issues') extraIssueNumbers.push(context.payload.issue?.number);
+            if (context.eventName === 'pull_request') extraIssueNumbers.push(prClaimIssue(context.payload.pull_request));
+
+            const rows = await collectRows(extraIssueNumbers.filter(Boolean));
+            const openPulls = await listOpenPullsGraph();
+
+            for (const row of rows) {
+              const concrete = hasConcreteFiles(row.state.active.files);
+              const openPr = matchingOpenPr(row, openPulls);
+              row.openPr = openPr;
+              row.branchDrift = { missing: false, status: 'skipped', aheadBy: 0, behindBy: 0, paths: [], outOfClaim: [] };
+              row.needsReconciliation = false;
+              if (concrete && !openPr) {
+                row.branchDrift = await inspectBranch(row);
+                row.needsReconciliation = branchDecision({
+                  missing: row.branchDrift.missing,
+                  behindBy: row.branchDrift.behindBy,
+                  outOfClaim: row.branchDrift.outOfClaim,
+                }).needsReconciliation;
+              }
+              if (row.needsReconciliation) await addDriftLabel(row.issue);
+              else await removeDriftLabel(row.issue);
+              await upsertDriftStatus(row);
+            }
+
+            const driftRows = rows
+              .filter(row => row.needsReconciliation)
+              .sort((a, b) => b.branchDrift.behindBy - a.branchDrift.behindBy || a.issue.number - b.issue.number);
+            await clearStaleLabels(driftRows);
+            await updateBoard(driftRows);
+
+            core.summary
+              .addHeading('Pre-PR branch drift')
+              .addRaw(`${rows.length} active claim(s) checked; ${driftRows.length} no-PR branch(es) need reconciliation. No branch or claim was modified, blocked, released or expired.`)
+              .write();

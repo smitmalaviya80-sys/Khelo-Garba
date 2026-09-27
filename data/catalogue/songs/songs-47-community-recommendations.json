@@ -1,0 +1,87 @@
+[
+  {
+    "id": "maine-payal-hai-chhankai-falguni-1999",
+    "title": "Maine Payal Hai Chhankai",
+    "artist": "Falguni Pathak",
+    "genre": "folk",
+    "category": "folk-lokgeet",
+    "styles": [
+      "navratri-staple",
+      "indi-pop",
+      "folk-pop",
+      "dandiya-adjacent"
+    ],
+    "durationSeconds": 278,
+    "releaseId": "maine-payal-hai-chhankai-1999",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "Rbz1qFlRL_Y"
+  },
+  {
+    "id": "garbo-dhvani-tanishk-2023",
+    "title": "Garbo",
+    "artist": "Narendra Modi, Tanishk Bagchi, Dhvani Bhanushali",
+    "genre": "traditional",
+    "category": "modern-gujarati-garba",
+    "styles": [
+      "garba",
+      "navratri",
+      "modern",
+      "gujarati"
+    ],
+    "durationSeconds": 176,
+    "releaseId": "garbo-dhvani-tanishk-2023",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "65o5Q_SmIww"
+  },
+  {
+    "id": "sun-sajni-satyaprem-2023",
+    "title": "Sun Sajni",
+    "artist": "Meet Bros, Parampara Tandon, Piyush Mehroliyaa",
+    "genre": "dandiya",
+    "category": "bollywood-filmi",
+    "styles": [
+      "filmi",
+      "dandiya",
+      "garba",
+      "wedding",
+      "modern"
+    ],
+    "durationSeconds": 266,
+    "releaseId": "sun-sajni-satyaprem-2023",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "AxA2xYbMCVo"
+  },
+  {
+    "id": "non-stop-garba-mix-dj-rink-2020",
+    "title": "Non Stop Garba Mix by DJ Rink",
+    "artist": "Various Artists, DJ Rink",
+    "genre": "fusion",
+    "category": "dj-remix",
+    "styles": [
+      "nonstop",
+      "garba",
+      "dj-remix",
+      "continuous-set"
+    ],
+    "durationSeconds": 1752,
+    "releaseId": "non-stop-garba-mix-dj-rink-2020",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "IHAlyDOgebw"
+  }
+]

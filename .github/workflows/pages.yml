@@ -1,0 +1,375 @@
+name: Deploy PlayGarba to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/pages.yml'
+      - 'scripts/lib/validate-pages-explore-telemetry.mjs'
+      - 'src/catalogue/index.html'
+      - 'src/catalogue/explore-telemetry.js'
+      - 'src/catalogue/explore-continuity-bridge.js'
+      - 'src/pga/telemetry/**'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  explore-telemetry-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Verify Explore telemetry Pages artifact contract
+        run: node scripts/lib/validate-pages-explore-telemetry.mjs --self-test
+
+  build:
+    if: github.event_name != 'pull_request'
+    needs: explore-telemetry-artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate app
+        run: npm run check
+
+      - name: Install social and icon renderers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin webp fonts-gfs-didot icoutils
+
+      - name: Prepare static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+
+          cp \
+            CNAME \
+            robots.txt \
+            sitemap.xml \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _site/
+          cp public-site/404.html _site/404.html
+          cp -R assets data _site/
+
+          # Keep seek and continuous-set truth inside the existing network-first app.js
+          # payload so the installed PWA does not gain extra runtime requests or stale
+          # cache surfaces.
+          cat \
+            app.js \
+            assets/runtime/seek-state.js \
+            assets/runtime/continuous-set-state.js \
+            > _site/app.js
+          grep -q 'GARBA_SEEK_STATE_RUNTIME' _site/app.js || { echo 'Seek-state runtime missing from deployed app.js'; exit 1; }
+          grep -q 'GARBA_CONTINUOUS_SET_RUNTIME' _site/app.js || { echo 'Continuous-set runtime missing from deployed app.js'; exit 1; }
+
+          # The catalogue is one supporting Explore page. Collection, album and song
+          # browsing remain in-page states rather than standalone song/release trees.
+          mkdir -p _site/catalogue
+          cp src/catalogue/index.html _site/catalogue/index.html
+          cp src/catalogue/catalogue.css _site/catalogue/catalogue.css
+          cp src/catalogue/catalogue.js _site/catalogue/catalogue.js
+          cp src/catalogue/listening-library.js _site/catalogue/listening-library.js
+          cp src/catalogue/explore-continuity-bridge.js _site/catalogue/explore-continuity-bridge.js
+
+          # Keep one production artifact: the player at the apex, Explore at
+          # /explore/, and the supporting editorial pages alongside it.
+          mkdir -p _site/explore
+          cp src/catalogue/index.html _site/explore/index.html
+          cp src/catalogue/catalogue.css _site/explore/catalogue.css
+          cp src/catalogue/catalogue.js _site/explore/catalogue.js
+          cp src/catalogue/listening-library.js _site/explore/listening-library.js
+          cp src/catalogue/explore-continuity-bridge.js _site/explore/explore-continuity-bridge.js
+
+          # Publish only the browser-reachable Explore telemetry dependency graph and
+          # prove both deployed routes can resolve every transitive local module.
+          node scripts/lib/validate-pages-explore-telemetry.mjs --publish-and-validate _site
+
+          cp -R \
+            public-site/about \
+            public-site/atmosphere \
+            public-site/dandiya-raas \
+            public-site/faq \
+            public-site/garba-attire-and-craft \
+            public-site/garba-music \
+            public-site/garba-vs-dandiya \
+            public-site/garbo \
+            public-site/history-of-garba \
+            public-site/how-to-use \
+            public-site/install \
+            public-site/learn \
+            public-site/live \
+            public-site/navratri-2026 \
+            public-site/navratri-and-garba \
+            public-site/what-is-garba \
+            _site/
+
+          # Immersive mode embeds the complete Garbo prototype. Keep its runtime and
+          # presentation in sync with the canonical source under docs/product.
+          # The canonical prototype source lives four directories below root, while its
+          # deployed copy lives at /garbo/prototype/. Rewrite the shared venue scene URL
+          # for that published location so Immersive never falls back to the plain scene.
+          sed 's#../../../../public-site/atmosphere/scene.js#../../atmosphere/scene.js#' \
+            docs/product/prototypes/garbo/index.html > _site/garbo/prototype/index.html
+          cp \
+            docs/product/prototypes/garbo/garbo.js \
+            docs/product/prototypes/garbo/garbo.css \
+            _site/garbo/prototype/
+          grep -q 'src="../../atmosphere/scene.js"' _site/garbo/prototype/index.html || { echo 'Immersive venue scene path is invalid'; exit 1; }
+          cp \
+            public-site/editorial.css \
+            public-site/pages.css \
+            public-site/polish.css \
+            public-site/site.js \
+            public-site/pages.js \
+            _site/
+
+          # Explore is source-native navigation; deployment must preserve it verbatim.
+          grep -q 'href="./explore/"' _site/index.html || { echo 'Homepage Explore link missing'; exit 1; }
+          grep -q '<span>Explore</span>' _site/index.html || { echo 'Homepage Explore label missing'; exit 1; }
+          ! grep -q 'id="browseButton"[^>]*aria-controls' _site/index.html || { echo 'Explore must not retain song-sheet semantics'; exit 1; }
+
+          # Render every platform icon from the canonical Garba mark.
+          mkdir -p _site/assets/icons
+          rsvg-convert -w 16 -h 16 assets/icons/icon.svg -o _site/assets/icons/favicon-16.png
+          rsvg-convert -w 32 -h 32 assets/icons/icon.svg -o _site/assets/icons/favicon-32.png
+          rsvg-convert -w 48 -h 48 assets/icons/icon.svg -o _site/assets/icons/favicon-48.png
+          rsvg-convert -w 152 -h 152 assets/icons/icon.svg -o _site/assets/icons/apple-touch-icon-152.png
+          rsvg-convert -w 167 -h 167 assets/icons/icon.svg -o _site/assets/icons/apple-touch-icon-167.png
+          rsvg-convert -w 180 -h 180 assets/icons/icon.svg -o _site/assets/icons/apple-touch-icon.png
+          rsvg-convert -w 192 -h 192 assets/icons/icon.svg -o _site/assets/icons/icon-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/icon.svg -o _site/assets/icons/icon-512.png
+          rsvg-convert -w 150 -h 150 assets/icons/icon.svg -o _site/assets/icons/mstile-150x150.png
+          rsvg-convert -w 310 -h 310 assets/icons/icon.svg -o _site/assets/icons/mstile-310x310.png
+          rsvg-convert -w 192 -h 192 assets/icons/maskable.svg -o _site/assets/icons/maskable-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/maskable.svg -o _site/assets/icons/maskable-512.png
+          icotool -c -o _site/favicon.ico \
+            _site/assets/icons/favicon-16.png \
+            _site/assets/icons/favicon-32.png \
+            _site/assets/icons/favicon-48.png
+
+          file _site/assets/icons/favicon-16.png | grep -q 'PNG image data, 16 x 16' || { echo 'Favicon 16 is invalid'; exit 1; }
+          file _site/assets/icons/favicon-32.png | grep -q 'PNG image data, 32 x 32' || { echo 'Favicon 32 is invalid'; exit 1; }
+          file _site/assets/icons/favicon-48.png | grep -q 'PNG image data, 48 x 48' || { echo 'Favicon 48 is invalid'; exit 1; }
+          file _site/favicon.ico | grep -q 'MS Windows icon resource' || { echo 'favicon.ico is invalid'; exit 1; }
+          file _site/assets/icons/apple-touch-icon-152.png | grep -q 'PNG image data, 152 x 152' || { echo 'Apple 152 icon is invalid'; exit 1; }
+          file _site/assets/icons/apple-touch-icon-167.png | grep -q 'PNG image data, 167 x 167' || { echo 'Apple 167 icon is invalid'; exit 1; }
+          file _site/assets/icons/apple-touch-icon.png | grep -q 'PNG image data, 180 x 180' || { echo 'Apple 180 icon is invalid'; exit 1; }
+          file _site/assets/icons/icon-192.png | grep -q 'PNG image data, 192 x 192' || { echo 'PWA 192 icon is invalid'; exit 1; }
+          file _site/assets/icons/icon-512.png | grep -q 'PNG image data, 512 x 512' || { echo 'PWA 512 icon is invalid'; exit 1; }
+          file _site/assets/icons/mstile-150x150.png | grep -q 'PNG image data, 150 x 150' || { echo 'Windows 150 tile is invalid'; exit 1; }
+          file _site/assets/icons/mstile-310x310.png | grep -q 'PNG image data, 310 x 310' || { echo 'Windows 310 tile is invalid'; exit 1; }
+          file _site/assets/icons/maskable-192.png | grep -q 'PNG image data, 192 x 192' || { echo 'Maskable 192 icon is invalid'; exit 1; }
+          file _site/assets/icons/maskable-512.png | grep -q 'PNG image data, 512 x 512' || { echo 'Maskable 512 icon is invalid'; exit 1; }
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _site/styles.css
+
+          for runtime in \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            app.js \
+            sw.js; do
+            test -f "_site/$runtime" || { echo "Missing deployed runtime: $runtime"; exit 1; }
+          done
+
+          # GitHub Pages owns the canonical production origin.
+          test "$(tr -d '\r\n' < _site/CNAME)" = 'playgarba.com' || { echo 'CNAME must be playgarba.com'; exit 1; }
+          grep -q '^Sitemap: https://playgarba.com/sitemap.xml$' _site/robots.txt || { echo 'robots.txt missing apex sitemap'; exit 1; }
+          grep -q '<loc>https://playgarba.com/</loc>' _site/sitemap.xml || { echo 'sitemap.xml missing apex root'; exit 1; }
+          grep -q '<loc>https://playgarba.com/explore/</loc>' _site/sitemap.xml || { echo 'sitemap.xml missing canonical Explore route'; exit 1; }
+          grep -q '<loc>https://playgarba.com/navratri-2026/</loc>' _site/sitemap.xml || { echo 'sitemap.xml missing Navratri 2026 route'; exit 1; }
+
+          assert_sitemap_artifact() {
+            local url="$1"
+            local route artifact
+
+            case "$url" in
+              *\?*|*\#*)
+                echo "Sitemap URL must not contain query/hash state: $url"
+                return 1
+                ;;
+              https://playgarba.com/)
+                artifact="_site/index.html"
+                ;;
+              https://playgarba.com/*/)
+                route="${url#https://playgarba.com/}"
+                artifact="_site/${route}index.html"
+                ;;
+              *)
+                echo "Sitemap URL must use the canonical origin and a trailing-slash route: $url"
+                return 1
+                ;;
+            esac
+
+            test -f "$artifact" || {
+              echo "Sitemap URL has no deployed Pages artifact: $url -> $artifact"
+              return 1
+            }
+          }
+
+          mapfile -t SITEMAP_URLS < <(sed -n 's:.*<loc>\([^<]*\)</loc>.*:\1:p' _site/sitemap.xml)
+          test "${#SITEMAP_URLS[@]}" -gt 0 || { echo 'sitemap.xml contains no canonical URLs'; exit 1; }
+          for url in "${SITEMAP_URLS[@]}"; do
+            assert_sitemap_artifact "$url" || exit 1
+          done
+
+          if assert_sitemap_artifact 'https://playgarba.com/__missing-pages-artifact__/' >/dev/null 2>&1; then
+            echo 'Sitemap artifact proof accepted a missing route.'
+            exit 1
+          fi
+          if assert_sitemap_artifact 'https://playgarba.com/explore/?genre=folk' >/dev/null 2>&1; then
+            echo 'Sitemap artifact proof accepted query-state URL.'
+            exit 1
+          fi
+
+          for route in \
+            dandiya-raas \
+            garba-attire-and-craft \
+            garba-music \
+            garba-vs-dandiya \
+            garbo \
+            history-of-garba \
+            learn \
+            navratri-and-garba; do
+            test -f "_site/$route/index.html" || { echo "Cultural guide route missing from Pages artifact: /$route/"; exit 1; }
+            grep -q "<link rel=\"canonical\" href=\"https://playgarba.com/$route/\"" "_site/$route/index.html" || { echo "Cultural guide canonical is invalid: /$route/"; exit 1; }
+            grep -q "<loc>https://playgarba.com/$route/</loc>" _site/sitemap.xml || { echo "Cultural guide missing from sitemap: /$route/"; exit 1; }
+          done
+
+          for src in $(grep -oE '<script[^>]+src="[^"]+"' index.html | sed -E 's/.*src="([^"]+)"/\1/'); do
+            src="${src%%\?*}"
+            case "$src" in
+              http://*|https://*|//*) continue ;;
+            esac
+            test -f "_site/$src" || { echo "Missing deployed script: $src"; exit 1; }
+          done
+
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+            echo '4690046d30ecd5400b3fc953a2a93f877d64921a69955d2b5dc6aa0bd65a769d  assets/backgrounds/garba15-2048-q90.zip' | sha256sum -c -
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK" || { echo 'Required 15-image WebP pack is missing.'; exit 1; }
+          echo "Deploying visual pack: $PACK"
+          mkdir -p _site/assets/backgrounds/library
+          rm -f _site/assets/backgrounds/library/*.webp
+          unzip -oq "$PACK" -d _site/assets/backgrounds/library
+
+          WEBP_COUNT="$(find _site/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')"
+          test "$WEBP_COUNT" -eq 15 || { echo "Expected 15 WebPs, found $WEBP_COUNT"; exit 1; }
+          while IFS= read -r image; do
+            file "$image" | grep -q 'Web/P image' || { echo "Not a valid WebP: $image"; exit 1; }
+          done < <(find _site/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | sort)
+
+          # Build the universal social card from the exact approved courtyard artwork.
+          OG_BACKGROUND='_site/assets/backgrounds/library/04-colourful-garba-courtyard-a.webp'
+          test -f "$OG_BACKGROUND" || { echo 'Approved OG courtyard artwork is missing'; exit 1; }
+          mkdir -p _site/assets/social
+          dwebp "$OG_BACKGROUND" -quiet -o _site/assets/social/og-background.png
+          rsvg-convert -w 1200 -h 630 _site/assets/social/playgarba-og-card.svg -o _site/assets/social/garba-og-card.png
+          file _site/assets/social/garba-og-card.png | grep -q 'PNG image data, 1200 x 630' || { echo 'Social preview must be a valid 1200x630 PNG'; exit 1; }
+          rm -f _site/assets/social/og-background.png
+          rm -f _site/assets/backgrounds/garba15-*.zip
+
+          node scripts/lib/inject-social-preview.mjs _site
+          node scripts/lib/inject-brand-metadata.mjs _site
+
+          # Product contract: no standalone song/release pages in the Pages artifact.
+          test -f _site/catalogue/index.html || { echo 'Catalogue page is missing'; exit 1; }
+          test -f _site/catalogue/catalogue.js || { echo 'Catalogue runtime is missing'; exit 1; }
+          test -f _site/catalogue/catalogue.css || { echo 'Catalogue styles are missing'; exit 1; }
+          test -f _site/catalogue/listening-library.js || { echo 'Return-user listening companion is missing'; exit 1; }
+          grep -q 'src="listening-library.js"' _site/catalogue/index.html || { echo 'Catalogue does not load return-user listening companion'; exit 1; }
+          test -f _site/navratri-2026/index.html || { echo 'Navratri 2026 page is missing'; exit 1; }
+          grep -q '<link rel="canonical" href="https://playgarba.com/navratri-2026/"' _site/navratri-2026/index.html || { echo 'Navratri 2026 canonical is invalid'; exit 1; }
+          test ! -d _site/songs || { echo 'Standalone song pages must not be deployed'; exit 1; }
+          test ! -d _site/releases || { echo 'Standalone release pages must not be deployed'; exit 1; }
+
+          SOCIAL_HTML_COUNT="$(find _site -type f -name '*.html' | wc -l | tr -d ' ')"
+          SOCIAL_META_COUNT="$(grep -RIl 'https://playgarba.com/assets/social/garba-og-card.png' _site --include='*.html' | wc -l | tr -d ' ')"
+          BRAND_META_COUNT="$(grep -RIl 'apple-touch-icon-167.png' _site --include='*.html' | wc -l | tr -d ' ')"
+          test "$SOCIAL_META_COUNT" -eq "$SOCIAL_HTML_COUNT" || { echo "Universal social preview missing from some pages: $SOCIAL_META_COUNT/$SOCIAL_HTML_COUNT"; exit 1; }
+          test "$BRAND_META_COUNT" -eq "$SOCIAL_HTML_COUNT" || { echo "Universal icon metadata missing from some pages: $BRAND_META_COUNT/$SOCIAL_HTML_COUNT"; exit 1; }
+          grep -q 'name="twitter:card" content="summary_large_image"' _site/index.html || { echo 'Large Twitter card metadata was not injected'; exit 1; }
+          grep -q 'name="twitter:card" content="summary_large_image"' _site/catalogue/index.html || { echo 'Catalogue large Twitter card metadata was not injected'; exit 1; }
+          grep -q 'href="/favicon.ico"' _site/index.html || { echo 'favicon.ico metadata was not injected'; exit 1; }
+          grep -q 'sizes="152x152"' _site/index.html || { echo 'iPad 152 icon metadata was not injected'; exit 1; }
+          grep -q 'sizes="167x167"' _site/index.html || { echo 'iPad Pro 167 icon metadata was not injected'; exit 1; }
+          grep -q 'sizes="180x180"' _site/index.html || { echo 'iPhone 180 icon metadata was not injected'; exit 1; }
+          grep -q 'name="msapplication-config" content="/assets/icons/browserconfig.xml"' _site/index.html || { echo 'Windows tile metadata was not injected'; exit 1; }
+
+          if grep -q '@import' _site/styles.css; then
+            echo 'Production styles.css still contains @import'
+            exit 1
+          fi
+
+          # Production artifact and metadata stay on the configured live origin.
+          grep -q '<link rel="canonical" href="https://playgarba.com/"' _site/index.html || { echo 'Player canonical must use apex host'; exit 1; }
+          grep -q '<link rel="canonical" href="https://playgarba.com/explore/"' _site/catalogue/index.html || { echo 'Explore canonical must use apex host'; exit 1; }
+          grep -q 'https://playgarba.com/assets/social/garba-og-card.png' _site/index.html || { echo 'Player social preview must use apex host'; exit 1; }
+
+          # Emit deploy-time identity only after the production artifact is assembled.
+          # The digests describe the bytes that Pages uploads, including concatenated
+          # app.js/styles.css rather than assuming source files are byte-identical.
+          node scripts/lib/generate-build-info.mjs _site/build-info.json "$GITHUB_SHA" _site
+          node scripts/lib/validate-build-info.mjs _site/build-info.json "$GITHUB_SHA"
+          test -f _site/build-info.json || { echo 'Deployed build identity is missing'; exit 1; }
+
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

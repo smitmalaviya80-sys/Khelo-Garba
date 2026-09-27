@@ -1,0 +1,37 @@
+name: PGA rollup numeric truth validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/backend/rollup-worker.js'
+      - 'src/pga/backend/tests/rollup-numeric-truth.test.mjs'
+      - '.github/workflows/pga-rollup-numeric-truth-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-rollup-numeric-truth-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax check rollup worker and regression
+        run: |
+          node --check src/pga/backend/rollup-worker.js
+          node --check src/pga/backend/tests/rollup-numeric-truth.test.mjs
+
+      - name: Run rollup numeric truth regression
+        run: node --test src/pga/backend/tests/rollup-numeric-truth.test.mjs

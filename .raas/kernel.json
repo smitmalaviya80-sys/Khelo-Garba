@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "raas-kernel/v1",
+  "version": 1,
+  "purpose": "Compact source-pointing invariants for adaptive PlayGarba task execution.",
+  "humanContract": ".raas/KERNEL.md",
+  "invariants": [
+    {
+      "id": "source-first-truth",
+      "source": ".raas/RAAS.md",
+      "anchor": "Use the narrowest authoritative source available.",
+      "summary": "Use the narrowest current authority and keep material conflicts or uncertainty visible."
+    },
+    {
+      "id": "no-invented-catalogue-facts",
+      "source": ".raas/PROJECT-CONTEXT.md",
+      "anchor": "never invent dates, credits, track order, durations, artists, labels, rights, translations, spellings or release relationships;",
+      "summary": "Unknown catalogue facts stay unknown until evidence supports them."
+    },
+    {
+      "id": "claim-before-code",
+      "source": "AGENTS.md",
+      "anchor": "Do not start implementation until the work is claimed.",
+      "summary": "Refresh ownership and hold one accepted non-overlapping claim before repository mutation."
+    },
+    {
+      "id": "canonical-inputs-before-generated",
+      "source": ".raas/RAAS.md",
+      "anchor": "Generated catalogue/runtime aggregates are outputs. Edit their canonical inputs and rebuild through repository scripts.",
+      "summary": "Edit canonical inputs and rebuild generated outputs through repository tooling."
+    },
+    {
+      "id": "pr-is-not-completion",
+      "source": ".raas/EXECUTION.md",
+      "anchor": "A PR is a review state, not a completion state.",
+      "summary": "Completion continues through required current-head validation, merge, live verification when applicable, issue reconciliation and claim release."
+    },
+    {
+      "id": "verified-results-only",
+      "source": ".raas/RAAS.md",
+      "anchor": "Do not report a test, build, merge, deploy or production result that did not actually run or get verified.",
+      "summary": "Report only evidence actually observed on the relevant revision and environment."
+    },
+    {
+      "id": "client-neutral-truth",
+      "source": ".raas/BOOTSTRAP.md",
+      "anchor": "The client is not the source of truth. The repository and GitHub issue state are.",
+      "summary": "Repository and current GitHub state remain authoritative across agent clients."
+    }
+  ]
+}

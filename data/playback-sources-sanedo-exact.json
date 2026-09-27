@@ -1,0 +1,97 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Exact verified YouTube playback sources for Sanedo essentials expansion, including Twinkal Patel, Jignesh Barot, Rajdeep Barot, Kamlesh Barot, Mitron, Made In China, Atul Purohit Live, and Arvind Vegda Bhai Bhai. Also includes the verified YouTube Topic upload for Poonam Ni Raat from Sanedo Sanedo (2007), completing 100% playable coverage for Sanedo.",
+  "songSources": {
+    "twinkal-patel-sanedo-2024-01-sanedo-garba-anthem": {
+      "provider": "youtube",
+      "videoId": "QeyM6SdsZgE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=QeyM6SdsZgE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "twinkal-patel-sanedo-2024",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-channel-music-video"
+    },
+    "jignesh-barot-sanedo-2025-01-sanedo": {
+      "provider": "youtube",
+      "videoId": "2l-JHpsRVJE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=2l-JHpsRVJE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jignesh-barot-sanedo-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-label-youtube-video"
+    },
+    "rajdeep-barot-sanedo-lal-sanedo-2022-01-sanedo-lal-sanedo": {
+      "provider": "youtube",
+      "videoId": "yh6G0nqtLY0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=yh6G0nqtLY0",
+      "sourceType": "official-topic",
+      "releaseId": "rajdeep-barot-sanedo-lal-sanedo-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "kamlesh-barot-sanedo-adivasi-2021-01-sanedo-lal-sanedo": {
+      "provider": "youtube",
+      "videoId": "fT6Q5Ubd9Js",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=fT6Q5Ubd9Js",
+      "sourceType": "verified-label-channel",
+      "releaseId": "kamlesh-barot-sanedo-adivasi-2021",
+      "trackNumber": 1,
+      "evidenceType": "official-label-youtube-video"
+    },
+    "mitron-sanedo-2018-01-sanedo": {
+      "provider": "youtube",
+      "videoId": "qHhzQJQAXh4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qHhzQJQAXh4",
+      "sourceType": "verified-label-channel",
+      "releaseId": "mitron-sanedo-2018",
+      "trackNumber": 1,
+      "evidenceType": "official-soundtrack-youtube-video"
+    },
+    "made-in-china-sanedo-2019-01-sanedo": {
+      "provider": "youtube",
+      "videoId": "vt7SVIPGHy8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vt7SVIPGHy8",
+      "sourceType": "verified-label-channel",
+      "releaseId": "made-in-china-sanedo-2019",
+      "trackNumber": 1,
+      "evidenceType": "official-soundtrack-youtube-video"
+    },
+    "atul-purohit-sanedo-gadi-2023-01-sanedo-gadi": {
+      "provider": "youtube",
+      "videoId": "tUyGHhZ72xk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=tUyGHhZ72xk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-purohit-sanedo-gadi-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-live-performance-video"
+    },
+    "arvind-vegda-bhala-mori-rama-2011-01-bhala-mori-rama-bhai-bhai": {
+      "provider": "youtube",
+      "videoId": "9MDNDLrfBFQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9MDNDLrfBFQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "arvind-vegda-bhala-mori-rama-2011",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "sanedo-sanedo-2007-02-poonam-ni-raat": {
+      "provider": "youtube",
+      "videoId": "ed9pGjNayfc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ed9pGjNayfc",
+      "sourceType": "official-topic",
+      "releaseId": "sanedo-sanedo-2007",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    }
+  }
+}

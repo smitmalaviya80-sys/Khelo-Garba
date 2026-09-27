@@ -1,0 +1,119 @@
+{
+  "version": "0.3.0",
+  "songSources": {
+    "mune-ekli-meline-asha-1988": {
+      "provider": "youtube",
+      "videoId": "NONqtEjx4Ls",
+      "sourceUrl": "https://www.youtube.com/watch?v=NONqtEjx4Ls",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "external",
+        "sourceUrl": "https://www.saregama.com/song/mune-ekli-meline_35719",
+        "sourceType": "official-label-track"
+      }
+    },
+    "lagyo-chundiye-rang-lagyo-1979": {
+      "provider": "youtube",
+      "videoId": "uzG9_MYpUXs",
+      "sourceUrl": "https://www.youtube.com/watch?v=uzG9_MYpUXs",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "external",
+        "sourceUrl": "https://www.saregama.com/song/list/gujarati_5/show_l",
+        "sourceType": "official-label-catalogue"
+      }
+    },
+    "aavi-aavi-nortani-raat-kamal-barot": {
+      "provider": "youtube",
+      "videoId": "ZidIvIHzzvI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ZidIvIHzzvI",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "external",
+        "sourceUrl": "https://www.saregama.com/song/aavi-aavi-nortani-raat_35682",
+        "sourceType": "official-label-track"
+      }
+    },
+    "mataji-ni-aarti-jayesh-seema-2012": {
+      "provider": "youtube",
+      "videoId": "H3uvm8QF2a4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=H3uvm8QF2a4",
+      "sourceType": "verified-track-source",
+      "releaseId": "garbe-ghumjo-raaj-jayesh-seema-2012",
+      "trackNumber": 4,
+      "evidenceType": "verified-youtube-track-upload",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.in/tracks/B0756895KC",
+        "sourceType": "official-track-stream"
+      }
+    },
+    "he-ranglo-jamyo-1962-01-he-ranglo-jamyo": {
+      "provider": "youtube",
+      "videoId": "5rAX2a_HcmM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5rAX2a_HcmM",
+      "sourceType": "verified-label-channel",
+      "releaseId": "he-ranglo-jamyo-1962",
+      "trackNumber": 1,
+      "evidenceType": "official-label-track-upload",
+      "alternate": {
+        "provider": "external",
+        "sourceUrl": "https://www.saregama.com/song/he-ranglo-jamyo_35716",
+        "sourceType": "official-label-track"
+      }
+    },
+    "instrumental-dhamal-v1-1990-02-mahisagar-gujarati-folk-instrumental": {
+      "provider": "youtube",
+      "videoId": "Hq5VhXVlE0o",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Hq5VhXVlE0o",
+      "sourceType": "verified-distributor-channel",
+      "releaseId": "instrumental-dhamal-v1-1990",
+      "trackNumber": 2,
+      "evidenceType": "official-topic-track-upload"
+    },
+    "instrumental-dhamal-v2-1990-01-non-stop-dhamal-disco-dandia-instrumental": {
+      "provider": "youtube",
+      "videoId": "Huek81EUgEE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Huek81EUgEE",
+      "sourceType": "verified-distributor-channel",
+      "releaseId": "instrumental-dhamal-v2-1990",
+      "trackNumber": 1,
+      "evidenceType": "official-topic-track-upload"
+    },
+    "instrumental-dhamal-v2-1990-02-gujarati-garba-traditional-instrumental": {
+      "provider": "youtube",
+      "videoId": "pmwLbSowgg4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=pmwLbSowgg4",
+      "sourceType": "verified-distributor-channel",
+      "releaseId": "instrumental-dhamal-v2-1990",
+      "trackNumber": 2,
+      "evidenceType": "official-topic-track-upload"
+    },
+    "instrumental-dhamal-v2-1990-03-jai-aadhya-shakti-aarti-instrumental": {
+      "provider": "youtube",
+      "videoId": "ir_yjC3vTHg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ir_yjC3vTHg",
+      "sourceType": "verified-distributor-channel",
+      "releaseId": "instrumental-dhamal-v2-1990",
+      "trackNumber": 3,
+      "evidenceType": "official-topic-track-upload"
+    },
+    "instrumental-dhamal-v1-1990-01-non-stop-dhamal-disco-dandia-theme-song-instrumental": {
+      "provider": "youtube",
+      "videoId": "mdfCyh5lBxw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=mdfCyh5lBxw",
+      "sourceType": "official-topic",
+      "releaseId": "instrumental-dhamal-v1-1990",
+      "trackNumber": 1,
+      "evidenceType": "official-topic-track-upload"
+    }
+  }
+}

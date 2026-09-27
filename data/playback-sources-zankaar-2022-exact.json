@@ -1,0 +1,165 @@
+{
+  "version": "0.3.0",
+  "updated": "2026-09-08",
+  "note": "Conservative exact-song mappings for Zankaar [Clean] (2022). Independently verified same-release YouTube full-song uploads are preferred. Existing stronger PlayGarba routes remain authoritative where this manifest intentionally has no row. Tracks 1, 2, 14 and 17 remain fail-closed for YouTube in this pass; the existing non-YouTube provider evidence for track 14 is retained as provenance only. Every YouTube route in this manifest starts at the literal beginning of an exact full-song upload. No provider IDs, inferred chapter timestamps or neighbouring-track sequences were invented.",
+  "songSources": {
+    "zankaar-2022-03": {
+      "provider": "youtube",
+      "videoId": "2VqS9MNhaC8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=2VqS9MNhaC8",
+      "sourceType": "verified-label-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 3,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "zankaar-2022-04": {
+      "provider": "youtube",
+      "videoId": "US3jkm1Zxm4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=US3jkm1Zxm4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-05": {
+      "provider": "youtube",
+      "videoId": "WnbthtnkrKQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=WnbthtnkrKQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 5,
+      "evidenceType": "provider-published-exact-song"
+    },
+    "zankaar-2022-06": {
+      "provider": "youtube",
+      "videoId": "mUOUwFk4syg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=mUOUwFk4syg",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 6,
+      "evidenceType": "provider-published-exact-song"
+    },
+    "zankaar-2022-07": {
+      "provider": "youtube",
+      "videoId": "o9M_HtvAII4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=o9M_HtvAII4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-08": {
+      "provider": "youtube",
+      "videoId": "BoJsrRWbZvw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=BoJsrRWbZvw",
+      "sourceType": "verified-label-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "zankaar-2022-09": {
+      "provider": "youtube",
+      "videoId": "s1M0rHCwWbc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=s1M0rHCwWbc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-10": {
+      "provider": "youtube",
+      "videoId": "YzCfO5fy9kI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=YzCfO5fy9kI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-11": {
+      "provider": "youtube",
+      "videoId": "bRzsOvWz7jw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=bRzsOvWz7jw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 11,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-12": {
+      "provider": "youtube",
+      "videoId": "UADTZB3id84",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=UADTZB3id84",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 12,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-13": {
+      "provider": "youtube",
+      "videoId": "lOJPvs1Sg6M",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lOJPvs1Sg6M",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 13,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-14": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0BC549BYK",
+      "sourceType": "verified-track-source",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 14,
+      "evidenceType": "official-amazon-music-track-page"
+    },
+    "zankaar-2022-15": {
+      "provider": "youtube",
+      "videoId": "fdmw9pYnUA8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=fdmw9pYnUA8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 15,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-16": {
+      "provider": "youtube",
+      "videoId": "QMVw1iqtMvE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=QMVw1iqtMvE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 16,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "zankaar-2022-18": {
+      "provider": "youtube",
+      "videoId": "_ok1wnMj-Hk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=_ok1wnMj-Hk",
+      "sourceType": "verified-label-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 18,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "zankaar-2022-19": {
+      "provider": "youtube",
+      "videoId": "1Q-SI-gGoyU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=1Q-SI-gGoyU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "zankaar-album-2022",
+      "trackNumber": 19,
+      "evidenceType": "verified-label-full-song-original-album-track-title-variant"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import url("styles/00-foundation-and-player.css");
+@import url("styles/10-browser-and-shell.css");
+@import url("styles/20-responsive-and-accessibility.css");
+@import url("styles/30-product-polish.css");
+@import url("styles/40-accessibility-states.css");
+@import url("styles/50-discovery-and-performance.css");
+@import url("styles/60-runtime-and-provider.css");
+@import url("styles/70-mobile-playback-coordination.css");
+@import url("styles/80-genre-icon-images.css");

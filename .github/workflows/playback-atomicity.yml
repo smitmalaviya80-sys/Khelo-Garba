@@ -1,0 +1,70 @@
+name: Playback atomicity
+# Retrigger exact-head validation after the bounded Nonstop identity guard.
+
+on:
+  pull_request:
+    paths:
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'assets/runtime/seek-state.js'
+      - 'assets/runtime/continuous-set-state.js'
+      - 'app.js'
+      - '.github/browser/playback-atomicity.mjs'
+      - '.github/workflows/playback-atomicity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'assets/runtime/seek-state.js'
+      - 'assets/runtime/continuous-set-state.js'
+      - 'app.js'
+      - '.github/browser/playback-atomicity.mjs'
+      - '.github/workflows/playback-atomicity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install temporary Playwright runner
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local GARBA server
+        run: |
+          python3 -m http.server 4173 > /tmp/garba-playback-atomicity.log 2>&1 &
+          echo $! > /tmp/garba-playback-atomicity.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/garba-playback-atomicity.log
+          exit 1
+
+      - name: Verify atomic playback transitions
+        env:
+          PLAYBACK_ATOMICITY_BASE_URL: http://127.0.0.1:4173
+        run: node .github/browser/playback-atomicity.mjs
+
+      - name: Stop local GARBA server
+        if: always()
+        run: |
+          if [ -f /tmp/garba-playback-atomicity.pid ]; then
+            kill "$(cat /tmp/garba-playback-atomicity.pid)" 2>/dev/null || true
+          fi

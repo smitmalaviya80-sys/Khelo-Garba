@@ -1,0 +1,30 @@
+[
+  {
+    "id": "meghdhanush-folk-rang-2018",
+    "title": "Folk Rang by Meghdhanush",
+    "artist": "Meghdhanush",
+    "releaseDate": "2018-08-29",
+    "originalReleaseYear": 2018,
+    "label": "Meghdhanush",
+    "description": "A four-track 2018 Meghdhanush EP in the Folk Rang series, catalogued across folk/lokgeet, electronic fusion, traditional Garba and Krishna Garba.",
+    "categories": ["folk-lokgeet", "electronic-fusion", "traditional-garba", "krishna-garba"],
+    "visualGenre": "fusion",
+    "entryType": "ep",
+    "songCount": 4,
+    "durationSeconds": 1069,
+    "series": "Folk Rang",
+    "volume": "Season 1",
+    "live": {"isLive": false, "venue": null},
+    "sources": [
+      {"platform": "Amazon Music", "url": "https://music.amazon.in/albums/B07H5JY98C", "kind": "official-ep-stream"},
+      {"platform": "Apple Music", "url": "https://music.apple.com/us/album/folk-rang-by-meghdhanush-ep/1436125300", "kind": "official-ep-store"},
+      {"platform": "YouTube", "url": "https://www.youtube.com/watch?v=PfHslYMJGGg", "kind": "official-artist-series-video"}
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified-multi-source",
+    "audioAvailability": "external-source-only",
+    "notes": "Meghdhanush describes Folk Rang as an experimental Gujarati folk-rock/fusion series sustaining traditional repertoire. Kesariyo Rang is explicitly described by the band as a traditional Garba song for Navratri. The project is included as a folk/fusion branch rather than treating Meghdhanush's unrelated rock catalogue as Garba."
+  }
+]

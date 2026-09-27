@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "principle": "Budgets are ceilings, never consumption targets. Expand only when additional work can change implementation, source truth, ownership, verification, safety or the requested delivery decision.",
+  "tiers": {
+    "fast": {
+      "maxRoutes": 2,
+      "maxSources": 4,
+      "contextChars": 10000,
+      "toolCallsBeforeReevaluation": 8,
+      "parallelReadOnlyAgents": 1,
+      "parallelMutationLanes": 1,
+      "repairRounds": 2,
+      "reviewers": 0,
+      "verification": ["focused"],
+      "browserByDefault": false
+    },
+    "standard": {
+      "maxRoutes": 3,
+      "maxSources": 10,
+      "contextChars": 30000,
+      "toolCallsBeforeReevaluation": 20,
+      "parallelReadOnlyAgents": 2,
+      "parallelMutationLanes": 1,
+      "repairRounds": 3,
+      "reviewers": 1,
+      "verification": ["focused", "affected-subsystem"],
+      "browserByDefault": false
+    },
+    "deep": {
+      "maxRoutes": 3,
+      "maxSources": 20,
+      "contextChars": 70000,
+      "toolCallsBeforeReevaluation": 40,
+      "parallelReadOnlyAgents": 3,
+      "parallelMutationLanes": 1,
+      "repairRounds": 5,
+      "reviewers": 1,
+      "verification": ["focused", "affected-subsystem", "repository-ci"],
+      "browserByDefault": false
+    },
+    "critical": {
+      "maxRoutes": 3,
+      "maxSources": 30,
+      "softContextChars": 100000,
+      "toolCallsBeforeReevaluation": 50,
+      "parallelReadOnlyAgents": 3,
+      "parallelMutationLanes": 1,
+      "repairRounds": 5,
+      "reviewers": 1,
+      "verification": ["focused", "affected-subsystem", "repository-ci", "current-head-proof"],
+      "browserByDefault": false,
+      "requiresExpansionReason": true
+    }
+  },
+  "protectedTruthSensitivity": ["rights", "deployment"],
+  "valueOfInformation": {
+    "question": "Can this additional source, tool call, method or agent plausibly change the implementation, source truth, ownership decision, verification requirement or final recommendation?",
+    "skipWhenNo": true,
+    "reEvaluateAfterToolBudget": true
+  },
+  "contextOrder": [
+    "exact canonical record or changed file",
+    "current issue and ownership state",
+    "narrow authoritative domain source",
+    "bounded repository graph slice when available",
+    "broader repository search",
+    "full long document only when necessary"
+  ],
+  "capabilityClasses": [
+    "deterministic-local",
+    "routine-coding-reasoning",
+    "architecture-high-uncertainty",
+    "independent-review",
+    "source-rights-evidence",
+    "visual-browser-verification"
+  ],
+  "telemetry": {
+    "rawPrompt": false,
+    "hiddenReasoning": false,
+    "privateUserData": false,
+    "aggregateFields": [
+      "tier",
+      "routes",
+      "sourcesLoaded",
+      "contextChars",
+      "toolCallsByClass",
+      "cacheHits",
+      "cacheMisses",
+      "agentCount",
+      "validationCommands",
+      "repairRounds",
+      "escalationReasons",
+      "completionState"
+    ]
+  }
+}

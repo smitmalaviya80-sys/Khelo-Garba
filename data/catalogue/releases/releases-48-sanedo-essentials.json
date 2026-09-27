@@ -1,0 +1,242 @@
+[
+  {
+    "id": "twinkal-patel-sanedo-2024",
+    "title": "Sanedo (Garba Anthem)",
+    "artist": "Twinkal Patel",
+    "releaseDate": "2024-09-15",
+    "originalReleaseYear": 2024,
+    "label": "Twinkal Patel Official",
+    "description": "High-energy 2024 Garba anthem by Twinkal Patel, featuring Anirudh Ahir, Gaurav Dhola and Menny Raval, arranged around the classic Sanedo call-and-response rhythm.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 373,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=QeyM6SdsZgE",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "jignesh-barot-sanedo-2025",
+    "title": "Sanedo (Navratri 2025)",
+    "artist": "Jignesh Barot",
+    "releaseDate": "2025-09-01",
+    "originalReleaseYear": 2025,
+    "label": "Saregama Gujarati",
+    "description": "Official 2025 Saregama Gujarati Navratri Sanedo release by Jignesh Barot, Tatsat Munshi, Aarohi and Parth Thakkar paying tribute to the late folk pioneer Maniraj Barot.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 465,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=2l-JHpsRVJE",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "rajdeep-barot-sanedo-lal-sanedo-2022",
+    "title": "Sanedo Lal Sanedo",
+    "artist": "Rajdeep Barot",
+    "releaseDate": "2022-09-10",
+    "originalReleaseYear": 2022,
+    "label": "Lalen Telemedia",
+    "description": "Traditional full-length folk Sanedo single by Rajdeep Barot, published by Lalen Telemedia and delivered to official digital streaming surfaces.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 654,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=yh6G0nqtLY0",
+        "kind": "official-topic"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "kamlesh-barot-sanedo-adivasi-2021",
+    "title": "Sanedo Sanedo Lal Lal Sanedo (Adivasi Song)",
+    "artist": "Kamlesh Barot",
+    "releaseDate": "2021-08-20",
+    "originalReleaseYear": 2021,
+    "label": "Soor Mandir",
+    "description": "A 14-minute folk and Adivasi Sanedo performance by Kamlesh Barot released by Soor Mandir, featuring classic couplets and accelerating dhol percussion.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 878,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=fT6Q5Ubd9Js",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "mitron-sanedo-2018",
+    "title": "Sanedo (From \"Mitron\")",
+    "artist": "Tanishk Bagchi, Vayu, Raja Hasan & Pratiksha Srivastava",
+    "releaseDate": "2018-08-28",
+    "originalReleaseYear": 2018,
+    "label": "Sony Music India",
+    "description": "Modern Bollywood film adaptation of Sanedo composed by Tanishk Bagchi and Vayu with vocals by Raja Hasan and Pratiksha Srivastava for the 2018 motion picture Mitron.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 150,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=qHhzQJQAXh4",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "made-in-china-sanedo-2019",
+    "title": "Sanedo (From \"Made In China\")",
+    "artist": "Sachin-Jigar, Mika Singh, Nikhita Gandhi & Benny Dayal",
+    "releaseDate": "2019-10-18",
+    "originalReleaseYear": 2019,
+    "label": "Sony Music India",
+    "description": "Sachin-Jigar's vibrant film adaptation of Sanedo featuring Mika Singh, Nikhita Gandhi and Benny Dayal for the 2019 film Made In China, maintaining authentic Gujarati couplet meter.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 235,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=vt7SVIPGHy8",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "atul-purohit-sanedo-gadi-2023",
+    "title": "Sanedo (Gadi) [Live 2023]",
+    "artist": "Atul Purohit, Himali Vora & Iqbal Meer",
+    "releaseDate": "2023-10-24",
+    "originalReleaseYear": 2023,
+    "label": "Atul Purohit Official",
+    "description": "Live 10-minute Navratri performance by Atul Purohit, Himali Vora and Iqbal Meer featuring the festive Gadi / Sanedo sequence.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 601,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": true, "venue": "Navratri Live" },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=tUyGHhZ72xk",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  },
+  {
+    "id": "arvind-vegda-bhala-mori-rama-2011",
+    "title": "Bhala Mori Rama (Bhai Bhai)",
+    "artist": "Arvind Vegda",
+    "releaseDate": "2011-09-01",
+    "originalReleaseYear": 2011,
+    "label": "Arvind Vegda Official",
+    "description": "Arvind Vegda's signature folk-rock Sanedo anthem with the globally celebrated 'Bhai Bhai' refrain.",
+    "categories": ["sanedo"],
+    "visualGenre": "sanedo",
+    "entryType": "single",
+    "songCount": 1,
+    "durationSeconds": 295,
+    "series": null,
+    "volume": null,
+    "live": { "isLive": false, "venue": null },
+    "sources": [
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=9MDNDLrfBFQ",
+        "kind": "official-video"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified",
+    "audioAvailability": "external-source-only",
+    "durationPrecision": "track-sum"
+  }
+]

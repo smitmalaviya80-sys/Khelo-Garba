@@ -1,0 +1,40 @@
+{
+  "updated": "2026-09-08",
+  "sets": [
+    {
+      "id": "set-deshi-sanedo-nonstop-2020",
+      "title": "Deshi Sanedo - Non Stop",
+      "displayTitle": "Deshi Sanedo - Nonstop",
+      "artists": ["Jayesh Barot"],
+      "year": 2020,
+      "series": "Sanedo",
+      "categories": ["sanedo", "folk", "dandiya"],
+      "setType": "verified-label-nonstop",
+      "officiality": "verified-label-channel",
+      "source": {"provider": "youtube", "videoId": "U0MboQb-jfY", "url": "https://www.youtube.com/watch?v=U0MboQb-jfY", "embeddable": true},
+      "linkedReleaseId": null,
+      "chapterStatus": "source-no-published-chapters",
+      "segments": [],
+      "playbackPolicy": "youtube-embed-visible",
+      "notes": "Verified Zee Music Gujarati non-stop album upload. The official description identifies the continuous work, singer, composer and lyricist but publishes no internal chapter starts, so no timestamps are inferred."
+    },
+    {
+      "id": "set-tophani-sanedo-2017",
+      "title": "Tophani Sanedo - Non Stop Gujarati Garba",
+      "displayTitle": "Tophani Sanedo - Nonstop Gujarati Garba",
+      "artists": ["Mahesh Singh Chauhan"],
+      "year": 2017,
+      "series": "Sanedo",
+      "categories": ["sanedo", "folk", "dandiya"],
+      "setType": "verified-label-nonstop",
+      "officiality": "verified-label-channel",
+      "source": {"provider": "youtube", "videoId": "5Rw8K6D3B4k", "url": "https://www.youtube.com/watch?v=5Rw8K6D3B4k", "embeddable": true},
+      "linkedReleaseId": null,
+      "chapterStatus": "source-tracklist-no-timestamps",
+      "tracklist": ["Sanedo Kathiyawadi Sanedo","Kathiyawadi Ne Wali Bajar","Navi Vavhuno Neno Laagyo","Gaada Upar Gaadu","Mare Chetar Vadiyu","Maha Mahina Nu Mhavthu","Varaychha Na Vasharam Patel","Petha Bhai Panano Gallo","Bhuri Bhais Tame","Jhuvaniya Mene Halya","Talaav Vasye Tekari","Chula Upar Baladi","Vagad Vayo Valodiyo","Kachi Keri Aambe","Sanjha Pade Ne Di Khathame","Khela Chhapper Pagine Chapali","Laali Kari Pawder Kari","Mavde Mavdo Na Gaaniye","Unale Vayo Bajaro","Paacha Rupiya Na Chhuta Leedha","Chhel Darwaje Dholaki Vaagi","Moti Umar Na Manukaka","Baag Bagiche Ne Baakade","Leela Toran Leela Mandave","Kya Karate Hai Saajana","Lakha Rupiyani Gaadi Lidhi","Dahaa Rupiyani Daruni Potali Lidhi","Duniya Maa Andharu Ghor","Chalis Varse Lagan Thaya","Ghodu Layo Tay Du","Sanedo Sanedo Bahu Sambhalyo","Pepala Upar Paado Chadyo","Kathiya-Wadi Ne Moj Maa Rehu"],
+      "segments": [],
+      "playbackPolicy": "youtube-embed-visible",
+      "notes": "Verified Ishtar Regional 2017 jukebox. The official YouTube description publishes the complete 33-song order but no chapter timestamps. The tracklist is preserved for metadata/search; individual album durations are not summed to manufacture YouTube seek points."
+    }
+  ]
+}

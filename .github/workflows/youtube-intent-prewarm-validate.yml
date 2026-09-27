@@ -1,0 +1,26 @@
+name: YouTube intent prewarm validate
+
+on:
+  pull_request:
+    paths:
+      - youtube-player-runtime.js
+      - scripts/lib/validate-youtube-intent-prewarm.mjs
+      - .github/workflows/youtube-intent-prewarm-validate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Validate intent-driven YouTube preparation
+        run: node scripts/lib/validate-youtube-intent-prewarm.mjs

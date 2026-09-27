@@ -1,0 +1,367 @@
+{
+  "version": "0.7.0",
+  "updated": "2026-09-26",
+  "note": "All 37 tracks of Ramzat 2 (ramzat-2-tran-taali-2018) verified on YouTube: 23 individual official uploads, 1 continuous full set (track 37), and 13 exact verified chapter offsets from the official Sur Sagar upload xMaP8SrV2TI.",
+  "songSources": {
+    "ramzat-2-tran-taali-2018-03-dhai-dhai-dhai-bajat-dhol": {
+      "provider": "youtube",
+      "videoId": "ND1fGfI6uPw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ND1fGfI6uPw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-04-rame-ambe-maa-chachar-na": {
+      "provider": "youtube",
+      "videoId": "vE5m0oiuOdI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vE5m0oiuOdI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-05-maa-no-garbo-re": {
+      "provider": "youtube",
+      "videoId": "EuBsrm3Ga84",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=EuBsrm3Ga84",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 5,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-07-zulan-morali-vagi-re": {
+      "provider": "youtube",
+      "videoId": "eTAyAiP8uL8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=eTAyAiP8uL8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-08-ram-lakhman-be-bandhva": {
+      "provider": "youtube",
+      "videoId": "hc00Yc2ncss",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=hc00Yc2ncss",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 8,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-09-lili-lembadi-re": {
+      "provider": "youtube",
+      "videoId": "AH9v8dSGAW0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=AH9v8dSGAW0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-10-mogal-aavo-maa-ramva": {
+      "provider": "youtube",
+      "videoId": "5hyxotBnxn8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5hyxotBnxn8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-13-hun-re-ghumu-ne-maa": {
+      "provider": "youtube",
+      "videoId": "u22dXsf3Rgg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=u22dXsf3Rgg",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 13,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-14-jay-jay-aarasur-ni-rani": {
+      "provider": "youtube",
+      "videoId": "Z_zxJuXoTm8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Z_zxJuXoTm8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 14,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-16-rudi-ne-rangili-re-vala-tari": {
+      "provider": "youtube",
+      "videoId": "0gU5yZCE6Iw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=0gU5yZCE6Iw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 16,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-17-garbe-ramo-tran-taali": {
+      "provider": "youtube",
+      "videoId": "35jL-M67wiM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=35jL-M67wiM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 17,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-18-sathiya-puravo-dware": {
+      "provider": "youtube",
+      "videoId": "HV1wWwqFqRo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=HV1wWwqFqRo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 18,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-19-chhaldo-kachhi": {
+      "provider": "youtube",
+      "videoId": "AsI-N-JmCjo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=AsI-N-JmCjo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 19,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-21-ghammar-ghammar": {
+      "provider": "youtube",
+      "videoId": "Zd0yKtF_r94",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Zd0yKtF_r94",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 21,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-24-hun-to-vari-re-girdhari-laal": {
+      "provider": "youtube",
+      "videoId": "sY49RkpCoAw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=sY49RkpCoAw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 24,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-25-ram-jova-hali-re-jivan-jova": {
+      "provider": "youtube",
+      "videoId": "Hul9oqe9eTI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Hul9oqe9eTI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 25,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-28-aarasur-ma-amba": {
+      "provider": "youtube",
+      "videoId": "vsPYirHduxc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vsPYirHduxc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 28,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-29-vari-jau-e-balihari-jau-re": {
+      "provider": "youtube",
+      "videoId": "-kHE1FqYEYo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=-kHE1FqYEYo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 29,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-31-dholi-dhiro-vagad-taro-dhol-dhol-re": {
+      "provider": "youtube",
+      "videoId": "gWLrvWue0e0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gWLrvWue0e0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 31,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-33-maadi-tara-aghor-nagara-vage": {
+      "provider": "youtube",
+      "videoId": "XA1r31_H2-g",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=XA1r31_H2-g",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 33,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-34-latke-halo-ne-nandlal": {
+      "provider": "youtube",
+      "videoId": "kAQyWHniTRc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=kAQyWHniTRc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 34,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-35-vijali-ne-chamkare": {
+      "provider": "youtube",
+      "videoId": "rzbAKtrrZ28",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=rzbAKtrrZ28",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 35,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-36-halaji-tar-hath-vakhanu": {
+      "provider": "youtube",
+      "videoId": "5uIGYYYOTcw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5uIGYYYOTcw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 36,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2-tran-taali-2018-01-ramzat-intro": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 2,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-02-navla-norta": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 69,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 2,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-06-navratri-na-norta-sau": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 462,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 6,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-11-kumkum-kera-pagle-maadi": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 1063,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-12-laal-re-gulab-na-phoolo-ni": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 1236,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 12,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-15-aala-lila-vansaliya": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 1687,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 15,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-20-morali-te-chali": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 2261,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 20,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-22-phool-phool-venjo-ne-desi-geet": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 2440,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 22,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-23-fagan-foramto-aayo": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 2553,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 23,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-26-aaya-divadiye-zagmagta": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 2944,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 26,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-27-avli-havli-aambaliya-ni-daal": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 3060,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 27,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-30-dham-dham-nagara-re-ma-mogal-na": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 3358,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 30,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat-2-tran-taali-2018-32-charan-kanya": {
+      "provider": "youtube",
+      "videoId": "xMaP8SrV2TI",
+      "startSeconds": 3639,
+      "sourceUrl": "https://www.youtube.com/watch?v=xMaP8SrV2TI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 32,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+name = "playgarba-pga-api"
+main = "admin-worker.js"
+compatibility_date = "2026-09-09"
+
+[vars]
+EVENTS_DATASET_NAME = "playgarba_events_v1"
+PRESENCE_DATASET_NAME = "playgarba_presence_v1"
+TEAM_DOMAIN = "https://REPLACE_WITH_TEAM.cloudflareaccess.com"
+POLICY_AUD = "REPLACE_WITH_ACCESS_APPLICATION_AUD"
+CF_ACCOUNT_ID = "REPLACE_WITH_CLOUDFLARE_ACCOUNT_ID"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "playgarba-pga"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# Set ANALYTICS_API_TOKEN with `wrangler secret put ANALYTICS_API_TOKEN`.
+# Cloudflare Access must protect the complete PGA hostname/application. The
+# Worker still verifies the Access JWT server-side before serving any API route.

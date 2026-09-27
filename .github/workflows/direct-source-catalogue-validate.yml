@@ -1,0 +1,35 @@
+name: Direct source catalogue validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/playback/direct-source-catalogue.js'
+      - 'src/playback/direct-source-resolver.js'
+      - 'scripts/lib/test-direct-source-catalogue.mjs'
+      - '.github/workflows/direct-source-catalogue-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/playback/direct-source-catalogue.js'
+      - 'src/playback/direct-source-resolver.js'
+      - 'scripts/lib/test-direct-source-catalogue.mjs'
+      - '.github/workflows/direct-source-catalogue-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Test direct-source catalogue planning
+        run: node scripts/lib/test-direct-source-catalogue.mjs

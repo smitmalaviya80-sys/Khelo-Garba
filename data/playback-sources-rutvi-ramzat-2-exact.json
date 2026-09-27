@@ -1,0 +1,162 @@
+{
+  "version": "0.4.0",
+  "updated": "2026-09-26",
+  "note": "Verified official Rutvi Pandya continuous master ik1Ww2LbIJ4 with label-published chapter timestamps for all 10 previously unlinked tracks of Rutvi Ni Ramzat 2.0 (2023), alongside the 4 existing official dedicated single uploads.",
+  "songSources": {
+    "rutvi-chalde-aai-rulaai-2023": {
+      "provider": "youtube",
+      "videoId": "OPvize1pwRM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=OPvize1pwRM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "rutvi-chand-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 2,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-gogo-gogo-maro-2023": {
+      "provider": "youtube",
+      "videoId": "0KEVJJWs9dA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=0KEVJJWs9dA",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "rutvi-ha-ha-re-ghaduliyo-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 841,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=841s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 4,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-jhulan-morli-vagi-re-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 703,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=703s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 5,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-laving-keri-lakadiye-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 956,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=956s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 6,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-maa-no-garbo-re-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 102,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=102s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 7,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-mara-vada-lilu-ghas-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 586,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=586s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 8,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-mathura-ma-vagi-morli-2023": {
+      "provider": "youtube",
+      "videoId": "EoORXPJnFfA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=EoORXPJnFfA",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "rutvi-mithe-ras-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 1340,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=1340s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 10,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-ombaliya-ni-daale-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 1470,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=1470s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 11,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-saachi-re-2023": {
+      "provider": "youtube",
+      "videoId": "exLzUHY_QdU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=exLzUHY_QdU",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 12,
+      "evidenceType": "official-youtube-auto-generated-track"
+    },
+    "rutvi-unchi-talavdi-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 290,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=290s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 13,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-vitthal-vitthal-vitthala-2023": {
+      "provider": "youtube",
+      "videoId": "ik1Ww2LbIJ4",
+      "startSeconds": 1644,
+      "sourceUrl": "https://www.youtube.com/watch?v=ik1Ww2LbIJ4&t=1644s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "rutvi-ni-ramzat-2-0-2023",
+      "trackNumber": 14,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "rutvi-ni-ramzat-2-0-nonstop-2023": {
+      "provider": "youtube",
+      "videoId": "gKl4VC7UP9s",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gKl4VC7UP9s",
+      "sourceType": "official-topic",
+      "releaseId": "rutvi-ni-ramzat-2-0-nonstop-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.in/albums/B0CL4FV39K?trackAsin=B0CL4H9BGN",
+        "sourceType": "verified-track-source"
+      }
+    }
+  }
+}

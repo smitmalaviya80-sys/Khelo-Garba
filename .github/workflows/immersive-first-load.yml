@@ -1,0 +1,53 @@
+name: Immersive first-visit smoke
+
+on:
+  pull_request:
+    paths:
+      - 'assets/runtime/immersive-view.js'
+      - 'index.html'
+      - '.github/browser/immersive-first-load.mjs'
+      - '.github/workflows/immersive-first-load.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/runtime/immersive-view.js'
+      - 'index.html'
+      - '.github/browser/immersive-first-load.mjs'
+      - '.github/workflows/immersive-first-load.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: immersive-first-load-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  first-visit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+
+      - name: Serve the site locally
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/first-load-server.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ >/dev/null && exit 0; sleep 1; done
+          echo 'Local server did not start'; exit 1
+
+      - name: Run Immersive first-visit smoke
+        env:
+          BASE_URL: http://127.0.0.1:4173/
+        run: node .github/browser/immersive-first-load.mjs

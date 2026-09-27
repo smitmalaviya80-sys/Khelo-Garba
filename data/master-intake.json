@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "allowedStates": [
+    "received",
+    "checksum-verified",
+    "rights-verified",
+    "encode-ready",
+    "published",
+    "rejected"
+  ],
+  "tracks": {},
+  "notes": "Authorised source-master intake only. Keep this manifest empty until GARBA has a real master supplied by a rights holder or authorised representative. Consumer streaming downloads/rips are never valid source masters. Private contracts and source binaries do not belong in this public repository."
+}

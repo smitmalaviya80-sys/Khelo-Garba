@@ -1,0 +1,52 @@
+[
+  {
+    "id": "khelaiya-dj-remix-vol2-2016",
+    "title": "Khelaiya DJ Remix, Vol. 2 (47 Non Stop DJ Dandiya)",
+    "displayTitle": "Khelaiya DJ Remix, Vol. 2 (47 Nonstop DJ Dandiya)",
+    "artist": "Rupal Doshi, Kishore Manraja, Kirti-Girish",
+    "releaseDate": "2016-09-28",
+    "originalReleaseYear": 2016,
+    "digitalReleaseYear": 2020,
+    "label": "Ishtar Music / Venus Worldwide Entertainment",
+    "description": "A 12-track 2016 Khelaiya DJ Remix album by Rupal Doshi, Kishore Manraja and Kirti-Girish, catalogued across DJ remix, Raas/Dandiya, Mataji devotional and instrumental/cinematic categories.",
+    "categories": [
+      "dj-remix",
+      "raas-dandiya",
+      "mataji-devotional",
+      "instrumental-cinematic"
+    ],
+    "visualGenre": "fusion",
+    "entryType": "album",
+    "songCount": 12,
+    "durationSeconds": 4534,
+    "series": "Khelaiya DJ Remix",
+    "volume": "2",
+    "live": {
+      "isLive": false,
+      "venue": null
+    },
+    "sources": [
+      {
+        "platform": "Amazon Music",
+        "url": "https://music.amazon.es/albums/B08L7NCD5M",
+        "kind": "official-2020-digital-edition"
+      },
+      {
+        "platform": "Qobuz",
+        "url": "https://www.qobuz.com/us-en/album/khelaiya-dj-remix-vol-2-rupal-doshi-kishore-manraja-kirti-girish/yelsz9nkbwy6a",
+        "kind": "official-lossless-purchase"
+      },
+      {
+        "platform": "YouTube",
+        "url": "https://www.youtube.com/watch?v=FHtzu_h1L1w",
+        "kind": "verified-label-channel-jukebox"
+      }
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified-multi-source",
+    "audioAvailability": "youtube-official",
+    "notes": "Original 2016 metadata is retained from Apple/Spotify/Qobuz research. Amazon exposes a 2020 digital edition with the same 12-track sequence. Exact Pankhida Tu Udi Jaje track sources are stored in the song-level playback manifest rather than release sources so other album tracks cannot be misrouted to Pankhida. The title's '47 Non Stop DJ Dandiya' branding does not mean this provider edition contains 47 separate files; the database preserves the actual 12-track edition."
+  }
+]

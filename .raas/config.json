@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "entrypoints": [
+    "AGENTS.md",
+    ".raas/RAAS.md",
+    ".raas/PROJECT-CONTEXT.md",
+    ".raas/EXECUTION.md"
+  ],
+  "languageContext": ".raas/LANGUAGE.md",
+  "broadRequestPatterns": [
+    "all issues",
+    "all bugs",
+    "everything",
+    "entire site",
+    "whole website",
+    "every page",
+    "fix all",
+    "make everything perfect",
+    "all the issues"
+  ],
+  "routes": [
+    {
+      "id": "catalogue",
+      "label": "Catalogue and metadata",
+      "keywords": ["catalogue", "catalog", "release", "track", "album", "artist", "metadata", "duplicate", "genre", "taxonomy", "tracklist", "track list"],
+      "truthSources": ["data/README.md", "data/catalogue/index.json", "docs/catalogue/schema.md", "docs/catalogue/song-catalog-contract.md"],
+      "likelyFiles": ["data/catalogue/**", "scripts/build-catalogue.mjs", "scripts/lib/**"],
+      "risks": ["release identity drift", "invented metadata", "generated-file edits", "taxonomy mismatch"]
+    },
+    {
+      "id": "playback",
+      "label": "Playback and provider routing",
+      "keywords": ["player", "playback", "youtube", "audio", "route", "provider", "play", "pause", "next", "previous", "seek", "continuation", "pip"],
+      "truthSources": ["docs/product/playback-runtime-coverage.md", "docs/catalogue/rights.md", "package.json"],
+      "likelyFiles": ["app.js", "simple-runtime.js", "provider-runtime.js", "player-continuity.js", "youtube-player-runtime.js", "assets/runtime/**", "scripts/validate-*.mjs"],
+      "risks": ["wrong recording identity", "provider-state divergence", "continuity regression", "mobile interaction regression"]
+    },
+    {
+      "id": "explore",
+      "label": "Explore and discovery",
+      "keywords": ["explore", "search", "filter", "discovery", "artist page", "release page", "browse", "catalogue ui", "catalog ui"],
+      "truthSources": ["docs/product/design-system.md", "docs/catalogue/schema.md", "package.json"],
+      "likelyFiles": ["src/catalogue/**", "assets/runtime/explore-*.js", "styles/**"],
+      "risks": ["thin-page proliferation", "incorrect metadata presentation", "return-to-player regression", "mobile layout regression"]
+    },
+    {
+      "id": "visual-ui",
+      "label": "Visual and interaction design",
+      "keywords": ["ui", "ux", "design", "visual", "layout", "background", "image", "artwork", "mobile", "responsive", "button", "control", "premium", "css"],
+      "truthSources": ["docs/product/design-system.md", "docs/product/responsive-pwa.md", ".raas/PROJECT-CONTEXT.md"],
+      "likelyFiles": ["styles/**", "assets/**", "index.html", "src/catalogue/**"],
+      "risks": ["visual regression", "narrow-phone clipping", "unapproved asset reuse", "decorative complexity"]
+    },
+    {
+      "id": "pwa",
+      "label": "PWA and offline behaviour",
+      "keywords": ["pwa", "install", "manifest", "service worker", "offline", "homescreen", "home screen", "app icon"],
+      "truthSources": ["docs/product/responsive-pwa.md", "manifest.webmanifest", "sw.js", "package.json"],
+      "likelyFiles": ["manifest.webmanifest", "sw.js", "offline.html", "assets/icons/**", "index.html"],
+      "risks": ["stale service-worker cache", "broken installability", "offline/online contract regression"]
+    },
+    {
+      "id": "content-seo",
+      "label": "Content, SEO, AEO and public copy",
+      "keywords": ["seo", "aeo", "geo", "content", "copy", "text", "og", "open graph", "meta description", "title tag", "sitemap", "schema", "structured data", "blog"],
+      "truthSources": [".raas/LANGUAGE.md", "README.md", "docs/README.md"],
+      "likelyFiles": ["index.html", "docs/**", "scripts/lib/inject-social-preview.mjs", "sitemap.xml", "robots.txt"],
+      "risks": ["unsupported claims", "generic marketing copy", "keyword-stuffed thin pages", "metadata inconsistency"]
+    },
+    {
+      "id": "rights",
+      "label": "Rights and source provenance",
+      "keywords": ["rights", "license", "licence", "copyright", "redistribute", "redistribution", "source provenance", "authorised", "authorized"],
+      "truthSources": ["docs/catalogue/rights.md", "data/rights-acquisition/**"],
+      "likelyFiles": ["data/rights-acquisition/**", "docs/rights/**", "docs/catalogue/rights.md"],
+      "risks": ["unlicensed redistribution", "provider-source confusion", "unsupported ownership claims"]
+    },
+    {
+      "id": "deployment",
+      "label": "Hosting, deployment and canonical domain",
+      "keywords": ["deploy", "deployment", "production", "github pages", "vercel", "dns", "domain", "cname", "hosting", "live site"],
+      "truthSources": ["docs/operations/**", "CNAME", ".github/workflows/**"],
+      "likelyFiles": ["CNAME", ".github/workflows/**", "docs/operations/**"],
+      "risks": ["wrong canonical domain", "deployment drift", "production verification gap"]
+    }
+  ]
+}

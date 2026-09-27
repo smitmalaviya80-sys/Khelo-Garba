@@ -1,0 +1,225 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Verified Soor Mandir Audio Jukebox upload (cAiAwvkvwpE) with published chapter timestamps for 21 tracks of Jay Ho / Tahuko Vol. 9. Track 13 (Koi Aarasur Jai) is retained as Amazon Music provenance as it is not present in this upload.",
+  "songSources": {
+    "jay-ho-vol9-2002-01-chhand": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-02-partham-parvati-putra": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 92,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 2,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-03-ma-ne-poche-te-garba": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 273,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 3,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-04-choto-choto-madine-man": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 508,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-05-aavi-navratri-ni-ratyu": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 778,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-06-rude-garbe-rame-chhe": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 951,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 6,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-07-madi-tara-naam-chhe-hazar": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1103,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 7,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-08-chapti-bhari-chokha": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1272,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-09-sheriye-shariye-vage-chhe": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1420,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 9,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-10-datiyone-ranma-ropiya": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1580,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 10,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-11-madi-aaya-chachar": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1647,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-12-zanzariyu-zamke-chhe": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1727,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 12,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-13-koi-aarasur-jai": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.co.jp/tracks/B00NNY029O",
+      "sourceType": "verified-track-source",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 13,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "jay-ho-vol9-2002-14-aavi-aavi-chhe": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 1810,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 14,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-15-aavo-to-ramvane": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2017,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 15,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-16-aavo-aavone-madi": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2219,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 16,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-17-chachar-chockma": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2475,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 17,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-18-maa-mara-garba-ma": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2681,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 18,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-19-o-gori-chham-chham": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2818,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 19,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-20-aarasurni-ambe-maa": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 2965,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 20,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-21-tahuka-karto-jay-mataji": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 3085,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 21,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "jay-ho-vol9-2002-22-jay-bhavani-jai-jai": {
+      "provider": "youtube",
+      "videoId": "cAiAwvkvwpE",
+      "startSeconds": 3230,
+      "sourceUrl": "https://www.youtube.com/watch?v=cAiAwvkvwpE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "jay-ho-vol9-2002",
+      "trackNumber": 22,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

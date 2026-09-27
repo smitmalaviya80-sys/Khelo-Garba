@@ -1,0 +1,141 @@
+name: Service worker install failure validate
+
+on:
+  pull_request:
+    paths:
+      - 'sw.js'
+      - 'scripts/performance/sw-install-contention-lib.mjs'
+      - 'scripts/performance/test-sw-install-failure.mjs'
+      - '.github/workflows/sw-install-failure-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sw-install-failure-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chromium-failed-install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax check
+        run: |
+          node --check scripts/performance/sw-install-contention-lib.mjs
+          node --check scripts/performance/test-sw-install-failure.mjs
+
+      - name: Install fixture renderers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin icoutils
+
+      - name: Build canonical catalogue data
+        run: npm run catalogue
+
+      - name: Prepare production-equivalent fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _sw_install_failure
+          mkdir -p _sw_install_failure/catalogue _sw_install_failure/explore
+
+          cp \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _sw_install_failure/
+          cp -R assets data _sw_install_failure/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            _sw_install_failure/catalogue/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            _sw_install_failure/explore/
+
+          cat \
+            app.js \
+            assets/runtime/seek-state.js \
+            assets/runtime/continuous-set-state.js \
+            > _sw_install_failure/app.js
+          grep -q 'GARBA_SEEK_STATE_RUNTIME' _sw_install_failure/app.js
+          grep -q 'GARBA_CONTINUOUS_SET_RUNTIME' _sw_install_failure/app.js
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _sw_install_failure/styles.css
+          if grep -q '@import' _sw_install_failure/styles.css; then
+            echo 'Fixture styles must not retain CSS @import' >&2
+            exit 1
+          fi
+
+          mkdir -p _sw_install_failure/assets/icons
+          rsvg-convert -w 16 -h 16 assets/icons/icon.svg -o _sw_install_failure/assets/icons/favicon-16.png
+          rsvg-convert -w 32 -h 32 assets/icons/icon.svg -o _sw_install_failure/assets/icons/favicon-32.png
+          rsvg-convert -w 48 -h 48 assets/icons/icon.svg -o _sw_install_failure/assets/icons/favicon-48.png
+          rsvg-convert -w 152 -h 152 assets/icons/icon.svg -o _sw_install_failure/assets/icons/apple-touch-icon-152.png
+          rsvg-convert -w 167 -h 167 assets/icons/icon.svg -o _sw_install_failure/assets/icons/apple-touch-icon-167.png
+          rsvg-convert -w 180 -h 180 assets/icons/icon.svg -o _sw_install_failure/assets/icons/apple-touch-icon.png
+          rsvg-convert -w 192 -h 192 assets/icons/icon.svg -o _sw_install_failure/assets/icons/icon-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/icon.svg -o _sw_install_failure/assets/icons/icon-512.png
+          rsvg-convert -w 150 -h 150 assets/icons/icon.svg -o _sw_install_failure/assets/icons/mstile-150x150.png
+          rsvg-convert -w 310 -h 310 assets/icons/icon.svg -o _sw_install_failure/assets/icons/mstile-310x310.png
+          rsvg-convert -w 192 -h 192 assets/icons/maskable.svg -o _sw_install_failure/assets/icons/maskable-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/maskable.svg -o _sw_install_failure/assets/icons/maskable-512.png
+          icotool -c -o _sw_install_failure/favicon.ico \
+            _sw_install_failure/assets/icons/favicon-16.png \
+            _sw_install_failure/assets/icons/favicon-32.png \
+            _sw_install_failure/assets/icons/favicon-48.png
+
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK" || { echo 'Required 15-image WebP pack is missing' >&2; exit 1; }
+          rm -rf _sw_install_failure/assets/backgrounds/library
+          mkdir -p _sw_install_failure/assets/backgrounds/library
+          unzip -oq "$PACK" -d _sw_install_failure/assets/backgrounds/library
+          test "$(find _sw_install_failure/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')" -eq 15
+          rm -f _sw_install_failure/assets/backgrounds/garba15-*.zip
+
+      - name: Install temporary Playwright runner
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Prove failed install stays isolated from listener page
+        run: node scripts/performance/test-sw-install-failure.mjs --root=_sw_install_failure

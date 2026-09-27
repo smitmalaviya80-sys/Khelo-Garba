@@ -1,0 +1,197 @@
+name: Session stability soak
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/performance/measure-session-stability.mjs'
+      - 'scripts/performance/session-stability-lib.mjs'
+      - '.github/workflows/session-stability-soak.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: session-stability-soak-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chromium-soak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install fixture renderers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin icoutils
+
+      - name: Build canonical catalogue data
+        run: npm run catalogue
+
+      - name: Prepare production-equivalent soak fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _soak
+          mkdir -p _soak/catalogue _soak/explore
+
+          cp \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _soak/
+          cp -R assets data _soak/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            src/catalogue/explore-continuity-bridge.js \
+            _soak/catalogue/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            src/catalogue/explore-continuity-bridge.js \
+            _soak/explore/
+
+          # Match the deployed Pages player bundle rather than measuring raw source files.
+          cat \
+            app.js \
+            assets/runtime/seek-state.js \
+            assets/runtime/continuous-set-state.js \
+            > _soak/app.js
+          grep -q 'GARBA_SEEK_STATE_RUNTIME' _soak/app.js || { echo 'Seek-state runtime missing from soak fixture'; exit 1; }
+          grep -q 'GARBA_CONTINUOUS_SET_RUNTIME' _soak/app.js || { echo 'Continuous-set runtime missing from soak fixture'; exit 1; }
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _soak/styles.css
+          if grep -q '@import' _soak/styles.css; then
+            echo 'Soak fixture still contains CSS @import'; exit 1
+          fi
+
+          # Match the generated PWA icon matrix required by the service-worker shell.
+          mkdir -p _soak/assets/icons
+          rsvg-convert -w 16 -h 16 assets/icons/icon.svg -o _soak/assets/icons/favicon-16.png
+          rsvg-convert -w 32 -h 32 assets/icons/icon.svg -o _soak/assets/icons/favicon-32.png
+          rsvg-convert -w 48 -h 48 assets/icons/icon.svg -o _soak/assets/icons/favicon-48.png
+          rsvg-convert -w 152 -h 152 assets/icons/icon.svg -o _soak/assets/icons/apple-touch-icon-152.png
+          rsvg-convert -w 167 -h 167 assets/icons/icon.svg -o _soak/assets/icons/apple-touch-icon-167.png
+          rsvg-convert -w 180 -h 180 assets/icons/icon.svg -o _soak/assets/icons/apple-touch-icon.png
+          rsvg-convert -w 192 -h 192 assets/icons/icon.svg -o _soak/assets/icons/icon-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/icon.svg -o _soak/assets/icons/icon-512.png
+          rsvg-convert -w 150 -h 150 assets/icons/icon.svg -o _soak/assets/icons/mstile-150x150.png
+          rsvg-convert -w 310 -h 310 assets/icons/icon.svg -o _soak/assets/icons/mstile-310x310.png
+          rsvg-convert -w 192 -h 192 assets/icons/maskable.svg -o _soak/assets/icons/maskable-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/maskable.svg -o _soak/assets/icons/maskable-512.png
+          icotool -c -o _soak/favicon.ico \
+            _soak/assets/icons/favicon-16.png \
+            _soak/assets/icons/favicon-32.png \
+            _soak/assets/icons/favicon-48.png
+
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK" || { echo 'Required 15-image WebP pack is missing'; exit 1; }
+          rm -rf _soak/assets/backgrounds/library
+          mkdir -p _soak/assets/backgrounds/library
+          unzip -oq "$PACK" -d _soak/assets/backgrounds/library
+          test "$(find _soak/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')" -eq 15 || { echo 'Browser fixture must contain exactly 15 background WebPs'; exit 1; }
+          rm -f _soak/assets/backgrounds/garba15-*.zip
+
+      - name: Install temporary Playwright runner
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local PlayGarba origin
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory _soak > /tmp/playgarba-session-soak-server.log 2>&1 &
+          echo $! > /tmp/playgarba-session-soak-server.pid
+          for attempt in {1..30}; do
+            if curl --fail --silent --show-error http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/playgarba-session-soak-server.log || true
+          echo 'PlayGarba session-soak origin did not become ready' >&2
+          exit 1
+
+      - name: Run bounded Chromium session soak
+        env:
+          PLAYGARBA_TESTED_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          node scripts/performance/measure-session-stability.mjs
+          --origin=http://127.0.0.1:4173
+          --profile=ci
+          --output=session-stability-report.json
+
+      - name: Summarize soak evidence
+        if: always() && hashFiles('session-stability-report.json') != ''
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          import { readFileSync } from 'node:fs';
+          const report = JSON.parse(readFileSync('session-stability-report.json', 'utf8'));
+          const failures = report.result?.budgetFailures || [];
+          const baseline = report.baseline || {};
+          const final = report.final || {};
+          console.log('## Session stability soak');
+          console.log(`- Revision: \`${report.testedRevision || 'unknown'}\``);
+          console.log(`- Browser: ${report.browser?.name || 'unknown'} ${report.browser?.version || ''}`);
+          console.log(`- Profile: ${report.profile}; cycles: ${report.cycles}`);
+          console.log(`- Result: ${report.result?.passed ? 'PASS' : 'FAIL'}`);
+          console.log(`- DOM nodes: ${baseline.nodes ?? 'n/a'} → ${final.nodes ?? 'n/a'}`);
+          console.log(`- JS heap: ${baseline.jsHeapUsedBytes ?? 'n/a'} → ${final.jsHeapUsedBytes ?? 'n/a'} bytes`);
+          console.log(`- PlayGarba live intervals: ${baseline.liveIntervals ?? 'n/a'} → ${final.liveIntervals ?? 'n/a'}`);
+          console.log(`- PlayGarba live observers: ${baseline.liveObservers ?? 'n/a'} → ${final.liveObservers ?? 'n/a'}`);
+          console.log(`- Active object URLs: ${baseline.activeObjectUrls ?? 'n/a'} → ${final.activeObjectUrls ?? 'n/a'}`);
+          console.log(`- Budget/runtime failures: ${failures.length}`);
+          for (const failure of failures) console.log(`  - ${failure.message || failure.code || JSON.stringify(failure)}`);
+          NODE
+
+      - name: Upload soak report
+        if: always() && hashFiles('session-stability-report.json') != ''
+        uses: actions/upload-artifact@v6
+        with:
+          name: session-stability-report-${{ github.run_id }}
+          path: session-stability-report.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Show local server log on failure
+        if: failure()
+        run: cat /tmp/playgarba-session-soak-server.log || true

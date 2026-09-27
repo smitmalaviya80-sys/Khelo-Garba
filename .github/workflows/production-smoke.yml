@@ -1,0 +1,102 @@
+name: Verify Production Hosts
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - scripts/lib/verify-production-hosts.mjs
+      - .github/workflows/production-smoke.yml
+  workflow_run:
+    workflows: ["Deploy PlayGarba to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-host-smoke
+  cancel-in-progress: true
+
+jobs:
+  syntax:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Validate smoke verifier syntax
+        run: node --check scripts/lib/verify-production-hosts.mjs
+      - name: Run production smoke parser self-tests
+        run: node scripts/lib/verify-production-hosts.mjs self-test
+
+  production-search-and-player:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout deployed revision
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Verify canonical production search, player and PWA contract
+        env:
+          SMOKE_ATTEMPTS: '8'
+          SMOKE_RETRY_DELAY_MS: '6000'
+          SMOKE_TIMEOUT_MS: '12000'
+        run: node scripts/lib/verify-production-hosts.mjs live
+
+      - name: Record canonical production verification
+        if: success()
+        run: |
+          {
+            echo '## Canonical production verification'
+            echo ''
+            echo '✅ `https://playgarba.com/` passed live sitemap-route HTTP/search checks plus player deep-link, manifest, service-worker, offline-shell and OG-card smoke checks.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  www-redirect-diagnostic:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout deployed revision
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Probe www permanent redirect
+        id: www
+        env:
+          SMOKE_ATTEMPTS: '3'
+          SMOKE_RETRY_DELAY_MS: '4000'
+          SMOKE_TIMEOUT_MS: '10000'
+        run: |
+          if node scripts/lib/verify-production-hosts.mjs www; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo '::warning title=www redirect not ready::www.playgarba.com is not permanently redirecting to https://playgarba.com/.'
+          fi
+
+      - name: Record www redirect state
+        if: always()
+        env:
+          WWW_READY: ${{ steps.www.outputs.ready }}
+        run: |
+          {
+            echo '## WWW redirect verification'
+            echo ''
+            if [ "$WWW_READY" = 'true' ]; then
+              echo '✅ `https://www.playgarba.com/` permanently redirects to the canonical apex.'
+            else
+              echo '⚠️ The permanent `www` → apex redirect is not ready.'
+            fi
+            echo ''
+            echo '> This redirect diagnostic remains explicit and non-blocking; the canonical apex production smoke above is the blocking post-deploy contract.'
+          } >> "$GITHUB_STEP_SUMMARY"

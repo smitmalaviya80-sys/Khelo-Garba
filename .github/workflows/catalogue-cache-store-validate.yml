@@ -1,0 +1,34 @@
+name: Catalogue cache store validate
+
+on:
+  pull_request:
+    paths:
+      - src/catalogue/catalogue-cache-store.js
+      - scripts/lib/test-catalogue-cache-store.mjs
+      - .github/workflows/catalogue-cache-store-validate.yml
+  push:
+    branches:
+      - main
+    paths:
+      - src/catalogue/catalogue-cache-store.js
+      - scripts/lib/test-catalogue-cache-store.mjs
+      - .github/workflows/catalogue-cache-store-validate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Syntax check
+        run: |
+          node --check src/catalogue/catalogue-cache-store.js
+          node --check scripts/lib/test-catalogue-cache-store.mjs
+      - name: Focused cache-store regression test
+        run: node scripts/lib/test-catalogue-cache-store.mjs

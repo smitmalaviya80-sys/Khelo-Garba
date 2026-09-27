@@ -1,0 +1,33 @@
+[
+  {
+    "id":"taal-non-stop-geeta-rabari-2022",
+    "title":"Taal - Non Stop Garba",
+    "displayTitle":"Taal - Nonstop Garba",
+    "artist":"Geeta Rabari",
+    "releaseDate":"2022-09-12",
+    "originalReleaseYear":2022,
+    "label":"Geeta Rabari Official",
+    "categories":["modern-gujarati-garba","traditional-garba","mataji-devotional","krishna-garba","folk-lokgeet"],
+    "visualGenre":"traditional",
+    "entryType":"album",
+    "songCount":21,
+    "durationSeconds":8781,
+    "series":"Taal",
+    "volume":"2022",
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.co.uk/albums/B0BFFC9H6L","kind":"official-21-track-album-provenance"},
+      {"platform":"Qobuz","url":"https://www.qobuz.com/us-en/album/taal-non-stop-garba-geeta-rabari/ql356c90lh1va","kind":"provider-21-track-album-provenance"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=msCZCOHy74U","kind":"official-auto-generated-taal-1"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=RgeoEpZdMnE","kind":"official-auto-generated-taal-2"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=R2INBS_L_UQ","kind":"official-auto-generated-taal-3"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-with-provider-rounding",
+    "audioAvailability":"external-source-only",
+    "durationPrecision":"amazon-displayed-track-sum",
+    "notes":"The complete 21-track September 12, 2022 edition remains canonical. Amazon and Qobuz are metadata/provenance only under the YouTube-only runtime policy. The three long masters Taal (1), Taal (2) and Taal (3) have independently verified official YouTube identities and are executable. Tracks 4-21 remain non-playable until exact release-recording YouTube identities are verified in issue #157; same-title standalone uploads are not assumed to be the same master."
+  }
+]

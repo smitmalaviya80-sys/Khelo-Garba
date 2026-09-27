@@ -1,0 +1,199 @@
+{
+  "version": "0.4.0",
+  "updated": "2026-09-26",
+  "note": "Khelaiya DJ Remix, Vol. 2 routes use the verified Ishtar Regional jukebox FHtzu_h1L1w only where its description publishes an explicit chapter start for the same release. Pankhida Tu Udi Jaje keeps the stronger existing individual distributor route. Khelaiya (Instrumental Version) remains intentionally unresolved because the official jukebox does not publish a chapter for it and no exact YouTube track was independently verified. Existing Khelaiya Disco Dandia '93 routes are unchanged. Also includes all 8 exact official track uploads for Khelaiya Non-Stop Disco Dandia 93 (1993).",
+  "songSources": {
+    "khelaiya2-aavi-aavi-noratani-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 1471,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=1471s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 1,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-he-mari-mahisagarni-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 3811,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=3811s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 2,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-he-rude-garbe-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 1875,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=1875s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 3,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-kesariyo-rang-tane-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 601,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=601s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 5,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-madi-ni-murti-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 3028,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=3028s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 6,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-madi-tare-mandiriye-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 3404,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=3404s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 7,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-pankhida-tu-udi-jaje-dj": {
+      "provider": "youtube",
+      "videoId": "5cAISqItql8",
+      "sourceUrl": "https://www.youtube.com/watch?v=5cAISqItql8",
+      "sourceType": "verified-distributor-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/2k45kKagxfKBRCbSPtpdYt",
+        "sourceType": "official-original-2016-track"
+      }
+    },
+    "khelaiya2-rame-ambe-maa-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 2649,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=2649s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 9,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-rangtali-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 4113,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=4113s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 10,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-sonal-garbo-shire-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 1028,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w&t=1028s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 11,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya2-chalo-pela-bamboo-beats-dj": {
+      "provider": "youtube",
+      "videoId": "FHtzu_h1L1w",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FHtzu_h1L1w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 12,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khelaiya-disco-dandia-93-1993-01-title-song-chalo-pela": {
+      "provider": "youtube",
+      "videoId": "KFXfL4tkfUg",
+      "sourceUrl": "https://www.youtube.com/watch?v=KFXfL4tkfUg",
+      "sourceType": "verified-track-source",
+      "startSeconds": 0
+    },
+    "khelaiya-disco-dandia-93-1993-03-der-mari-anguthadi-no-chor": {
+      "provider": "youtube",
+      "videoId": "j9205_-CVbk",
+      "sourceUrl": "https://www.youtube.com/watch?v=j9205_-CVbk",
+      "sourceType": "verified-track-source",
+      "startSeconds": 0
+    },
+    "khelaiya-disco-dandia-93-1993-06-tara-vina-shyam-mane": {
+      "provider": "youtube",
+      "videoId": "JJjKcSLDV8M",
+      "sourceUrl": "https://www.youtube.com/watch?v=JJjKcSLDV8M",
+      "sourceType": "verified-track-source",
+      "startSeconds": 0
+    },
+    "khelaiya-disco-dandia-93-1993-02-aavata-jata": {
+      "provider": "youtube",
+      "videoId": "xPgwkRiCFjk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=xPgwkRiCFjk",
+      "sourceType": "official-topic",
+      "releaseId": "khelaiya-disco-dandia-93-1993",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "khelaiya-disco-dandia-93-1993-04-dholida-dhol-re-vagad": {
+      "provider": "youtube",
+      "videoId": "lPO7G8wlCqQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lPO7G8wlCqQ",
+      "sourceType": "official-topic",
+      "releaseId": "khelaiya-disco-dandia-93-1993",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "khelaiya-disco-dandia-93-1993-05-mathe-matukadi": {
+      "provider": "youtube",
+      "videoId": "bCjS9gi5cLw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=bCjS9gi5cLw",
+      "sourceType": "official-topic",
+      "releaseId": "khelaiya-disco-dandia-93-1993",
+      "trackNumber": 5,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "khelaiya-disco-dandia-93-1993-07-nahi-melu-re": {
+      "provider": "youtube",
+      "videoId": "PjEeg-8vQGE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=PjEeg-8vQGE",
+      "sourceType": "official-topic",
+      "releaseId": "khelaiya-disco-dandia-93-1993",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "khelaiya-disco-dandia-93-1993-08-charar-charar-maro-chakdod": {
+      "provider": "youtube",
+      "videoId": "L_ReSC4KwUk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=L_ReSC4KwUk",
+      "sourceType": "official-topic",
+      "releaseId": "khelaiya-disco-dandia-93-1993",
+      "trackNumber": 8,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "khelaiya2-instrumental-dj": {
+      "provider": "youtube",
+      "videoId": "p1DOVpnOw8Q",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=p1DOVpnOw8Q",
+      "sourceType": "verified-track-source",
+      "releaseId": "khelaiya-dj-remix-vol2-2016",
+      "trackNumber": 4,
+      "evidenceType": "verified-youtube-track-upload"
+    }
+  }
+}

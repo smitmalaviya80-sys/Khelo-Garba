@@ -1,0 +1,37 @@
+name: RAAS run metrics validate
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/lib/raas-run-metrics.mjs'
+      - 'scripts/lib/raas-run-metrics.test.mjs'
+      - '.github/workflows/raas-run-metrics-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: raas-run-metrics-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax check
+        run: |
+          node --check scripts/lib/raas-run-metrics.mjs
+          node --check scripts/lib/raas-run-metrics.test.mjs
+
+      - name: Run privacy-safe run metrics tests
+        run: node scripts/lib/raas-run-metrics.test.mjs

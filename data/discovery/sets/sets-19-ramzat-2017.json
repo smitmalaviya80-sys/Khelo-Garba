@@ -1,0 +1,63 @@
+{
+  "updated": "2026-09-08",
+  "sets": [
+    {
+      "id": "set-ramzat-2017-official-jukebox",
+      "title": "Ramzat - Non Stop Garba",
+      "displayTitle": "Ramzat - Nonstop Garba",
+      "artists": ["Osman Mir", "Bhoomi Trivedi", "Himanshu Chauhan", "Veera Raval"],
+      "year": 2017,
+      "setType": "official-album-jukebox",
+      "officiality": "verified-label-channel",
+      "source": {
+        "provider": "youtube",
+        "videoId": "qRBix85kgvI",
+        "url": "https://www.youtube.com/watch?v=qRBix85kgvI",
+        "embeddable": true
+      },
+      "linkedReleaseId": "ramzat-2017",
+      "categories": ["modern-gujarati-garba","mataji-devotional","dakla"],
+      "segmentRouting": "metadata-only",
+      "durationSeconds": 4159,
+      "segments": [
+        {"title": "Sachi Re Mari - Chhand - Charni Sapakharu", "startSeconds": 0, "endSeconds": 203},
+        {"title": "Mangal Divada Ni Mangal", "startSeconds": 203, "endSeconds": 390},
+        {"title": "Kumkum Pagle", "startSeconds": 390, "endSeconds": 533},
+        {"title": "Aavi Aaso Ni Radhhiyali", "startSeconds": 533, "endSeconds": 670},
+        {"title": "Maa Dilde Jo Dhabkar Aashapura", "startSeconds": 670, "endSeconds": 792},
+        {"title": "Ambe Maa Palakhadi Shangaro", "startSeconds": 792, "endSeconds": 954},
+        {"title": "Tun Kaali Ne Kalyaani Ma", "startSeconds": 954, "endSeconds": 1096},
+        {"title": "Navrang Chundadi Ma", "startSeconds": 1096, "endSeconds": 1247},
+        {"title": "Maa Taro Garbo", "startSeconds": 1247, "endSeconds": 1388},
+        {"title": "Maa Tu Chaud Bhuvan Ma (Mogal Maa)", "startSeconds": 1388, "endSeconds": 1500},
+        {"title": "Smaran Vela Ae Vela Aavjo (Chamund Maa)", "startSeconds": 1500, "endSeconds": 1597},
+        {"title": "Garbe Ramzat Machave Bahuchara", "startSeconds": 1597, "endSeconds": 1706},
+        {"title": "Tame Hincho To Tamne", "startSeconds": 1706, "endSeconds": 1855},
+        {"title": "Sona No Garbo", "startSeconds": 1855, "endSeconds": 1958},
+        {"title": "Kesariyo Rang Tane", "startSeconds": 1958, "endSeconds": 2108},
+        {"title": "Mer Karo Momai", "startSeconds": 2108, "endSeconds": 2237},
+        {"title": "Matelvali Khodal Maa Ni Mithi Mer", "startSeconds": 2237, "endSeconds": 2335},
+        {"title": "Bedo Tindho Paar (Aashapura)", "startSeconds": 2335, "endSeconds": 2449},
+        {"title": "Range Rame Aanande Rame", "startSeconds": 2449, "endSeconds": 2562},
+        {"title": "Morla Jaje Ambe Maa Na Desh", "startSeconds": 2562, "endSeconds": 2643},
+        {"title": "Mogal Aavta Garbe Ramva", "startSeconds": 2643, "endSeconds": 2765},
+        {"title": "Moj Ma Rehti Re Mahakali", "startSeconds": 2765, "endSeconds": 2875},
+        {"title": "Lembde Rame Lemboch Maa", "startSeconds": 2875, "endSeconds": 2973},
+        {"title": "Madhwali Mangal Mandir Kholo", "startSeconds": 2973, "endSeconds": 3072},
+        {"title": "Ekvar Bolun", "startSeconds": 3072, "endSeconds": 3158},
+        {"title": "Pavli Lai Ne Hun To", "startSeconds": 3158, "endSeconds": 3224},
+        {"title": "Bahuchar Maa Na Dera Pachhal", "startSeconds": 3224, "endSeconds": 3308},
+        {"title": "Dak Geet - Khamma Khamma Okhadhara Ni", "startSeconds": 3308, "endSeconds": 3396},
+        {"title": "Dak Geet - Halo Halo Vagad Ni Vaate", "startSeconds": 3396, "endSeconds": 3481},
+        {"title": "Dak Geet - Meldi Ramti Aave", "startSeconds": 3481, "endSeconds": 3614},
+        {"title": "Chakkardi Bhamardi", "startSeconds": 3614, "endSeconds": 3716},
+        {"title": "Khel Khel Re Bhavani Maa", "startSeconds": 3716, "endSeconds": 3800},
+        {"title": "Talio Na Taale", "startSeconds": 3800, "endSeconds": 3877},
+        {"title": "Maadi Tara Mandiriye", "startSeconds": 3877, "endSeconds": 3972},
+        {"title": "Maa Ni Dhun Lagi", "startSeconds": 3972, "endSeconds": 4159}
+      ],
+      "playbackPolicy": "youtube-embed-visible",
+      "notes": "Verified Sur Sagar Music official album jukebox. Chapter boundaries transcribe the label's published timestamp list; canonical titles are used where the label's transliteration differs. Multi-artist chapter timestamps remain discovery metadata until a specific performer is verified."
+    }
+  ]
+}

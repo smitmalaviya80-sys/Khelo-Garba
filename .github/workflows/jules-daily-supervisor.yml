@@ -1,0 +1,44 @@
+name: Agent Daily Supervisor
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Run daily at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  supervisor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Read Supervisor Prompt
+        id: prompt
+        run: |
+          PROMPT=$(cat .raas/roles/jules-daily-supervisor.md)
+          # Escape for JSON stringification in GitHub Actions if needed
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "supervisor_prompt<<$EOF" >> $GITHUB_ENV
+          echo "$PROMPT" >> $GITHUB_ENV
+          echo "$EOF" >> $GITHUB_ENV
+
+      - name: Create Supervisor Issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const date = new Date().toISOString().split('T')[0];
+            const title = `Daily Supervisor Audit - ${date}`;
+            const body = process.env.supervisor_prompt;
+
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title,
+              body,
+              labels: ['jules']
+            });

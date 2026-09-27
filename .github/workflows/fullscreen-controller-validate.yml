@@ -1,0 +1,55 @@
+name: Fullscreen controller validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/navigation/fullscreen-controller.js'
+      - 'scripts/lib/test-fullscreen-controller.mjs'
+      - '.github/workflows/fullscreen-controller-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/navigation/fullscreen-controller.js'
+      - 'scripts/lib/test-fullscreen-controller.mjs'
+      - '.github/workflows/fullscreen-controller-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Test fullscreen policy dependency
+        run: node scripts/lib/test-fullscreen-policy.mjs
+      - name: Test fullscreen controller
+        run: node scripts/lib/test-fullscreen-controller.mjs
+      - name: Guard capability-driven boundary
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+
+          const source = await readFile('src/navigation/fullscreen-controller.js', 'utf8');
+          const forbidden = [
+            /navigator\s*\./,
+            /\buserAgent\b/,
+            /\bplatform\b/,
+            /matchMedia\s*\(/,
+            /localStorage/,
+            /sessionStorage/,
+          ];
+
+          for (const pattern of forbidden) {
+            assert.equal(pattern.test(source), false, `fullscreen controller must stay capability-driven: ${pattern}`);
+          }
+          NODE

@@ -1,0 +1,66 @@
+name: Explore payload dedupe
+
+on:
+  push:
+    paths:
+      - 'src/catalogue/catalogue.js'
+      - 'src/catalogue/listening-library.js'
+      - '.github/browser/explore-payload-dedupe.mjs'
+      - '.github/workflows/explore-payload-dedupe.yml'
+  pull_request:
+    paths:
+      - 'src/catalogue/catalogue.js'
+      - 'src/catalogue/listening-library.js'
+      - '.github/browser/explore-payload-dedupe.mjs'
+      - '.github/workflows/explore-payload-dedupe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: explore-payload-dedupe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Check source syntax
+        run: |
+          node --check src/catalogue/catalogue.js
+          node --check src/catalogue/listening-library.js
+          node --check .github/browser/explore-payload-dedupe.mjs
+      - name: Build runtime catalogue
+        run: npm run catalogue
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Prepare production-shaped Explore fixture
+        run: |
+          set -euo pipefail
+          rm -rf _explore_dedupe
+          mkdir -p _explore_dedupe/catalogue
+          cp src/catalogue/index.html src/catalogue/catalogue.css src/catalogue/catalogue.js src/catalogue/listening-library.js _explore_dedupe/catalogue/
+          cp -R data _explore_dedupe/
+          cp -R assets _explore_dedupe/
+      - name: Start fixture
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory _explore_dedupe >/tmp/explore-payload-dedupe.log 2>&1 &
+          echo $! > /tmp/explore-payload-dedupe.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/catalogue/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/explore-payload-dedupe.log
+          exit 1
+      - name: Prove one request per shared Explore payload
+        run: node .github/browser/explore-payload-dedupe.mjs

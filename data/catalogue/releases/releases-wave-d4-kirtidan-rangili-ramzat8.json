@@ -1,0 +1,31 @@
+[
+  {
+    "id":"rangili-ramzat-8-kirtidan-2025",
+    "title":"Rangili Ramzat 8",
+    "artist":"Umesh Barot, Osman Mir, Kirtidan Gadhvi & Rashmita Rabari",
+    "releaseDate":"2025-09-24",
+    "originalReleaseYear":2025,
+    "label":"Kirtidan Gadhvi",
+    "description":"A 17-track 2025 Rangili Ramzat album credited to Umesh Barot, Osman Mir, Kirtidan Gadhvi and Rashmita Rabari; the provider-backed split album remains canonical, while the official continuous 2 Taali master is a separate listening representation with no source-published 17-song chapter map, so the split tracks remain non-playable until exact YouTube recording identities are verified.",
+    "categories":["modern-gujarati-garba","traditional-garba","mataji-devotional","krishna-garba","folk-lokgeet","be-taali"],
+    "visualGenre":"traditional",
+    "entryType":"album",
+    "songCount":17,
+    "durationSeconds":3074,
+    "series":"Rangili Ramzat",
+    "volume":"8",
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.com/albums/B0FSL5FZVB","kind":"official-17-track-album-provenance"},
+      {"platform":"Qobuz","url":"https://www.qobuz.com/gb-en/album/rangili-ramzat-8-umesh-barot-osman-mir-kirtidan-gadhvi-rashmita-rabari/e5n9i5stm05jc","kind":"provider-17-track-album-provenance"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=xT_1V0j4LXU","kind":"official-continuous-2-taali-listening-master"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-with-provider-rounding",
+    "audioAvailability":"external-source-only",
+    "durationPrecision":"track-sum",
+    "notes":"The canonical 17-track September 24, 2025 album remains complete and provider-backed. Amazon and Qobuz URLs are provenance only under the YouTube-only runtime policy. The verified official YouTube 2 Taali edition is a separate continuous master and has no source-published 17-song chapter map, so it is not split by inferred timestamps. The 17 canonical album tracks remain non-playable until exact YouTube recording identities are verified in issue #157."
+  }
+]

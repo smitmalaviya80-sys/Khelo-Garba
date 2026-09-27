@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "canonicalOrigin": "https://playgarba.com",
+  "admittedSitemapRoutes": [
+    "/",
+    "/explore/",
+    "/live/",
+    "/what-is-garba/",
+    "/how-to-use/",
+    "/about/",
+    "/install/",
+    "/faq/",
+    "/navratri-2026/",
+    "/learn/",
+    "/history-of-garba/",
+    "/garba-vs-dandiya/",
+    "/dandiya-raas/",
+    "/garba-music/",
+    "/navratri-and-garba/",
+    "/garbo/",
+    "/garba-attire-and-craft/"
+  ],
+  "publishedSitemapEntries": [
+    { "route": "/", "changefreq": "daily", "priority": 1.0 },
+    { "route": "/explore/", "changefreq": "daily", "priority": 0.8 },
+    { "route": "/live/", "changefreq": "weekly", "priority": 0.8 },
+    { "route": "/navratri-2026/", "changefreq": "weekly", "priority": 0.8 },
+    { "route": "/what-is-garba/", "changefreq": "monthly", "priority": 0.7 },
+    { "route": "/learn/", "changefreq": "monthly", "priority": 0.6 },
+    { "route": "/history-of-garba/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/garba-vs-dandiya/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/dandiya-raas/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/garba-music/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/navratri-and-garba/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/garbo/", "changefreq": "monthly", "priority": 0.4 },
+    { "route": "/garba-attire-and-craft/", "changefreq": "monthly", "priority": 0.4 },
+    { "route": "/how-to-use/", "changefreq": "monthly", "priority": 0.5 },
+    { "route": "/about/", "changefreq": "monthly", "priority": 0.4 },
+    { "route": "/install/", "changefreq": "monthly", "priority": 0.4 },
+    { "route": "/faq/", "changefreq": "monthly", "priority": 0.3 }
+  ],
+  "forbiddenRoutePrefixes": [
+    "/songs/",
+    "/artists/",
+    "/releases/",
+    "/nonstop/"
+  ],
+  "notes": "Admission permits possible canonical sitemap inclusion; publishedSitemapEntries is the separate ordered source of truth for routes currently emitted in sitemap.xml. New routes require an explicit reviewed policy change."
+}

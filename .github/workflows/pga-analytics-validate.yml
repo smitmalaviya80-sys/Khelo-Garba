@@ -1,0 +1,88 @@
+# Path-scoped push validation is kept dispatchable so reconciled heads can be re-proven exactly.
+name: PGA analytics validation
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/app/**'
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/lib/analytics.js'
+      - 'src/pga/backend/lib/catalogue.js'
+      - 'src/pga/backend/tests/catalogue.test.mjs'
+      - 'scripts/lib/validate-pga-analytics.mjs'
+      - 'scripts/lib/test-pga-analytics-metric-truth.mjs'
+      - '.github/workflows/pga-analytics-validate.yml'
+  push:
+    branches:
+      - 'pga/issue-843-audience-listening'
+    paths:
+      - 'src/pga/app/**'
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/lib/analytics.js'
+      - 'src/pga/backend/lib/catalogue.js'
+      - 'src/pga/backend/tests/catalogue.test.mjs'
+      - 'scripts/lib/validate-pga-analytics.mjs'
+      - 'scripts/lib/test-pga-analytics-metric-truth.mjs'
+      - '.github/workflows/pga-analytics-validate.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pga-analytics-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate analytics models and static contract
+        run: node scripts/lib/validate-pga-analytics.mjs
+
+      - name: Validate analytics metric truth
+        run: node scripts/lib/test-pga-analytics-metric-truth.mjs
+
+      - name: Validate catalogue identity contract
+        run: node --test src/pga/backend/tests/catalogue.test.mjs
+
+      - name: Syntax-check protected analytics code
+        run: |
+          node --check src/pga/app/app.js
+          node --check src/pga/app/analytics.js
+          node --check src/pga/backend/admin-worker.js
+          node --check src/pga/backend/lib/analytics.js
+          node --check src/pga/backend/lib/catalogue.js
+
+      - name: Install Playwright runner
+        run: npm install --no-save --no-package-lock @playwright/test@1.55.0
+
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Start PGA fixture
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory src/pga/app >/tmp/pga-analytics.log 2>&1 &
+          echo $! >/tmp/pga-analytics.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4174/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/pga-analytics.log
+          exit 1
+
+      - name: Validate responsive analytics views
+        env:
+          PGA_BASE_URL: http://127.0.0.1:4174
+        run: node scripts/lib/validate-pga-analytics.mjs --browser

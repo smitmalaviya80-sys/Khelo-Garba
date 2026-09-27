@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "issue": 455,
+  "status": "prototype-only",
+  "sourceFile": "data/discovery/sets/sets-36-legacy-full-set-migration.json",
+  "sourceTruth": "Session recording identity, artists, year, categories and known duration must match the canonical continuous-set record. Editorial intent labels are hypotheses, not measured music attributes.",
+  "principles": [
+    "Offer a small number of human-curated intents instead of generating playlists.",
+    "Use one verified continuous recording per suggestion.",
+    "Keep the canonical set identity intact and never derive synthetic chapter boundaries.",
+    "Show duration bands only when durationSeconds is known in source data.",
+    "Treat energy or mood words such as gentle and festive as editorial judgement requiring cultural review.",
+    "Do not claim BPM, popularity, gapless playback or ad-free playback without evidence.",
+    "Preserve direct Search and Nonstop browsing as first-class alternatives."
+  ],
+  "sessions": [
+    {
+      "id": "gentle-start",
+      "label": "Gentle start",
+      "setId": "set-kirtidan-anita-nortani-raat-2025",
+      "title": "Nortani Raat | Nonstop Garba",
+      "artists": ["Kirtidan Gadhvi", "Anita Pandit"],
+      "year": 2025,
+      "durationSeconds": 1990,
+      "durationLabel": "33:10",
+      "durationBand": "30–60 min",
+      "categories": ["traditional", "devotional", "folk", "krishna-garba"],
+      "editorial": true,
+      "reviewStatus": "pending-cultural-review",
+      "rationale": "A shorter known-duration candidate within this four-session prototype. The word ‘gentle’ is an editorial hypothesis for usability testing, not a BPM or measured-energy claim."
+    },
+    {
+      "id": "two-taali-practice",
+      "label": "2 Taali practice",
+      "setId": "set-rangili-ramzat-8-2-taali-2025",
+      "title": "Rangili Ramzat 8 | 2 Taali Garba",
+      "artists": ["Umesh Barot", "Osman Mir", "Kirtidan Gadhvi", "Rashmita Rabari"],
+      "year": 2025,
+      "durationSeconds": 3074,
+      "durationLabel": "51:14",
+      "durationBand": "30–60 min",
+      "categories": ["traditional", "be-taali"],
+      "editorial": false,
+      "reviewStatus": "source-backed-category",
+      "rationale": "The canonical continuous-set title explicitly says 2 Taali Garba and its source categories include be-taali. The prototype does not add synthetic chapter or practice-loop boundaries."
+    },
+    {
+      "id": "festive-dandiya",
+      "label": "Festive dandiya",
+      "setId": "set-falguni-maadi-tara-mandiriye-2000",
+      "title": "Maadi Tara Mandiriye | Nonstop Dandiya Mix",
+      "artists": ["Falguni Pathak", "Sudesh Bhosle"],
+      "year": 2000,
+      "durationSeconds": 3584,
+      "durationLabel": "59:44",
+      "durationBand": "30–60 min",
+      "categories": ["traditional", "devotional", "folk", "raas-dandiya"],
+      "editorial": true,
+      "reviewStatus": "pending-cultural-review",
+      "rationale": "The canonical title says Nonstop Dandiya Mix and its categories include raas-dandiya. The word ‘festive’ remains an editorial hypothesis, not a popularity or measured-energy claim."
+    },
+    {
+      "id": "devotional-listening",
+      "label": "Devotional listening",
+      "setId": "set-aditya-meldi-maa-no-rankar-2024",
+      "title": "Meldi Maa No Rankar | Nonstop Garba",
+      "artists": ["Aditya Gadhvi"],
+      "year": 2024,
+      "durationSeconds": null,
+      "durationLabel": "Duration not verified",
+      "durationBand": null,
+      "categories": ["devotional", "traditional"],
+      "editorial": false,
+      "reviewStatus": "source-backed-category",
+      "rationale": "The canonical continuous-set categories include devotional and traditional. Source duration is unknown, so the prototype deliberately shows no duration band."
+    }
+  ],
+  "studyPlan": {
+    "status": "required-before-production",
+    "participants": "Include both novice and experienced Garba dancers/listeners; record experience level rather than assuming it.",
+    "tasks": [
+      "Choose a session for a stated listening or dancing intent without opening Search.",
+      "Explain what you expect to happen after choosing a session.",
+      "Find direct Search or ordinary Nonstop browsing instead when none of the four sessions fits.",
+      "Identify whether duration and editorial labels are understandable and trustworthy."
+    ],
+    "record": [
+      "Whether the listener chose confidently or hesitated.",
+      "Whether the chosen session matched their stated intent after they inspected the recording identity.",
+      "Whether editorial labels felt culturally accurate or misleading.",
+      "Whether four choices reduced effort or hid useful catalogue paths."
+    ]
+  },
+  "shipGate": [
+    "Human cultural review of editorial intent labels is recorded.",
+    "Usability evidence from novice and experienced listeners is recorded.",
+    "A ship, revise or reject decision is documented.",
+    "Any production implementation reuses canonical Nonstop selection rather than duplicating recordings or provider logic."
+  ]
+}

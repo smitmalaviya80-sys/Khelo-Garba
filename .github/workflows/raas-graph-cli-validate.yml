@@ -1,0 +1,34 @@
+name: RAAS graph CLI validate
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/lib/raas-graph-cli.mjs'
+      - 'scripts/lib/raas-graph-cli.test.mjs'
+      - 'scripts/lib/raas-graph.mjs'
+      - 'scripts/lib/raas-graph-repository.mjs'
+      - '.github/workflows/raas-graph-cli-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax check graph CLI
+        run: |
+          node --check scripts/lib/raas-graph-cli.mjs
+          node --check scripts/lib/raas-graph-cli.test.mjs
+
+      - name: Run graph CLI regression fixtures
+        run: node scripts/lib/raas-graph-cli.test.mjs

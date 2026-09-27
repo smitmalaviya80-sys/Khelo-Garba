@@ -1,0 +1,56 @@
+{
+  "updated": "2026-09-07",
+  "sets": [
+    {
+      "id": "set-rangtaali-2017-official-jukebox",
+      "title": "Rangtaali - Non Stop Garba",
+      "artists": ["Aishwarya Majmudar"],
+      "year": 2017,
+      "setType": "official-album-jukebox",
+      "officiality": "verified-label-channel",
+      "source": {
+        "provider": "youtube",
+        "videoId": "szzvM1ImRMA",
+        "url": "https://www.youtube.com/watch?v=szzvM1ImRMA",
+        "embeddable": true
+      },
+      "linkedReleaseId": "rangtaali-2017",
+      "categories": ["modern-gujarati-garba","traditional-garba"],
+      "durationSeconds": 4182,
+      "segments": [
+        {"title": "Duha (Intro)", "startSeconds": 0, "endSeconds": 157},
+        {"title": "Abh Ma Ugyo Che", "startSeconds": 157, "endSeconds": 322},
+        {"title": "Kaho Poonam Na", "startSeconds": 322, "endSeconds": 492},
+        {"title": "Dholida Tu Evo", "startSeconds": 492, "endSeconds": 668},
+        {"title": "Saiyyar Mori Re", "startSeconds": 668, "endSeconds": 845},
+        {"title": "Apna Malak Na", "startSeconds": 845, "endSeconds": 992},
+        {"title": "Kidi Bichari", "startSeconds": 992, "endSeconds": 1134},
+        {"title": "Bhala Bhanejda", "startSeconds": 1134, "endSeconds": 1455},
+        {"title": "Halaji Jatan", "startSeconds": 1455, "endSeconds": 1571},
+        {"title": "Mare Todle Betho Re Mor", "startSeconds": 1571, "endSeconds": 1700},
+        {"title": "Jhalavadi Dhol", "startSeconds": 1700, "endSeconds": 1834},
+        {"title": "Jode Rehjo Raj", "startSeconds": 1834, "endSeconds": 2020},
+        {"title": "Umre Ubhi Samre", "startSeconds": 2020, "endSeconds": 2155},
+        {"title": "Hu To Patan Shehar", "startSeconds": 2155, "endSeconds": 2294},
+        {"title": "Le Jo Rasiya Re Rumal", "startSeconds": 2294, "endSeconds": 2399},
+        {"title": "Pani Gya Ta Pano Vagyo", "startSeconds": 2399, "endSeconds": 2536},
+        {"title": "Dholida Dhol Re Vagad", "startSeconds": 2536, "endSeconds": 2671},
+        {"title": "Pani Gya Ta Re Beni", "startSeconds": 2671, "endSeconds": 2835},
+        {"title": "Choti Si Umar Ma", "startSeconds": 2835, "endSeconds": 2983},
+        {"title": "Maro Sona No", "startSeconds": 2983, "endSeconds": 3155},
+        {"title": "Tame Ek War Marwad", "startSeconds": 3155, "endSeconds": 3263},
+        {"title": "Vaki Valu To", "startSeconds": 3263, "endSeconds": 3434},
+        {"title": "Kapadwanj Ni Sheri", "startSeconds": 3434, "endSeconds": 3575},
+        {"title": "Mare Javu Kankariya", "startSeconds": 3575, "endSeconds": 3635},
+        {"title": "Shetar Shedya Ne", "startSeconds": 3635, "endSeconds": 3690},
+        {"title": "Hadke O Piplo", "startSeconds": 3690, "endSeconds": 3844},
+        {"title": "Ek Sabarkatha No", "startSeconds": 3844, "endSeconds": 3925},
+        {"title": "Dudhe Te Bhari Talavadi", "startSeconds": 3925, "endSeconds": 4031},
+        {"title": "Tame Kiya Te Gam Na", "startSeconds": 4031, "endSeconds": 4113},
+        {"title": "Duha (Outro)", "startSeconds": 4113, "endSeconds": 4182}
+      ],
+      "playbackPolicy": "youtube-embed-visible",
+      "notes": "Verified Sur Sagar Music official album jukebox. The label's published chapter list omits Kaun Halave Limdi, so that track remains on its verified release fallback rather than receiving an inferred timestamp."
+    }
+  ]
+}

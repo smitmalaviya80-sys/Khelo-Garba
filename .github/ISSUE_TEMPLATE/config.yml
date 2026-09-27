@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Catalogue status
+    url: https://github.com/ruddvz/garba/blob/main/docs/catalogue/STATUS.md
+    about: Check current catalogue counts, imported releases and known coverage before reporting a missing item.
+  - name: Rights policy
+    url: https://github.com/ruddvz/garba/blob/main/docs/catalogue/RIGHTS.md
+    about: Read this before proposing downloadable or mirrored audio.

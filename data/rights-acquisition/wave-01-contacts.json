@@ -1,0 +1,152 @@
+{
+  "version": "1.4.0",
+  "updatedAt": "2026-09-15",
+  "policy": "A contact route is not rights evidence. Only written authority from the actual rights holder or authorised licensing representative can advance a recording to licence-review or cleared. Similar names, fan pages, booking pages and unrelated organisations must be explicitly disambiguated before outreach.",
+  "contacts": [
+    {
+      "batchId": "hardik-rahul-sur-sagar",
+      "entity": "Sur Sagar Music",
+      "contactState": "official-brand-route-found-current-legal-licensor-needs-confirmation",
+      "confidence": "high-current-brand-route-medium-legal-authority",
+      "primaryRoute": "https://www.youtube.com/@SurSagarMusicOriginal",
+      "secondaryRoute": "https://www.instagram.com/sursagarmusic/",
+      "identity": {
+        "canonicalYouTubeHandle": "@SurSagarMusicOriginal",
+        "canonicalInstagramHandle": "@sursagarmusic",
+        "historicalBusinessDomain": "senseworldmusic.com",
+        "historicalLegalEntity": "SENSE WORLD MUSIC LIMITED (05433423) is dissolved and is not proven to be the current Sur Sagar licensor.",
+        "disambiguation": "Gujarati music label associated with current releases including Garbi and Geeta Rabari material; do not substitute similarly named singer/channels. The current public brand route is suitable for authority discovery, not proof that one legal entity controls every Sur Sagar-labelled recording."
+      },
+      "evidence": [
+        "https://www.youtube.com/@SurSagarMusicOriginal",
+        "https://uk.linkedin.com/in/alpesh-patel-3a86aa10",
+        "https://open.spotify.com/album/6RveMtyJ00gDD4SNRiCQQH",
+        "https://find-and-update.company-information.service.gov.uk/officers/ZNPbD6hhc-wQQH7KjP0M1d-RYNo/appointments",
+        "https://music.amazon.com/albums/B0GZ62KTP1",
+        "https://connectmusic.ca/wp-content/uploads/2021/09/CONNECT-Schedule-A-Audio.pdf",
+        "https://connectmusic.ca/wp-content/uploads/2021/09/CONNECT-Schedule-A-Video.pdf"
+      ],
+      "notes": "Alpesh Patel's current Sur Sagar Music profile lists the canonical YouTube and Instagram routes as company websites, so those routes remain the preferred first-contact surface. The historical SENSE WORLD MUSIC LIMITED (05433423) company is dissolved; its old domain must not be treated as present contracting authority. At least one 2026 Sur Sagar Music release is stated to be under exclusive licence to Hyson Export Ltd, while CONNECT schedules map Sense World Music/Sur sagar through Orchard Enterprises for neighbouring-rights administration. These are recording/rights-chain signals, not proof that Hyson, Orchard or any single entity controls the roughly 271 Sur Sagar-labelled GARBA rows or can grant PlayGarba interactive-streaming rights. First contact must identify the current legal licensor, the authorised representative, and per-recording ℗ owner/current digital licensor before commercial negotiation or catalogue-level clearance assumptions."
+    },
+    {
+      "batchId": "strategic-label-soor-mandir",
+      "entity": "Soor Mandir",
+      "contactState": "active-brand-owner-publisher-route-found-legal-licensor-needs-confirmation",
+      "confidence": "high-catalogue-rights-signal-medium-current-legal-entity",
+      "primaryRoute": "https://www.youtube.com/@soormandir",
+      "catalogueRoute": "http://soormandir.com",
+      "secondaryRoute": "https://www.instagram.com/soormandir/",
+      "identity": {
+        "canonicalYouTubeHandle": "@soormandir",
+        "descriptionAnchor": "Soulful Gujarati Songs - Soor Mandir",
+        "geographicAnchor": "Gujarat, India",
+        "knownUnrelatedRoutes": [
+          "https://www.soormandir.org/"
+        ],
+        "disambiguation": "Gujarati commercial music label/catalogue with millions of YouTube subscribers and releases carrying ©/℗ Soor Mandir. Do not confuse it with the unrelated Soor Mandir Odissi/cultural institution in Cuttack, Odisha at soormandir.org."
+      },
+      "evidence": [
+        "https://www.youtube.com/watch?v=L-8huZUeHc0",
+        "https://www.youtube.com/watch?v=xcmJ2OSBoa0",
+        "https://iprs.org/wp-content/uploads/2023/01/IPRS_Member_List_watermark.pdf",
+        "https://www.sec.gov/Archives/edgar/data/1611820/000119312516618753/d728446dex105.htm",
+        "https://www.zaubacorp.com/SOOR-MANDIR-MUSIC-PRIVATE-LIMITED-U92490GJ2006PTC049454"
+      ],
+      "notes": "The verified active @soormandir YouTube channel identifies itself as the home of Soulful Gujarati Songs, labels its releases Soor Mandir and links related Gujarati music channels. IPRS member material lists SOOR MANDIR as an owner/publisher. An SEC-filed contract schedule records Soor Mandir as counterparty to digital-music and streaming/content licence agreements for Nokia Music/MixRadio, which is strong historical evidence of a licensable sound-recording catalogue. The old Gujarat company record for SOOR MANDIR MUSIC PRIVATE LIMITED is shown as struck off, so do not address a new licence to that old corporate entity without confirmation. The similarly named soormandir.org belongs to an Odisha Odissi/cultural institution and is explicitly excluded. First inquiry must ask which current person/entity owns and can license the master catalogue, then request the roughly 245 Soor Mandir-labelled GARBA rows plus the separately-labelled Soor Mandir / SM Digital subset for ownership reconciliation."
+    },
+    {
+      "batchId": "atul-purohit-rutumbhara",
+      "entity": "Rutumbhara Entertainment Private Limited",
+      "contactState": "corporate-route-found-needs-licensing-authority-confirmation",
+      "confidence": "medium-corporate-registry",
+      "primaryRoute": "https://www.zaubacorp.com/RUTUMBHARA-ENTERTAINMENT-PRIVATE-LIMITED-U92412GJ2015PTC085436",
+      "evidence": [
+        "https://www.zaubacorp.com/RUTUMBHARA-ENTERTAINMENT-PRIVATE-LIMITED-U92412GJ2015PTC085436",
+        "https://open.spotify.com/album/3IxFhuJggZ3tRtTu9Pwul2"
+      ],
+      "notes": "Corporate-registry aggregations identify Atulbhai Bhikhabhai Purohit and Jigar Purohit as directors and expose a company correspondence route. Provider metadata repeatedly identifies Rutumbhara as copyright/phonogram owner. First contact must confirm who is authorised to license digital direct streaming and which releases the company controls."
+    },
+    {
+      "batchId": "hemant-chauhan-label-split",
+      "entity": "T-Series / Super Cassettes Industries Private Limited",
+      "contactState": "ready-for-digital-licensing-inquiry",
+      "confidence": "high-official-licensing-desk",
+      "primaryRoute": "https://www.tseries.com/contact-us",
+      "licensingInfo": "https://tseries.com/publishing",
+      "evidence": [
+        "https://www.tseries.com/contact-us",
+        "https://tseries.com/publishing"
+      ],
+      "notes": "Official T-Series contact page publishes a Mobile & Digital Platforms & Radio Licenses desk. Official publishing guidance states that Internet communication of copyrighted music requires a licence. Only request terms for Hemant Chauhan releases confirmed to be in the T-Series/Super Cassettes catalogue."
+    },
+    {
+      "batchId": "aditya-gadhvi-2245114",
+      "entity": "Aditya Gadhvi / management",
+      "contactState": "official-artist-route-found-rights-authority-unresolved",
+      "confidence": "medium-official-artist-presence",
+      "primaryRoute": "https://linktr.ee/adityagadhvi",
+      "secondaryRoute": "https://adityagadhvi.in/contact-us/",
+      "evidence": [
+        "https://linktr.ee/adityagadhvi"
+      ],
+      "notes": "Use the current official artist route to ask who controls the 2245114 Records DK masters. Do not rely on phone numbers displayed on the contact-site page without independent verification."
+    },
+    {
+      "batchId": "rutvi-pandya-ramzat",
+      "entity": "Rutvi Pandya / management",
+      "contactState": "contact-discovery-needed",
+      "confidence": "master-owner-signal-strong-contact-route-not-yet-authoritative",
+      "identity": {
+        "candidateInstagramHandle": "@rutvipandyamusic",
+        "candidateRouteStatus": "third-party indexes reproduce a public inquiry bio, but no directly verified official business/licensing surface has been retrieved"
+      },
+      "evidence": [
+        "https://www.youtube.com/watch?v=RKDi5F85ft4",
+        "https://music.apple.com/us/album/rutvi-ni-ramzat/1647208847"
+      ],
+      "notes": "Provider and release metadata strongly signal Rutvi Pandya as owner/label for the main Ramzat releases, including newer releases carrying ℗ Rutvi Pandya. Search indexes consistently identify @rutvipandyamusic and reproduce an inquiry bio, but those third-party indexes are not sufficient licensing authority. Keep this lane in contact discovery until an official artist/channel/business surface is directly verified."
+    },
+    {
+      "batchId": "geeta-rabari-official",
+      "entity": "Geeta Rabari Official / management",
+      "contactState": "contact-discovery-needed",
+      "confidence": "master-owner-subset-strong-contact-route-not-yet-authoritative",
+      "identity": {
+        "canonicalArtistHandleSignal": "@geetabenrabariofficial",
+        "candidateManagementHandle": "@pruthvirabari79",
+        "candidateRouteStatus": "public bio indexes identify this as live-show/paid-promotion management, not verified master-rights licensing authority"
+      },
+      "evidence": [
+        "https://www.youtube.com/@GeetaBenRabariOfficial",
+        "https://www.youtube.com/watch?v=vy7f_tYi7VU"
+      ],
+      "notes": "Geeta Rabari Official controls a meaningful subset but the overall artist catalogue is mixed-owner. The official artist identity is well corroborated, while third-party indexes reproduce a public management/booking route. Booking or paid-promotion management is not sufficient master-rights authority, so keep this lane in contact discovery until the official channel or management route directly confirms licensing responsibility."
+    },
+    {
+      "batchId": "strategic-label-jigar-studio",
+      "entity": "Jigar Studio",
+      "contactState": "ready-for-catalogue-partnership-inquiry",
+      "confidence": "high-official-licensing-page",
+      "primaryRoute": "https://jigarstudio.com/contact-us/",
+      "catalogueRoute": "https://jigarstudio.com/catalogue/",
+      "evidence": [
+        "https://jigarstudio.com/",
+        "https://jigarstudio.com/contact-us/"
+      ],
+      "notes": "Strategic expansion lane rather than a currently mapped top-six batch. Jigar Studio says it has 3,000+ released tracks, identifies itself as a Gujarati independent label/production house, and invites licensing/partnership enquiries. Ask whether on-demand direct streaming is available, what Garba/Raas subset it controls, and request a machine-readable catalogue before negotiating track counts."
+    },
+    {
+      "batchId": "strategic-label-saregama-gujarati",
+      "entity": "Saregama India Limited",
+      "contactState": "ready-for-custom-scope-inquiry",
+      "confidence": "high-official-licensing-team",
+      "primaryRoute": "https://business.saregama.com/contact-us",
+      "catalogueRoute": "https://www.saregama.com/artist/list/gujarati_5",
+      "evidence": [
+        "https://business.saregama.com/contact-us",
+        "https://www.saregama.com/artist/list/gujarati_5"
+      ],
+      "notes": "Saregama publishes an official music-licensing contact and a substantial Gujarati artist catalogue including Praful Dave and traditional repertoire. Its self-service web licensing is primarily designed for social/sync use, so GARBA must request a bespoke on-demand direct-streaming licence rather than assume those products cover the player."
+    }
+  ]
+}

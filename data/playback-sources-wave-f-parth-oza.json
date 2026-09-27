@@ -1,0 +1,22 @@
+{
+  "version": "0.18.3",
+  "updated": "2026-09-12",
+  "note": "Wave F exact YouTube migration for Parth Oza's Garbe Ghoome Tu. Issue #1455 recovered the directly verifiable original Parth Oza Official Artist Channel master ySVBWJtdWrE. The exact Amazon track already preserved by #234 exposes the same title, artist, 3:22 duration and 2020-10-06 individual-track date, matching the official YouTube publication date and the recording credits independently documented in #234. The later 2025 Samarpayami catalogue wrapper is retained as provenance; no alternate recording or timestamp is inferred.",
+  "songSources": {
+    "parth-garbe-ghoome-tu-2025-01-garbe-ghoome-tu": {
+      "provider": "youtube",
+      "videoId": "ySVBWJtdWrE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ySVBWJtdWrE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "parth-garbe-ghoome-tu-2025",
+      "trackNumber": 1,
+      "evidenceType": "verified-release-track-video",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.com/tracks/B0FQ5WLJ4B",
+        "sourceType": "verified-track-source"
+      }
+    }
+  }
+}

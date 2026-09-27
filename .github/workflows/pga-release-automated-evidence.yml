@@ -1,0 +1,86 @@
+name: Validate PGA automated release evidence
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/app/**'
+      - 'src/pga/backend/**'
+      - 'src/pga/release/acceptance.js'
+      - 'src/pga/release/automated-evidence.js'
+      - 'src/pga/release/tests/automated-evidence.test.mjs'
+      - 'scripts/lib/pga-release-automated-evidence.mjs'
+      - 'scripts/lib/validate-pga-release-browser-evidence.mjs'
+      - 'scripts/lib/validate-pga-shell.mjs'
+      - 'scripts/lib/validate-pga-analytics.mjs'
+      - 'scripts/lib/validate-pga-home-live-ui.mjs'
+      - 'scripts/lib/validate-pga-health-ui.mjs'
+      - 'scripts/lib/validate-pga-security.mjs'
+      - '.github/workflows/pga-release-automated-evidence.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/app/**'
+      - 'src/pga/backend/**'
+      - 'src/pga/release/acceptance.js'
+      - 'src/pga/release/automated-evidence.js'
+      - 'src/pga/release/tests/automated-evidence.test.mjs'
+      - 'scripts/lib/pga-release-automated-evidence.mjs'
+      - 'scripts/lib/validate-pga-release-browser-evidence.mjs'
+      - 'scripts/lib/validate-pga-shell.mjs'
+      - 'scripts/lib/validate-pga-analytics.mjs'
+      - 'scripts/lib/validate-pga-home-live-ui.mjs'
+      - 'scripts/lib/validate-pga-health-ui.mjs'
+      - 'scripts/lib/validate-pga-security.mjs'
+      - '.github/workflows/pga-release-automated-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-release-evidence-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  automated-release-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate evidence adapter truth boundary
+        run: node --test src/pga/release/tests/automated-evidence.test.mjs
+
+      - name: Install Playwright test runtime
+        run: npm install --no-save @playwright/test@1.55.0
+
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Run exact-revision automated release evidence
+        env:
+          PGA_BASE_URL: http://127.0.0.1:4174
+          PGA_RELEASE_ENVIRONMENT: github-actions-local-fixture
+          PGA_RELEASE_EVIDENCE_OUTPUT: artifacts/pga-release-automated-evidence.json
+          PGA_RELEASE_REVISION: ${{ github.sha }}
+        run: |
+          python3 -m http.server 4174 --directory src/pga/app >/tmp/pga-release-fixture.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node scripts/lib/pga-release-automated-evidence.mjs
+
+      - name: Upload automated evidence ledger
+        if: always() && hashFiles('artifacts/pga-release-automated-evidence.json') != ''
+        uses: actions/upload-artifact@v6
+        with:
+          name: pga-release-automated-evidence
+          path: artifacts/pga-release-automated-evidence.json
+          if-no-files-found: error
+          retention-days: 14

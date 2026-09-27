@@ -1,0 +1,63 @@
+name: PGA shell validation
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/app/**'
+      - 'scripts/lib/validate-pga-shell.mjs'
+      - '.github/workflows/pga-shell-validate.yml'
+  push:
+    branches:
+      - 'pga/issue-841-admin-shell'
+    paths:
+      - 'src/pga/app/**'
+      - 'scripts/lib/validate-pga-shell.mjs'
+      - '.github/workflows/pga-shell-validate.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pga-shell-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate static shell
+        run: node scripts/lib/validate-pga-shell.mjs
+
+      - name: Install Playwright runner
+        run: npm install --no-save --no-package-lock @playwright/test@1.55.0
+
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Start PGA fixture
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory src/pga/app >/tmp/pga-shell.log 2>&1 &
+          echo $! >/tmp/pga-shell.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4174/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/pga-shell.log
+          exit 1
+
+      - name: Validate responsive shell
+        env:
+          PGA_BASE_URL: http://127.0.0.1:4174
+        run: node scripts/lib/validate-pga-shell.mjs --browser

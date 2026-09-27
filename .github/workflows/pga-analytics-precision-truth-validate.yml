@@ -1,0 +1,42 @@
+name: Validate PGA analytics precision truth
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/backend/lib/analytics.js'
+      - 'src/pga/backend/tests/analytics-precision-truth.test.mjs'
+      - '.github/workflows/pga-analytics-precision-truth-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/backend/lib/analytics.js'
+      - 'src/pga/backend/tests/analytics-precision-truth.test.mjs'
+      - '.github/workflows/pga-analytics-precision-truth-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-analytics-precision-truth-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax-check analytics helper
+        run: node --check src/pga/backend/lib/analytics.js
+
+      - name: Run analytics precision truth fixtures
+        run: node --test src/pga/backend/tests/analytics-precision-truth.test.mjs

@@ -1,0 +1,758 @@
+:root {
+  --live-art-base: "https://playgarba.com/assets/backgrounds/library/";
+  --editorial-ease-out: cubic-bezier(.16, 1, .3, 1);
+  --editorial-fast: 160ms;
+}
+
+/* The six listening worlds use the current 2K live-player artwork. Approved photography is reserved for cultural/editorial storytelling. */
+.hero-art {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/11-master-dark-courtyard.webp") !important;
+}
+
+.world-traditional {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/15-traditional-canopy-courtyard.webp") !important;
+}
+
+.world-dandiya {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/07-dandiya-purple-courtyard.webp") !important;
+}
+
+.world-devotional {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/03-devotional-garba-courtyard.webp") !important;
+}
+
+.world-folk {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/14-gujarati-folk-courtyard.webp") !important;
+}
+
+.world-sanedo {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/08-colourful-garba-courtyard-b.webp") !important;
+}
+
+.world-fusion {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/05-fusion-gujarati-neon.webp") !important;
+}
+
+.nonstop-art {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/04-colourful-garba-courtyard-a.webp") !important;
+}
+
+.player-scene {
+  background-image: url("https://playgarba.com/assets/backgrounds/library/11-master-dark-courtyard.webp") !important;
+}
+
+.page-hero {
+  --page-hero-image: url("https://playgarba.com/assets/backgrounds/library/11-master-dark-courtyard.webp");
+}
+
+.page-hero.install-hero {
+  --page-hero-image: url("https://playgarba.com/assets/backgrounds/library/07-dandiya-purple-courtyard.webp");
+}
+
+.page-hero.live-hero {
+  --page-hero-image: url("https://playgarba.com/assets/backgrounds/library/05-fusion-gujarati-neon.webp");
+}
+
+.page-hero.about-hero {
+  --page-hero-image: url("https://playgarba.com/assets/backgrounds/library/14-gujarati-folk-courtyard.webp");
+}
+
+.page-hero.garba-hero {
+  --page-hero-image: url("/assets/editorial/001-what-is-garba.webp");
+}
+
+.culture-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 80px);
+  align-items: center;
+  padding: clamp(72px, 8vw, 108px) var(--pad);
+  border-top: 1px solid rgba(242, 236, 226, .08);
+  border-bottom: 1px solid rgba(242, 236, 226, .08);
+  background: #0b0c11;
+}
+
+.culture-feature-art {
+  min-height: clamp(280px, 34vw, 460px);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(7, 8, 13, .02), rgba(7, 8, 13, .24)),
+    url("/assets/editorial/001-what-is-garba.webp") center 48% / cover no-repeat;
+}
+
+.culture-feature-inner {
+  max-width: 620px;
+}
+
+.culture-feature h2 {
+  max-width: 600px;
+  margin: 0;
+  font: 400 clamp(44px, 5.8vw, 76px)/.94 var(--serif);
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.culture-feature p:not(.eyebrow) {
+  max-width: 590px;
+  margin: 22px 0 28px;
+  color: rgba(242, 236, 226, .66);
+  font-size: clamp(15px, 1.25vw, 17px);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.learn-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(242, 236, 226, .12);
+  border-bottom: 1px solid rgba(242, 236, 226, .12);
+}
+
+.learn-card {
+  min-height: 178px;
+  padding: 26px 28px 24px;
+  border: 0;
+  border-right: 1px solid rgba(242, 236, 226, .1);
+  border-radius: 0;
+  background: transparent;
+  transition:
+    background-color var(--editorial-fast) var(--editorial-ease-out),
+    transform var(--editorial-fast) var(--editorial-ease-out);
+}
+
+.learn-card:last-child {
+  border-right: 0;
+}
+
+.learn-card:active {
+  transform: translateY(1px) scale(.997);
+}
+
+.learn-card:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--ivory);
+  outline-offset: -3px;
+}
+
+.learn-card .page-kicker {
+  top: 26px;
+  left: 28px;
+}
+
+.learn-card .card-arrow {
+  top: 24px;
+  right: 28px;
+}
+
+.editorial-article {
+  width: min(780px, calc(100% - (2 * var(--pad))));
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 104px) 0 clamp(78px, 9vw, 120px);
+}
+
+.editorial-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 0 0 clamp(54px, 7vw, 82px);
+  padding: 0 0 22px;
+  border-bottom: 1px solid rgba(242, 236, 226, .12);
+}
+
+.editorial-jump a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  color: rgba(242, 236, 226, .58);
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    color var(--editorial-fast) var(--editorial-ease-out),
+    transform var(--editorial-fast) var(--editorial-ease-out);
+}
+
+.editorial-jump a:active {
+  transform: translateY(1px);
+}
+
+.editorial-jump a:focus-visible,
+.editorial-source a:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.editorial-section {
+  scroll-margin-top: 92px;
+  margin: 0 0 clamp(50px, 6vw, 72px);
+  padding: 0 0 clamp(50px, 6vw, 72px);
+  border-bottom: 1px solid rgba(242, 236, 226, .1);
+}
+
+.editorial-section h2 {
+  max-width: 680px;
+  margin: 0 0 20px;
+  font: 400 clamp(34px, 4.2vw, 52px)/1 var(--serif);
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.editorial-section p:not(.page-kicker) {
+  max-width: 650px;
+  margin: 0 0 18px;
+  color: rgba(242, 236, 226, .66);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.editorial-section p:last-child {
+  margin-bottom: 0;
+}
+
+.editorial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.editorial-source {
+  max-width: 650px;
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(242, 236, 226, .12);
+  color: rgba(242, 236, 226, .52);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.editorial-source a {
+  color: rgba(242, 236, 226, .78);
+  border-bottom: 1px solid rgba(242, 236, 226, .24);
+  transition: color var(--editorial-fast) var(--editorial-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .learn-card:hover {
+    background: rgba(242, 236, 226, .025);
+  }
+
+  .editorial-jump a:hover,
+  .editorial-source a:hover {
+    color: var(--ivory);
+  }
+}
+
+@media (pointer: coarse) {
+  .editorial-jump a {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 760px) {
+  .culture-feature {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .culture-feature-art {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    background-position: 58% center;
+  }
+
+  .culture-feature h2 {
+    font-size: clamp(38px, 11vw, 54px);
+  }
+
+  .world-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .world-card {
+    min-height: 210px;
+    padding: 14px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .world-number {
+    display: none;
+  }
+
+  .world-name {
+    font-size: clamp(17px, 5.2vw, 21px);
+  }
+
+  .world-arrow {
+    font-size: 14px;
+  }
+
+  .learn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-card {
+    min-height: 150px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(242, 236, 226, .1);
+  }
+
+  .learn-card:last-child {
+    border-bottom: 0;
+  }
+
+  .editorial-article {
+    width: calc(100% - (2 * var(--pad)));
+    padding-top: 54px;
+  }
+
+  .editorial-jump {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 18px;
+    margin-bottom: 52px;
+  }
+
+  .editorial-section {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+  }
+
+  .editorial-section h2 {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+}
+
+@media (max-width: 380px) {
+  .world-card {
+    min-height: 188px;
+  }
+
+  .world-name {
+    font-size: 16px;
+  }
+
+  .editorial-jump {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learn-card,
+  .editorial-jump a,
+  .editorial-source a {
+    transition: none;
+  }
+
+  .learn-card:active,
+  .editorial-jump a:active {
+    transform: none;
+  }
+}
+
+/* Supporting read pages: warm paper, calm navigation and type-led grouping. */
+body.interior-page:not([data-page="navratri-2026"]) {
+  color-scheme: light;
+  background: #f5efe3;
+  color: #2a211d;
+  --page-muted: #62564e;
+  --page-border: rgba(50, 37, 30, .18);
+  --page-card: transparent;
+  --page-card-strong: transparent;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-header {
+  background: rgba(245, 239, 227, .96);
+  border-bottom-color: rgba(50, 37, 30, .16);
+  color: #2a211d;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .wordmark::after {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-nav {
+  color: #4e423b;
+  background: #f5efe3;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-nav a:hover,
+body.interior-page:not([data-page="navratri-2026"]) .site-nav a[aria-current='page'] {
+  color: #982e25;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-nav .nav-cta {
+  border-color: rgba(50, 37, 30, .3);
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-nav .nav-cta:hover {
+  background: #2a211d;
+  color: #f8f2e7;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-main,
+body.interior-page:not([data-page="navratri-2026"]) .page-section,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-article {
+  background: #f5efe3;
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero {
+  min-height: 0;
+  align-items: center;
+  padding: clamp(72px, 9vw, 118px) var(--pad) clamp(50px, 6vw, 78px);
+  background: #f5efe3;
+  border-bottom: 1px solid rgba(50, 37, 30, .2);
+  color: #2a211d;
+  text-align: center;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero::before,
+body.interior-page:not([data-page="navratri-2026"]) .page-hero::after {
+  display: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero-inner {
+  width: min(920px, 100%);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-kicker,
+body.interior-page:not([data-page="navratri-2026"]) .route-pill {
+  color: #982e25;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .route-pill {
+  padding: 0;
+  margin: 0 0 20px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .route-pill::before {
+  display: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero h1 {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #2a211d;
+  font-size: clamp(44px, 6.4vw, 82px);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero h1 em {
+  color: #6b5b51;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero-lead {
+  max-width: 64ch;
+  margin: 22px auto 0;
+  color: #62564e;
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.68;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-hero-actions {
+  justify-content: center;
+  margin-top: 26px;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-section {
+  border-top-color: rgba(50, 37, 30, .14);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-section.soft {
+  background: #eee6d7;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-section-head h2,
+body.interior-page:not([data-page="navratri-2026"]) .page-copy h2,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-section h2,
+body.interior-page:not([data-page="navratri-2026"]) .culture-feature h2,
+body.interior-page:not([data-page="navratri-2026"]) .page-cta h2 {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .culture-feature {
+  border-color: rgba(50, 37, 30, .18);
+  background: #eee6d7;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .culture-feature-art {
+  border-radius: 2px;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-section-head > p,
+body.interior-page:not([data-page="navratri-2026"]) .page-copy p,
+body.interior-page:not([data-page="navratri-2026"]) .page-copy li,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-section p:not(.page-kicker),
+body.interior-page:not([data-page="navratri-2026"]) .culture-feature p:not(.eyebrow) {
+  color: #62564e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .page-copy p,
+body.interior-page:not([data-page="navratri-2026"]) .page-copy li,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-section p:not(.page-kicker) {
+  max-width: 68ch;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-article {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-jump {
+  border-bottom-color: rgba(50, 37, 30, .2);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-jump a {
+  color: #62564e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-jump a:hover,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-source a:hover {
+  color: #982e25;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-section,
+body.interior-page:not([data-page="navratri-2026"]) .editorial-source {
+  border-color: rgba(50, 37, 30, .18);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-source {
+  color: #62564e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .editorial-source a,
+body.interior-page:not([data-page="navratri-2026"]) .inline-link,
+body.interior-page:not([data-page="navratri-2026"]) .text-link {
+  color: #7f2b23;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .step-grid,
+body.interior-page:not([data-page="navratri-2026"]) .device-grid,
+body.interior-page:not([data-page="navratri-2026"]) .learn-grid,
+body.interior-page:not([data-page="navratri-2026"]) .link-grid,
+body.interior-page:not([data-page="navratri-2026"]) .truth-grid,
+body.interior-page:not([data-page="navratri-2026"]) .feature-row {
+  gap: 0 clamp(24px, 4vw, 58px);
+  border: 0;
+  background: transparent;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .learn-grid,
+body.interior-page:not([data-page="navratri-2026"]) .link-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .step-card,
+body.interior-page:not([data-page="navratri-2026"]) .device-card,
+body.interior-page:not([data-page="navratri-2026"]) .learn-card,
+body.interior-page:not([data-page="navratri-2026"]) .link-card,
+body.interior-page:not([data-page="navratri-2026"]) .truth-card,
+body.interior-page:not([data-page="navratri-2026"]) .feature-row article {
+  min-height: 0;
+  padding: 26px 0 28px;
+  border: 0;
+  border-top: 1px solid rgba(50, 37, 30, .2);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .learn-card,
+body.interior-page:not([data-page="navratri-2026"]) .link-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  justify-content: initial;
+  transition: color var(--editorial-fast) var(--editorial-ease-out), transform var(--editorial-fast) var(--editorial-ease-out);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .learn-card .page-kicker,
+body.interior-page:not([data-page="navratri-2026"]) .link-card .page-kicker {
+  position: static;
+  grid-column: 1;
+  margin: 0 0 14px;
+  font-size: 10px;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .learn-card .card-arrow,
+body.interior-page:not([data-page="navratri-2026"]) .link-card .card-arrow {
+  position: static;
+  grid-column: 2;
+  grid-row: 1;
+  color: #7f2b23;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .step-card h3,
+body.interior-page:not([data-page="navratri-2026"]) .device-card h3,
+body.interior-page:not([data-page="navratri-2026"]) .link-card h3,
+body.interior-page:not([data-page="navratri-2026"]) .learn-card h3,
+body.interior-page:not([data-page="navratri-2026"]) .feature-row strong,
+body.interior-page:not([data-page="navratri-2026"]) .truth-card strong {
+  grid-column: 1 / -1;
+  margin: 0 0 12px;
+  color: #2a211d;
+  font-family: var(--serif);
+  font-size: clamp(25px, 2.4vw, 34px);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .step-card p,
+body.interior-page:not([data-page="navratri-2026"]) .device-card p,
+body.interior-page:not([data-page="navratri-2026"]) .link-card p,
+body.interior-page:not([data-page="navratri-2026"]) .learn-card p,
+body.interior-page:not([data-page="navratri-2026"]) .truth-card p,
+body.interior-page:not([data-page="navratri-2026"]) .feature-row span,
+body.interior-page:not([data-page="navratri-2026"]) .faq-list p {
+  color: #62564e;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .step-number,
+body.interior-page:not([data-page="navratri-2026"]) .device-label,
+body.interior-page:not([data-page="navratri-2026"]) .truth-card b {
+  margin-bottom: 22px;
+  color: #7c6b5e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .contents-card {
+  border: 0;
+  border-left: 1px solid rgba(50, 37, 30, .24);
+  background: transparent;
+  padding: 0 0 0 16px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .contents-card > span {
+  color: #7c6b5e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .contents-card a,
+body.interior-page:not([data-page="navratri-2026"]) .device-card li {
+  color: #51453d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .faq-list,
+body.interior-page:not([data-page="navratri-2026"]) .faq-list details {
+  border-color: rgba(50, 37, 30, .2);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .faq-list summary {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .faq-list summary::after {
+  color: #7f2b23;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .live-address {
+  border: 0;
+  border-top: 1px solid rgba(50, 37, 30, .22);
+  border-bottom: 1px solid rgba(50, 37, 30, .22);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .live-address code {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .live-address a {
+  color: #7f2b23;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .platform-readout,
+body.interior-page:not([data-page="navratri-2026"]) .note-card {
+  border-color: rgba(127, 43, 35, .3);
+  background: rgba(127, 43, 35, .045);
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .platform-readout strong,
+body.interior-page:not([data-page="navratri-2026"]) .note-card strong {
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .platform-readout p,
+body.interior-page:not([data-page="navratri-2026"]) .note-card p {
+  color: #62564e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .button-primary {
+  background: #982e25;
+  color: #fff8ed;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .button-primary:hover {
+  background: #7f261e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .button-ghost {
+  border-color: rgba(50, 37, 30, .32);
+  background: transparent;
+  color: #2a211d;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .site-footer {
+  border-top-color: rgba(50, 37, 30, .18);
+  background: #eee6d7;
+  color: #62564e;
+}
+
+body.interior-page:not([data-page="navratri-2026"]) .footer-mark,
+body.interior-page:not([data-page="navratri-2026"]) .footer-links a {
+  color: #51453d;
+}
+
+@media (max-width: 700px) {
+  body.interior-page:not([data-page="navratri-2026"]) .page-hero {
+    padding-top: 104px;
+    padding-bottom: 44px;
+  }
+
+  body.interior-page:not([data-page="navratri-2026"]) .page-hero h1 {
+    font-size: clamp(40px, 12vw, 60px);
+  }
+
+  body.interior-page:not([data-page="navratri-2026"]) .page-hero-actions {
+    align-items: center;
+  }
+
+  body.interior-page:not([data-page="navratri-2026"]) .learn-grid,
+  body.interior-page:not([data-page="navratri-2026"]) .link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.interior-page:not([data-page="navratri-2026"]) .site-nav {
+    border-top: 1px solid rgba(50, 37, 30, .16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.interior-page:not([data-page="navratri-2026"]) .learn-card,
+  body.interior-page:not([data-page="navratri-2026"]) .link-card {
+    transition: none;
+  }
+}

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151412">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="application-name" content="PlayGarba Admin">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PGA">
+  <title>PlayGarba Admin</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./home-live.css">
+  <link rel="stylesheet" href="./health.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app-shell" id="appShell">
+    <aside class="side-rail" aria-label="PGA navigation">
+      <a class="brand" href="#home" aria-label="PlayGarba Admin home">
+        <img src="./icons/icon.svg" width="36" height="36" alt="">
+        <span><strong>PGA</strong><small>PlayGarba Admin</small></span>
+      </a>
+      <nav class="side-nav" aria-label="Primary">
+        <button type="button" data-nav="home" aria-current="page"><span aria-hidden="true">⌂</span>Home</button>
+        <button type="button" data-nav="audience"><span aria-hidden="true">◎</span>Audience</button>
+        <button type="button" data-nav="listening"><span aria-hidden="true">♪</span>Listening</button>
+        <button type="button" data-nav="health"><span aria-hidden="true">◇</span>Health</button>
+        <button type="button" data-nav="more"><span aria-hidden="true">•••</span>More</button>
+      </nav>
+      <p class="rail-note">Private founder surface</p>
+    </aside>
+
+    <div class="content-shell">
+      <header class="topbar">
+        <div class="mobile-brand" aria-hidden="true">
+          <img src="./icons/icon.svg" width="32" height="32" alt="">
+          <strong>PGA</strong>
+        </div>
+        <div class="topbar-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="connectionLabel">Shell ready</span>
+        </div>
+        <button class="quiet-button" id="refreshButton" type="button">Refresh</button>
+      </header>
+
+      <div class="boundary" id="boundary" role="status" aria-live="polite" hidden>
+        <strong id="boundaryTitle"></strong>
+        <span id="boundaryBody"></span>
+        <button id="boundaryAction" type="button" hidden></button>
+      </div>
+
+      <main id="main" tabindex="-1">
+        <section class="view is-active" data-view="home" aria-labelledby="title-home">
+          <div class="view-heading home-heading">
+            <div><p class="eyebrow">Today · IST</p><h1 id="title-home" tabindex="-1">Home</h1></div>
+            <p class="freshness" id="homeFreshness">Refreshing protected aggregates</p>
+          </div>
+          <div class="view-state home-view-state" id="homeState" role="status" aria-live="polite" data-state="loading">
+            <strong>Loading protected data</strong><p>PGA is fetching Home and Live aggregates without showing placeholder zeros.</p>
+          </div>
+          <div id="homeContent" hidden>
+            <div class="metric-ledger home-primary-ledger" aria-label="Current and today summary">
+              <article><span>Live now</span><strong id="homeLiveNow" aria-label="Live now unavailable">—</strong><small>Active sessions, not people</small></article>
+              <article><span>Listening now</span><strong id="homeListeningNow" aria-label="Listening now unavailable">—</strong><small>Sessions with confirmed playback</small></article>
+              <article><span>Unique browsers today</span><strong id="homeUniqueToday" aria-label="Unique browsers today unavailable">—</strong><small>Anonymous browser IDs, not people</small></article>
+              <article><span>Sessions today</span><strong id="homeSessionsToday" aria-label="Sessions today unavailable">—</strong><small>Current IST calendar day</small></article>
+            </div>
+
+            <section class="home-section" aria-labelledby="home-today-title">
+              <div class="section-heading"><h2 id="home-today-title">Today</h2><span>Measured activity</span></div>
+              <div class="home-secondary-ledger">
+                <article><span>Browsing now</span><strong id="homeBrowsingNow" aria-label="Browsing now unavailable">—</strong><small>Live sessions without confirmed playback</small></article>
+                <article><span>Confirmed play starts</span><strong id="homeStartsToday" aria-label="Confirmed play starts today unavailable">—</strong><small>Provider/runtime confirmed</small></article>
+                <article><span>Listening time</span><strong id="homeListeningToday" aria-label="Listening time today unavailable">—</strong><small>Heartbeat-derived, deduplicated</small></article>
+              </div>
+              <p class="home-source-note" id="homeLiveMeta">Live freshness metadata is unavailable.</p>
+            </section>
+
+            <section class="home-section" id="homeLiveTrendSection" aria-labelledby="home-live-trend-title" hidden>
+              <div class="section-heading"><h2 id="home-live-trend-title">Live activity</h2><span>Recent protected trend</span></div>
+              <p class="home-source-note home-live-trend-summary" id="homeLiveTrendSummary"></p>
+            </section>
+
+            <section class="home-section" id="homeTrendSection" aria-labelledby="home-trend-title" hidden>
+              <div class="section-heading"><h2 id="home-trend-title">Recent sessions</h2><span>Last 7 daily points</span></div>
+              <ol class="home-trend" id="homeTrend"></ol>
+              <p class="home-source-note" id="homeTrendSummary"></p>
+            </section>
+
+            <section class="home-section" id="homeLiveDetails" aria-labelledby="home-live-detail-title" hidden>
+              <div class="section-heading"><h2 id="home-live-detail-title">Live context</h2><span>Privacy-safe active sessions</span></div>
+              <div class="home-detail-grid">
+                <div id="homeLiveSurfacePanel"><h3>Surface</h3><ul class="home-simple-list" id="homeLiveSurfaces"></ul></div>
+                <div id="homeLiveWorldPanel"><h3>Presentation world</h3><ul class="home-simple-list" id="homeLiveWorlds"></ul></div>
+                <div id="homeLiveModePanel"><h3>App surface</h3><ul class="home-simple-list" id="homeLiveModes"></ul></div>
+              </div>
+            </section>
+
+            <section class="home-section" id="homeLifetimeSection" aria-labelledby="home-lifetime-title" hidden>
+              <div class="section-heading"><h2 id="home-lifetime-title">All measured time</h2><span>Available rollups only</span></div>
+              <div class="home-lifetime" id="homeLifetime"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view analytics-view" data-view="audience" aria-labelledby="title-audience" hidden>
+          <div class="view-heading analytics-heading">
+            <div><p class="eyebrow">Recent audience</p><h1 id="title-audience" tabindex="-1">Audience</h1></div>
+            <p class="freshness" id="audienceFreshness">No aggregate response yet</p>
+          </div>
+          <div class="range-switcher" role="group" aria-label="Audience date range">
+            <button type="button" data-range-view="audience" data-range="7d">7 days</button>
+            <button type="button" data-range-view="audience" data-range="30d" aria-pressed="true">30 days</button>
+            <button type="button" data-range-view="audience" data-range="90d">90 days</button>
+          </div>
+          <div class="view-state" id="audienceState" role="status" aria-live="polite">
+            <strong>No data yet</strong><p>Open Audience to load privacy-preserving aggregate usage.</p>
+          </div>
+          <div id="audienceContent" hidden>
+            <div class="metric-ledger analytics-metrics" aria-label="Audience summary">
+              <article><span>Unique browsers</span><strong id="audienceUnique">—</strong><small>Anonymous browser IDs, not people</small></article>
+              <article><span>Sessions</span><strong id="audienceSessions">—</strong><small>Sessions started in range</small></article>
+              <article><span>New browser IDs</span><strong id="audienceNew">—</strong><small>Created inside this range</small></article>
+              <article><span>Returning browsers</span><strong id="audienceReturning">—</strong><small>Active without a new-ID event in range</small></article>
+            </div>
+            <div class="analytics-grid audience-grid">
+              <section class="data-panel" aria-labelledby="audience-device-title"><div class="section-heading"><h2 id="audience-device-title">Devices</h2><span>Sessions</span></div><div class="rank-list" id="audienceDevices"></div></section>
+              <section class="data-panel" aria-labelledby="audience-install-title"><div class="section-heading"><h2 id="audience-install-title">App surface</h2><span>PWA vs browser</span></div><div class="rank-list" id="audienceDisplayMode"></div></section>
+              <section class="data-panel" aria-labelledby="audience-os-title"><div class="section-heading"><h2 id="audience-os-title">Operating systems</h2><span>Sessions</span></div><div class="rank-list" id="audienceOs"></div></section>
+              <section class="data-panel" aria-labelledby="audience-browser-title"><div class="section-heading"><h2 id="audience-browser-title">Browsers</h2><span>Sessions</span></div><div class="rank-list" id="audienceBrowsers"></div></section>
+              <section class="data-panel data-panel-wide" aria-labelledby="audience-acquisition-title"><div class="section-heading"><h2 id="audience-acquisition-title">Acquisition</h2><span>Sanitised source · medium</span></div><div class="rank-list" id="audienceAcquisition"></div></section>
+              <section class="data-panel" aria-labelledby="audience-country-title"><div class="section-heading"><h2 id="audience-country-title">Countries</h2><span>Coarse geography</span></div><div class="rank-list" id="audienceCountries"></div></section>
+              <section class="data-panel" aria-labelledby="audience-region-title"><div class="section-heading"><h2 id="audience-region-title">Regions</h2><span>Suppressed below privacy threshold</span></div><div class="rank-list" id="audienceRegions"></div></section>
+            </div>
+          </div>
+        </section>
+
+        <section class="view analytics-view" data-view="listening" aria-labelledby="title-listening" hidden>
+          <div class="view-heading analytics-heading">
+            <div><p class="eyebrow">Measured listening</p><h1 id="title-listening" tabindex="-1">Listening</h1></div>
+            <p class="freshness" id="listeningFreshness">No aggregate response yet</p>
+          </div>
+          <div class="range-switcher" role="group" aria-label="Listening date range">
+            <button type="button" data-range-view="listening" data-range="7d">7 days</button>
+            <button type="button" data-range-view="listening" data-range="30d" aria-pressed="true">30 days</button>
+            <button type="button" data-range-view="listening" data-range="90d">90 days</button>
+          </div>
+          <div class="view-state" id="listeningState" role="status" aria-live="polite">
+            <strong>No data yet</strong><p>Open Listening to load confirmed playback behaviour.</p>
+          </div>
+          <div id="listeningContent" hidden>
+            <div class="metric-ledger analytics-metrics" aria-label="Listening summary">
+              <article><span>Confirmed play starts</span><strong id="listeningStarts">—</strong><small>Provider/runtime confirmed</small></article>
+              <article><span>Play intents</span><strong id="listeningIntents">—</strong><small>Listener requested playback</small></article>
+              <article><span>Play success rate</span><strong id="listeningSuccess">—</strong><small id="listeningSuccessDenominator">Needs play intents</small></article>
+              <article><span>Listening time</span><strong id="listeningTime">—</strong><small>Heartbeat-derived, deduplicated</small></article>
+            </div>
+
+            <div class="analytics-grid">
+              <section class="data-panel" aria-labelledby="listening-actions-title"><div class="section-heading"><h2 id="listening-actions-title">Transport actions</h2><span>Measured events</span></div><div class="plain-metric-list" id="listeningActions"></div></section>
+              <section class="data-panel" aria-labelledby="listening-surfaces-title"><div class="section-heading"><h2 id="listening-surfaces-title">Entry surfaces</h2><span>Confirmed starts</span></div><div class="rank-list" id="listeningSurfaces"></div></section>
+              <section class="data-panel data-panel-wide" aria-labelledby="listening-search-title"><div class="section-heading"><h2 id="listening-search-title">Search funnel</h2><span>Explicit denominators</span></div><div class="funnel-list" id="listeningSearch"></div></section>
+              <section class="data-panel data-panel-wide" aria-labelledby="listening-top-title"><div class="section-heading"><h2 id="listening-top-title">Top songs</h2><span>Most played in measured telemetry</span></div><div class="content-rank-list" id="listeningTopContent"></div></section>
+              <section class="data-panel" aria-labelledby="listening-artists-title"><div class="section-heading"><h2 id="listening-artists-title">Artists</h2><span>Resolved confirmed starts</span></div><div class="rank-list" id="listeningArtists"></div></section>
+              <section class="data-panel" aria-labelledby="listening-releases-title"><div class="section-heading"><h2 id="listening-releases-title">Releases</h2><span>Resolved confirmed starts</span></div><div class="rank-list" id="listeningReleases"></div></section>
+              <section class="data-panel data-panel-wide" aria-labelledby="listening-nonstop-title"><div class="section-heading"><h2 id="listening-nonstop-title">Nonstop sets</h2><span>First-class listening sets, not a genre</span></div><div class="content-rank-list" id="listeningNonstopSets"></div></section>
+              <section class="data-panel" aria-labelledby="listening-world-title"><div class="section-heading"><h2 id="listening-world-title">Presentation worlds</h2><span>Confirmed starts</span></div><div class="rank-list" id="listeningWorlds"></div></section>
+              <section class="data-panel" aria-labelledby="listening-failures-title"><div class="section-heading"><h2 id="listening-failures-title">Playback failures</h2><span>Unavailable + error reasons</span></div><div class="rank-list" id="listeningErrors"></div></section>
+              <section class="data-panel data-panel-wide" aria-labelledby="listening-demand-title"><div class="section-heading"><h2 id="listening-demand-title">Unmet search demand</h2><span>Only terms meeting privacy threshold</span></div><div class="demand-list" id="listeningDemand"></div></section>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" data-view="health" aria-labelledby="title-health" hidden>
+          <div class="view-heading">
+            <div><p class="eyebrow">Production</p><h1 id="title-health" tabindex="-1">Health</h1></div>
+            <p class="freshness" id="healthFreshness">No health response yet</p>
+          </div>
+          <div class="view-state" id="healthState" role="status" aria-live="polite">
+            <strong>No data yet</strong><p>Open Health to load protected operational evidence.</p>
+          </div>
+          <div id="healthContent" hidden>
+            <section class="health-overview" aria-labelledby="health-overview-title">
+              <div class="health-overview-top">
+                <div>
+                  <span class="sr-only" id="health-overview-title">Overall system health</span>
+                  <strong id="healthOverallStatus" data-status="unknown">Unknown</strong>
+                </div>
+                <p class="health-coverage" id="healthCoverage">Evidence coverage unavailable</p>
+              </div>
+              <p id="healthOverallSummary">Current system health cannot be confirmed from the available evidence.</p>
+            </section>
+
+            <section class="health-section" id="healthProblemsSection" aria-labelledby="health-problems-title" hidden>
+              <div class="section-heading"><h2 id="health-problems-title">Needs attention</h2><span>Highest-priority evidence first</span></div>
+              <div class="health-stack" id="healthProblems"></div>
+            </section>
+
+            <section class="health-section" aria-labelledby="health-subsystems-title">
+              <div class="section-heading"><h2 id="health-subsystems-title">Subsystems</h2><span>Canonical evidence when connected</span></div>
+              <div class="health-stack" id="healthSubsystems"></div>
+            </section>
+
+            <p class="health-truth-note">Unknown is never converted to zero or healthy. Missing, stale or partial evidence stays visible as uncertainty.</p>
+          </div>
+        </section>
+
+        <section class="view" data-view="more" aria-labelledby="title-more" hidden>
+          <div class="view-heading"><div><p class="eyebrow">PGA</p><h1 id="title-more" tabindex="-1">More</h1></div></div>
+          <div class="settings-list">
+            <button type="button" id="installButton" hidden><span><strong>Install PGA</strong><small>Add the private admin app to this device</small></span><span aria-hidden="true">›</span></button>
+            <button type="button" id="accessButton"><span><strong>Refresh access</strong><small>Re-check the protected session</small></span><span aria-hidden="true">↻</span></button>
+            <div><span><strong>Reporting timezone</strong><small>Daily metrics use a fixed product timezone</small></span><span>IST</span></div>
+            <div><span><strong>Data policy</strong><small>PGA shows aggregates, not listener profiles</small></span><span>Private</span></div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary">
+        <button type="button" data-nav="home" aria-current="page"><span aria-hidden="true">⌂</span><small>Home</small></button>
+        <button type="button" data-nav="audience"><span aria-hidden="true">◎</span><small>Audience</small></button>
+        <button type="button" data-nav="listening"><span aria-hidden="true">♪</span><small>Listening</small></button>
+        <button type="button" data-nav="health"><span aria-hidden="true">◇</span><small>Health</small></button>
+        <button type="button" data-nav="more"><span aria-hidden="true">•••</span><small>More</small></button>
+      </nav>
+    </div>
+  </div>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./home-live.js"></script>
+  <script type="module" src="./health.js"></script>
+</body>
+</html>

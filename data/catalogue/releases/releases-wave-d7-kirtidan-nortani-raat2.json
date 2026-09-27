@@ -1,0 +1,33 @@
+[
+  {
+    "id":"nortani-raat-2-kirtidan-anita-2025",
+    "title":"Nortani Raat 2",
+    "artist":"Kirtidan Gadhvi & Anita Pandit",
+    "releaseDate":"2025-08-26",
+    "originalReleaseYear":2025,
+    "label":"Kirtidan Gadhvi",
+    "description":"An 11-track 2025 album by Kirtidan Gadhvi and Anita Pandit; four songs currently have independently verified exact official YouTube identities, while the other seven remain provenance-only and non-playable rather than being matched by inference.",
+    "categories":["modern-gujarati-garba","traditional-garba","mataji-devotional","krishna-garba","folk-lokgeet"],
+    "visualGenre":"traditional",
+    "entryType":"album",
+    "songCount":11,
+    "durationSeconds":1696,
+    "series":"Nortani Raat",
+    "volume":"2",
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.in/albums/B0FP2S1NJB","kind":"official-11-track-album"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=s2Pp3Zy7D_Y","kind":"official-distributed-song-sharad-poonam"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=j0xm-j_L-tQ","kind":"official-distributed-song-radha-shyam"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=02RqLW6cJpI","kind":"official-distributed-song-sona-no-garbo"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=htucA8V33oM","kind":"official-distributed-song-nav-nav-naganiyo"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-multi-source",
+    "audioAvailability":"youtube-official",
+    "durationPrecision":"amazon-displayed-track-sum",
+    "notes":"Amazon Music publishes the complete 11-track August 26, 2025 album credited to Kirtidan Gadhvi and Anita Pandit. Under PlayGarba's YouTube-only execution policy, four songs currently have independently verified exact Kirtidan Gadhvi Official YouTube identities: Sharad Poonam Ni Rat Ma, Radha Ne Shyam Rame Raas Sharad Purnima Ni Raat, Sona No Garbo and Nav Nav Naganiyo No Rafdo. Seven other exact Amazon song pages remain provenance and migration evidence only, not executable playback. No YouTube identity is inferred for the seven unmigrated tracks."
+  }
+]

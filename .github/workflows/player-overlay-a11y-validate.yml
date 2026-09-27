@@ -1,0 +1,85 @@
+name: Player overlay keyboard and focus
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'player-continuity.js'
+      - '.github/browser/player-overlay-a11y-smoke.mjs'
+      - '.github/workflows/player-overlay-a11y-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'player-continuity.js'
+      - '.github/browser/player-overlay-a11y-smoke.mjs'
+      - '.github/workflows/player-overlay-a11y-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: player-overlay-a11y-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  keyboard-focus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PLAYWRIGHT_VERSION: '1.63.0'
+      PLAYGARBA_BASE_URL: 'http://127.0.0.1:4175/'
+      PLAYGARBA_A11Y_ARTIFACT_DIR: 'test-results/player-overlay-a11y'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate focused test syntax
+        run: node --check .github/browser/player-overlay-a11y-smoke.mjs
+
+      - name: Build catalogue data
+        run: npm run catalogue
+
+      - name: Install focused browser runtime
+        run: |
+          npm install --no-save --no-package-lock "playwright@${PLAYWRIGHT_VERSION}"
+          npx playwright install --with-deps chromium
+
+      - name: Start source-runtime fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4175 --bind 127.0.0.1 >/tmp/playgarba-overlay-a11y.log 2>&1 &
+          echo $! > /tmp/playgarba-overlay-a11y.pid
+          for attempt in {1..20}; do
+            if curl -fsS "$PLAYGARBA_BASE_URL" >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/playgarba-overlay-a11y.log
+          exit 1
+
+      - name: Run keyboard and focus regression gate
+        run: node .github/browser/player-overlay-a11y-smoke.mjs
+
+      - name: Upload focused evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: player-overlay-a11y-${{ github.sha }}
+          path: |
+            test-results/player-overlay-a11y
+            /tmp/playgarba-overlay-a11y.log
+          if-no-files-found: warn
+          retention-days: 14

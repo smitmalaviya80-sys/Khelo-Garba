@@ -1,0 +1,271 @@
+{
+  "version": "1.1.0",
+  "updated": "2026-09-26",
+  "policy": "Photographic artist artwork requires identity verification and explicit reusable licensing. Generated portrait illustrations may be shown only when explicitly marked as illustrations and must not be treated as licensed photography. Missing entries fall back to the existing visual system rather than guessing or hotlinking unverified images.",
+  "artists": {
+    "aditya-gadhvi": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Aditya%20Gadhvi%20At%20An%20Event%20In%20Ahmedabad%202020.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Aditya_Gadhvi_At_An_Event_In_Ahmedabad_2020.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Imfarhad7",
+      "verified": true,
+      "objectPosition": "50% 42%"
+    },
+    "geeta-rabari": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Geeta-Rabari-pic.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Geeta-Rabari-pic.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Kingrajput12",
+      "verified": true,
+      "objectPosition": "50% 38%"
+    },
+    "ishani-dave": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ishani-dave.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Ishani-dave.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Ishani Dave",
+      "verified": true,
+      "objectPosition": "50% 30%"
+    },
+    "kirtidan-gadhvi": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kirtidan%20Gadhavi.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Kirtidan_Gadhavi.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Soni Anil Maheshbhai",
+      "verified": true,
+      "objectPosition": "50% 38%"
+    },
+    "osman-mir": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Poet%20Anant%20Rathod%20and%20Singer%20Osman%20Meer%20Abu%20Dhabi%202016.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Poet_Anant_Rathod_and_Singer_Osman_Meer_Abu_Dhabi_2016.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Gazal world",
+      "verified": true,
+      "objectPosition": "78% 42%"
+    },
+    "falguni-pathak": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Falguni%20Pathak%20at%20her%20dandiya%20show%20in%20Goregaon%20Sports.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Falguni_Pathak_at_her_dandiya_show_in_Goregaon_Sports.jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "attribution": "Bollywood Hungama",
+      "verified": true,
+      "objectPosition": "50% 28%"
+    },
+    "hemant-chauhan": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hemant%20Chauhan%20Gujrat%20(2).jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Hemant_Chauhan_Gujrat_(2).jpg",
+      "sourceType": "wikimedia-commons",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Suyash Dwivedi",
+      "verified": true,
+      "objectPosition": "50% 25%"
+    }
+  },
+  "illustrations": {
+    "alpa-patel": {
+      "illustrationUrl": "/garbo/prototype/singers/alpa-patel.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "pamela-jain": {
+      "illustrationUrl": "/garbo/prototype/singers/pamela-jain.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "hemant-chauhan": {
+      "illustrationUrl": "/garbo/prototype/singers/hemant-chauhan.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "maulik-mehta": {
+      "illustrationUrl": "/garbo/prototype/singers/maulik-mehta.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "kajal-maheriya": {
+      "illustrationUrl": "/garbo/prototype/singers/kajal-maheriya.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "gaman-santhal": {
+      "illustrationUrl": "/garbo/prototype/singers/gaman-santhal.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "praful-dave": {
+      "illustrationUrl": "/garbo/prototype/singers/praful-dave.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "hardik-dave": {
+      "illustrationUrl": "/garbo/prototype/singers/hardik-dave.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "rahul-munjariya": {
+      "illustrationUrl": "/garbo/prototype/singers/rahul-munjariya.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "tushaar-trivedi": {
+      "illustrationUrl": "/garbo/prototype/singers/tushaar-trivedi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "dharmesh-barot": {
+      "illustrationUrl": "/garbo/prototype/singers/dharmesh-barot.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "rashmita-rabari": {
+      "illustrationUrl": "/garbo/prototype/singers/rashmita-rabari.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "himali-vora": {
+      "illustrationUrl": "/garbo/prototype/singers/himali-vora.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "pooja-kalyani": {
+      "illustrationUrl": "/garbo/prototype/singers/pooja-kalyani.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "aishwarya-majmudar": {
+      "illustrationUrl": "/garbo/prototype/singers/aishwarya-majmudar.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "atul-purohit": {
+      "illustrationUrl": "/garbo/prototype/singers/atul-purohit.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "bhoomi-trivedi": {
+      "illustrationUrl": "/garbo/prototype/singers/bhoomi-trivedi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "jahnvi-shrimankar": {
+      "illustrationUrl": "/garbo/prototype/singers/jahnvi-shrimankar.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "jigardan-gadhavi": {
+      "illustrationUrl": "/garbo/prototype/singers/jigardan-gadhavi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "jignesh-barot": {
+      "illustrationUrl": "/garbo/prototype/singers/jignesh-barot.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "kairavi-buch": {
+      "illustrationUrl": "/garbo/prototype/singers/kairavi-buch.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "kinjal-dave": {
+      "illustrationUrl": "/garbo/prototype/singers/kinjal-dave.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "parth-bharat-thakkar": {
+      "illustrationUrl": "/garbo/prototype/singers/parth-bharat-thakkar.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "parth-oza": {
+      "illustrationUrl": "/garbo/prototype/singers/parth-oza.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "purva-mantri": {
+      "illustrationUrl": "/garbo/prototype/singers/purva-mantri.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "rajesh-ahir": {
+      "illustrationUrl": "/garbo/prototype/singers/rajesh-ahir.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "rutvi-pandya": {
+      "illustrationUrl": "/garbo/prototype/singers/rutvi-pandya.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "sabhiben-ahir": {
+      "illustrationUrl": "/garbo/prototype/singers/sabhiben-ahir.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "santvani-trivedi": {
+      "illustrationUrl": "/garbo/prototype/singers/santvani-trivedi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "umesh-barot": {
+      "illustrationUrl": "/garbo/prototype/singers/umesh-barot.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "hariom-gadhavi": {
+      "illustrationUrl": "/garbo/prototype/singers/hariom-gadhavi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "kishore-manraja": {
+      "illustrationUrl": "/garbo/prototype/singers/kishore-manraja.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "rushabh-ahir": {
+      "illustrationUrl": "/garbo/prototype/singers/rushabh-ahir.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "anita-pandit": {
+      "illustrationUrl": "/garbo/prototype/singers/anita-pandit.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "parthiv-gohil": {
+      "illustrationUrl": "/garbo/prototype/singers/parthiv-gohil.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "dhara-shah": {
+      "illustrationUrl": "/garbo/prototype/singers/dhara-shah.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "shailendra-bharti": {
+      "illustrationUrl": "/garbo/prototype/singers/shailendra-bharti.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "vikram-thakor": {
+      "illustrationUrl": "/garbo/prototype/singers/vikram-thakor.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "trupti-gadhvi": {
+      "illustrationUrl": "/garbo/prototype/singers/trupti-gadhvi.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "nisha-upadhyay": {
+      "illustrationUrl": "/garbo/prototype/singers/nisha-upadhyay.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "musa-paik": {
+      "illustrationUrl": "/garbo/prototype/singers/musa-paik.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "kailash-kher": {
+      "illustrationUrl": "/garbo/prototype/singers/kailash-kher.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "tejas-shishangiya": {
+      "illustrationUrl": "/garbo/prototype/singers/tejas-shishangiya.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "balraj-shastri": {
+      "illustrationUrl": "/garbo/prototype/singers/balraj-shastri.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "anushka-pandit": {
+      "illustrationUrl": "/garbo/prototype/singers/anushka-pandit.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "shruti-ahir": {
+      "illustrationUrl": "/garbo/prototype/singers/shruti-ahir.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "achal-maheta": {
+      "illustrationUrl": "/garbo/prototype/singers/achal-maheta.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    },
+    "damayanti-bardai": {
+      "illustrationUrl": "/garbo/prototype/singers/damayanti-bardai.webp",
+      "illustrationType": "ai-generated-stylized-portrait"
+    }
+  }
+}

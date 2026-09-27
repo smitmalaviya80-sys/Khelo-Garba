@@ -1,0 +1,804 @@
+name: Agent file claim conflicts
+
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [closed, reopened]
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review, closed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+# Keep this workflow independent from the ordinary claim registry. GitHub may
+# replace a pending run when separate workflows share one concurrency group.
+# Non-closed PR checks are read-only and use a PR-specific pending slot, so
+# unrelated PRs cannot replace one another. All mutating reconciliation
+# stays in the single `global` slot.
+concurrency:
+  group: agent-file-claim-conflicts-${{ github.event_name == 'pull_request' && github.event.action != 'closed' && github.event.pull_request.number || 'global' }}
+  cancel-in-progress: false
+
+jobs:
+  ownership:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reconcile cross-issue file ownership
+        uses: actions/github-script@v7
+        env:
+          BOARD_ISSUE: "364"
+          LEGACY_PR_MAX: "378"
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const boardIssue = Number(process.env.BOARD_ISSUE);
+            const legacyPrMax = Number(process.env.LEGACY_PR_MAX);
+            const conflictLabel = 'agent:file-conflict';
+            const graphBatchSize = 20;
+
+            const claimRe = /<!--\s*agent-claim\s*\n([\s\S]*?)-->/i;
+            const releaseRe = /<!--\s*agent-release\s*\n([\s\S]*?)-->/i;
+            const overrideRe = /<!--\s*agent-claim-override\s*\n([\s\S]*?)-->/i;
+
+            if (context.eventName === 'issue_comment') {
+              const body = context.payload.comment?.body || '';
+              if (!claimRe.test(body) && !releaseRe.test(body) && !overrideRe.test(body)) return;
+            }
+
+            function field(block, name) {
+              const match = block.match(new RegExp(`^${name}:\\s*(.+?)\\s*$`, 'mi'));
+              return match ? match[1].trim() : '';
+            }
+
+            function parseEvent(comment) {
+              const body = comment.body || '';
+              const override = body.match(overrideRe);
+              if (override) {
+                return {
+                  type: 'override',
+                  author: comment.user?.login || 'unknown',
+                  commentId: comment.id,
+                };
+              }
+
+              const release = body.match(releaseRe);
+              if (release) {
+                return {
+                  type: 'release',
+                  agent: field(release[1], 'agent'),
+                  branch: field(release[1], 'branch'),
+                  commentId: comment.id,
+                };
+              }
+
+              const claim = body.match(claimRe);
+              if (claim) {
+                return {
+                  type: 'claim',
+                  agent: field(claim[1], 'agent'),
+                  branch: field(claim[1], 'branch'),
+                  scope: field(claim[1], 'scope'),
+                  files: field(claim[1], 'files'),
+                  commentId: comment.id,
+                };
+              }
+
+              return null;
+            }
+
+            function validClaim(event) {
+              return event?.type === 'claim' && event.agent && event.branch && event.scope && event.files;
+            }
+
+            function sameOwner(a, b) {
+              return Boolean(a && b && a.agent === b.agent && a.branch === b.branch);
+            }
+
+            // The first unreleased claim establishes priority. Same-owner claim updates
+            // may narrow/change scope without moving that ownership priority later.
+            function deriveState(comments) {
+              let active = null;
+
+              for (const comment of [...comments].sort((a, b) => a.id - b.id)) {
+                const event = parseEvent(comment);
+                if (!event) continue;
+
+                if (event.type === 'override') {
+                  if (event.author === owner) active = null;
+                  continue;
+                }
+
+                if (event.type === 'release') {
+                  if (active && sameOwner(active, event)) active = null;
+                  continue;
+                }
+
+                if (!validClaim(event)) continue;
+
+                if (!active) {
+                  active = { ...event, ownershipCommentId: event.commentId };
+                } else if (sameOwner(active, event)) {
+                  active = { ...event, ownershipCommentId: active.ownershipCommentId };
+                }
+              }
+
+              return { active };
+            }
+
+            function normalizeGraphComment(node) {
+              return {
+                id: Number(node.databaseId),
+                body: node.body || '',
+                user: {
+                  login: node.author?.login || 'unknown',
+                  type: node.author?.__typename === 'Bot' ? 'Bot' : 'User',
+                },
+              };
+            }
+
+            function buildGraphCommentPage(entries) {
+              const variableDefs = ['$owner: String!', '$repo: String!'];
+              const variables = { owner, repo };
+              const fields = [];
+
+              entries.forEach(([issueNumber, cursor], index) => {
+                const cursorName = `cursor${index}`;
+                if (cursor) {
+                  variableDefs.push(`$${cursorName}: String!`);
+                  variables[cursorName] = cursor;
+                }
+                fields.push([
+                  `i${index}: issue(number: ${issueNumber}) {`,
+                  '  number',
+                  `  comments(first: 100${cursor ? `, after: $${cursorName}` : ''}) {`,
+                  '    nodes { databaseId body author { __typename login } }',
+                  '    pageInfo { hasNextPage endCursor }',
+                  '  }',
+                  '}',
+                ].join('\n'));
+              });
+
+              return {
+                query: [
+                  `query(${variableDefs.join(', ')}) {`,
+                  '  repository(owner: $owner, name: $repo) {',
+                  fields.join('\n'),
+                  '  }',
+                  '}',
+                ].join('\n'),
+                variables,
+              };
+            }
+
+            // Claim issue comments are authoritative. Fetch them through GraphQL in
+            // batches so one PR does not spend one core REST request per active claim.
+            // Any issue with more than 100 comments is paged until history is complete.
+            async function listCommentsByIssue(issueNumbers) {
+              const unique = [...new Set(issueNumbers.filter(Boolean))];
+              const commentsByIssue = new Map(unique.map(issueNumber => [issueNumber, []]));
+              let pending = new Map(unique.map(issueNumber => [issueNumber, null]));
+
+              while (pending.size) {
+                const next = new Map();
+                const pendingEntries = [...pending.entries()];
+
+                for (let offset = 0; offset < pendingEntries.length; offset += graphBatchSize) {
+                  const chunk = pendingEntries.slice(offset, offset + graphBatchSize);
+                  const { query, variables } = buildGraphCommentPage(chunk);
+                  const response = await github.graphql(query, variables);
+                  const repository = response.repository || {};
+
+                  chunk.forEach(([expectedIssueNumber], index) => {
+                    const issue = repository[`i${index}`];
+                    if (!issue) return;
+                    if (Number(issue.number) !== Number(expectedIssueNumber)) {
+                      throw new Error(`GraphQL comment batch returned issue #${issue.number} for expected #${expectedIssueNumber}.`);
+                    }
+
+                    const connection = issue.comments;
+                    const bucket = commentsByIssue.get(expectedIssueNumber);
+                    for (const node of connection.nodes || []) bucket.push(normalizeGraphComment(node));
+
+                    if (connection.pageInfo?.hasNextPage) {
+                      const cursor = connection.pageInfo.endCursor;
+                      if (!cursor) throw new Error(`Issue #${expectedIssueNumber} reports another comment page without an end cursor.`);
+                      next.set(expectedIssueNumber, cursor);
+                    }
+                  });
+                }
+
+                pending = next;
+              }
+
+              for (const comments of commentsByIssue.values()) comments.sort((a, b) => a.id - b.id);
+              return commentsByIssue;
+            }
+
+            function normalizeIssueNode(node) {
+              return {
+                number: Number(node.number),
+                nodeId: node.id,
+                state: String(node.state || '').toLowerCase(),
+                labels: (node.labels?.nodes || []).map(label => ({ name: label.name })),
+                pull_request: null,
+              };
+            }
+
+            async function listClaimIssues(extraIssueNumbers = []) {
+              const byNumber = new Map();
+              let cursor = null;
+
+              do {
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!, $cursor: String) {
+                    repository(owner: $owner, name: $repo) {
+                      issues(first: 100, after: $cursor, states: OPEN, labels: ["agent:claimed"]) {
+                        nodes {
+                          id
+                          number
+                          state
+                          labels(first: 50) { nodes { name } }
+                        }
+                        pageInfo { hasNextPage endCursor }
+                      }
+                    }
+                  }
+                `, { owner, repo, cursor });
+
+                const connection = response.repository?.issues;
+                for (const node of connection?.nodes || []) {
+                  if (Number(node.number) === boardIssue) continue;
+                  byNumber.set(Number(node.number), normalizeIssueNode(node));
+                }
+                cursor = connection?.pageInfo?.hasNextPage ? connection.pageInfo.endCursor : null;
+                if (connection?.pageInfo?.hasNextPage && !cursor) {
+                  throw new Error('Claimed issue connection reports another page without an end cursor.');
+                }
+              } while (cursor);
+
+              const missing = [...new Set(extraIssueNumbers.filter(Boolean))]
+                .filter(issueNumber => issueNumber !== boardIssue && !byNumber.has(issueNumber));
+
+              for (let offset = 0; offset < missing.length; offset += graphBatchSize) {
+                const chunk = missing.slice(offset, offset + graphBatchSize);
+                const fields = chunk.map((issueNumber, index) => [
+                  `i${index}: issue(number: ${issueNumber}) {`,
+                  '  id',
+                  '  number',
+                  '  state',
+                  '  labels(first: 50) { nodes { name } }',
+                  '}',
+                ].join('\n'));
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!) {
+                    repository(owner: $owner, name: $repo) {
+                      ${fields.join('\n')}
+                    }
+                  }
+                `, { owner, repo });
+                const repository = response.repository || {};
+                chunk.forEach((issueNumber, index) => {
+                  const node = repository[`i${index}`];
+                  if (!node || String(node.state).toUpperCase() !== 'OPEN') return;
+                  byNumber.set(issueNumber, normalizeIssueNode(node));
+                });
+              }
+
+              return byNumber;
+            }
+
+            function buildGraphFilePage(entries) {
+              const variableDefs = ['$owner: String!', '$repo: String!'];
+              const variables = { owner, repo };
+              const fields = [];
+
+              entries.forEach(([pullNumber, cursor], index) => {
+                const cursorName = `cursor${index}`;
+                if (cursor) {
+                  variableDefs.push(`$${cursorName}: String!`);
+                  variables[cursorName] = cursor;
+                }
+                fields.push([
+                  `p${index}: pullRequest(number: ${pullNumber}) {`,
+                  '  number',
+                  `  files(first: 100${cursor ? `, after: $${cursorName}` : ''}) {`,
+                  '    nodes { path }',
+                  '    pageInfo { hasNextPage endCursor }',
+                  '  }',
+                  '}',
+                ].join('\n'));
+              });
+
+              return {
+                query: [
+                  `query(${variableDefs.join(', ')}) {`,
+                  '  repository(owner: $owner, name: $repo) {',
+                  fields.join('\n'),
+                  '  }',
+                  '}',
+                ].join('\n'),
+                variables,
+              };
+            }
+
+            async function listFilesByPullRequest(pullNumbers) {
+              const unique = [...new Set(pullNumbers.filter(Boolean))];
+              const filesByPull = new Map(unique.map(pullNumber => [pullNumber, []]));
+              let pending = new Map(unique.map(pullNumber => [pullNumber, null]));
+
+              while (pending.size) {
+                const next = new Map();
+                const pendingEntries = [...pending.entries()];
+
+                for (let offset = 0; offset < pendingEntries.length; offset += graphBatchSize) {
+                  const chunk = pendingEntries.slice(offset, offset + graphBatchSize);
+                  const { query, variables } = buildGraphFilePage(chunk);
+                  const response = await github.graphql(query, variables);
+                  const repository = response.repository || {};
+
+                  chunk.forEach(([expectedPullNumber], index) => {
+                    const pull = repository[`p${index}`];
+                    if (!pull) return;
+                    if (Number(pull.number) !== Number(expectedPullNumber)) {
+                      throw new Error(`GraphQL file batch returned PR #${pull.number} for expected #${expectedPullNumber}.`);
+                    }
+
+                    const connection = pull.files;
+                    const bucket = filesByPull.get(expectedPullNumber);
+                    for (const node of connection.nodes || []) bucket.push(node.path);
+
+                    if (connection.pageInfo?.hasNextPage) {
+                      const cursor = connection.pageInfo.endCursor;
+                      if (!cursor) throw new Error(`PR #${expectedPullNumber} reports another file page without an end cursor.`);
+                      next.set(expectedPullNumber, cursor);
+                    }
+                  });
+                }
+
+                pending = next;
+              }
+
+              return filesByPull;
+            }
+
+            async function listLegacyPullNumbers() {
+              const numbers = [];
+              let cursor = null;
+
+              do {
+                const response = await github.graphql(`
+                  query($owner: String!, $repo: String!, $cursor: String) {
+                    repository(owner: $owner, name: $repo) {
+                      pullRequests(first: 100, after: $cursor, states: OPEN) {
+                        nodes { number }
+                        pageInfo { hasNextPage endCursor }
+                      }
+                    }
+                  }
+                `, { owner, repo, cursor });
+                const connection = response.repository?.pullRequests;
+                for (const node of connection?.nodes || []) {
+                  const number = Number(node.number);
+                  if (number <= legacyPrMax) numbers.push(number);
+                }
+                cursor = connection?.pageInfo?.hasNextPage ? connection.pageInfo.endCursor : null;
+                if (connection?.pageInfo?.hasNextPage && !cursor) {
+                  throw new Error('Open pull-request connection reports another page without an end cursor.');
+                }
+              } while (cursor);
+
+              return [...new Set(numbers)].sort((a, b) => a - b);
+            }
+
+            function normalizeFileToken(raw) {
+              let token = String(raw || '').trim().replace(/^`+|`+$/g, '').replace(/^\.\//, '');
+              token = token.replace(/^(?:expected|likely)\s+/i, '').trim();
+              return token;
+            }
+
+            function filePatterns(raw) {
+              return String(raw || '')
+                .split(';')
+                .map(normalizeFileToken)
+                .filter(Boolean)
+                .filter(token => !/^research-only\b/i.test(token))
+                .filter(token => !/^(?:none|n\/a)$/i.test(token));
+            }
+
+            function hasWildcard(pattern) {
+              return /[*?]/.test(pattern);
+            }
+
+            function escapeRegex(char) {
+              return /[\\^$+?.()|{}[\]]/.test(char) ? `\\${char}` : char;
+            }
+
+            function globRegex(pattern) {
+              let out = '^';
+              for (let i = 0; i < pattern.length; i += 1) {
+                const char = pattern[i];
+                if (char === '*') {
+                  if (pattern[i + 1] === '*') {
+                    out += '.*';
+                    i += 1;
+                  } else {
+                    out += '[^/]*';
+                  }
+                } else if (char === '?') {
+                  out += '[^/]';
+                } else {
+                  out += escapeRegex(char);
+                }
+              }
+              return new RegExp(`${out}$`);
+            }
+
+            function staticPrefix(pattern) {
+              const index = pattern.search(/[*?]/);
+              return index === -1 ? pattern : pattern.slice(0, index);
+            }
+
+            function broadTreePattern(pattern) {
+              return /(?:^|\/)\*\*$/.test(pattern) || /(?:^|\/)\*\*\/\*$/.test(pattern);
+            }
+
+            function patternsOverlap(a, b) {
+              if (!a || !b) return false;
+              if (a === b) return true;
+
+              const aWild = hasWildcard(a);
+              const bWild = hasWildcard(b);
+              if (!aWild && !bWild) return false;
+              if (!aWild) return globRegex(b).test(a);
+              if (!bWild) return globRegex(a).test(b);
+
+              if (broadTreePattern(a) && staticPrefix(b).startsWith(staticPrefix(a))) return true;
+              if (broadTreePattern(b) && staticPrefix(a).startsWith(staticPrefix(b))) return true;
+              return false;
+            }
+
+            function overlapPairs(leftFiles, rightFiles) {
+              const pairs = [];
+              for (const left of filePatterns(leftFiles)) {
+                for (const right of filePatterns(rightFiles)) {
+                  if (!patternsOverlap(left, right)) continue;
+                  const text = left === right ? left : `${left} ↔ ${right}`;
+                  if (!pairs.includes(text)) pairs.push(text);
+                }
+              }
+              return pairs;
+            }
+
+            function syntheticComment(id, body, login = 'agent') {
+              return { id, body, user: { login } };
+            }
+
+            function claimBody(agent, branch, files) {
+              return [
+                '<!-- agent-claim',
+                `agent: ${agent}`,
+                `branch: ${branch}`,
+                'scope: test scope',
+                `files: ${files}`,
+                '-->',
+              ].join('\n');
+            }
+
+            function assert(condition, message) {
+              if (!condition) throw new Error(`Agent file ownership self-test failed: ${message}`);
+            }
+
+            function runSelfTests() {
+              assert(overlapPairs('provider-runtime.js', 'provider-runtime.js').length === 1, 'exact path overlap');
+              assert(overlapPairs('research-only', 'provider-runtime.js').length === 0, 'research-only owns no files');
+              assert(overlapPairs('data/catalogue/**', 'data/catalogue/releases/releases-01.json').length === 1, 'tree glob matches exact path');
+              assert(overlapPairs('data/catalogue/releases/*falguni*', 'data/catalogue/releases/releases-01-falguni.json').length === 1, 'filename glob matches exact path');
+              assert(overlapPairs('provider-runtime.js', 'src/catalogue/catalogue.js').length === 0, 'independent files do not overlap');
+
+              const first = syntheticComment(10, claimBody('agent/a', 'fix/a', 'a.js'));
+              const update = syntheticComment(20, claimBody('agent/a', 'fix/a', 'a.js; b.js'));
+              const state = deriveState([first, update]);
+              assert(state.active?.ownershipCommentId === 10, 'same-owner updates preserve first ownership priority');
+              assert(state.active?.files === 'a.js; b.js', 'same-owner updates still replace visible scope');
+
+              const rows = [
+                { issue: { number: 12 }, state: { active: { ownershipCommentId: 200 } } },
+                { issue: { number: 11 }, state: { active: { ownershipCommentId: 100 } } },
+              ].sort((a, b) => a.state.active.ownershipCommentId - b.state.active.ownershipCommentId || a.issue.number - b.issue.number);
+              assert(rows[0].issue.number === 11, 'earlier unreleased ownership wins ordering');
+
+              const normalized = normalizeGraphComment({
+                databaseId: 42,
+                body: 'hello',
+                author: { login: 'github-actions', __typename: 'Bot' },
+              });
+              assert(normalized.id === 42 && normalized.user.type === 'Bot', 'GraphQL comment mapping preserves database ordering and bot identity');
+
+              const firstPage = buildGraphCommentPage([[12, null]]);
+              const nextPage = buildGraphCommentPage([[12, 'cursor-value']]);
+              assert(firstPage.query.includes('comments(first: 100)') && !firstPage.query.includes('after:'), 'first GraphQL comment page omits cursor');
+              assert(nextPage.query.includes('after: $cursor0') && nextPage.variables.cursor0 === 'cursor-value', 'follow-up GraphQL comment page carries its cursor');
+
+              const firstFiles = buildGraphFilePage([[299, null]]);
+              const nextFiles = buildGraphFilePage([[299, 'file-cursor']]);
+              assert(firstFiles.query.includes('files(first: 100)') && !firstFiles.query.includes('after:'), 'first GraphQL file page omits cursor');
+              assert(nextFiles.query.includes('after: $cursor0') && nextFiles.variables.cursor0 === 'file-cursor', 'follow-up GraphQL file page carries its cursor');
+            }
+
+            function labelNames(issue) {
+              return new Set((issue.labels || [])
+                .map(label => typeof label === 'string' ? label : label?.name)
+                .filter(Boolean));
+            }
+
+            async function ensureConflictLabel() {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name: conflictLabel });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                try {
+                  await github.rest.issues.createLabel({
+                    owner,
+                    repo,
+                    name: conflictLabel,
+                    color: 'FB8C00',
+                    description: 'This active claim overlaps files already owned by an earlier active claim or legacy PR.',
+                  });
+                } catch (createError) {
+                  if (createError.status !== 422) throw createError;
+                }
+              }
+            }
+
+            async function addConflictLabel(issue) {
+              if (labelNames(issue).has(conflictLabel)) return;
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: issue.number,
+                labels: [conflictLabel],
+              });
+            }
+
+            async function removeConflictLabel(issue) {
+              if (!labelNames(issue).has(conflictLabel)) return;
+              try {
+                await github.rest.issues.removeLabel({
+                  owner,
+                  repo,
+                  issue_number: issue.number,
+                  name: conflictLabel,
+                });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+            }
+
+            async function collectClaimRows(extraIssueNumbers = []) {
+              const byNumber = await listClaimIssues(extraIssueNumbers);
+              const commentsByIssue = await listCommentsByIssue([...byNumber.keys()]);
+              const rows = [];
+              for (const issue of byNumber.values()) {
+                const comments = commentsByIssue.get(issue.number) || [];
+                const state = deriveState(comments);
+                if (state.active) rows.push({ issue, comments, state, fileConflicts: [] });
+              }
+
+              rows.sort((a, b) =>
+                a.state.active.ownershipCommentId - b.state.active.ownershipCommentId || a.issue.number - b.issue.number
+              );
+              return rows;
+            }
+
+            async function collectLegacyRows() {
+              const numbers = await listLegacyPullNumbers();
+              const filesByPull = await listFilesByPullRequest(numbers);
+              return numbers.map(number => ({
+                pr: { number },
+                files: (filesByPull.get(number) || []).join('; '),
+              }));
+            }
+
+            function annotateConflicts(rows, legacyRows) {
+              for (const row of rows) row.fileConflicts = [];
+
+              for (const row of rows) {
+                for (const legacy of legacyRows) {
+                  const paths = overlapPairs(row.state.active.files, legacy.files);
+                  if (paths.length) {
+                    row.fileConflicts.push({ blocker: `legacy PR #${legacy.pr.number}`, paths });
+                  }
+                }
+              }
+
+              for (let laterIndex = 0; laterIndex < rows.length; laterIndex += 1) {
+                const later = rows[laterIndex];
+                for (let earlierIndex = 0; earlierIndex < laterIndex; earlierIndex += 1) {
+                  const earlier = rows[earlierIndex];
+                  const paths = overlapPairs(later.state.active.files, earlier.state.active.files);
+                  if (!paths.length) continue;
+                  later.fileConflicts.push({ blocker: `issue #${earlier.issue.number}`, paths });
+                }
+              }
+
+              return rows;
+            }
+
+            function conflictStatus(row) {
+              return [
+                '<!-- agent-file-conflict-status -->',
+                '### Cross-issue file ownership',
+                '',
+                row.fileConflicts.length
+                  ? '**Status:** Blocked by earlier file ownership'
+                  : '**Status:** No active cross-issue file conflict',
+                ...row.fileConflicts.map(conflict =>
+                  `- ${conflict.blocker}: ${conflict.paths.map(path => `\`${path}\``).join(', ')}`
+                ),
+                '',
+                row.fileConflicts.length
+                  ? 'Narrow this claim or wait for the earlier owner to release before editing the overlapping files.'
+                  : 'The declared file scope is currently independent of earlier active claims and legacy PR files.',
+              ].join('\n');
+            }
+
+            async function upsertConflictStatus(row) {
+              const existing = row.comments.find(comment =>
+                comment.body?.includes('<!-- agent-file-conflict-status -->') && comment.user?.type === 'Bot'
+              );
+
+              if (!row.fileConflicts.length && !existing) return;
+              const wanted = conflictStatus(row);
+
+              if (!existing) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: row.issue.number, body: wanted });
+              } else if ((existing.body || '').trim() !== wanted.trim()) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body: wanted });
+              }
+            }
+
+            function esc(value) {
+              return String(value || '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+            }
+
+            function renderBoardBody(currentBody, table) {
+              const start = '<!-- agent-file-conflicts:start -->';
+              const end = '<!-- agent-file-conflicts:end -->';
+              let body = currentBody || '';
+
+              if (body.includes(start) && body.includes(end)) {
+                return body.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n${table}\n${end}`);
+              }
+
+              const anchor = '<!-- agent-work-board:managed-end -->';
+              if (!body.includes(anchor)) throw new Error(`Board issue #${boardIssue} is missing ${anchor}.`);
+              const block = [
+                anchor,
+                '',
+                '## Cross-issue file ownership',
+                '',
+                'Earlier active claims and legacy PRs own their declared files first. A later claim listed below must narrow its scope or wait for release before implementation or merge.',
+                '',
+                start,
+                table,
+                end,
+              ].join('\n');
+              return body.replace(anchor, block);
+            }
+
+            async function updateBoard(rows) {
+              const conflictRows = rows.flatMap(row => row.fileConflicts.map(conflict => ({ row, conflict })));
+              const table = conflictRows.length
+                ? [
+                    '| Later claim | Earlier owner | Overlapping declared files |',
+                    '| --- | --- | --- |',
+                    ...conflictRows.map(({ row, conflict }) =>
+                      `| #${row.issue.number} \`${esc(row.state.active.agent)}\` | ${esc(conflict.blocker)} | ${conflict.paths.map(path => `\`${esc(path)}\``).join('<br>')} |`
+                    ),
+                  ].join('\n')
+                : '_No active cross-issue file conflicts._';
+
+              const start = '<!-- agent-file-conflicts:start -->';
+              const end = '<!-- agent-file-conflicts:end -->';
+              const expectedBlock = `${start}\n${table}\n${end}`;
+
+              // The ordinary claim registry also updates #364. Use a separate workflow
+              // lock, then verify/retry this marker block so a concurrent board update
+              // cannot permanently erase the cross-file section.
+              await new Promise(resolve => setTimeout(resolve, 500));
+              for (let attempt = 1; attempt <= 5; attempt += 1) {
+                const board = await github.rest.issues.get({ owner, repo, issue_number: boardIssue });
+                const current = board.data.body || '';
+                if (current.includes(expectedBlock)) return;
+
+                const wanted = renderBoardBody(current, table);
+                if (wanted !== current) {
+                  await github.rest.issues.update({ owner, repo, issue_number: boardIssue, body: wanted });
+                }
+
+                await new Promise(resolve => setTimeout(resolve, attempt * 400));
+                const verify = await github.rest.issues.get({ owner, repo, issue_number: boardIssue });
+                if ((verify.data.body || '').includes(expectedBlock)) return;
+              }
+
+              throw new Error(`Could not persist cross-issue file ownership section on board #${boardIssue} after retries.`);
+            }
+
+            async function clearStaleLabels(activeRows) {
+              const activeNumbers = new Set(activeRows.map(row => row.issue.number));
+              for (const state of ['open', 'closed']) {
+                const labelled = await github.paginate(github.rest.issues.listForRepo, {
+                  owner,
+                  repo,
+                  state,
+                  labels: conflictLabel,
+                  per_page: 100,
+                });
+                for (const issue of labelled) {
+                  if (issue.pull_request || activeNumbers.has(issue.number)) continue;
+                  await removeConflictLabel(issue);
+                }
+              }
+            }
+
+            function prClaimIssue(pr) {
+              const match = (pr.body || '').match(/^Agent-Claim:\s*#(\d+)\s*$/mi);
+              return match ? Number(match[1]) : null;
+            }
+
+            runSelfTests();
+
+            const extraIssueNumbers = [];
+            if (context.eventName === 'issue_comment' || context.eventName === 'issues') {
+              extraIssueNumbers.push(context.payload.issue?.number);
+            }
+            if (context.eventName === 'pull_request') {
+              extraIssueNumbers.push(prClaimIssue(context.payload.pull_request));
+            }
+
+            const rows = annotateConflicts(
+              await collectClaimRows(extraIssueNumbers.filter(Boolean)),
+              await collectLegacyRows(),
+            );
+
+            const blocked = rows.filter(row => row.fileConflicts.length);
+            core.summary
+              .addHeading('Cross-issue file ownership')
+              .addRaw(`${rows.length} active claim(s) checked; ${blocked.length} later claim(s) currently blocked by earlier file ownership.`)
+              .write();
+
+            // Pull-request checks are gate-only. Compute the live ownership graph from
+            // GraphQL and return before label/board reconciliation so a required merge
+            // check never depends on the installation's core REST quota.
+            if (context.eventName === 'pull_request' && context.payload.action !== 'closed') {
+              const pr = context.payload.pull_request;
+              if (pr.number <= legacyPrMax) return;
+
+              const issueNumber = prClaimIssue(pr);
+              if (!issueNumber) return;
+
+              const current = rows.find(row => row.issue.number === issueNumber);
+              if (!current || !current.fileConflicts.length) return;
+
+              const details = current.fileConflicts
+                .map(conflict => `${conflict.blocker} on ${conflict.paths.join(', ')}`)
+                .join('; ');
+              core.setFailed(`Agent-Claim #${issueNumber} loses cross-issue file ownership to earlier work: ${details}. Narrow the claim or wait for release before this PR can proceed.`);
+              return;
+            }
+
+            // Claim/release/close events still maintain labels, per-issue status and the
+            // board. They are not the PR merge gate and may perform the necessary writes.
+            await ensureConflictLabel();
+            for (const row of rows) {
+              if (row.fileConflicts.length) await addConflictLabel(row.issue);
+              else await removeConflictLabel(row.issue);
+              await upsertConflictStatus(row);
+            }
+            await clearStaleLabels(rows);
+            await updateBoard(rows);

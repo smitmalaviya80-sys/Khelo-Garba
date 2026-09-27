@@ -1,0 +1,60 @@
+name: Validate Vercel preview artifact
+
+on:
+  pull_request:
+    paths:
+      - 'vercel.json'
+      - 'scripts/build-vercel-site.mjs'
+      - 'scripts/lib/validate-vercel-site.mjs'
+      - 'scripts/lib/validate-host-ownership.mjs'
+      - 'scripts/lib/test-host-ownership-state.mjs'
+      - '.github/workflows/vercel-preview-validate.yml'
+      - '.github/workflows/pages.yml'
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'provider-runtime.js'
+      - 'player-continuity.js'
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'sw.js'
+      - 'manifest.webmanifest'
+      - 'offline.html'
+      - 'styles/**'
+      - 'assets/**'
+      - 'data/**'
+      - 'src/catalogue/**'
+      - 'src/pga/telemetry/**'
+      - 'public-site/**'
+      - 'robots.txt'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-vercel-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate hosting transition policy
+        run: node scripts/lib/test-host-ownership-state.mjs
+
+      - name: Validate repository
+        run: npm run check
+
+      - name: Install deterministic image build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin unzip
+
+      - name: Build Vercel static artifact
+        env:
+          VERCEL_GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: node scripts/build-vercel-site.mjs
+
+      - name: Validate Vercel static artifact and cache policy
+        run: node scripts/lib/validate-vercel-site.mjs _site vercel.json

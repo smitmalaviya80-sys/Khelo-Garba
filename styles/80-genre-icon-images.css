@@ -1,0 +1,1916 @@
+/* Custom PlayGarba genre artwork.
+   The icon assets are decorative; the existing text labels remain the accessible names. */
+
+.genre-button[data-genre="traditional"] { --genre-icon-image: url("../assets/genre-icons/traditional.webp"); }
+.genre-button[data-genre="dandiya"] { --genre-icon-image: url("../assets/genre-icons/dandiya.webp"); }
+.genre-button[data-genre="devotional"] { --genre-icon-image: url("../assets/genre-icons/devotional.webp"); }
+.genre-button[data-genre="folk"] { --genre-icon-image: url("../assets/genre-icons/folk-dhol.webp"); }
+.genre-button[data-genre="sanedo"] { --genre-icon-image: url("../assets/genre-icons/sanedo.webp"); }
+.genre-button[data-genre="fusion"] { --genre-icon-image: url("../assets/genre-icons/fusion.webp"); }
+#nonstopButton { --genre-icon-image: url("../assets/genre-icons/nonstop.webp"); }
+
+/*
+  Interaction stability contract
+  ------------------------------
+  Genre rows are horizontal controls, not miniature two-axis scrollers. Keep their
+  block size fixed, remove vertical overflow entirely and keep active/inactive states
+  geometrically identical. This prevents iOS/PWA diagonal drift and layout jumps.
+*/
+.genre-strip {
+  align-items: center !important;
+  overflow-x: auto;
+  overflow-y: hidden !important;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+  scroll-behavior: auto;
+  scroll-padding-inline: 26px;
+  contain: layout paint;
+}
+
+.genre-strip::-webkit-scrollbar { display: none; }
+
+.genre-button,
+#nonstopButton {
+  flex: 0 0 auto;
+  align-self: center;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+  transform: none !important;
+}
+
+.genre-button[data-genre],
+#nonstopButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  padding-top: 0;
+  padding-bottom: 8px;
+  padding-left: 39px;
+  padding-right: 2px;
+  background-image: var(--genre-icon-image);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: 2px calc(50% - 4px);
+  transition: color 160ms ease, filter 160ms ease;
+}
+
+.app #genreStrip .genre-button[data-genre],
+.app #genreStrip #nonstopButton {
+  padding-right: 2px;
+}
+
+.app #genreStrip .genre-button[data-genre].active,
+.app #genreStrip #nonstopButton.active {
+  filter: drop-shadow(0 3px 8px color-mix(in srgb, var(--accent) 18%, transparent));
+}
+
+/* Explore: text on top of borderless downward chevron floating below genres */
+#browseActions,
+html body .app #browseActions {
+  min-height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: -4px auto 0 !important;
+}
+
+#browseActions .browse-button,
+html body .app #browseActions .browse-button,
+html body .app #browseActions #browseButton {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: rgba(246, 236, 215, 0.78) !important;
+  cursor: pointer !important;
+  transition: color 200ms ease, transform 200ms ease !important;
+  text-decoration: none !important;
+}
+
+#browseActions .browse-button:hover,
+html body .app #browseActions .browse-button:hover,
+html body .app #browseActions #browseButton:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--ivory, #fff) !important;
+  transform: translateY(2px) !important;
+}
+
+#browseActions .browse-button svg,
+html body .app #browseActions .browse-button svg,
+html body .app #browseActions .browse-button .browse-chevron {
+  display: block !important;
+  width: 15px !important;
+  height: 9px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2.6 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.85)) !important;
+  transition: transform 200ms ease, stroke 200ms ease !important;
+}
+
+#browseActions .browse-button span,
+html body .app #browseActions .browse-button span,
+html body .app #browseActions #browseButton span {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: nowrap !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: currentColor !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
+/*
+  The Now Playing block is a fixed three-row frame. Short, long and very long titles
+  therefore change inside the same rectangle instead of pushing transport/progress/
+  genres up and down. The full text remains in the DOM for assistive technology and
+  remains available in Browse even when the hero title needs visual truncation.
+*/
+.app .track-block {
+  height: 146px;
+  min-height: 146px;
+  max-height: 146px;
+  display: grid;
+  grid-template-rows: 18px minmax(0, 1fr) 34px;
+  align-items: center;
+  justify-items: center;
+  align-content: stretch;
+  padding-inline: 16px;
+}
+
+.app .track-block .genre-eyebrow {
+  align-self: center;
+  margin: 0;
+  line-height: 1;
+}
+
+.app .track-block .song-title {
+  align-self: center;
+  max-width: 100%;
+  max-height: 2.04em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app .track-block.is-long-title .song-title {
+  font-size: clamp(34px, 3.35vw, 46px);
+}
+
+.app .track-block.is-very-long-title .song-title {
+  font-size: clamp(30px, 2.9vw, 40px);
+}
+
+.app .track-block .artist-row {
+  width: 100%;
+  height: 42px;
+  min-height: 42px;
+  max-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.app .track-block .artist {
+  min-width: 0;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Top utilities use fixed tap boxes. Badges and state changes never alter spacing. */
+.utilities .icon-button {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+}
+
+@media (hover: hover) {
+  .genre-button[data-genre]:hover,
+  #nonstopButton:hover {
+    filter: brightness(1.06) saturate(1.04);
+  }
+}
+
+/* The browse sheet uses the same artwork at a quieter, fully fixed scale. */
+.sheet-genres {
+  height: 58px;
+  min-height: 58px;
+  max-height: 58px;
+  gap: 18px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.sheet-genres .genre-button[data-genre] {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  padding-left: 35px;
+  padding-bottom: 8px;
+  background-size: 27px 27px;
+  background-position: 2px calc(50% - 4px);
+}
+
+@media (max-width: 700px) {
+  .genre-strip { scroll-padding-inline: 22px; }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+    padding-left: 35px;
+    padding-bottom: 7px;
+    font-size: 15px;
+    background-size: 27px 27px;
+    background-position: 2px calc(50% - 3px);
+  }
+
+  .sheet-genres {
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    gap: 16px !important;
+  }
+
+  .sheet-genres .genre-button[data-genre] {
+    height: 46px;
+    min-height: 46px;
+    max-height: 46px;
+    padding-left: 32px;
+    font-size: 14px;
+    background-size: 25px 25px;
+  }
+
+  .app .track-block {
+    height: 126px;
+    min-height: 126px;
+    max-height: 126px;
+    grid-template-rows: 16px minmax(0, 1fr) 26px;
+    padding-inline: 8px;
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(33px, 8.8vw, 42px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(29px, 7.7vw, 36px);
+  }
+
+  .app .track-block .artist-row {
+    height: 26px;
+    min-height: 26px;
+    max-height: 26px;
+  }
+
+  .app .track-block .artist {
+    max-width: min(82vw, 520px);
+  }
+
+  .utilities {
+    min-height: 42px;
+    gap: 2px;
+  }
+
+  /* Offline stays accessible but collapses to a status dot so it cannot squeeze the
+     logo or utility buttons on a narrow iPhone. */
+  .network-status.show {
+    flex: 0 0 28px;
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    min-height: 28px;
+    padding: 0;
+    justify-content: center;
+    font-size: 0;
+  }
+
+  .network-status.show::before { margin: 0; }
+
+  #browseActions { min-height: 40px; }
+}
+
+@media (max-width: 390px) {
+  .genre-strip { scroll-padding-inline: 18px; }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    height: 46px;
+    min-height: 46px;
+    max-height: 46px;
+    padding-left: 32px;
+    font-size: 14px;
+    background-size: 25px 25px;
+    background-position-x: 1px;
+  }
+
+  .sheet-genres { gap: 14px !important; }
+
+  .sheet-genres .genre-button[data-genre] {
+    padding-left: 30px;
+    background-size: 24px 24px;
+  }
+
+  .app .track-block {
+    height: 120px;
+    min-height: 120px;
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 350px) {
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    padding-left: 30px;
+    font-size: 13px;
+    background-size: 23px 23px;
+  }
+  .brand { font-size: 25px !important; }
+}
+
+@media (max-height: 760px) and (max-width: 700px) {
+  .app .track-block {
+    height: 112px;
+    min-height: 112px;
+    max-height: 112px;
+  }
+}
+
+@media (max-height: 660px) and (max-width: 700px) {
+  .app .track-block {
+    height: 102px;
+    min-height: 102px;
+    max-height: 102px;
+    grid-template-rows: 14px minmax(0, 1fr) 22px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    padding-bottom: 6px;
+    font-size: 13px;
+    background-size: 24px 24px;
+    padding-left: 31px;
+  }
+
+  .app .track-block {
+    height: 94px;
+    min-height: 94px;
+    max-height: 94px;
+  }
+
+  .app .track-block .song-title,
+  .app .track-block.is-long-title .song-title,
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(27px, 5.3vw, 37px);
+  }
+
+  .app .track-block .artist-row {
+    height: 20px;
+    min-height: 20px;
+    max-height: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genre-button[data-genre],
+  #nonstopButton {
+    transition: none;
+  }
+}
+
+/*
+  Genre composition and final player geometry
+  -------------------------------------------
+  This late layer owns genre artwork plus primary genre-rail, ambient-ring and timeline
+  geometry that must win in the final cascade. Earlier player-control layers should not override it.
+*/
+.controls {
+  position: relative;
+  justify-content: center;
+}
+
+/* Heart favourite button lives inside .controls as the 5th transport button */
+.controls .favourite-control {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(246, 236, 215, .76);
+  opacity: .90;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.28));
+  transition: color 150ms ease, opacity 150ms ease, filter 150ms ease;
+}
+
+.controls .favourite-control svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.controls .favourite-control.active {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.controls .favourite-control.active svg {
+  fill: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .controls .favourite-control {
+    width: 42px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 360px) {
+  .controls .favourite-control {
+    width: 36px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .controls .favourite-control {
+    width: 36px;
+    height: 44px;
+    min-height: 44px;
+  }
+}
+
+
+
+.ambient-ring {
+  inset: -15px;
+  border: 0;
+  opacity: .18;
+  background: repeating-conic-gradient(
+    from -6deg,
+    color-mix(in srgb, var(--accent) 48%, rgba(246, 236, 215, .35)) 0 2deg,
+    transparent 2deg 14deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 0 67%, #000 69% 72%, transparent 74% 100%);
+  mask: radial-gradient(circle, transparent 0 67%, #000 69% 72%, transparent 74% 100%);
+}
+
+.ambient-ring::before,
+.ambient-ring::after { display: none; }
+
+.app.is-playing .ambient-ring {
+  opacity: .30;
+  animation: garba-console-ring 16s linear infinite;
+}
+
+@keyframes garba-console-ring {
+  to { rotate: 360deg; }
+}
+
+.progress-wrap {
+  grid-template-columns: 38px minmax(180px, 1fr) 38px;
+  gap: 12px;
+  align-items: center;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0 var(--progress, 0%),
+    rgba(246, 236, 215, .25) var(--progress, 0%) 100%
+  );
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  transition: height 160ms ease;
+}
+
+input[type="range"]:hover::-webkit-slider-runnable-track,
+input[type="range"]:focus-visible::-webkit-slider-runnable-track {
+  height: 6px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(246, 236, 215, .25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 2px solid var(--accent);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6), 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ivory);
+  border: 2px solid var(--accent);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6), 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+@media (hover: hover) {
+  .progress:hover::-webkit-slider-thumb,
+  .progress:focus-visible::-webkit-slider-thumb {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 14px var(--accent);
+  }
+
+  .progress:hover::-moz-range-thumb,
+  .progress:focus-visible::-moz-range-thumb {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 14px var(--accent);
+  }
+}
+
+.app #genreStrip {
+  height: 82px !important;
+  min-height: 82px !important;
+  max-height: 82px !important;
+  align-items: flex-start !important;
+  align-self: end !important;
+  gap: clamp(9px, 1.7vw, 18px) !important;
+  padding: 6px 12px 4px !important;
+  max-width: min(760px, 91vw);
+}
+
+.app #genreStrip .genre-button[data-genre],
+.app #genreStrip #nonstopButton {
+  position: relative;
+  top: 0;
+  min-width: 78px;
+  width: auto;
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 45px 7px 8px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background-image: var(--genre-icon-image);
+  background-size: 36px 36px;
+  background-position: center 5px;
+  background-repeat: no-repeat;
+  color: rgba(246, 236, 215, .66);
+  font-size: clamp(13px, 1vw, 16px);
+  transition: color 160ms ease, filter 160ms ease, background-color 160ms ease, border-color 160ms ease, top 180ms ease;
+}
+
+.app #genreStrip .genre-button,
+.app #genreStrip #nonstopButton {
+  top: 0;
+  transform: none;
+}
+
+.app #genreStrip .genre-button[data-genre].active,
+.app #genreStrip #nonstopButton.active,
+.app[data-play-mode="nonstop"] #genreStrip #nonstopButton {
+  color: var(--ivory);
+  border-color: color-mix(in srgb, var(--accent) 26%, rgba(246, 236, 215, .10));
+  background-color: rgba(8, 10, 18, .24);
+  filter:
+    drop-shadow(0 5px 11px color-mix(in srgb, var(--accent) 20%, transparent))
+    brightness(1.04) saturate(1.05);
+}
+
+.app #genreStrip .genre-button::before,
+.app #genreStrip #nonstopButton::before {
+  width: 4px;
+  height: 4px;
+  bottom: 3px;
+}
+
+.app #genreStrip .genre-button::after,
+.app #genreStrip #nonstopButton::after {
+  left: 30%;
+  right: 30%;
+  bottom: 7px;
+}
+/* Explore action alignment handled cleanly by primary rules */
+
+@media (pointer: coarse) {
+  input[type="range"]::-webkit-slider-thumb {
+    background: var(--accent);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--accent) 42%, transparent);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    background: var(--accent);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--accent) 42%, transparent);
+  }
+}
+
+@media (max-width: 700px) {
+  .progress-wrap {
+    grid-template-columns: 31px minmax(150px, 1fr) 31px;
+  }
+
+  .app #genreStrip {
+    height: 76px !important;
+    min-height: 76px !important;
+    max-height: 76px !important;
+    gap: 8px !important;
+    padding-left: max(12px, var(--safe-left)) !important;
+    padding-right: max(12px, var(--safe-right)) !important;
+    padding-top: 4px !important;
+    padding-bottom: 3px !important;
+  }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    min-width: 67px;
+    height: 67px;
+    min-height: 67px;
+    max-height: 67px;
+    padding: 41px 5px 7px;
+    font-size: 12px;
+    background-size: 31px 31px;
+    background-position: center 5px;
+    border-radius: 16px;
+  }
+
+  html body .app #browseActions {
+    margin-top: 1px !important;
+  }
+
+  html body .app #browseActions #browseButton {
+    min-height: 34px;
+    padding-inline: 27px !important;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  .app #genreStrip {
+    height: 72px !important;
+    min-height: 72px !important;
+    max-height: 72px !important;
+    gap: 7px !important;
+  }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    min-width: 62px;
+    height: 63px;
+    min-height: 63px;
+    max-height: 63px;
+    padding: 38px 5px 7px;
+    font-size: 11px;
+    background-size: 29px 29px;
+    background-position: center 5px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 350px) {
+  .app #genreStrip { gap: 7px !important; }
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    min-width: 62px;
+    font-size: 11px;
+    background-size: 29px 29px;
+  }
+}
+
+@media (max-height: 760px) and (max-width: 700px) {
+  .app #genreStrip {
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+  }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    top: 0 !important;
+    height: 61px;
+    min-height: 61px;
+    max-height: 61px;
+    padding-top: 37px;
+    background-size: 28px 28px;
+  }
+}
+
+@media (max-height: 660px) and (max-width: 700px) {
+  .app #genreStrip {
+    height: 62px !important;
+    min-height: 62px !important;
+    max-height: 62px !important;
+  }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    min-width: 58px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
+    padding-top: 34px;
+    background-size: 25px 25px;
+    font-size: 10px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .progress-wrap {
+    grid-template-columns: 28px minmax(120px, 1fr) 28px;
+  }
+
+  .app #genreStrip {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+  }
+
+  .app #genreStrip .genre-button,
+  .app #genreStrip #nonstopButton {
+    top: 0 !important;
+    min-width: 56px;
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    padding: 25px 4px 5px;
+    font-size: 10px;
+    background-size: 22px 22px;
+    background-position: center 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app.is-playing .ambient-ring { animation: none; }
+}
+
+/* Final Now Playing metadata geometry. Keep transport anchors stable while text changes. */
+.app .track-block .song-title {
+  width: 100%;
+  min-width: 0;
+  max-width: min(780px, 88vw);
+  max-height: 1.96em;
+  font-size: clamp(40px, 4.1vw, 47px);
+  line-height: .98;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.app .track-block.is-long-title .song-title {
+  font-size: clamp(34px, 3.35vw, 44px);
+}
+
+.app .track-block.is-very-long-title .song-title {
+  font-size: clamp(30px, 2.9vw, 38px);
+}
+
+.app .track-block .artist-row {
+  height: 34px;
+  min-height: 34px;
+  max-height: 34px;
+}
+
+.app .track-block .artist {
+  max-width: min(620px, 82vw);
+  color: rgba(246, 236, 215, .76);
+}
+
+@media (max-width: 700px) {
+  .app .track-block .song-title {
+    max-width: min(94vw, 560px);
+    max-height: 1.94em;
+    font-size: clamp(34px, 9vw, 40px);
+    line-height: .97;
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(31px, 8vw, 37px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(28px, 7.2vw, 34px);
+  }
+
+  .app .track-block .artist-row {
+    height: 26px;
+    min-height: 26px;
+    max-height: 26px;
+  }
+
+  .app .track-block .artist {
+    max-width: 74vw;
+  }
+}
+
+@media (max-width: 390px) {
+  .app .track-block .song-title {
+    font-size: clamp(31px, 8.7vw, 35px);
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(29px, 8vw, 33px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(27px, 7.3vw, 31px);
+  }
+}
+
+@media (max-height: 760px) and (max-width: 700px) {
+  .app .track-block {
+    grid-template-rows: 14px minmax(0, 1fr) 26px;
+  }
+
+  .app .track-block .song-title {
+    font-size: clamp(30px, 8vw, 34px);
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(29px, 7.6vw, 32px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(27px, 7vw, 30px);
+  }
+}
+
+@media (max-height: 660px) and (max-width: 700px) {
+  .app .track-block {
+    grid-template-rows: 12px minmax(0, 1fr) 26px;
+  }
+
+  .app .track-block .song-title {
+    font-size: clamp(28px, 7.4vw, 32px);
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(27px, 7vw, 30px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(25px, 6.5vw, 28px);
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .app .track-block {
+    grid-template-rows: 12px minmax(0, 1fr) 18px;
+  }
+
+  .app .track-block .song-title {
+    max-height: 1.92em;
+    font-size: clamp(25px, 4.4vw, 30px);
+    line-height: .96;
+  }
+
+  .app .track-block.is-long-title .song-title {
+    font-size: clamp(24px, 4.1vw, 29px);
+  }
+
+  .app .track-block.is-very-long-title .song-title {
+    font-size: clamp(23px, 3.8vw, 27px);
+  }
+
+  .app .track-block .artist-row {
+    height: 18px;
+    min-height: 18px;
+    max-height: 18px;
+  }
+}
+
+/* Full-title disclosure stays inside the fixed Now Playing frame. */
+.app .track-block.has-track-details .artist-row {
+  width: calc(100% - 132px);
+  max-width: 620px;
+}
+
+.app .track-block .track-details-button {
+  position: absolute;
+  right: 10px;
+  bottom: 3px;
+  z-index: 5;
+  min-width: 56px;
+  height: 28px;
+  padding: 0 5px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(246, 236, 215, .74);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+
+.app .track-block .track-details-button[hidden],
+.app .track-block .track-details-panel[hidden] {
+  display: none !important;
+}
+
+.app .track-block .track-details-button::before {
+  content: "";
+  position: absolute;
+  inset: -8px -5px;
+}
+
+.app .track-block .track-details-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .app .track-block .track-details-button:hover {
+    color: var(--ivory);
+  }
+}
+
+.app .track-block .track-details-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  z-index: 6;
+  box-sizing: border-box;
+  width: min(560px, calc(100% - 24px));
+  max-height: min(112px, calc(100% - 38px));
+  padding: 10px 12px;
+  overflow: auto;
+  transform: translateX(-50%);
+  border: 1px solid rgba(246, 236, 215, .18);
+  border-radius: 14px;
+  background: rgba(12, 13, 20, .94);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .34);
+  color: var(--ivory);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: left;
+}
+
+.app .track-block .track-details-title,
+.app .track-block .track-details-artist {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.app .track-block .track-details-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.app .track-block .track-details-artist {
+  margin-top: 4px;
+  color: rgba(246, 236, 215, .76);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+@media (max-width: 700px) {
+  .app .track-block.has-track-details .artist-row {
+    width: calc(100% - 112px);
+  }
+
+  .app .track-block .track-details-button {
+    right: 5px;
+    bottom: 0;
+    min-width: 52px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  .app .track-block .track-details-button::before {
+    inset: -9px -5px;
+  }
+
+  .app .track-block .track-details-panel {
+    bottom: 28px;
+    width: calc(100% - 16px);
+    max-height: calc(100% - 32px);
+    padding: 9px 10px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .app .track-block.has-track-details .artist-row {
+    width: calc(100% - 104px);
+  }
+
+  .app .track-block .track-details-button {
+    bottom: -2px;
+    min-width: 50px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .app .track-block .track-details-button::before {
+    inset: -10px -5px;
+  }
+
+  .app .track-block .track-details-panel {
+    bottom: 22px;
+    max-height: calc(100% - 26px);
+  }
+}
+
+:root {
+  --garba-dandiya-marker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 8'%3E%3Cpath d='M4 4h44' fill='none' stroke='%23e3bf76' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M11 4h5M22 4h5M34 4h5' fill='none' stroke='%238b3043' stroke-width='3.2' stroke-linecap='butt'/%3E%3Cpath d='M16 4h3M30 4h3M42 4h3' fill='none' stroke='%23df7442' stroke-width='3.2' stroke-linecap='butt'/%3E%3C/svg%3E");
+}
+
+html body .app .player-shell {
+  display: grid !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  box-sizing: border-box !important;
+  padding-top: clamp(86px, 10vh, 126px) !important;
+  padding-bottom: max(22px, var(--safe-bottom)) !important;
+  padding-inline: 22px !important;
+  grid-template-rows: minmax(18px, 1.35fr) auto auto auto minmax(12px, 1.05fr) auto auto !important;
+  align-content: stretch !important;
+  justify-items: center !important;
+  row-gap: 0 !important;
+}
+
+html body .app .track-block {
+  grid-row: 2 !important;
+  margin: 0 auto !important;
+}
+
+html body .app .controls {
+  grid-row: 3 !important;
+  margin: clamp(12px, 1.8vh, 18px) auto 0 !important;
+}
+
+html body .app .progress-wrap {
+  grid-row: 4 !important;
+  margin: clamp(10px, 1.5vh, 15px) auto 0 !important;
+}
+
+html body .app #genreStrip {
+  grid-row: 6 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  align-self: end !important;
+  justify-self: center !important;
+  height: 76px !important;
+  min-height: 76px !important;
+  max-height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(8px, 1.6vw, 16px) !important;
+  padding: 4px 12px !important;
+  max-width: min(780px, 94vw) !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin: -24px auto clamp(2px, 0.5vh, 6px) !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  transition: opacity 240ms ease, transform 240ms ease !important;
+}
+
+html body .app #genreStrip .genre-button,
+html body .app #genreStrip #nonstopButton,
+html body .app .sheet-genres .genre-button {
+  border: 0 !important;
+  border-color: transparent !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  text-shadow: 0 1px 12px rgba(0,0,0,.52);
+}
+
+html body .app #genreStrip .genre-button,
+html body .app #genreStrip #nonstopButton {
+  position: relative !important;
+  top: 0 !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 72px !important;
+  height: 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  padding: 3px 8px 6px !important;
+  border: 0 !important;
+  border-radius: 16px !important;
+  background-color: transparent !important;
+  background-image: var(--genre-icon-image) !important;
+  background-repeat: no-repeat !important;
+  background-size: 0 0 !important;
+  color: rgba(246, 236, 215, 0.72) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transform: none !important;
+  transition: color 160ms ease, transform 160ms ease !important;
+}
+
+/* Independent center alignment for genre icon frame */
+html body .app #genreStrip .genre-button .genre-icon-frame,
+html body .app #genreStrip #nonstopButton .genre-icon-frame {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  margin: 0 auto !important;
+  flex: 0 0 38px !important;
+  pointer-events: none !important;
+}
+
+html body .app #genreStrip .genre-button .genre-icon-img,
+html body .app #genreStrip #nonstopButton .genre-icon-img {
+  display: block !important;
+  width: 34px !important;
+  height: 34px !important;
+  margin: 0 auto !important;
+  background-image: var(--genre-icon-image) !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  transition: transform 160ms ease, filter 160ms ease !important;
+}
+
+/* Independent center alignment for genre text label */
+html body .app #genreStrip .genre-button .genre-label,
+html body .app #genreStrip #nonstopButton .genre-label {
+  display: block !important;
+  width: 100% !important;
+  margin: 2px auto 0 !important;
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  color: inherit !important;
+  letter-spacing: -0.01em !important;
+}
+
+html body .app #genreStrip .genre-button.active,
+html body .app #genreStrip .genre-button[aria-current="true"],
+html body .app #genreStrip #nonstopButton.active,
+html body .app[data-play-mode="nonstop"] #genreStrip #nonstopButton {
+  color: var(--ivory) !important;
+  border: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+html body .app #genreStrip .genre-button.active .genre-icon-img,
+html body .app #genreStrip .genre-button[aria-current="true"] .genre-icon-img,
+html body .app #genreStrip #nonstopButton.active .genre-icon-img,
+html body .app[data-play-mode="nonstop"] #genreStrip #nonstopButton .genre-icon-img {
+  transform: scale(1.06) !important;
+  filter: drop-shadow(0 3px 8px color-mix(in srgb, var(--accent) 30%, transparent)) !important;
+}
+
+html body .app #genreStrip .genre-button::before,
+html body .app #genreStrip #nonstopButton::before,
+html body .app .sheet-genres .genre-button::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: -4px -6px !important;
+  border-radius: 20px !important;
+  border: 0 !important;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(6, 8, 18, 0.65) 0%,
+    rgba(6, 8, 18, 0.40) 38%,
+    rgba(6, 8, 18, 0.12) 65%,
+    transparent 82%
+  ) !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  opacity: 0.88 !important;
+  transition: opacity 180ms ease, background 180ms ease !important;
+}
+
+html body .app #genreStrip .genre-button:hover::before,
+html body .app #genreStrip #nonstopButton:hover::before {
+  opacity: 1 !important;
+}
+
+html body .app #genreStrip .genre-button.active::before,
+html body .app #genreStrip .genre-button[aria-current="true"]::before,
+html body .app #genreStrip #nonstopButton.active::before,
+html body .app[data-play-mode="nonstop"] #genreStrip #nonstopButton::before {
+  opacity: 1 !important;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    color-mix(in srgb, var(--accent) 26%, rgba(6, 8, 18, 0.75)) 0%,
+    rgba(6, 8, 18, 0.48) 42%,
+    rgba(6, 8, 18, 0.14) 68%,
+    transparent 85%
+  ) !important;
+}
+
+html body .app #genreStrip .genre-button::after,
+html body .app #genreStrip #nonstopButton::after,
+html body .app .sheet-genres .genre-button::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 1px !important;
+  width: 44px !important;
+  height: 8px !important;
+  transform: translateX(-50%) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: var(--garba-dandiya-marker) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 150ms ease !important;
+}
+
+html body .app #genreStrip .genre-button.active::after,
+html body .app #genreStrip .genre-button[aria-current="true"]::after,
+html body .app #genreStrip #nonstopButton.active::after,
+html body .app[data-play-mode="nonstop"] #genreStrip #nonstopButton::after,
+html body .app .sheet-genres .genre-button.active::after,
+html body .app .sheet-genres .genre-button[aria-current="true"]::after {
+  opacity: .96 !important;
+}
+
+/* Flat horizontal baseline — no arc stepping. Every genre button sits at the same level. */
+html body .app #genreStrip .genre-button:nth-child(n) { top: 0 !important; transform: none !important; }
+
+/* Explore button is center aligned at the very bottom baseline with 24/7 Live and YouTube button.
+   The chevron down icon is placed directly below the Explore text. */
+html body .app #browseActions {
+  grid-row: 7 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  align-self: end !important;
+  justify-self: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+  transition: opacity 240ms ease, transform 240ms ease !important;
+}
+
+html body .app #browseActions #browseButton {
+  appearance: none !important;
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  height: auto !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  color: rgba(246, 236, 215, 0.78) !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: color 200ms ease, transform 180ms ease !important;
+}
+
+html body .app #browseActions #browseButton::before,
+html body .app #browseActions #browseButton::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .app #browseActions #browseButton:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--ivory, #fff) !important;
+  transform: translateY(2px) !important;
+  box-shadow: none !important;
+}
+
+html body .app #browseActions #browseButton span,
+html body .app #browseActions #browseButton .browse-label {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: currentColor !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
+html body .app #browseActions #browseButton .browse-chevron {
+  width: 14px !important;
+  height: 9px !important;
+  margin: 0 !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2.2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.85)) !important;
+  transition: transform 160ms ease, opacity 160ms ease !important;
+}
+
+@media (hover: hover) {
+  html body .app #genreStrip .genre-button:hover,
+  html body .app #genreStrip #nonstopButton:hover {
+    color: rgba(246,236,215,.92) !important;
+    filter: none !important;
+  }
+
+  html body .app #browseActions #browseButton:hover .browse-chevron {
+    transform: translateY(1.5px) !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  html body .app .player-shell {
+    padding-top: clamp(64px, 8vh, 88px) !important;
+    padding-bottom: max(14px, var(--safe-bottom)) !important;
+    padding-inline: max(14px, var(--safe-left)) !important;
+    grid-template-rows: minmax(0, 1fr) auto auto auto minmax(10px, 1.1fr) auto auto !important;
+  }
+
+  html body .app .controls {
+    margin-top: clamp(8px, 1.4vh, 14px) !important;
+  }
+
+  html body .app .progress-wrap {
+    margin-top: clamp(6px, 1.2vh, 12px) !important;
+  }
+
+  html body .app #genreStrip {
+    height: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    padding-inline: max(14px, var(--safe-left)) !important;
+    justify-content: flex-start !important;
+    margin: 0 auto 6px !important;
+  }
+
+  html body .app #genreStrip .genre-button,
+  html body .app #genreStrip #nonstopButton {
+    min-width: 64px !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    max-height: 64px !important;
+    padding: 2px 4px 5px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-icon-frame,
+  html body .app #genreStrip #nonstopButton .genre-icon-frame {
+    width: 32px !important;
+    height: 32px !important;
+    flex: 0 0 32px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-icon-img,
+  html body .app #genreStrip #nonstopButton .genre-icon-img {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-label,
+  html body .app #genreStrip #nonstopButton .genre-label {
+    font-size: 11.5px !important;
+    margin-top: 1px !important;
+  }
+
+  html body .app #genreStrip .genre-button::after,
+  html body .app #genreStrip #nonstopButton::after {
+    width: 40px !important;
+    height: 7px !important;
+    bottom: 1px !important;
+  }
+
+  html body .app #browseActions {
+    height: auto !important;
+    min-height: 38px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+  }
+
+  html body .app #browseActions #browseButton {
+    height: auto !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    font-size: 10.5px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html body .app #genreStrip .genre-button::after,
+  html body .app #genreStrip #nonstopButton::after {
+    width: 36px !important;
+    height: 7px !important;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  html body .app .player-shell {
+    padding-top: 48px !important;
+    padding-bottom: max(10px, var(--safe-bottom)) !important;
+    grid-template-rows: auto auto auto 10px 0 auto 6px auto !important;
+  }
+
+  html body .app .track-block {
+    grid-row: 1 !important;
+    height: 94px !important;
+    min-height: 94px !important;
+    max-height: 94px !important;
+  }
+
+  html body .app .controls {
+    grid-row: 2 !important;
+    margin-top: 2px !important;
+  }
+
+  html body .app .progress-wrap {
+    grid-row: 3 !important;
+    margin-top: 2px !important;
+  }
+
+  html body .app #genreStrip {
+    grid-row: 6 !important;
+    align-self: end !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    margin: 0 auto !important;
+  }
+
+  html body .app #genreStrip .genre-button,
+  html body .app #genreStrip #nonstopButton {
+    top: 0 !important;
+    min-width: 56px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    padding: 2px 4px 4px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-icon-frame,
+  html body .app #genreStrip #nonstopButton .genre-icon-frame {
+    width: 26px !important;
+    height: 26px !important;
+    flex: 0 0 26px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-icon-img,
+  html body .app #genreStrip #nonstopButton .genre-icon-img {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  html body .app #genreStrip .genre-button .genre-label,
+  html body .app #genreStrip #nonstopButton .genre-label {
+    font-size: 10px !important;
+    margin-top: 1px !important;
+  }
+
+  html body .app #genreStrip .genre-button::after,
+  html body .app #genreStrip #nonstopButton::after {
+    width: 32px !important;
+    height: 6px !important;
+    bottom: 0 !important;
+  }
+
+  html body .app #browseActions {
+    grid-row: 8 !important;
+    align-self: end !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    margin: 0 auto !important;
+  }
+
+  html body .app #browseActions #browseButton {
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 9.5px !important;
+  }
+
+  html body .live-station-container {
+    bottom: max(10px, var(--safe-bottom)) !important;
+  }
+  html body .live-station-button {
+    height: 32px !important;
+    padding: 0 10px 0 8px !important;
+    font-size: 10px !important;
+    gap: 5px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .app #genreStrip .genre-button::after,
+  html body .app #genreStrip #nonstopButton::after,
+  html body .app #browseActions #browseButton .browse-chevron {
+    transition: none !important;
+  }
+}
+
+/* Dismiss bottom actions cleanly when songSheet is open */
+.app:not([data-sheet-snap="closed"]) #browseActions,
+.app[data-sheet-snap="collapsed"] #browseActions,
+.app[data-sheet-snap="medium"] #browseActions,
+.app[data-sheet-snap="full"] #browseActions,
+.app:not([data-sheet-snap="closed"]) #genreStrip,
+.app[data-sheet-snap="collapsed"] #genreStrip,
+.app[data-sheet-snap="medium"] #genreStrip,
+.app[data-sheet-snap="full"] #genreStrip {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(12px) !important;
+}
+
+/* Align all genre buttons cleanly on a flat, even baseline without jumping or wave offsets */
+html body .app #genreStrip .genre-button,
+html body .app #genreStrip #nonstopButton {
+  top: 0 !important;
+  transform: none !important;
+  align-self: center !important;
+  vertical-align: middle !important;
+}
+
+/* Remove uppercase genre eyebrow text above the song title */
+html body .app .track-block .genre-eyebrow {
+  display: none !important;
+}
+
+/* Maintain YouTube media runtime without intrusive popup dock obstructing courtyard artwork */
+html body #youtubeStage.youtube-dock {
+  opacity: 0.002 !important;
+  pointer-events: none !important;
+  z-index: -10 !important;
+}
+
+/* Ensure track-block is perfectly centered with genre eyebrow removed */
+html body .app .track-block {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  width: 100% !important;
+}
+
+html body .app .track-block .song-title {
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+html body .app .track-block .artist-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+/* Perfectly center 5-button transport controls */
+html body .app .controls {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-inline: auto !important;
+  width: auto !important;
+  max-width: min(440px, 94vw) !important;
+  gap: clamp(14px, 3vw, 26px) !important;
+}
+
+/* Progress Bar & Seek Track - High Contrast, Visible & Luminous */
+html body .app .progress-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: min(380px, 86vw) !important;
+  max-width: 380px !important;
+  margin: clamp(12px, 1.8vh, 18px) auto 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+html body .app .progress-wrap .time {
+  flex: 0 0 38px !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  font-variant-numeric: tabular-nums !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+html body .app .progress-wrap .time:first-child {
+  text-align: right !important;
+}
+
+html body .app .progress-wrap .time:last-child {
+  text-align: left !important;
+}
+
+html body .app .progress-wrap .progress {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 20px !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: transparent !important;
+}
+
+html body .app .progress-wrap .progress::-webkit-slider-runnable-track {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(
+    to right,
+    var(--accent, #e5a93c) 0 var(--progress, 0%),
+    rgba(246, 236, 215, 0.38) var(--progress, 0%) 100%
+  ) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.85) !important;
+  border: 1px solid rgba(246, 236, 215, 0.25) !important;
+}
+
+html body .app .progress-wrap .progress::-webkit-slider-thumb {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-top: -6px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 2px solid var(--accent, #e5a93c) !important;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent, #e5a93c) 75%, transparent), 0 2px 6px rgba(0, 0, 0, 0.85) !important;
+  transition: transform 140ms ease !important;
+}
+
+html body .app .progress-wrap .progress:hover::-webkit-slider-thumb {
+  transform: scale(1.2) !important;
+}
+
+html body .app .progress-wrap .progress::-moz-range-track {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: rgba(246, 236, 215, 0.38) !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.85) !important;
+  border: 1px solid rgba(246, 236, 215, 0.25) !important;
+}
+
+html body .app .progress-wrap .progress::-moz-range-progress {
+  height: 6px !important;
+  border-radius: 999px !important;
+  background: var(--accent, #e5a93c) !important;
+}
+
+html body .app .progress-wrap .progress::-moz-range-thumb {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 2px solid var(--accent, #e5a93c) !important;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent, #e5a93c) 75%, transparent), 0 2px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Production Hardening: Disable accidental text selection, image drag, and touch callouts */
+html body .app {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+html body .app input[type="search"],
+html body .app input[type="text"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Streaming via YouTube - Clean floating attribution text + logo, no button pill */
+html body .app .streaming-via {
+  position: fixed !important;
+  right: max(22px, var(--safe-right)) !important;
+  bottom: max(22px, var(--safe-bottom)) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  height: auto !important;
+  min-height: unset !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  z-index: 12 !important;
+  pointer-events: auto !important;
+  cursor: default !important;
+  transition: opacity 240ms ease, transform 180ms ease !important;
+}
+
+html body .app .streaming-via:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html body .app .streaming-via .streaming-label {
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgba(246, 236, 215, 0.72) !important;
+  white-space: nowrap !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+html body .app .streaming-via .yt-brand-lockup {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+html body .app .streaming-via .youtube-badge-logo {
+  width: 20px !important;
+  height: 14px !important;
+  display: block !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8)) !important;
+}
+
+html body .app .streaming-via .yt-brand-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+.app:not([data-sheet-snap="closed"]) .streaming-via,
+.app[data-sheet-snap="collapsed"] .streaming-via,
+.app[data-sheet-snap="medium"] .streaming-via,
+.app[data-sheet-snap="full"] .streaming-via {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(12px) !important;
+}
+
+@media (max-width: 600px) {
+  html body .app .streaming-via {
+    bottom: max(14px, var(--safe-bottom)) !important;
+    right: max(14px, var(--safe-right)) !important;
+    height: auto !important;
+    padding: 0 !important;
+    gap: 5px !important;
+  }
+  html body .app .streaming-via .streaming-label {
+    font-size: 10px !important;
+  }
+  html body .app .streaming-via .youtube-badge-logo {
+    width: 17px !important;
+    height: 12px !important;
+  }
+  html body .app .streaming-via .yt-brand-text {
+    font-size: 11px !important;
+  }
+}
+
+

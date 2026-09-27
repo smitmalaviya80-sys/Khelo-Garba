@@ -1,0 +1,55 @@
+name: Fullscreen policy validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/navigation/fullscreen-policy.js'
+      - 'scripts/lib/test-fullscreen-policy.mjs'
+      - '.github/workflows/fullscreen-policy-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/navigation/fullscreen-policy.js'
+      - 'scripts/lib/test-fullscreen-policy.mjs'
+      - '.github/workflows/fullscreen-policy-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Test fullscreen policy
+        run: node scripts/lib/test-fullscreen-policy.mjs
+      - name: Guard pure policy boundary
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+
+          const source = await readFile('src/navigation/fullscreen-policy.js', 'utf8');
+          const forbidden = [
+            /navigator\s*\./,
+            /\buserAgent\b/,
+            /\bplatform\b/,
+            /\bdocument\s*\./,
+            /\bwindow\s*\./,
+            /requestFullscreen\s*\(/,
+            /exitFullscreen\s*\(/,
+            /matchMedia\s*\(/,
+          ];
+
+          for (const pattern of forbidden) {
+            assert.equal(pattern.test(source), false, `fullscreen policy must stay pure: ${pattern}`);
+          }
+          NODE

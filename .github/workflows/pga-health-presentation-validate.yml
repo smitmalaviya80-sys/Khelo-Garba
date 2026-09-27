@@ -1,0 +1,53 @@
+name: Validate PGA Health presentation
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/health/presentation.js'
+      - 'src/pga/health/tests/presentation.test.mjs'
+      - 'src/pga/health/PRESENTATION.md'
+      - '.github/workflows/pga-health-presentation-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/health/presentation.js'
+      - 'src/pga/health/tests/presentation.test.mjs'
+      - 'src/pga/health/PRESENTATION.md'
+      - '.github/workflows/pga-health-presentation-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-health-presentation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  health-presentation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax-check Health presentation module
+        run: node --check src/pga/health/presentation.js
+
+      - name: Run Health presentation fixtures
+        run: node --test src/pga/health/tests/presentation.test.mjs
+
+      - name: Guard presentation purity and ownership boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -E '(fetch\(|XMLHttpRequest|document\.|window\.|localStorage|sessionStorage|navigator\.|process\.env)' src/pga/health/presentation.js
+          ! grep -E '(innerHTML|outerHTML|insertAdjacentHTML)' src/pga/health/presentation.js
+          grep -F "pga-health-snapshot/v1" src/pga/health/presentation.js
+          grep -F "https:" src/pga/health/presentation.js
+          grep -F "accessibilitySummary" src/pga/health/presentation.js

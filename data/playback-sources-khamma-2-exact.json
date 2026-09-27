@@ -1,0 +1,326 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Issue #231 YouTube-only migration for Khamma 2. Track 1 uses the exact official YouTube Topic recording for Khamma 2 (HipHop Garba). Tracks 2-16 and 18-21 use source-published chapter starts from Sur Sagar Music's verified full-programme YouTube upload 0U3i-GuKZoE. Canonical track 17, Khamma 2 (00:29), is intentionally omitted because the authoritative full-programme chapter at 48:39 is labelled Sarkari (Dakla Intro), not Khamma 2; no recording identity is inferred. Legacy Amazon track URLs are provenance only and are no longer executable playback routes. Also includes 12 verified chapter routes for Khamma Tran Taali (2023 legacy) from Sur Sagar Music official master VEpmBil3O6g.",
+  "songSources": {
+    "khamma-2-2024-01-khamma-2-hiphop-garba": {
+      "provider": "youtube",
+      "videoId": "85jwFZy4jz0",
+      "sourceUrl": "https://www.youtube.com/watch?v=85jwFZy4jz0",
+      "sourceType": "official-topic",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 1,
+      "evidenceType": "verified-official-song"
+    },
+    "khamma-2-2024-02-dhinganu": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 320,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=320s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 2,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-03-jogidas-khuman-no-raahdo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 374,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=374s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 3,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-04-vir-vachhraj-dada-no-raahdo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 594,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=594s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 4,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-05-shivji-nu-damaru": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 854,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=854s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 5,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-06-raam-vada-no-raahdo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 1096,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=1096s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 6,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-07-kaanji-tari-maa-kehse": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 1458,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=1458s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 7,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-08-kuldevi-nathi-jeva-teva": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 1618,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=1618s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 8,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-09-vaari-jaau": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 1776,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=1776s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 9,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-10-mata-ni-maya": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 1894,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=1894s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 10,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-11-mogal-no-bhediyo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2069,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2069s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 11,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-12-sooraj-chand": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2241,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2241s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 12,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-13-chapaner-no-chawk": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2381,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2381s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 13,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-14-jag-janani-jagdamba": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2518,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2518s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 14,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-15-man-moti-no-haar": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2655,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2655s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 15,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-16-maa-chamunda-chhand": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2825,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2825s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 16,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-18-khamkaaro": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 2949,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=2949s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 18,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-19-ramjo-ramjo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 3210,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=3210s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 19,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-20-ghadi-toh-ramo": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 3390,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=3390s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 20,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-2-2024-21-lili-nagher-ma": {
+      "provider": "youtube",
+      "videoId": "0U3i-GuKZoE",
+      "startSeconds": 3559,
+      "sourceUrl": "https://www.youtube.com/watch?v=0U3i-GuKZoE&t=3559s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-2-2024",
+      "trackNumber": 21,
+      "evidenceType": "verified-official-set-chapter"
+    },
+    "khamma-tran-taali-2023-01-roon-jhoon-karta-aavo-ne": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 4438,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=4438s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-02-aasha-puri-kare-aashapura": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 4580,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=4580s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 2,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-03-maari-mata-to-anmol-chhe": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 4727,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=4727s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 3,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-04-tari-marji-ma-mari-ha": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 4885,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=4885s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-05-tam-tam-tamakto": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5019,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5019s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-07-parcha-no-nai-paar": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5205,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5205s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 7,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-08-charno-ni-raaj": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5309,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5309s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-09-jhulan-morali": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5453,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5453s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 9,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-10-jaavu-chhe": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5640,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5640s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 10,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-11-aala-leela-vasaliya-re": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5770,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5770s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-12-rudi-ne-rangili-re": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5856,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5856s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 12,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "khamma-tran-taali-2023-13-sorath-tran-taali-version": {
+      "provider": "youtube",
+      "videoId": "VEpmBil3O6g",
+      "startSeconds": 5984,
+      "sourceUrl": "https://www.youtube.com/watch?v=VEpmBil3O6g&t=5984s",
+      "sourceType": "verified-label-channel",
+      "releaseId": "khamma-tran-taali-2023-legacy",
+      "trackNumber": 13,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

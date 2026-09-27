@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "targetDirectTracks": 700,
+  "allowedStates": [
+    "unreviewed",
+    "researching",
+    "contact-rights-holder",
+    "licence-review",
+    "cleared",
+    "blocked"
+  ],
+  "tracks": {},
+  "notes": "Track-level acquisition ledger for GARBA-hosted audio. A cleared state is only valid when the same song has a rights-gated entry in data/direct-audio.json. Do not infer permission from streaming availability, purchase, download access, or a public upload."
+}

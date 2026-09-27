@@ -1,0 +1,50 @@
+name: PGA telemetry load validate
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/load/pga-telemetry-load.mjs'
+      - 'scripts/lib/test-pga-telemetry-load.mjs'
+      - '.github/workflows/pga-telemetry-load-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/load/pga-telemetry-load.mjs'
+      - 'scripts/lib/test-pga-telemetry-load.mjs'
+      - '.github/workflows/pga-telemetry-load-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Check load harness syntax
+        run: node --check scripts/load/pga-telemetry-load.mjs
+      - name: Run load-model regression tests
+        run: node scripts/lib/test-pga-telemetry-load.mjs
+      - name: Exercise 1k 5k 10k heartbeat models without network traffic
+        run: |
+          node scripts/load/pga-telemetry-load.mjs --scenario steady --listeners 1000 --duration-seconds 45 > /tmp/pga-load-1k.json
+          node scripts/load/pga-telemetry-load.mjs --scenario steady --listeners 5000 --duration-seconds 45 > /tmp/pga-load-5k.json
+          node scripts/load/pga-telemetry-load.mjs --scenario steady --listeners 10000 --duration-seconds 45 > /tmp/pga-load-10k.json
+          node scripts/load/pga-telemetry-load.mjs --scenario navratri-burst --listeners 1000 --duration-seconds 45 > /tmp/pga-load-burst.json
+          node scripts/load/pga-telemetry-load.mjs --scenario retry-storm --listeners 1000 --retry-attempts 3 > /tmp/pga-load-retry.json
+          node scripts/load/pga-telemetry-load.mjs --scenario invalid-mix --listeners 1000 --invalid-ratio 0.1 > /tmp/pga-load-invalid.json
+      - name: Prove model mode never claims measured capacity
+        run: |
+          grep -q '"capacityClaim": "not measured"' /tmp/pga-load-1k.json
+          grep -q '"heartbeatRps": 22.222' /tmp/pga-load-1k.json
+          grep -q '"heartbeatRps": 111.111' /tmp/pga-load-5k.json
+          grep -q '"heartbeatRps": 222.222' /tmp/pga-load-10k.json
+          ! grep -q 'https://events.playgarba.com' /tmp/pga-load-1k.json

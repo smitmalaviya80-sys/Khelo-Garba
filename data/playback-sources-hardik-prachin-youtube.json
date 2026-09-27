@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-09-17",
+  "note": "Exact full-recording YouTube routes for Hardik Dave's 2024 Prachin Garba release. Both videos are published by Musica Productions, the production/rightsholder identity independently corroborated by the commercial release. Each canonical row is already a complete long-form recording unit, so no chapter timestamp or segmentation is added.",
+  "songSources": {
+    "hardik-prachin-garba-2024-01": {"provider":"youtube","videoId":"cCZJC_DAdyM","sourceUrl":"https://www.youtube.com/watch?v=cCZJC_DAdyM","sourceType":"verified-label-channel","releaseId":"hardik-prachin-garba-2024","trackNumber":1,"evidenceType":"verified-label-full-song-original-album-track"},
+    "hardik-prachin-garba-2024-02": {"provider":"youtube","videoId":"qPehZ3nvm14","sourceUrl":"https://www.youtube.com/watch?v=qPehZ3nvm14","sourceType":"verified-label-channel","releaseId":"hardik-prachin-garba-2024","trackNumber":2,"evidenceType":"verified-label-full-song-original-album-track"}
+  }
+}

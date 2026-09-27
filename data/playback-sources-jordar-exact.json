@@ -1,0 +1,199 @@
+{
+  "version": "0.3.0",
+  "updated": "2026-09-12",
+  "note": "Curated exact song routes for all 23 tracks on Jordar DJ Garba Nonstop. Tracks 1, 7, 11, and 23 use independently verified auto-generated full-song album tracks on Kajal Maheriya's Official Artist Channel, tied to the same 2022 Payal Digital release through RDC Media Pvt. Ltd. The remaining 19 Apple Music and Amazon Music routes retain their exact provider provenance and stay fail-closed until exact same-recording YouTube evidence is recovered. The verified full-programme RDC Gujarati upload is not used for split routing because no trustworthy source-published per-song chapter starts were found.",
+  "songSources": {
+    "gaman-kajal-jordar-01-gogo-gujarat-ni-dharti-no-goam-dhani-2022": {
+      "provider": "youtube",
+      "videoId": "2XGp2iNx4SE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=2XGp2iNx4SE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-kajal-jordar-02-mara-mobilema-maa-no-photo-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHKCXHCT",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 2,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-03-mari-meldi-maa-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650156",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 3,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-04-heer-gajro-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650157",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 4,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-05-uncho-uncho-joganima-no-limbado-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650158",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 5,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-06-har-har-gange-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/ca/song/1648650159",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 6,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-07-ler-karave-bhai-2022": {
+      "provider": "youtube",
+      "videoId": "pmQuQNVmucI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=pmQuQNVmucI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-kajal-jordar-08-huto-tane-varulya-jio-maniyara-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHL8ZXXH",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 8,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-09-mara-sandh-paragna-ni-sadhi-ma-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHLGZTJ3",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 9,
+      "evidenceType": "official-amazon-music-song-page"
+    },
+    "gaman-kajal-jordar-10-jog-maya-jogani-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650163",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 10,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-11-ray-ranchhod-ji-2022": {
+      "provider": "youtube",
+      "videoId": "TiR1BsW7GZE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=TiR1BsW7GZE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 11,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-kajal-jordar-12-dhadati-dhadati-raat-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHLB6B9R",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 12,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-13-veli-upade-patan-vadi-gaadi-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650376",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 13,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-14-raat-andhari-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHLGH3LN",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 14,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-15-bahuchar-maa-mori-mavadi-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHKN8ZS8",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 15,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-16-lekh-ma-mari-maa-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHKN31ZG",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 16,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-17-paghadiye-ramta-joya-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHKMJLH8",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 17,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-18-loko-ni-nazaru-lagase-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHKQNGHH",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 18,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-19-kora-kagad-ma-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/us/song/1648650382",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 19,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-20-lili-lembodiya-ni-chhoya-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHL49V8G",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 20,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-21-aaja-mari-chamund-mane-2022": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B0BHL4DFXP",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 21,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "gaman-kajal-jordar-22-helo-maro-2022": {
+      "provider": "apple-music",
+      "sourceUrl": "https://music.apple.com/au/song/1648650385",
+      "sourceType": "verified-track-source",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 22,
+      "evidenceType": "official-apple-music-song-page"
+    },
+    "gaman-kajal-jordar-23-mara-kala-megha-ni-deepo-2022": {
+      "provider": "youtube",
+      "videoId": "fGQvti6Ye24",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=fGQvti6Ye24",
+      "sourceType": "official-artist-channel",
+      "releaseId": "jordar-dj-garba-nonstop-gaman-kajal-2022",
+      "trackNumber": 23,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    }
+  }
+}

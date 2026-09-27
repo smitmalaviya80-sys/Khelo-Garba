@@ -1,0 +1,121 @@
+{
+  "version": "0.27.0",
+  "updated": "2026-09-26",
+  "note": "Issue #152 Catalogue Wave D6. Exact Amazon Music routes for all 14 canonical Nortani Raat (Garba) tracks. Every track ID comes from the provider-published href on Amazon's official 14-track album page, including hrefs whose destination pages were not cached. The separate 33:10 YouTube/Amazon continuous master is not treated as 14 inferred chapters. Track 11 (Aombaliya Ni Dale Pelu) is promoted to the exact verified Kirtidan Gadhvi Topic YouTube track 7jttd0BqP7g.",
+  "songSources": {
+    "nortani-raat-kirtidan-anita-2025-01-mathura-ma-vagi-morli": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5LWDLY",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-02-eke-lal-darvaje-tambu-toniya-re-lol": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5Q6KZT",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-03-lili-lemdi-re": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5QX5CR",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 3,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-04-aavo-aavo-ne-madi": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5N9NHL",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-05-kum-kum-kera-pagle-madi": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5KGNY1",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 5,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-06-me-to-shangaryo-chachar-chowk": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5Q4H16",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 6,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-07-sathiya-puravo-dware": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5RLRFK",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 7,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-08-halo-mari-saiyaro-melo-jova-jay": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5PGYPZ",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 8,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-09-morali-to-chali-rang-rusane-re": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5PGJLL",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 9,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-10-o-gori-chham-chham-janjar-vage": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5LTH6B",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 10,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-11-aombaliya-ni-dale-pelu": {
+      "provider": "youtube",
+      "videoId": "7jttd0BqP7g",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=7jttd0BqP7g",
+      "sourceType": "official-topic",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 11,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "nortani-raat-kirtidan-anita-2025-12-mogal-ne-bhajo-din-raat": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5N1P61",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 12,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-13-jilan-jilva-gya-ta": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5LV3PH",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 13,
+      "evidenceType": "official-amazon-album-track-link"
+    },
+    "nortani-raat-kirtidan-anita-2025-14-madi-aakash-patal-tu-dhar-ambar": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.in/tracks/B0FP5PTDYW",
+      "sourceType": "verified-track-source",
+      "releaseId": "nortani-raat-kirtidan-anita-2025",
+      "trackNumber": 14,
+      "evidenceType": "official-amazon-album-track-link"
+    }
+  }
+}

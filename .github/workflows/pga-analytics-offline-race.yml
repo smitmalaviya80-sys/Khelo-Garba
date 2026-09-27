@@ -1,0 +1,64 @@
+name: PGA analytics offline race
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/app/app.js'
+      - '.github/browser/pga-analytics-offline-race.mjs'
+      - '.github/workflows/pga-analytics-offline-race.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/app/app.js'
+      - '.github/browser/pga-analytics-offline-race.mjs'
+      - '.github/workflows/pga-analytics-offline-race.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-analytics-offline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax-check regression and PGA client
+        run: |
+          node --check src/pga/app/app.js
+          node --check .github/browser/pga-analytics-offline-race.mjs
+
+      - name: Install Playwright runner
+        run: npm install --no-save --no-package-lock @playwright/test@1.55.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start PGA fixture
+        run: |
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory src/pga/app >/tmp/pga-analytics-offline.log 2>&1 &
+          echo $! >/tmp/pga-analytics-offline.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4174/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/pga-analytics-offline.log
+          exit 1
+
+      - name: Prove Offline invalidates stale Audience and Listening requests
+        env:
+          PGA_BASE_URL: http://127.0.0.1:4174
+        run: node .github/browser/pga-analytics-offline-race.mjs

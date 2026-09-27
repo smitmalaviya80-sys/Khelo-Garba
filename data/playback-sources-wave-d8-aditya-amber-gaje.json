@@ -1,0 +1,16 @@
+{
+  "version":"0.28.0",
+  "updated":"2026-09-08",
+  "note":"Issue #152 Catalogue Wave D8 under PlayGarba's production YouTube-only execution policy. Nine exact Amber Gaje songs are independently verified on Aditya Gadhvi Official's YouTube distribution and are executable routes. The remaining nine songs intentionally have no playback entry here; provider album metadata remains provenance only until exact 2024-edition YouTube identities are verified. No YouTube ID, timestamp or chapter boundary is inferred.",
+  "songSources":{
+    "amber-gaje-2024-02-khamma-mara-nandji-na-lal":{"provider":"youtube","videoId":"AWe9rkzdjkA","sourceUrl":"https://www.youtube.com/watch?v=AWe9rkzdjkA","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":2,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-03-hei-maru-vanravan-se-rudu":{"provider":"youtube","videoId":"cRHHpcDTe2Q","sourceUrl":"https://www.youtube.com/watch?v=cRHHpcDTe2Q","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":3,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-05-kan-tari-morliye-mohine":{"provider":"youtube","videoId":"HYllaj3vj3Y","sourceUrl":"https://www.youtube.com/watch?v=HYllaj3vj3Y","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":5,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-06-he-ubhali-re-ne-tu-govalani":{"provider":"youtube","videoId":"E8IxjnKc4L0","sourceUrl":"https://www.youtube.com/watch?v=E8IxjnKc4L0","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":6,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-07-ramva-aavo-ne-raas":{"provider":"youtube","videoId":"KrThXzMm23Y","sourceUrl":"https://www.youtube.com/watch?v=KrThXzMm23Y","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":7,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-10-bhala-bhanejada-sarovar-javu":{"provider":"youtube","videoId":"15zoKaOESaY","sourceUrl":"https://www.youtube.com/watch?v=15zoKaOESaY","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":10,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-11-ho-rang-rasiya-kya-rami-avya":{"provider":"youtube","videoId":"c-G03OXp-OM","sourceUrl":"https://www.youtube.com/watch?v=c-G03OXp-OM","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":11,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-12-nand-kuvar-natvar":{"provider":"youtube","videoId":"KWj3DqWSEGs","sourceUrl":"https://www.youtube.com/watch?v=KWj3DqWSEGs","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":12,"evidenceType":"verified-official-song"},
+    "amber-gaje-2024-16-venu-ma-virado-galtiti":{"provider":"youtube","videoId":"1rMSbcVhb-k","sourceUrl":"https://www.youtube.com/watch?v=1rMSbcVhb-k","sourceType":"official-artist-channel","releaseId":"amber-gaje-aditya-shruti-2024","trackNumber":16,"evidenceType":"verified-official-song"}
+  }
+}

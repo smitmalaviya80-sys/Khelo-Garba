@@ -1,0 +1,49 @@
+name: Validate PGA Live API
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/tests/live-api.test.mjs'
+      - 'src/pga/backend/README.md'
+      - '.github/workflows/pga-live-api-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/backend/admin-worker.js'
+      - 'src/pga/backend/tests/live-api.test.mjs'
+      - 'src/pga/backend/README.md'
+      - '.github/workflows/pga-live-api-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-live-api-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  live-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax-check protected admin worker
+        run: node --check src/pga/backend/admin-worker.js
+
+      - name: Run focused Live API contract tests
+        run: node --test src/pga/backend/tests/live-api.test.mjs
+
+      - name: Run live-presence query regression tests
+        run: node --test src/pga/backend/tests/live-presence.test.mjs
+
+      - name: Run existing PGA backend regression suite
+        run: node --test src/pga/backend/tests/backend.test.mjs

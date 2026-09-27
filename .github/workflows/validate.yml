@@ -1,0 +1,56 @@
+name: Validate GARBA
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: npm run check
+      - name: Validate Garba Atmosphere
+        run: node scripts/lib/validate-immersive-atmosphere.mjs
+      - name: Install social renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin webp fonts-gfs-didot
+      - name: Render PWA icons
+        run: |
+          mkdir -p /tmp/playgarba-icons
+          rsvg-convert -w 192 -h 192 assets/icons/icon.svg -o /tmp/playgarba-icons/icon-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/icon.svg -o /tmp/playgarba-icons/icon-512.png
+          rsvg-convert -w 192 -h 192 assets/icons/maskable.svg -o /tmp/playgarba-icons/maskable-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/maskable.svg -o /tmp/playgarba-icons/maskable-512.png
+          file /tmp/playgarba-icons/icon-192.png | grep -q 'PNG image data, 192 x 192'
+          file /tmp/playgarba-icons/icon-512.png | grep -q 'PNG image data, 512 x 512'
+          file /tmp/playgarba-icons/maskable-192.png | grep -q 'PNG image data, 192 x 192'
+          file /tmp/playgarba-icons/maskable-512.png | grep -q 'PNG image data, 512 x 512'
+      - name: Render social preview
+        run: |
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK"
+
+          mkdir -p /tmp/playgarba-social
+          unzip -p "$PACK" 04-colourful-garba-courtyard-a.webp > /tmp/playgarba-social/og-background.webp
+          dwebp /tmp/playgarba-social/og-background.webp -quiet -o /tmp/playgarba-social/og-background.png
+          cp assets/social/playgarba-og-card.svg /tmp/playgarba-social/playgarba-og-card.svg
+          (
+            cd /tmp/playgarba-social
+            rsvg-convert -w 1200 -h 630 playgarba-og-card.svg -o garba-og-card.png
+          )
+          file /tmp/playgarba-social/garba-og-card.png | grep -q 'PNG image data, 1200 x 630'

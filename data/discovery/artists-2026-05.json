@@ -1,0 +1,205 @@
+{
+  "updated": "2026-09-26",
+  "method": "Current Garba discovery from official artist catalogue, current Garba playlist placement and official YouTube release.",
+  "artists": [
+    {
+      "id": "raag-mehta",
+      "name": "Raag Mehta",
+      "aliases": [],
+      "tier": "emerging-current",
+      "garbaFootprint": [
+        "modern-garba",
+        "navratri",
+        "live"
+      ],
+      "notable": [
+        "Norta Aave Re",
+        "Nav Navrat"
+      ],
+      "signals": [
+        "official-artist-channel",
+        "current-playlist-2026",
+        "apple-music-current"
+      ],
+      "sources": [
+        "https://www.youtube.com/watch?v=WrToXG4wkQM",
+        "https://music.apple.com/us/artist/raag-mehta/1369960049",
+        "https://open.spotify.com/playlist/2fpcLDFWZLsiSsJuBWY23Y"
+      ]
+    },
+    {
+      "id": "pamela-jain",
+      "name": "Pamela Jain",
+      "aliases": [],
+      "sources": [
+        "https://open.spotify.com/artist/4BBdp811wrWrr1zk9dENUE"
+      ]
+    },
+    {
+      "id": "maulik-mehta",
+      "name": "Maulik Mehta",
+      "aliases": [],
+      "sources": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/maulik-mehta-gujarati-music-director-maulik-mehta-composes-for-a-bollywood-comedy/articleshow/38475958.cms"
+      ]
+    },
+    {
+      "id": "kajal-maheriya",
+      "name": "Kajal Maheriya",
+      "aliases": [],
+      "sources": [
+        "https://www.saregama.com/artist/kajal-maheriya_59415/hits/songs",
+        "https://special-gujarati.blogspot.com/2021/01/hd-latests-kajal-mahereiya-photos-home.html"
+      ]
+    },
+    {
+      "id": "gaman-santhal",
+      "name": "Gaman Santhal",
+      "aliases": [],
+      "sources": [
+        "https://music.amazon.com/artists/B00VCALXPI/gaman-santhal",
+        "https://www.saregama.com/artist/gaman-santhal_76114/hits/songs"
+      ]
+    },
+    {
+      "id": "praful-dave",
+      "name": "Praful Dave",
+      "aliases": [],
+      "sources": [
+        "https://music.amazon.com/artists/B000QKLJWC/praful-dave",
+        "https://prasarbharati.gov.in/music_artists/airahmedabad.pdf"
+      ]
+    },
+    {
+      "id": "rahul-munjariya",
+      "name": "Rahul Munjariya",
+      "aliases": [],
+      "sources": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/maulik-mehta-gujarati-music-director-maulik-mehta-composes-for-a-bollywood-comedy/articleshow/38475958.cms"
+      ]
+    },
+    {
+      "id": "tushaar-trivedi",
+      "name": "Tushaar Trivedi",
+      "aliases": [],
+      "sources": [
+        "https://music.apple.com/us/artist/tushaar-trivedi/1646301064"
+      ]
+    },
+    {
+      "id": "dharmesh-barot",
+      "name": "Dharmesh Barot",
+      "aliases": [],
+      "sources": [
+        "https://allevents.in/performer/dharmesh-barot"
+      ]
+    },
+    {
+      "id": "rashmita-rabari",
+      "name": "Rashmita Rabari",
+      "aliases": [],
+      "sources": [
+        "https://liveclefs.com/artists/rashmita-rabari/"
+      ]
+    },
+    {
+      "id": "himali-vora",
+      "name": "Himali Vora",
+      "aliases": [],
+      "sources": [
+        "https://music.apple.com/us/artist/himali-vora/1606308503",
+        "https://www.swadeshishakti.com/video/bahuchar-maa-na-dera-atul-purohit-himali-vora-iqbal-meer-atulpurohitgarba-navratri2023"
+      ]
+    },
+    {
+      "id": "pooja-kalyani",
+      "name": "Pooja Kalyani",
+      "aliases": [],
+      "sources": [
+        "https://www.tring.co.in/pooja-kalyani",
+        "https://music.apple.com/in/album/ochintu-koi-mane-raste-male-single/1685958812"
+      ]
+    },
+    {
+      "id": "hariom-gadhavi",
+      "name": "Hariom Gadhavi",
+      "aliases": [],
+      "tier": "core-current",
+      "garbaFootprint": [
+        "traditional",
+        "nonstop",
+        "live"
+      ],
+      "notable": [
+        "Navratri 2025 releases"
+      ],
+      "signals": [
+        "official-press-coverage",
+        "current-navratri-release"
+      ],
+      "sources": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/hariom-gadhavi-sets-the-stage-ablaze-with-a-dance-video-promises-a-power-packed-navratri-2025/articleshow/121635398.cms"
+      ]
+    },
+    {
+      "id": "anita-pandit",
+      "name": "Anita Pandit",
+      "aliases": [],
+      "tier": "core-current",
+      "garbaFootprint": [
+        "traditional",
+        "nonstop",
+        "live"
+      ],
+      "notable": [
+        "2025 Garba release"
+      ],
+      "signals": [
+        "apple-music-artist-catalogue",
+        "recent-garba-release"
+      ],
+      "sources": [
+        "https://music.apple.com/us/artist/anita-pandit/393992324"
+      ]
+    },
+    {
+      "id": "shailendra-bharti",
+      "name": "Shailendra Bharti",
+      "aliases": [],
+      "tier": "legacy-core",
+      "garbaFootprint": [
+        "traditional",
+        "devotional"
+      ],
+      "notable": [],
+      "signals": [
+        "apple-music-artist-catalogue"
+      ],
+      "sources": [
+        "https://music.apple.com/in/artist/shailendra-bharti/251036422"
+      ]
+    },
+    {
+      "id": "vikram-thakor",
+      "name": "Vikram Thakor",
+      "aliases": [],
+      "tier": "core-current",
+      "garbaFootprint": [
+        "traditional",
+        "folk",
+        "live"
+      ],
+      "notable": [
+        "religious albums"
+      ],
+      "signals": [
+        "spotify-artist-catalogue",
+        "regional-press"
+      ],
+      "sources": [
+        "https://open.spotify.com/artist/1JG9IqksUz2jJw6J6Rku0o",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/vikram-thakor-singer/actor-ready-with-new-religious-album/articleshow/39536877.cms"
+      ]
+    }
+  ]
+}

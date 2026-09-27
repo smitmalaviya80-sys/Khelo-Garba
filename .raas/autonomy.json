@@ -1,0 +1,61 @@
+{
+  "protocol": "harness-autonomy/v1",
+  "harness": "RAAS",
+  "project": "PlayGarba",
+  "repository": "ruddvz/garba",
+  "localAuthority": {
+    "productTruth": true,
+    "issueOwnership": true,
+    "branchOwnership": true,
+    "fileOwnership": true,
+    "graphVocabulary": true,
+    "contextCompiler": true,
+    "uiUxRules": true,
+    "validation": true,
+    "release": true
+  },
+  "runtimeDependenciesOnPeers": false,
+  "sharedMutableState": false,
+  "federation": {
+    "mode": "reviewed-knowledge-only",
+    "allowed": [
+      "protocol-patterns",
+      "extractor-patterns",
+      "failure-modes",
+      "benchmarks",
+      "context-techniques",
+      "test-patterns"
+    ],
+    "forbidden": [
+      "active-claims",
+      "locks",
+      "project-truth",
+      "private-data",
+      "secrets",
+      "release-authority",
+      "foreign-risk-models",
+      "foreign-reviewer-authority"
+    ]
+  },
+  "graph": {
+    "ontology": [
+      "artist",
+      "release",
+      "track",
+      "nonstop-set",
+      "genre",
+      "catalogue-record",
+      "provider-route",
+      "player",
+      "queue",
+      "explore",
+      "search",
+      "pwa-runtime",
+      "media-asset",
+      "test",
+      "issue"
+    ],
+    "inferredEdgesAreAdvisory": true
+  },
+  "fallback": "local-raas-canonical-workflow"
+}

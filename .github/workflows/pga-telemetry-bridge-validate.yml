@@ -1,0 +1,85 @@
+name: Validate PGA telemetry bridge
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/telemetry/product-bridge.js'
+      - 'src/pga/telemetry/tests/product-bridge.test.mjs'
+      - 'src/pga/telemetry/INTEGRATION.md'
+      - '.github/workflows/pga-telemetry-bridge-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/telemetry/product-bridge.js'
+      - 'src/pga/telemetry/tests/product-bridge.test.mjs'
+      - 'src/pga/telemetry/INTEGRATION.md'
+      - '.github/workflows/pga-telemetry-bridge-validate.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-telemetry-bridge-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax-check telemetry bridge
+        run: node --check src/pga/telemetry/product-bridge.js
+
+      - name: Run telemetry core and bridge fixtures
+        run: node --test src/pga/telemetry/tests/telemetry.test.mjs src/pga/telemetry/tests/product-bridge.test.mjs
+
+      - name: Guard bridge purity and ownership boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='src/pga/telemetry/product-bridge.js'
+
+          if grep -En '\bfetch\s*\(|\bXMLHttpRequest\b|\bsendBeacon\b|\bdocument\.|\bwindow\.|\blocalStorage\b|\bsessionStorage\b|\baddEventListener\s*\(|\bsetTimeout\s*\(|\bsetInterval\s*\(|\bprocess\.env\b' "$file"; then
+            echo 'Product telemetry bridge must remain DOM/network/storage/timer/environment free.' >&2
+            exit 1
+          fi
+
+          if grep -Ein 'cf[_-]?authorization|access[_-]?assertion|github[_-]?token|cloudflare[_-]?token|raw[_-]?(listener|session|search)[_-]?telemetry|user[_-]?agent|screen[_-]?(width|height)|ip[_-]?address' "$file"; then
+            echo 'Product telemetry bridge must not introduce secret, listener-level or fingerprint contracts.' >&2
+            exit 1
+          fi
+
+          node --input-type=module <<'NODE'
+          import { createProductTelemetryBridge } from './src/pga/telemetry/product-bridge.js'
+
+          const events = []
+          const presence = []
+          const bridge = createProductTelemetryBridge({
+            playbackId: () => 'playback-ci-1',
+            searchId: () => 'search-ci-1',
+            track: (name, fields) => {
+              events.push({ name, fields })
+              return `event-${events.length}`
+            },
+            setPresenceState: (fields) => {
+              presence.push(fields)
+              return true
+            },
+          })
+
+          const playbackId = bridge.playIntent({ contentType: 'song', contentId: 'song-ci-1' })
+          if (playbackId !== 'playback-ci-1') throw new Error('play_intent_correlation_failed')
+          if (events.some((event) => event.name === 'playback_started')) throw new Error('play_intent_fabricated_start')
+          if (bridge.providerPlaybackStarted({ playbackId, confirmed: false })) throw new Error('unconfirmed_provider_start_accepted')
+          if (!bridge.providerPlaybackStarted({ playbackId, confirmed: true })) throw new Error('confirmed_provider_start_rejected')
+          if (events.filter((event) => event.name === 'playback_started').length !== 1) throw new Error('provider_start_count_invalid')
+          if (presence.at(-1)?.playbackState !== 'playing') throw new Error('presence_not_playing_after_confirmed_start')
+          NODE

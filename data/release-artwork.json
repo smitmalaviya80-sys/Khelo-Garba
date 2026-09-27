@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "policy": "Only add artwork after matching it to the exact PlayGarba release and a trustworthy provider or rights-holder source. Do not invent covers or reuse unrelated artwork.",
+  "releases": {
+    "atul-maro-garbo-2000": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51KZir0FjLL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.ca/albums/B0855G1792",
+      "canonicalSourceUrl": "https://music.apple.com/us/album/maro-garbo-non-stop-garba-tran-taali/1500563406",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.ca/albums/B0855G1792"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/maro-garbo-non-stop-garba-tran-taali/1500563406"},
+        {"platform": "Qobuz", "url": "https://www.qobuz.com/gb-en/album/maro-garbo-non-stop-garba-tran-taali-atul-purohit-himali-smita-shah/edz6rdsf6bsta"}
+      ],
+      "verifiedAt": "2026-09-07"
+    },
+    "re-lol-vol7-2000": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51d2gYXOQZL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.com/tracks/B00N282YCY",
+      "canonicalSourceUrl": "https://music.amazon.com/tracks/B00N282YCY",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B00N282YCY"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/re-lol-non-stop-garba-vol-7/912460113"}
+      ],
+      "verifiedAt": "2026-09-08"
+    },
+    "anand-vol8-2001": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51B7JrXATJL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.com/tracks/B00NJMW84C",
+      "canonicalSourceUrl": "https://music.amazon.com/tracks/B00NJMW84C",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B00NJMW84C"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/anand-non-stop-garba-vol-8/913044542"}
+      ],
+      "verifiedAt": "2026-09-08"
+    },
+    "jay-ho-vol9-2002": {
+      "imageUrl": "https://m.media-amazon.com/images/I/61v7JIo-xiL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.co.jp/albums/B00NNXZ8GC",
+      "canonicalSourceUrl": "https://music.apple.com/us/album/jay-ho-non-stop-garba-vol-9/919889142",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.co.jp/albums/B00NNXZ8GC"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/jay-ho-non-stop-garba-vol-9/919889142"},
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B00NO9L4B8"}
+      ],
+      "verifiedAt": "2026-09-07"
+    },
+    "jagran-vol11-2004": {
+      "imageUrl": "https://m.media-amazon.com/images/I/5103RZwRpeL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.com/tracks/B00MGB563W",
+      "canonicalSourceUrl": "https://music.amazon.com/tracks/B00MGB563W",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/tracks/B00MGB563W"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/jagran-non-stop-garba-vol-11/906200894"},
+        {"platform": "Qobuz", "url": "https://www.qobuz.com/au-en/album/jagran-hemant-chauhan/3610157950102"}
+      ],
+      "verifiedAt": "2026-09-08"
+    },
+    "ude-re-gulal-vol12-2005": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51tdHRmGgEL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.ca/tracks/B00MGB7VJ4",
+      "canonicalSourceUrl": "https://music.amazon.ca/tracks/B00MGB7VJ4",
+      "verificationSources": [
+        {"platform": "Amazon Music", "url": "https://music.amazon.ca/tracks/B00MGB7VJ4"},
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/ude-re-gulal-non-stop-garba-vol-12/906199162"}
+      ],
+      "verifiedAt": "2026-09-07"
+    },
+    "taali-vol13-2006": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51Cqon8FIKL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.co.jp/albums/B00MGCWH7O",
+      "canonicalSourceUrl": "https://music.amazon.co.jp/albums/B00MGCWH7O",
+      "verificationSources": [
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/taali-non-stop-garba-vol-13/906201334"},
+        {"platform": "Amazon Music", "url": "https://music.amazon.co.jp/albums/B00MGCWH7O"}
+      ],
+      "verifiedAt": "2026-09-07"
+    },
+    "chandaliyo-vol16-2009": {
+      "imageUrl": "https://m.media-amazon.com/images/I/5106XL%2B1FfL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.com/albums/B00MGB8A6C",
+      "canonicalSourceUrl": "https://music.amazon.com/albums/B00MGB8A6C",
+      "verificationSources": [
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/chandaliyo-non-stop-garba-vol-16/906188288"},
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/albums/B00MGB8A6C"}
+      ],
+      "verifiedAt": "2026-09-07"
+    },
+    "thanganat-vol16-2012": {
+      "imageUrl": "https://m.media-amazon.com/images/I/51fBcmtUjvL._UXNaN_FMjpg_QL85_.jpg",
+      "verified": true,
+      "sourceProvider": "Amazon Music",
+      "sourceUrl": "https://music.amazon.com/albums/B00MGB9LRY",
+      "canonicalSourceUrl": "https://music.amazon.com/albums/B00MGB9LRY",
+      "verificationSources": [
+        {"platform": "Apple Music", "url": "https://music.apple.com/us/album/thanganat-non-stop-garba-vol-16/906200924"},
+        {"platform": "Amazon Music", "url": "https://music.amazon.com/albums/B00MGB9LRY"}
+      ],
+      "verifiedAt": "2026-09-07"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0605" />
+  <meta name="color-scheme" content="dark" />
+  <title>Garba Atmosphere listening room | PlayGarba</title>
+  <meta name="description" content="Hear a Garba circle around you: choose an indoor stadium, an outdoor ground or a sheri, stand in the circle or far away, and tap the beat to bring in the claps." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://playgarba.com/atmosphere/" />
+  <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="atmosphere.css" />
+</head>
+<body>
+<header class="atmo-top">
+  <a class="mark" href="../">PlayGarba</a>
+  <a class="open" href="../">Open the player</a>
+</header>
+
+<main class="atmo" id="main">
+  <header class="atmo-head">
+    <span class="kicker">Garba Atmosphere</span>
+    <h1>Listening room</h1>
+    <p>Light the lamp and hear a Garba circle around you. Pick the venue, stand in the circle or watch from far away, and tap the beat to bring in the claps.</p>
+    <span class="hp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h3v6H5.5A1.5 1.5 0 0 1 4 18.5V14ZM20 14h-3v6h1.5a1.5 1.5 0 0 0 1.5-1.5V14Z"/></svg>Best on headphones</span>
+  </header>
+
+  <section class="stage" id="stage" aria-label="Live Atmosphere scene">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <p class="readout" id="readout" aria-live="polite"></p>
+    <button class="lamp" id="lamp" type="button" aria-label="Light the lamp to start"><span id="lampLabel">Light the lamp</span></button>
+    <button class="swap" id="swap" type="button" aria-label="You are the woman. Switch to dancing as the man."><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="5" r="2"/><path d="M5.2 8h3.6l1.7 6H3.5Z"/><path d="M5.3 14h1.2v5H5.3zM7.5 14h1.2v5H7.5z"/><circle cx="17" cy="5" r="2"/><rect x="15" y="8" width="4" height="6" rx=".8"/><path d="M15.2 14h1.3v5h-1.3zM17.5 14h1.3v5h-1.3z"/></svg></button>
+  </section>
+
+  <section class="panel" aria-label="Atmosphere controls">
+    <button class="switch power" id="power" type="button" role="switch" aria-checked="false">
+      <span><strong id="powerLabel">Atmosphere is off</strong><small id="powerNote">Turn it on and the dancers gather round the lamp. Everything below changes live.</small></span>
+      <i class="knob" aria-hidden="true"></i>
+    </button>
+    <div class="row">
+      <h3>Around the music</h3>
+      <div class="seg" id="modes" style="--n:3"></div>
+      <p class="desc" id="modeDesc"></p>
+    </div>
+    <div class="row">
+      <h3>Venue</h3>
+      <div class="seg" id="venues" style="--n:3"></div>
+      <p class="desc" id="venueDesc"></p>
+    </div>
+    <div class="row">
+      <h3>Music</h3>
+      <div class="seg seg-4" id="themes" style="--n:4"></div>
+      <p class="desc" id="themeDesc"></p>
+    </div>
+    <div class="row">
+      <h3><label for="night">Navratri night</label></h3>
+      <input id="night" type="range" min="0" max="9" step="1" value="0">
+      <div class="ticks" aria-hidden="true"><span>Tonight</span><span>Night 9</span></div>
+      <p class="desc" id="nightDesc"></p>
+    </div>
+    <div class="row">
+      <h3>Where you are</h3>
+      <div class="seg" id="listeners" style="--n:3"></div>
+      <p class="desc" id="listenerDesc"></p>
+    </div>
+    <div class="row">
+      <h3>Who keeps the beat</h3>
+      <div class="seg" id="styles" style="--n:2"></div>
+    </div>
+    <div class="row beat">
+      <h3>Beat</h3>
+      <div class="beat-grid">
+        <button class="tap" id="tap" type="button">Tap the beat</button>
+        <div class="beat-read">
+          <p class="bpm"><b id="bpmOut">112</b> BPM</p>
+          <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <p class="desc" id="tapHint" aria-live="polite">Tap 4 times in time with any Garba song, or drag to set the tempo.</p>
+        </div>
+      </div>
+      <input id="bpm" type="range" min="70" max="170" step="1" value="112" aria-label="Tempo in beats per minute">
+      <div class="seg" id="patterns" style="--n:3" role="group" aria-label="Clap pattern"></div>
+    </div>
+    <div class="row">
+      <h3><label for="level">Intensity</label></h3>
+      <input id="level" type="range" min="5" max="100" step="5" value="60">
+      <output id="levelOut" class="desc" for="level">60%</output>
+      <p class="desc">Turn it up and more people come out to dance and walk around.</p>
+    </div>
+    <button class="switch" id="dhol" type="button" aria-pressed="false">
+      <span><strong>Add a stand-in rhythm</strong><small>A plain synthesised dhol, kept dry the way a song from YouTube stays unprocessed.</small></span>
+      <i class="knob" aria-hidden="true"></i>
+    </button>
+    <p class="note">In the player, Atmosphere plays around the song. Songs come from YouTube's player, which a web page can't add echo or EQ to, so the venue shapes the crowd, claps and sticks, never the song itself. The Be tali and Tran tali timing still needs checking by someone who dances them.</p>
+    <p class="err" id="err" hidden></p>
+  </section>
+
+  <section class="atmo-head" id="clipsHead" hidden>
+    <span class="kicker">Recorded clips</span>
+    <h2>The same engine, captured</h2>
+    <p>Each clip runs at 112 BPM. The far-away clips keep their real drop in level, so they are quieter on purpose.</p>
+  </section>
+  <ul class="clips" id="clips" hidden></ul>
+
+  <footer class="atmo-foot">
+    <p>Everything you hear is synthesised or public-domain ambience. No song audio is used on this page.</p>
+    <a href="../">Back to the player</a>
+  </footer>
+</main>
+
+<script src="../assets/runtime/immersive-atmosphere.js"></script>
+<script>
+  window.ATMO_CONFIG = {
+    beds: {
+      'ground-crowd': ['../assets/audio/festival-crowd.m4a', '../assets/audio/festival-crowd.ogg'],
+      'courtyard-bed': ['../assets/audio/courtyard-night.m4a', '../assets/audio/courtyard-night.ogg']
+    },
+    clips: []
+  };
+</script>
+<script src="scene.js"></script>
+<script src="atmosphere.js"></script>
+</body>
+</html>

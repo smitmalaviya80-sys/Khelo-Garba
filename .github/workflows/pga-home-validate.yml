@@ -1,0 +1,41 @@
+name: PGA Home validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/home/**'
+      - 'scripts/lib/validate-pga-home.mjs'
+      - '.github/workflows/pga-home-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/home/**'
+      - 'scripts/lib/validate-pga-home.mjs'
+      - '.github/workflows/pga-home-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-home-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Run Home fixtures
+        run: node --test src/pga/home/tests/home.test.mjs
+
+      - name: Validate Home truth contract
+        run: node scripts/lib/validate-pga-home.mjs

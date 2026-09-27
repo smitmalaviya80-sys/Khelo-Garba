@@ -1,0 +1,38 @@
+name: Nonstop resume store validate
+
+on:
+  push:
+    paths:
+      - 'src/playback/nonstop-resume-store.js'
+      - 'scripts/lib/test-nonstop-resume-store.mjs'
+      - '.github/workflows/nonstop-resume-store-validate.yml'
+  pull_request:
+    paths:
+      - 'src/playback/nonstop-resume-store.js'
+      - 'scripts/lib/test-nonstop-resume-store.mjs'
+      - '.github/workflows/nonstop-resume-store-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax check
+        run: |
+          node --check src/playback/nonstop-resume-store.js
+          node --check scripts/lib/test-nonstop-resume-store.mjs
+
+      - name: Test Nonstop resume store
+        run: node scripts/lib/test-nonstop-resume-store.mjs

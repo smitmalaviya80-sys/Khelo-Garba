@@ -1,0 +1,35 @@
+name: Direct media controller validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/playback/direct-media-controller.js'
+      - 'scripts/lib/test-direct-media-controller.mjs'
+      - '.github/workflows/direct-media-controller-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/playback/direct-media-controller.js'
+      - 'scripts/lib/test-direct-media-controller.mjs'
+      - '.github/workflows/direct-media-controller-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Check controller syntax
+        run: node --check src/playback/direct-media-controller.js
+      - name: Test persistent direct-media controller
+        run: node scripts/lib/test-direct-media-controller.mjs

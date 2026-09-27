@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-09-08",
+  "note": "Exact-song mappings for Rutvi Ni Ramzat 4.0 and its NonStop Garba release. Every entry preserves the exact selected-track URL returned by Rutvi Pandya's official Amazon Music catalogue page. The trackAsin values come directly from provider-owned song links; no neighbouring IDs or timestamps are inferred.",
+  "songSources": {
+    "rutvi-haalo-manaviyo-tarnetar-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8TFFVQ","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":1,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-jhulan-morli-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8P889K","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":2,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-khodiyaar-ma-hinchko-hale-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8QC7MD","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":3,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-lili-lemdi-re-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8PWL68","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":4,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-mara-wada-ma-lilu-ghaas-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8Q7C3H","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":5,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-ramo-ramo-govaliya-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8Q87FY","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":6,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-tran-tran-vaar-tran-taali-2026": {"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8NT3BG?trackAsin=B0HF8T5NCS","sourceType":"verified-track-source","releaseId":"rutvi-ni-ramzat-4-0-2026","trackNumber":7,"evidenceType":"official-amazon-music-track-selection"},
+    "rutvi-ni-ramzat-4-0-nonstop-2026": {"provider":"youtube","videoId":"Q-AHVsH8Q_4","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=Q-AHVsH8Q_4","sourceType":"official-topic","releaseId":"rutvi-ni-ramzat-4-0-nonstop-2026","trackNumber":1,"evidenceType":"official-youtube-auto-generated-original-album-track","alternate":{"provider":"amazon-music","sourceUrl":"https://music.amazon.com.au/albums/B0HF8QRVHP?trackAsin=B0HF8QXY57","sourceType":"verified-track-source"}},
+    "rutvi-ni-ramzat-4-2026-01-tran-tran-vaar-tran-taali": {"provider":"youtube","videoId":"WJ3V1j3XquM","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=WJ3V1j3XquM","sourceType":"official-artist-channel","releaseId":"rutvi-ni-ramzat-4-2026","trackNumber":1,"evidenceType":"official-artist-single"}
+  }
+}

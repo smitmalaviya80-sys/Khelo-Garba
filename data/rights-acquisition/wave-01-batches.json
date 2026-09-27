@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-09-07",
+  "targetTracks": 100,
+  "status": "researching",
+  "batches": [
+    {
+      "id": "rutvi-pandya-ramzat",
+      "artistCredit": "Rutvi Pandya",
+      "catalogueRows": 64,
+      "priority": 1,
+      "masterOwnerSignal": "Rutvi Pandya",
+      "confidence": "strong-release-level-signal",
+      "candidateReleases": ["Rutvi Ni Ramzat", "Rutvi Ni Ramzat 2.0", "Rutvi Ni Ramzat 3.0"],
+      "state": "researching",
+      "notes": "Provider metadata identifies ©/℗ Rutvi Pandya for the main Ramzat releases. Underlying compositions still require separate verification."
+    },
+    {
+      "id": "hardik-rahul-sur-sagar",
+      "artistCredit": "Hardik Dave, Rahul Munjariya",
+      "catalogueRows": 44,
+      "priority": 2,
+      "masterOwnerSignal": "Sur Sagar",
+      "confidence": "strong-catalogue-label-signal",
+      "candidateReleases": ["Garbi", "Garbi 2"],
+      "state": "researching",
+      "notes": "Repository metadata points both principal releases to Sur Sagar. Exact ©/℗ ownership and licensing authority must be verified before outreach is treated as rights-holder contact."
+    },
+    {
+      "id": "atul-purohit-rutumbhara",
+      "artistCredit": "Atul Purohit",
+      "catalogueRows": 50,
+      "priority": 3,
+      "masterOwnerSignal": "Rutumbhara Entertainment Pvt Ltd",
+      "confidence": "strong-multi-release-signal",
+      "candidateReleases": ["K Hove Hove Live at United Way of Baroda 2015", "K Hove Hove 2017", "Rangrasiya Nonstop Raas, Vol.1", "ફાગણ આયો", "અંબા નો દરબાર", "ગોવાળિયો Live at United Way of Baroda, Vol. 1", "રમજો રે"],
+      "state": "researching",
+      "notes": "Multiple current provider records identify Rutumbhara as ©/℗ owner. The exact licensable subset must be mapped before contact."
+    },
+    {
+      "id": "geeta-rabari-official",
+      "artistCredit": "Geeta Rabari",
+      "catalogueRows": 47,
+      "priority": 4,
+      "masterOwnerSignal": "Geeta Rabari Official",
+      "confidence": "strong-subset-signal",
+      "candidateReleases": ["Taal", "Zankaar 2.0", "Taal 4.0", "Nand Na Lala Ne"],
+      "state": "researching",
+      "notes": "Artist catalogue is mixed-owner. Only the Geeta Rabari Official subset belongs in this batch. Sur Sagar, Zee Music and other third-party releases must be split out."
+    },
+    {
+      "id": "aditya-gadhvi-2245114",
+      "artistCredit": "Aditya Gadhvi",
+      "catalogueRows": 37,
+      "priority": 5,
+      "masterOwnerSignal": "2245114 Records DK",
+      "confidence": "needs-authority-confirmation",
+      "candidateReleases": ["Naagar Nandji Na Laal", "Rang Bhini Radha", "Ochhav"],
+      "state": "researching",
+      "notes": "Ochhav contributes 25 songs. Confirm who legally controls 2245114 Records DK and whether it is artist-controlled before treating the 27-track subset as one licensable batch."
+    },
+    {
+      "id": "hemant-chauhan-label-split",
+      "artistCredit": "Hemant Chauhan",
+      "catalogueRows": 55,
+      "priority": 6,
+      "masterOwnerSignal": "mixed",
+      "confidence": "known-mixed-owner",
+      "candidateReleases": ["Aarti and Garba", "Maa Amba Bhawani", "Hemant Chauhan Superhit Garba, Vol. 1"],
+      "state": "researching",
+      "notes": "T-Series/Super Cassettes controls at least some major releases while Studio Siddharth controls others. Split all rows by release label before any licence request."
+    }
+  ]
+}

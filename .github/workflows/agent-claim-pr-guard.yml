@@ -1,0 +1,211 @@
+name: Agent claim guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  claim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify PR owns its implementation lane
+        uses: actions/github-script@v7
+        env:
+          LEGACY_PR_MAX: "378"
+          BOARD_ISSUE: "364"
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pr = context.payload.pull_request;
+            const legacyMax = Number(process.env.LEGACY_PR_MAX);
+            const boardIssue = Number(process.env.BOARD_ISSUE);
+
+            if (pr.number <= legacyMax) {
+              core.notice(`PR #${pr.number} predates coordination enforcement and is treated as a legacy active lane.`);
+              return;
+            }
+
+            const body = pr.body || '';
+            const claimLine = body.match(/^Agent-Claim:\s*#(\d+)\s*$/mi);
+            const agentLine = body.match(/^Agent-ID:\s*(.+?)\s*$/mi);
+
+            if (!claimLine || !agentLine) {
+              core.setFailed('New PRs must include `Agent-Claim: #<issue>` and `Agent-ID: <agent-id>` in the PR body.');
+              return;
+            }
+
+            const issueNumber = Number(claimLine[1]);
+            const declaredAgent = agentLine[1].trim();
+
+            if (issueNumber === boardIssue) {
+              core.setFailed(`Issue #${boardIssue} is the coordination board and cannot be used as an implementation claim.`);
+              return;
+            }
+
+            const claimRe = /<!--\s*agent-claim\s*\n([\s\S]*?)-->/i;
+            const releaseRe = /<!--\s*agent-release\s*\n([\s\S]*?)-->/i;
+            const overrideRe = /<!--\s*agent-claim-override\s*\n([\s\S]*?)-->/i;
+
+            function field(block, name) {
+              const match = block.match(new RegExp(`^${name}:\\s*(.+?)\\s*$`, 'mi'));
+              return match ? match[1].trim() : '';
+            }
+
+            function parseEvent(comment) {
+              const body = comment.body || '';
+              const override = body.match(overrideRe);
+              if (override) {
+                return {
+                  type: 'override',
+                  author: comment.user?.login || 'unknown',
+                };
+              }
+
+              const release = body.match(releaseRe);
+              if (release) {
+                return {
+                  type: 'release',
+                  agent: field(release[1], 'agent'),
+                  branch: field(release[1], 'branch'),
+                };
+              }
+
+              const claim = body.match(claimRe);
+              if (claim) {
+                return {
+                  type: 'claim',
+                  agent: field(claim[1], 'agent'),
+                  branch: field(claim[1], 'branch'),
+                  scope: field(claim[1], 'scope'),
+                  files: field(claim[1], 'files'),
+                };
+              }
+
+              return null;
+            }
+
+            function validClaim(event) {
+              return event?.type === 'claim' && event.agent && event.branch && event.scope && event.files;
+            }
+
+            function sameOwner(a, b) {
+              return Boolean(a && b && a.agent === b.agent && a.branch === b.branch);
+            }
+
+            function deriveState(comments) {
+              let active = null;
+              let conflicts = 0;
+
+              for (const comment of [...comments].sort((a, b) => a.id - b.id)) {
+                const event = parseEvent(comment);
+                if (!event) continue;
+
+                if (event.type === 'override') {
+                  if (event.author === owner) {
+                    active = null;
+                    conflicts = 0;
+                  }
+                  continue;
+                }
+
+                if (event.type === 'release') {
+                  if (active && sameOwner(active, event)) {
+                    active = null;
+                    conflicts = 0;
+                  }
+                  continue;
+                }
+
+                if (!validClaim(event)) continue;
+                if (!active) {
+                  active = event;
+                  conflicts = 0;
+                } else if (sameOwner(active, event)) {
+                  active = event;
+                } else {
+                  conflicts += 1;
+                }
+              }
+
+              return { active, conflicts };
+            }
+
+            let issue;
+            try {
+              issue = (await github.rest.issues.get({ owner, repo, issue_number: issueNumber })).data;
+            } catch (error) {
+              core.setFailed(`Agent-Claim references missing issue #${issueNumber}.`);
+              return;
+            }
+
+            if (issue.pull_request) {
+              core.setFailed(`Agent-Claim #${issueNumber} points to a pull request, not an implementation issue.`);
+              return;
+            }
+
+            if (issue.state !== 'open') {
+              core.setFailed(`Agent-Claim #${issueNumber} is closed. Claim an open implementation issue.`);
+              return;
+            }
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+            const state = deriveState(comments);
+
+            if (!state.active) {
+              core.setFailed(`Issue #${issueNumber} has no active accepted agent claim.`);
+              return;
+            }
+
+            if (state.active.branch !== pr.head.ref) {
+              core.setFailed(`Issue #${issueNumber} is owned by branch \`${state.active.branch}\`, but this PR uses \`${pr.head.ref}\`.`);
+              return;
+            }
+
+            if (state.active.agent !== declaredAgent) {
+              core.setFailed(`Agent-ID \`${declaredAgent}\` does not match active owner \`${state.active.agent}\` on issue #${issueNumber}.`);
+              return;
+            }
+
+            const openPulls = await github.paginate(github.rest.pulls.list, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const duplicate = openPulls.find(other => {
+              if (other.number === pr.number) return false;
+              const match = (other.body || '').match(/^Agent-Claim:\s*#(\d+)\s*$/mi);
+              return match && Number(match[1]) === issueNumber;
+            });
+
+            if (duplicate) {
+              core.setFailed(`Issue #${issueNumber} is already attached to open PR #${duplicate.number}. Use one PR per active claim.`);
+              return;
+            }
+
+            core.summary
+              .addHeading('Agent claim verified')
+              .addTable([
+                [{ data: 'Issue', header: true }, `#${issueNumber}`],
+                [{ data: 'Agent', header: true }, state.active.agent],
+                [{ data: 'Branch', header: true }, state.active.branch],
+                [{ data: 'Scope', header: true }, state.active.scope],
+                [{ data: 'Files', header: true }, state.active.files],
+              ])
+              .write();
+
+            if (state.conflicts) {
+              core.warning(`${state.conflicts} later conflicting claim(s) exist, but this PR matches the first active owner.`);
+            }

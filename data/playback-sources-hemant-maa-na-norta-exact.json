@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-08",
+  "note": "YouTube-only reconciliation for Hemant Chauhan's Maa Na Norta Mataji Na Garba (1996). Soor Mandir's verified full-set upload 4_huX19_oAM explicitly identifies album Maa Na Norta, Hemant Chauhan, music by Appu and Soor Mandir and publishes chapter starts for all six canonical songs. The YouTube chapter order differs from the provider album order, so every route is matched by exact title rather than sequence position. No timestamp, duration boundary or provider ID is inferred.",
+  "songSources": {
+    "hemant-maa-na-norta-1996-01": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":297,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM&t=297s","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":1,"evidenceType":"provider-published-official-chapter"},
+    "hemant-maa-na-norta-1996-02": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":2295,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM&t=2295s","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":2,"evidenceType":"provider-published-official-chapter"},
+    "hemant-maa-na-norta-1996-03": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":1314,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM&t=1314s","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":3,"evidenceType":"provider-published-official-chapter"},
+    "hemant-maa-na-norta-1996-04": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":1686,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM&t=1686s","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":4,"evidenceType":"provider-published-official-chapter"},
+    "hemant-maa-na-norta-1996-05": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":746,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM&t=746s","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":5,"evidenceType":"provider-published-official-chapter"},
+    "hemant-maa-na-norta-1996-06": {"provider":"youtube","videoId":"4_huX19_oAM","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=4_huX19_oAM","sourceType":"verified-label-channel","releaseId":"hemant-maa-na-norta-1996","trackNumber":6,"evidenceType":"provider-published-official-chapter"}
+  }
+}

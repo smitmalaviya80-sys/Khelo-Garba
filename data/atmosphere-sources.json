@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "runtimePolicy": {
+    "remoteAudioOptional": true,
+    "allowRemoteOnDataSaver": false,
+    "requireNoEmbeddedMusic": true,
+    "fallback": "procedural-local-scene",
+    "songProcessing": "none",
+    "notes": "Atmosphere plays around the song. Songs play through the YouTube player, which a page cannot process, so venue acoustics apply only to the atmosphere layers. Claps and dandiya sticks are synthesised at runtime and follow the listener's taps."
+  },
+  "sources": [
+    {
+      "id": "courtyard-night-ambient",
+      "role": "courtyard-bed",
+      "enabled": true,
+      "title": "Country Night Noise",
+      "author": "hc (PDSounds.org via Wikimedia Commons)",
+      "channels": 1,
+      "durationSeconds": 33.828,
+      "license": "public-domain",
+      "containsMusic": false,
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Country_night_noise.ogg",
+      "audioUrl": "assets/audio/courtyard-night.ogg",
+      "files": [
+        { "url": "assets/audio/courtyard-night.m4a", "type": "audio/mp4" },
+        { "url": "assets/audio/courtyard-night.ogg", "type": "audio/ogg" }
+      ],
+      "remoteUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Country_night_noise.ogg",
+      "notes": "Crickets and night air, used for the Party plot and Sheri venues. The .m4a is an AAC transcode of the same recording for Safari."
+    },
+    {
+      "id": "festival-ground-crowd",
+      "role": "ground-crowd",
+      "enabled": true,
+      "title": "Festival Concert People Crowd",
+      "author": "stephan (PDSounds.org via Wikimedia Commons)",
+      "channels": 2,
+      "durationSeconds": 61.152,
+      "license": "public-domain",
+      "containsMusic": false,
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Festival_concert_people_crowd.ogg",
+      "audioUrl": "assets/audio/festival-crowd.ogg",
+      "files": [
+        { "url": "assets/audio/festival-crowd.m4a", "type": "audio/mp4" },
+        { "url": "assets/audio/festival-crowd.ogg", "type": "audio/ogg" }
+      ],
+      "remoteUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/Festival_concert_people_crowd.ogg",
+      "notes": "Crowd chatter under the music. An automated check found no sustained pitch or regular beat in it. The .m4a is an AAC transcode of the same recording for Safari."
+    },
+    {
+      "id": "live-concert-applause",
+      "role": "accent-applause",
+      "enabled": false,
+      "title": "Applause",
+      "author": "Wikimedia Commons",
+      "channels": 2,
+      "durationSeconds": 37.43,
+      "license": "CC-BY-SA-3.0",
+      "containsMusic": false,
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Applause.ogg",
+      "audioUrl": "assets/audio/ground-applause.ogg",
+      "notes": "Retired: not public-domain. The file stays on disk only because sw.js precaches it; remove it with that precache entry."
+    },
+    {
+      "id": "rhythmic-beat-clapping",
+      "role": "ground-clapping",
+      "enabled": false,
+      "title": "Palmas sevillanas (flamenco clapping), 160 BPM",
+      "author": "Wikimedia Commons",
+      "channels": 2,
+      "durationSeconds": 106.84,
+      "license": "CC-BY-SA-4.0",
+      "containsMusic": false,
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+      "audioUrl": "assets/audio/rhythmic-clapping.ogg",
+      "notes": "Retired: flamenco palmas at a fixed 160 BPM cannot follow a Garba song, and the licence is not public-domain. Claps are now synthesised and follow the listener's taps. The file stays on disk only because sw.js precaches it; remove it with that precache entry."
+    }
+  ]
+}

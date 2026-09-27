@@ -1,0 +1,15 @@
+{
+  "version": "0.3.0",
+  "updated": "2026-09-26",
+  "note": "Verified official Tips Industries / Praful Dave Topic YouTube track uploads for all 8 tracks of Mata Nu Garba (2013).",
+  "songSources": {
+    "mata-nu-garba-2013-01-aara-te-sur-raliyama": {"provider":"youtube","videoId":"CDcYv5VQV0s","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=CDcYv5VQV0s","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":1,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-02-garbo-kuravye": {"provider":"youtube","videoId":"M36qufwQqeM","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=M36qufwQqeM","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":2,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-03-madi-tara-anganiyama": {"provider":"youtube","videoId":"BaqQ2sUyTjk","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=BaqQ2sUyTjk","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":3,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-04-man-dole-maru-tan-dole": {"provider":"youtube","videoId":"I3CGpHogcUs","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=I3CGpHogcUs","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":4,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-05-mare-garbo-ghumwane": {"provider":"youtube","videoId":"BddeWyXXZKk","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=BddeWyXXZKk","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":5,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-06-morlo-bolyo": {"provider":"youtube","videoId":"gbfKLlUoK_8","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=gbfKLlUoK_8","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":6,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-07-rang-rang-madvad": {"provider":"youtube","videoId":"ulnPtS5_MYY","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=ulnPtS5_MYY","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":7,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "mata-nu-garba-2013-08-rooplo-vadhli-re-sona": {"provider":"youtube","videoId":"aFgg2PpHFHI","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=aFgg2PpHFHI","sourceType":"official-topic","releaseId":"mata-nu-garba-2013","trackNumber":8,"evidenceType":"official-youtube-auto-generated-original-album-track"}
+  }
+}

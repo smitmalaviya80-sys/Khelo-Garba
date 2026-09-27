@@ -1,0 +1,88 @@
+[
+  {
+    "id": "mune-ekli-meline-asha-1988",
+    "title": "Mune Ekli Meline",
+    "artist": "Asha Bhosle, Veljibhai Gajjar",
+    "genre": "traditional",
+    "category": "be-taali",
+    "styles": [
+      "traditional",
+      "2-taali",
+      "be-taali",
+      "evergreen",
+      "film-garba"
+    ],
+    "durationSeconds": 202,
+    "releaseId": "halaman-jethwo-mune-ekli-meline-1988",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "NONqtEjx4Ls"
+  },
+  {
+    "id": "lagyo-chundiye-rang-lagyo-1979",
+    "title": "Lagyo Chundiye Rang Lagyo",
+    "artist": "Asha Bhosle, Praful Dave, Chorus",
+    "genre": "traditional",
+    "category": "traditional-garba",
+    "styles": [
+      "traditional",
+      "garba",
+      "evergreen",
+      "film-garba"
+    ],
+    "durationSeconds": 324,
+    "releaseId": "amar-singh-rathod-1979",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "uzG9_MYpUXs"
+  },
+  {
+    "id": "aavi-aavi-nortani-raat-kamal-barot",
+    "title": "Aavi Aavi Nortani Raat",
+    "artist": "Kamal Barot, Chorus",
+    "genre": "dandiya",
+    "category": "raas-dandiya",
+    "styles": [
+      "raas",
+      "garba",
+      "traditional",
+      "evergreen",
+      "navratri"
+    ],
+    "durationSeconds": 175,
+    "releaseId": "aavi-aavi-nortani-raat-popular-raas-garba-2000",
+    "trackNumber": 1,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "ZidIvIHzzvI"
+  },
+  {
+    "id": "mataji-ni-aarti-jayesh-seema-2012",
+    "title": "Mataji Ni Aarti",
+    "artist": "Jayesh Nayak, Seema Trivedi, Traditional",
+    "genre": "devotional",
+    "category": "mataji-devotional",
+    "styles": [
+      "aarti",
+      "mataji",
+      "devotional",
+      "garba-opening"
+    ],
+    "durationSeconds": 696,
+    "releaseId": "garbe-ghumjo-raaj-jayesh-seema-2012",
+    "trackNumber": 4,
+    "audioUrl": null,
+    "placeholder": false,
+    "sourceStatus": "verified-metadata",
+    "audioAvailability": "youtube-official",
+    "youtubeId": "H3uvm8QF2a4"
+  }
+]

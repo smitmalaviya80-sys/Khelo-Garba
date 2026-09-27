@@ -1,0 +1,494 @@
+@media (max-width: 390px) {
+  .topbar { padding-left: max(18px, var(--safe-left)); padding-right: max(18px, var(--safe-right)); }
+  .brand { font-size: 27px; }
+  .song-title { font-size: clamp(36px, 10.2vw, 42px); }
+  .track-block.is-long-title .song-title { font-size: clamp(32px, 8.9vw, 37px); }
+  .track-block.is-very-long-title .song-title { font-size: clamp(29px, 8vw, 34px); }
+  .genre-strip { gap: 23px; padding-left: max(22px, var(--safe-left)); padding-right: max(22px, var(--safe-right)); }
+  .sheet-inner { padding-left: max(18px, var(--safe-left)); padding-right: max(18px, var(--safe-right)); }
+  .sheet-genres { margin-left: calc(-1 * max(18px, var(--safe-left))); margin-right: calc(-1 * max(18px, var(--safe-right))); padding-left: max(18px, var(--safe-left)); padding-right: max(18px, var(--safe-right)); }
+  .song-row.current::before { left: calc(-1 * max(18px, var(--safe-left))); }
+  .song-row { grid-template-columns: 31px minmax(0,1fr) 42px 36px; }
+  .mini-controls .transport { width: 36px; height: 38px; }
+}
+
+/* Short landscape screens */
+@media (max-height: 560px) and (orientation: landscape) {
+  .world-layer { background-position: center 52%; }
+  .topbar { padding: max(12px, var(--safe-top)) max(18px, var(--safe-right)) 0 max(18px, var(--safe-left)); }
+  .brand { font-size: 24px; }
+  .utilities .icon-button { min-width: 38px; min-height: 38px; }
+  .player-shell {
+    grid-template-rows: auto auto auto auto auto;
+    align-content: center;
+    padding: 48px max(18px, var(--safe-right)) max(10px, var(--safe-bottom)) max(18px, var(--safe-left));
+  }
+  .track-block { grid-row: 1; max-width: 68vw; }
+  .genre-eyebrow { font-size: 11px; margin-bottom: 3px; }
+  .song-title { font-size: clamp(29px, 6vw, 43px); }
+  .artist { font-size: 14px; margin-top: 5px; }
+  .mobile-heart { display: none; }
+  .controls { grid-row: 2; }
+  .progress-wrap { grid-row: 3; }
+  .genre-strip { grid-row: 4; width: min(720px, 78vw); padding-top: 3px; padding-bottom: 2px; }
+  .genre-button { font-size: 14px; padding-bottom: 8px; }
+  .browse-button { grid-row: 5; position: fixed; right: max(18px, var(--safe-right)); bottom: max(9px, var(--safe-bottom)); margin: 0; font-size: 13px; }
+  .sheet[data-snap="medium"] { height: 72dvh; }
+  .sheet[data-snap="full"] { height: 94dvh; }
+}
+
+@media (display-mode: standalone) {
+  /* Topbar top-padding in standalone: respect the status bar / notch */
+  .topbar { padding-top: max(24px, env(safe-area-inset-top)); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 1ms !important; animation-duration: 1ms !important; animation-iteration-count: 1 !important; }
+  .world-layer { transform: none; }
+}
+
+/* Keep the player controls on the original straight baseline. The late Nonstop
+   runtime may restate layout values, so these intentionally use higher specificity. */
+html body .app #genreStrip .genre-button,
+html body .app #genreStrip #nonstopButton {
+  transform: none !important;
+}
+
+/* Folk uses its own immutable asset URL. This avoids stale PWA/image cache entries
+   and pins the exact supplied dhol artwork directly in both player and Explore. */
+html body .app #genreStrip .genre-button[data-genre="folk"],
+html body .sheet-genres .genre-button[data-genre="folk"] {
+  --genre-icon-image: url("../assets/genre-icons/folk-dhol.webp");
+  background-image: url("../assets/genre-icons/folk-dhol.webp") !important;
+  background-repeat: no-repeat !important;
+}
+
+html body .app #genreStrip .genre-button[data-genre="folk"] {
+  background-size: 36px 36px !important;
+  background-position: center 5px !important;
+}
+
+html body .sheet-genres .genre-button[data-genre="folk"] {
+  background-size: 27px 27px !important;
+  background-position: 2px calc(50% - 4px) !important;
+}
+
+/* Lift the Explore/Browse entry slightly while keeping it in the original player grid. */
+html body .app #browseActions {
+  margin-top: -4px !important;
+}
+
+/* Ensure Explore chevron remains visible and centered */
+html body .app #browseActions .browse-button svg {
+  display: block;
+}
+
+html body .app #browseActions #browseButton {
+  border-radius: 0 !important;
+}
+
+@media (max-width: 700px) {
+  html body .app #browseActions { margin-top: -3px !important; }
+  html body .app #genreStrip .genre-button[data-genre="folk"] {
+    background-size: 31px 31px !important;
+    background-position: center 5px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html body .app #genreStrip .genre-button[data-genre="folk"] {
+    background-size: 29px 29px !important;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  html body .app #browseActions { margin-top: 0 !important; }
+  html body .app #genreStrip .genre-button[data-genre="folk"] {
+    background-size: 22px 22px !important;
+    background-position: center 1px !important;
+  }
+}
+
+/* The first-paint production layer owns the single dandiya selection marker.
+   This layer only strips legacy card/glow state and keeps inactive choices quieter. */
+html body .app #genreStrip .genre-button[data-genre],
+html body .app #genreStrip #nonstopButton {
+  box-shadow: none !important;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease !important;
+}
+
+html body .app #genreStrip .genre-button[data-genre]:not(.active),
+html body .app #genreStrip #nonstopButton:not(.active) {
+  opacity: .72;
+}
+
+html body .app #genreStrip .genre-button[data-genre].active,
+html body .app #genreStrip #nonstopButton.active,
+html body .app[data-play-mode="nonstop"] #genreStrip #nonstopButton {
+  opacity: 1;
+  border-color: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+html body .app #genreStrip .genre-button[data-genre]:focus-visible,
+html body .app #genreStrip #nonstopButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 76%, var(--ivory));
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  html body .app #genreStrip .genre-button[data-genre]:not(.active):hover,
+  html body .app #genreStrip #nonstopButton:not(.active):hover {
+    opacity: .94;
+    background-color: transparent !important;
+  }
+}
+
+/* Explore keeps the same selection language at a quieter intensity. */
+html body .sheet-genres .genre-button[data-genre].active {
+  color: var(--ivory);
+  border-color: color-mix(in srgb, var(--accent) 24%, rgba(246, 236, 215, .10));
+  background-color: rgba(8, 10, 18, .20);
+  filter: brightness(1.05) saturate(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .app #genreStrip .genre-button[data-genre],
+  html body .app #genreStrip #nonstopButton {
+    transition: none !important;
+  }
+}
+
+/* Open player control system. Main-surface controls use space, hierarchy and light
+   instead of cards, pills, circles, borders or corner chrome. Hit targets stay large. */
+html body .app .utilities {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 6px;
+  border: 1px solid rgba(246, 236, 215, .12);
+  border-radius: 999px;
+  background: rgba(18, 14, 28, .52);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, .32);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html body .app .utilities .icon-button,
+html body .app .utilities .mobile-heart {
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: rgba(246, 236, 215, .88);
+  opacity: .92;
+  transition: color 150ms ease, opacity 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+
+html body .app .utilities .mobile-heart.active {
+  background: transparent;
+  color: var(--accent);
+  opacity: 1;
+}
+
+html body .app .controls {
+  width: auto;
+  max-width: min(380px, 86vw);
+  min-height: 74px;
+  margin-top: 8px;
+  margin-inline: auto;
+  padding: 5px 0 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(22px, 3.2vw, 38px);
+}
+
+
+html body .app .transport {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgba(246, 236, 215, .76);
+  opacity: .90;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.28));
+  transition: color 150ms ease, opacity 150ms ease, filter 150ms ease;
+}
+
+html body .app .transport svg {
+  width: 27px;
+  height: 27px;
+  opacity: 1;
+}
+
+html body .app .play-button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+  width: 72px;
+  height: 72px;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: var(--ivory);
+  filter:
+    drop-shadow(0 3px 10px rgba(0,0,0,.36))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 14%, transparent));
+  transition: color 150ms ease, filter 180ms ease, opacity 150ms ease;
+}
+
+html body .app .play-button svg {
+  width: 38px;
+  height: 38px;
+  filter: none;
+}
+
+html body .app .progress-wrap {
+  width: min(330px, 78vw);
+  margin-top: -3px;
+  padding: 4px 8px 7px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html body .app .progress-wrap .time {
+  color: rgba(246, 236, 215, .88);
+  font-size: 12px;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .85);
+  font-variant-numeric: tabular-nums;
+}
+
+html body .app .sheet-close {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  html body .app .utilities .icon-button:hover,
+  html body .app .utilities .mobile-heart:hover {
+    background: rgba(246, 236, 215, .12);
+    color: var(--ivory);
+    opacity: 1;
+    transform: scale(1.06);
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 24%, transparent));
+  }
+
+  html body .app .transport:hover {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ivory);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 24%, transparent));
+  }
+
+  html body .app .play-button:hover {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: color-mix(in srgb, var(--accent) 68%, var(--ivory));
+    filter:
+      drop-shadow(0 3px 10px rgba(0,0,0,.34))
+      drop-shadow(0 0 24px color-mix(in srgb, var(--accent) 24%, transparent));
+  }
+}
+
+html body .app .utilities .icon-button:focus-visible,
+html body .app .utilities .mobile-heart:focus-visible,
+html body .app .transport:focus-visible,
+html body .app .play-button:focus-visible,
+html body .app .sheet-close:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 72%, var(--ivory));
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  html body .app .utilities { gap: 1px; }
+
+  html body .app .utilities .icon-button,
+  html body .app .utilities .mobile-heart {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* 5-button row: [Shuffle][Prev][Play][Next][Fav] — gap tightened for 5 items */
+  html body .app .controls {
+    width: auto;
+    max-width: min(340px, calc(100vw - 20px));
+    min-height: 66px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 4.2vw, 28px);
+    padding: 3px 0 6px;
+  }
+
+  html body .app .transport {
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 42px;
+    height: 44px;
+    min-height: 44px !important;
+  }
+
+  html body .app .transport svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  html body .app .play-button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 58px;
+    height: 58px;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  html body .app .play-button svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  html body .app .progress-wrap {
+    width: min(340px, calc(100vw - 20px));
+    margin-top: -2px;
+    padding-inline: 6px;
+  }
+
+  html body .app .sheet-close {
+    border: 0;
+    background: transparent;
+  }
+}
+
+/* Narrowest phones (320px): keep play ≥44px with 5-button bar */
+@media (max-width: 360px) {
+  html body .app .controls,
+  html body .app .progress-wrap {
+    width: calc(100vw - 12px);
+  }
+
+  html body .app .controls {
+    gap: clamp(8px, 3vw, 14px);
+    padding: 3px 4px 6px;
+  }
+
+  html body .app .transport {
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 36px;
+    height: 44px;
+    min-height: 44px !important;
+  }
+
+  html body .app .transport svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  html body .app .play-button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 52px;
+    height: 52px;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  html body .app .play-button svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  /* 5-button row in short landscape — keep play ≥44px, tighten rest */
+  html body .app .controls {
+    width: min(340px, 46vw);
+    min-height: 46px;
+    margin-top: 2px;
+    padding: 0 6px 2px;
+    gap: clamp(10px, 2.4vw, 18px);
+  }
+
+  html body .app .transport {
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 36px;
+    height: 44px;
+    min-height: 44px !important;
+  }
+
+  html body .app .transport svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  html body .app .play-button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 44px;
+    height: 44px;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  html body .app .play-button svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  html body .app .progress-wrap {
+    width: min(276px, 40vw);
+    margin-top: 0;
+    padding-block: 2px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .app .utilities .icon-button,
+  html body .app .utilities .mobile-heart,
+  html body .app .transport,
+  html body .app .play-button {
+    transition: none;
+  }
+}

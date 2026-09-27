@@ -1,0 +1,98 @@
+name: Agent claim integrity guard
+
+on:
+  issue_comment:
+    types: [edited, deleted]
+  issues:
+    types: [reopened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+# Serialize with the canonical registry writer. Generated release/hold comments may
+# enqueue registry runs; a surviving registry run reconstructs from full history.
+concurrency:
+  group: agent-claim-registry
+  cancel-in-progress: false
+
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out coordination helper
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Guard claim history mutations
+        uses: actions/github-script@v7
+        env:
+          BOARD_ISSUE: "364"
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const boardIssue = Number(process.env.BOARD_ISSUE);
+            const issue = context.payload.issue;
+            if (!issue || issue.pull_request || Number(issue.number) === boardIssue) return;
+
+            const integrity = await import(`file://${process.env.GITHUB_WORKSPACE}/scripts/lib/raas-agent-coordination-integrity.mjs`);
+            const listComments = () => github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: Number(issue.number),
+              per_page: 100,
+            });
+            const append = body => github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: Number(issue.number),
+              body,
+            });
+
+            if (context.eventName === 'issue_comment') {
+              const action = context.payload.action || '';
+              const sourceComment = context.payload.comment || {};
+              const oldBody = action === 'edited'
+                ? context.payload.changes?.body?.from
+                : sourceComment.body;
+              const newBody = action === 'deleted' ? '' : sourceComment.body;
+
+              if (typeof oldBody !== 'string') {
+                throw new Error(`Cannot safely inspect ${action} comment ${sourceComment.id || 'unknown'}: webhook payload did not contain the prior body.`);
+              }
+
+              const comments = await listComments();
+              const plan = integrity.buildMutationPlan({
+                action,
+                issueNumber: Number(issue.number),
+                sourceComment,
+                oldBody,
+                newBody: typeof newBody === 'string' ? newBody : '',
+                comments,
+                ownerLogin: owner,
+              });
+              if (!plan || plan.duplicate) return;
+
+              await append(integrity.integrityRecordBody(plan, sourceComment.user?.login || 'unknown'));
+              if (plan.releaseCurrent) await append(integrity.releaseBody(plan.releaseCurrent, plan.key));
+              await append(integrity.holdClaimBody(plan.hold, plan.key));
+
+              core.notice(`Installed RAAS integrity hold for issue #${issue.number}, generation ${plan.key.slice(0, 12)}.`);
+              return;
+            }
+
+            if (context.eventName === 'issues' && context.payload.action === 'reopened') {
+              const comments = await listComments();
+              const plan = integrity.buildReopenPlan({
+                issueNumber: Number(issue.number),
+                comments,
+                ownerLogin: owner,
+              });
+              if (!plan || plan.alreadyHeld) return;
+              if (plan.releaseCurrent) await append(integrity.releaseBody(plan.releaseCurrent, plan.key));
+              await append(integrity.holdClaimBody(plan.hold, plan.key));
+              core.notice(`Restored unresolved RAAS integrity hold for issue #${issue.number}, generation ${plan.key.slice(0, 12)}.`);
+            }

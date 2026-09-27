@@ -1,0 +1,166 @@
+name: Validate PlayGarba website
+
+on:
+  push:
+    branches: [website]
+  pull_request:
+    branches: [website]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website branch
+        uses: actions/checkout@v6
+
+      - name: Validate static site contract
+        run: |
+          set -euo pipefail
+
+          required_files=(
+            index.html
+            styles.css
+            pages.css
+            polish.css
+            site.js
+            pages.js
+            robots.txt
+            sitemap.xml
+            404.html
+            how-to-use/index.html
+            install/index.html
+            live/index.html
+            faq/index.html
+            about/index.html
+          )
+
+          for file in "${required_files[@]}"; do
+            test -f "$file" || { echo "Missing required website file: $file"; exit 1; }
+          done
+
+          node --check site.js
+          node --check pages.js
+
+          grep -q '<link rel="canonical" href="https://playgarba.com/"' index.html
+          grep -q '<link rel="canonical" href="https://playgarba.com/how-to-use/"' how-to-use/index.html
+          grep -q '<link rel="canonical" href="https://playgarba.com/install/"' install/index.html
+          grep -q '<link rel="canonical" href="https://playgarba.com/live/"' live/index.html
+          grep -q '<link rel="canonical" href="https://playgarba.com/faq/"' faq/index.html
+          grep -q '<link rel="canonical" href="https://playgarba.com/about/"' about/index.html
+
+          grep -q 'https://live.playgarba.com/' index.html
+          grep -q 'https://live.playgarba.com/' how-to-use/index.html
+          grep -q 'https://live.playgarba.com/' install/index.html
+          grep -q 'https://live.playgarba.com/' live/index.html
+          grep -q 'https://live.playgarba.com/' faq/index.html
+          grep -q 'https://live.playgarba.com/' about/index.html
+
+          # Public discovery must hand off to the source-native Explore catalogue.
+          grep -q 'https://live.playgarba.com/catalogue/' index.html
+          grep -q 'https://live.playgarba.com/catalogue/' how-to-use/index.html
+          grep -q 'https://live.playgarba.com/catalogue/' live/index.html
+          grep -q "incoming.has('browse')" site.js
+          grep -q "new URL('https://live.playgarba.com/catalogue/')" site.js
+          grep -q 'garba-og-card.png?v=20260908-2' index.html
+          grep -q 'garba-og-card.png?v=20260908-2' faq/index.html
+
+          if grep -R -n -F 'https://live.playgarba.com/?browse=1' --include='*.html' .; then
+            echo 'Retired Browse query CTA found in public HTML.'
+            exit 1
+          fi
+
+          if grep -R -n -E 'bottom sheet.*Browse|Browse.*bottom sheet' --include='*.html' .; then
+            echo 'Retired Browse-sheet UX guidance found in public HTML.'
+            exit 1
+          fi
+
+          grep -q 'Open as Web App' install/index.html
+          grep -q 'Explore catalogue' install/index.html
+          grep -q 'FAQPage' faq/index.html
+          grep -q 'mobile-action-dock' polish.css
+          grep -q 'ensureFaqNavigation' site.js
+          grep -q 'playerParams' site.js
+          grep -q 'window.location.replace' site.js
+          grep -q "path.startsWith('/songs/')" 404.html
+          grep -q "path.startsWith('/releases/')" 404.html
+          grep -q "path.startsWith('/catalogue/')" 404.html
+          grep -q '^Sitemap: https://playgarba.com/sitemap.xml$' robots.txt
+
+          for route in / /how-to-use/ /install/ /live/ /faq/ /about/; do
+            grep -q "<loc>https://playgarba.com${route}</loc>" sitemap.xml || {
+              echo "Missing sitemap route: ${route}"
+              exit 1
+            }
+          done
+
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  values = dict(attrs)
+                  for key in ('href', 'src'):
+                      value = values.get(key)
+                      if value:
+                          self.refs.append(value)
+
+          root = Path('.').resolve()
+          documents = [
+              Path('index.html'),
+              Path('how-to-use/index.html'),
+              Path('install/index.html'),
+              Path('live/index.html'),
+              Path('faq/index.html'),
+              Path('about/index.html'),
+              Path('404.html'),
+              Path('catalogue/index.html'),
+              Path('songs/index.html'),
+              Path('releases/index.html'),
+          ]
+
+          missing = []
+          for document in documents:
+              parser = Parser()
+              parser.feed(document.read_text())
+              for ref in parser.refs:
+                  if ref.startswith(('#', 'mailto:', 'tel:', 'data:')):
+                      continue
+
+                  parsed = urlparse(ref)
+                  if parsed.scheme or parsed.netloc:
+                      continue
+
+                  path = parsed.path
+                  if not path:
+                      continue
+
+                  if path.startswith('/'):
+                      candidate = root / path.lstrip('/')
+                  else:
+                      candidate = root / document.parent / path
+
+                  if path.endswith('/'):
+                      candidate = candidate / 'index.html'
+
+                  candidate = candidate.resolve()
+                  if root not in candidate.parents and candidate != root:
+                      missing.append(f'{document}: {ref} (outside site root)')
+                      continue
+
+                  if not candidate.exists():
+                      missing.append(f'{document}: {ref}')
+
+          if missing:
+              raise SystemExit('Missing local references:\n' + '\n'.join(sorted(set(missing))))
+
+          print('Static website references validated across public pages.')
+          PY

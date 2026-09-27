@@ -1,0 +1,247 @@
+{
+  "version": "0.3.0",
+  "updated": "2026-09-26",
+  "note": "All 27 tracks of Ramzat 5 (ramzat5-album-2024) verified on YouTube: 15 individual official uploads and 12 exact verified chapter offsets from the official Sur Sagar continuous upload g2G7XwHerBU.",
+  "songSources": {
+    "ramzat5-2024-02": {
+      "provider": "youtube",
+      "videoId": "9oH0WTrDgaU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9oH0WTrDgaU",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-04": {
+      "provider": "youtube",
+      "videoId": "H_EDxkuDSaM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=H_EDxkuDSaM",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-05": {
+      "provider": "youtube",
+      "videoId": "9skaFYGgCQ0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9skaFYGgCQ0",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-07": {
+      "provider": "youtube",
+      "videoId": "YFdVz3PGwfQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=YFdVz3PGwfQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-08": {
+      "provider": "youtube",
+      "videoId": "1lPETGrPCjA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=1lPETGrPCjA",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-13": {
+      "provider": "youtube",
+      "videoId": "gkBKU9MHAtE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gkBKU9MHAtE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 13,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-18": {
+      "provider": "youtube",
+      "videoId": "AbEWsS__shQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=AbEWsS__shQ",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 18,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-19": {
+      "provider": "youtube",
+      "videoId": "5tdW_otezQM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5tdW_otezQM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 19,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-20": {
+      "provider": "youtube",
+      "videoId": "auv96Ca6CYY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=auv96Ca6CYY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 20,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-22": {
+      "provider": "youtube",
+      "videoId": "KK2WyCoTwZY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=KK2WyCoTwZY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 22,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-23": {
+      "provider": "youtube",
+      "videoId": "8q9FzZ2rbRs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=8q9FzZ2rbRs",
+      "sourceType": "official-topic",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 23,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-25": {
+      "provider": "youtube",
+      "videoId": "qHIe4jUP-94",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qHIe4jUP-94",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 25,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-01": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-06": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 704,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 6,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-09": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 1215,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 9,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-10": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 1351,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 10,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-11": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 1467,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-14": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 1852,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 14,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-15": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 2001,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 15,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-16": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 2154,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 16,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-17": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 2300,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 17,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-21": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 2834,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 21,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-26": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 3347,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 26,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "ramzat5-2024-27": {
+      "provider": "youtube",
+      "videoId": "g2G7XwHerBU",
+      "startSeconds": 3411,
+      "sourceUrl": "https://www.youtube.com/watch?v=g2G7XwHerBU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 27,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

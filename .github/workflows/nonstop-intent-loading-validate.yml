@@ -1,0 +1,35 @@
+name: Nonstop intent loading validate
+
+on:
+  pull_request:
+    paths:
+      - 'nonstop-browser.js'
+      - 'scripts/lib/validate-nonstop-intent-loading.mjs'
+      - '.github/workflows/nonstop-intent-loading-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'nonstop-browser.js'
+      - 'scripts/lib/validate-nonstop-intent-loading.mjs'
+      - '.github/workflows/nonstop-intent-loading-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Check Nonstop runtime syntax
+        run: node --check nonstop-browser.js
+      - name: Validate intent-driven Nonstop loading
+        run: node scripts/lib/validate-nonstop-intent-loading.mjs

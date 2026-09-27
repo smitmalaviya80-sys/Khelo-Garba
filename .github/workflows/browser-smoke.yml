@@ -1,0 +1,316 @@
+name: Browser viewport smoke
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'provider-runtime.js'
+      - 'player-continuity.js'
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'offline.html'
+      - 'manifest.webmanifest'
+      - 'sw.js'
+      - 'styles.css'
+      - 'styles/**'
+      - 'src/catalogue/**'
+      - 'assets/backgrounds/**'
+      - 'assets/genre-icons/**'
+      - 'assets/icons/**'
+      - 'assets/runtime/**'
+      - 'data/**'
+      - 'scripts/build-catalogue.mjs'
+      - 'scripts/enrich-runtime-songs.mjs'
+      - '.github/browser/**'
+      - '.github/workflows/browser-smoke.yml'
+      - '.github/workflows/pages.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'provider-runtime.js'
+      - 'player-continuity.js'
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'offline.html'
+      - 'manifest.webmanifest'
+      - 'sw.js'
+      - 'styles.css'
+      - 'styles/**'
+      - 'src/catalogue/**'
+      - 'assets/backgrounds/**'
+      - 'assets/genre-icons/**'
+      - 'assets/icons/**'
+      - 'assets/runtime/**'
+      - 'data/**'
+      - 'scripts/build-catalogue.mjs'
+      - 'scripts/enrich-runtime-songs.mjs'
+      - '.github/browser/**'
+      - '.github/workflows/browser-smoke.yml'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: browser-smoke-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install PWA fixture renderers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin icoutils
+
+      - name: Build catalogue data
+        run: npm run catalogue
+
+      - name: Prepare production-equivalent browser fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _smoke
+          mkdir -p _smoke/catalogue _smoke/explore
+
+          cp \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _smoke/
+          cp -R assets data _smoke/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            src/catalogue/explore-continuity-bridge.js \
+            _smoke/catalogue/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            src/catalogue/explore-continuity-bridge.js \
+            _smoke/explore/
+
+          # The full generated catalogue was already validated above. Browser smoke is a
+          # rendering/interaction gate, so keep a deterministic real-data sample instead
+          # of reparsing all 1,600+ songs across every browser/viewport project. Preserve
+          # every primary genre plus the exact long/short title regression records.
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+
+          const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
+          const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value)}\n`);
+          const songsPath = '_smoke/data/songs.json';
+          const indexPath = '_smoke/data/catalogue/index.json';
+          const allSongs = readJson(songsPath);
+          const requiredIds = new Set([
+            'bollywood-dandiya-2014-01-non-stop-bollywood-dandiya-garbe-ki-raat-hai-2014',
+            'ochhav-2023-01-ochhav-theme',
+          ]);
+          const perGenreLimit = 24;
+          const genreCounts = new Map();
+          const selected = [];
+          const selectedIds = new Set();
+
+          const keep = (song) => {
+            if (!song?.id || selectedIds.has(song.id)) return;
+            selected.push(song);
+            selectedIds.add(song.id);
+          };
+
+          for (const song of allSongs) {
+            if (requiredIds.has(song?.id)) keep(song);
+            const genre = String(song?.genre || 'traditional');
+            const count = genreCounts.get(genre) || 0;
+            if (count >= perGenreLimit) continue;
+            keep(song);
+            genreCounts.set(genre, count + 1);
+          }
+
+          for (const id of requiredIds) {
+            if (!selectedIds.has(id)) throw new Error(`Required browser-smoke song missing from generated catalogue: ${id}`);
+          }
+
+          const index = readJson(indexPath);
+          writeJson(songsPath, selected);
+          writeJson(indexPath, {
+            ...index,
+            discovery: {
+              ...(index.discovery || {}),
+              artists: [],
+            },
+          });
+          console.log(`Browser smoke catalogue: ${allSongs.length} -> ${selected.length} real songs across ${genreCounts.size} genres; artist discovery chunks disabled for this interaction fixture.`);
+          NODE
+
+          # Match Pages runtime packaging: seek-state is folded into the existing
+          # network-first app.js payload instead of becoming another staleable request.
+          cat app.js assets/runtime/seek-state.js > _smoke/app.js
+          grep -q 'GARBA_SEEK_STATE_RUNTIME' _smoke/app.js || { echo 'Seek-state runtime missing from browser fixture'; exit 1; }
+
+          # Match the Pages icon matrix exactly. The service worker precaches these
+          # generated files, so omitting them would test an impossible production state.
+          mkdir -p _smoke/assets/icons
+          rsvg-convert -w 16 -h 16 assets/icons/icon.svg -o _smoke/assets/icons/favicon-16.png
+          rsvg-convert -w 32 -h 32 assets/icons/icon.svg -o _smoke/assets/icons/favicon-32.png
+          rsvg-convert -w 48 -h 48 assets/icons/icon.svg -o _smoke/assets/icons/favicon-48.png
+          rsvg-convert -w 152 -h 152 assets/icons/icon.svg -o _smoke/assets/icons/apple-touch-icon-152.png
+          rsvg-convert -w 167 -h 167 assets/icons/icon.svg -o _smoke/assets/icons/apple-touch-icon-167.png
+          rsvg-convert -w 180 -h 180 assets/icons/icon.svg -o _smoke/assets/icons/apple-touch-icon.png
+          rsvg-convert -w 192 -h 192 assets/icons/icon.svg -o _smoke/assets/icons/icon-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/icon.svg -o _smoke/assets/icons/icon-512.png
+          rsvg-convert -w 150 -h 150 assets/icons/icon.svg -o _smoke/assets/icons/mstile-150x150.png
+          rsvg-convert -w 310 -h 310 assets/icons/icon.svg -o _smoke/assets/icons/mstile-310x310.png
+          rsvg-convert -w 192 -h 192 assets/icons/maskable.svg -o _smoke/assets/icons/maskable-192.png
+          rsvg-convert -w 512 -h 512 assets/icons/maskable.svg -o _smoke/assets/icons/maskable-512.png
+          icotool -c -o _smoke/favicon.ico \
+            _smoke/assets/icons/favicon-16.png \
+            _smoke/assets/icons/favicon-32.png \
+            _smoke/assets/icons/favicon-48.png
+
+          for generated in \
+            favicon-16.png \
+            favicon-32.png \
+            favicon-48.png \
+            apple-touch-icon-152.png \
+            apple-touch-icon-167.png \
+            apple-touch-icon.png \
+            icon-192.png \
+            icon-512.png \
+            mstile-150x150.png \
+            mstile-310x310.png \
+            maskable-192.png \
+            maskable-512.png; do
+            test -s "_smoke/assets/icons/$generated" || { echo "Generated PWA icon is missing: $generated"; exit 1; }
+          done
+          test -s _smoke/favicon.ico || { echo 'Generated favicon.ico is missing'; exit 1; }
+
+          # Explore is source-native. The browser fixture must preserve that source
+          # contract exactly rather than reimplementing a deploy-time rewrite.
+          grep -q 'href="./explore/"' _smoke/index.html || { echo 'Canonical /explore/ link missing from browser fixture'; exit 1; }
+          grep -q '<span>Explore</span>' _smoke/index.html || { echo 'Source-native Explore label missing from browser fixture'; exit 1; }
+          ! grep -q 'id="browseButton"[^>]*aria-controls' _smoke/index.html || { echo 'Explore retained legacy song-sheet semantics'; exit 1; }
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _smoke/styles.css
+
+          if grep -q '@import' _smoke/styles.css; then
+            echo 'Browser fixture still contains CSS @import'; exit 1
+          fi
+
+          for icon in traditional dandiya devotional folk sanedo fusion nonstop; do
+            test -f "_smoke/assets/genre-icons/$icon.webp" || { echo "Missing genre icon in browser fixture: $icon"; exit 1; }
+          done
+          grep -q 'traditional.webp' _smoke/styles.css || { echo 'Genre icon rules missing from production stylesheet fixture'; exit 1; }
+
+          PACK=''
+          if [ -f assets/backgrounds/garba15-2048-q90.zip ]; then
+            PACK='assets/backgrounds/garba15-2048-q90.zip'
+          elif [ -f assets/backgrounds/garba15-2k.zip ]; then
+            PACK='assets/backgrounds/garba15-2k.zip'
+          elif [ -f assets/backgrounds/garba15-2k-q82.zip ]; then
+            PACK='assets/backgrounds/garba15-2k-q82.zip'
+          fi
+          test -n "$PACK" || { echo 'Required 15-image WebP pack is missing'; exit 1; }
+
+          rm -rf _smoke/assets/backgrounds/library
+          mkdir -p _smoke/assets/backgrounds/library
+          unzip -oq "$PACK" -d _smoke/assets/backgrounds/library
+          test "$(find _smoke/assets/backgrounds/library -maxdepth 1 -type f -name '*.webp' | wc -l | tr -d ' ')" -eq 15 || { echo 'Browser fixture must contain exactly 15 background WebPs'; exit 1; }
+          rm -f _smoke/assets/backgrounds/garba15-*.zip
+
+      - name: Install WebKit smoke runtime
+        run: npm install --no-save --no-package-lock @playwright/test@1.63.0
+
+      - name: Install WebKit engine and host dependencies
+        run: npx playwright install --with-deps webkit
+
+      - name: Start browser fixture
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory _smoke >/tmp/playgarba-browser-smoke.log 2>&1 &
+          echo $! > /tmp/playgarba-browser-smoke.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/playgarba-browser-smoke.log
+          exit 1
+
+      - name: Run WebKit viewport smoke suite
+        id: webkit_smoke
+        continue-on-error: true
+        run: |
+          npx playwright test --config=.github/browser/playwright.config.mjs --output=test-results/webkit \
+            --project=phone-webkit \
+            --project=phone-landscape-webkit \
+            --project=tablet-webkit \
+            --project=tablet-landscape-webkit \
+            --project=desktop-webkit
+
+      - name: Install Chromium smoke runtime
+        run: npm install --no-save --no-package-lock @playwright/test@1.55.0
+
+      - name: Install Chromium engine and host dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Chromium viewport smoke suite
+        id: chromium_smoke
+        continue-on-error: true
+        run: |
+          npx playwright test --config=.github/browser/playwright.config.mjs --output=test-results/chromium \
+            --project=android-chromium \
+            --project=desktop-chromium
+
+      - name: Enforce browser viewport smoke result
+        if: always()
+        run: |
+          test "${{ steps.webkit_smoke.outcome }}" = "success"
+          test "${{ steps.chromium_smoke.outcome }}" = "success"
+
+      - name: Upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: browser-smoke-diagnostics
+          path: |
+            test-results
+            /tmp/playgarba-browser-smoke.log
+          if-no-files-found: ignore
+          retention-days: 7

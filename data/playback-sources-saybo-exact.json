@@ -1,0 +1,141 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Promoted 7 confirmed Soor Mandir Topic uploads to exact YouTube routes for Saybo - Non Stop Garba (2022). The remaining 8 tracks retain exact Amazon Music provenance pending exact master verification.",
+  "songSources": {
+    "saybo-2022-01": {
+      "provider": "youtube",
+      "videoId": "FldobqeHSi0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FldobqeHSi0",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-02": {
+      "provider": "youtube",
+      "videoId": "SHtcTftYQiE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=SHtcTftYQiE",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-03": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4XGZ4C",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 3,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-04": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4TGN21",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 4,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-05": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4Y4SFF",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 5,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-06": {
+      "provider": "youtube",
+      "videoId": "gBkukf_Fjgc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gBkukf_Fjgc",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 6,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-07": {
+      "provider": "youtube",
+      "videoId": "9dfXIET_Rz4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9dfXIET_Rz4",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-08": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4XQNW6",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 8,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-09": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4Z1PX5",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 9,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-10": {
+      "provider": "youtube",
+      "videoId": "5F_hCHxwuOY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5F_hCHxwuOY",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-11": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4X1WWK",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 11,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-12": {
+      "provider": "youtube",
+      "videoId": "ghZiJw3KVM4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ghZiJw3KVM4",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 12,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-13": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4XLZF7",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 13,
+      "evidenceType": "official-amazon-music-album-track-link"
+    },
+    "saybo-2022-14": {
+      "provider": "youtube",
+      "videoId": "z43a2OAwr_U",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=z43a2OAwr_U",
+      "sourceType": "official-topic",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 14,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saybo-2022-15": {
+      "provider": "amazon-music",
+      "sourceUrl": "https://music.amazon.com/tracks/B0BF4YBY6Q",
+      "sourceType": "verified-track-source",
+      "releaseId": "saybo-nonstop-garba-2022",
+      "trackNumber": 15,
+      "evidenceType": "official-amazon-music-album-track-link"
+    }
+  }
+}

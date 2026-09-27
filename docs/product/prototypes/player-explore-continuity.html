@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PlayGarba Explore continuity prototype</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a0910;
+      color: #f7f2ea;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0, #32251e 0, #171117 32%, #09080d 72%); }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .prototype-note {
+      padding: 9px 16px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #d8d0c8;
+      background: #17131a;
+      border-bottom: 1px solid #332d35;
+    }
+    .shell { min-height: calc(100vh - 37px); display: grid; grid-template-rows: auto auto 1fr; }
+    .provider-stage {
+      position: relative;
+      z-index: 20;
+      min-height: 152px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: #070707;
+      border-bottom: 1px solid #2b282c;
+    }
+    .provider-stage strong { display: block; font-size: 15px; }
+    .provider-stage span { display: block; margin-top: 5px; color: #aaa3a9; font-size: 12px; }
+    .provider-frame {
+      width: min(460px, 92vw);
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 1px solid #3f3b3f;
+      background: linear-gradient(145deg, #18151a, #0b0a0c);
+      border-radius: 12px;
+    }
+    .now-playing {
+      position: relative;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 14px 18px;
+      background: rgba(15, 12, 17, .96);
+      border-bottom: 1px solid #2d2830;
+    }
+    .eyebrow { margin: 0 0 4px; color: #b9afb7; font-size: 11px; text-transform: uppercase; letter-spacing: .09em; }
+    h1, h2, h3, p { margin-top: 0; }
+    #activeTrack { margin: 0; font-size: clamp(18px, 4vw, 28px); line-height: 1.05; }
+    .state-line { margin: 5px 0 0; color: #c9c1c7; font-size: 13px; }
+    .controls { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .controls button, .explore-head button, .track button, .release-card {
+      min-height: 42px;
+      border: 1px solid #4b434c;
+      border-radius: 10px;
+      background: #1c171e;
+      padding: 9px 13px;
+      cursor: pointer;
+    }
+    .controls button:hover, .explore-head button:hover, .track button:hover, .release-card:hover { background: #272029; }
+    .controls button:focus-visible, .explore-head button:focus-visible, .track button:focus-visible, .release-card:focus-visible, input:focus-visible {
+      outline: 3px solid #f3c978;
+      outline-offset: 2px;
+    }
+    .workspace { position: relative; overflow: hidden; min-height: 440px; }
+    .player-home {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .player-home p { max-width: 560px; color: #bfb6bd; line-height: 1.6; }
+    .explore-surface {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: #0d0b10;
+      transform: translateY(0);
+      opacity: 1;
+      transition: opacity 180ms ease, transform 220ms cubic-bezier(.2,.72,.18,1);
+    }
+    .explore-surface[hidden] { display: none; }
+    .explore-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(160px, 340px) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid #2c2730;
+      background: #111016;
+    }
+    .explore-head h2 { margin: 0; font-size: 20px; }
+    input[type="search"] {
+      width: 100%; min-height: 42px; border: 1px solid #49404a; border-radius: 10px;
+      background: #17131a; color: #fff; padding: 9px 12px;
+    }
+    .explore-scroll { overflow: auto; padding: 18px; scroll-behavior: smooth; }
+    .release-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 22px; }
+    .release-card { text-align: left; min-height: 90px; }
+    .release-card[aria-pressed="true"] { border-color: #d8b46f; background: #2b211b; }
+    .release-card strong { display: block; }
+    .release-card span { display: block; margin-top: 5px; color: #b9afb6; font-size: 12px; }
+    .track-list { display: grid; gap: 9px; }
+    .track {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid #302a33;
+      border-radius: 12px;
+      background: #141116;
+    }
+    .track strong, .track span { display: block; }
+    .track span { margin-top: 4px; color: #aaa1a8; font-size: 12px; }
+    .track button[disabled] { cursor: not-allowed; opacity: .52; }
+    .continuity-readout {
+      margin-top: 24px;
+      padding: 14px;
+      border: 1px dashed #5c505c;
+      border-radius: 12px;
+      color: #cfc5cc;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    @media (max-width: 680px) {
+      .now-playing { grid-template-columns: 1fr; }
+      .controls { justify-content: flex-start; }
+      .explore-head { grid-template-columns: 1fr auto; }
+      .explore-head input { grid-column: 1 / -1; grid-row: 2; }
+      .provider-stage { min-height: 126px; padding: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="prototype-note">
+    Architecture prototype only. This page does not embed or play media. The dark video rectangle represents the visible YouTube stage that must remain mounted and visible in production while Explore is open.
+  </div>
+
+  <div class="shell" id="shell">
+    <section class="provider-stage" aria-label="Visible provider stage">
+      <div class="provider-frame">
+        <div>
+          <strong>Visible YouTube stage</strong>
+          <span>Persistent parent-owned media surface</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="now-playing" aria-label="Persistent player state">
+      <div>
+        <p class="eyebrow">Now playing</p>
+        <h1 id="activeTrack">Current verified song</h1>
+        <p class="state-line"><span id="playbackState">Playing</span> · Queue: <span id="queueCount">2</span> · Release context: <span id="releaseContext">None</span></p>
+      </div>
+      <div class="controls">
+        <button id="togglePlay" type="button" aria-pressed="true">Pause</button>
+        <button id="openExplore" type="button">Explore</button>
+      </div>
+    </section>
+
+    <main class="workspace">
+      <section class="player-home" aria-label="Player home">
+        <div>
+          <p class="eyebrow">Persistent shell</p>
+          <h2>Player document stays mounted</h2>
+          <p>Open Explore, choose a release and listen to a track. The provider stage, playback state and queue remain in this parent shell. Explore keeps its own filter and scroll position when closed and reopened.</p>
+        </div>
+      </section>
+
+      <section class="explore-surface" id="exploreSurface" aria-labelledby="exploreHeading" hidden>
+        <header class="explore-head">
+          <h2 id="exploreHeading">Explore</h2>
+          <input id="exploreSearch" type="search" placeholder="Search songs or artists" aria-label="Search Explore prototype" />
+          <button id="closeExplore" type="button">Back to player</button>
+        </header>
+
+        <div class="explore-scroll" id="exploreScroll" tabindex="-1">
+          <p class="eyebrow">Albums & releases</p>
+          <div class="release-grid" aria-label="Prototype releases">
+            <button class="release-card" type="button" data-release="Release A" aria-pressed="false">
+              <strong>Release A</strong><span>Prototype release context</span>
+            </button>
+            <button class="release-card" type="button" data-release="Release B" aria-pressed="false">
+              <strong>Release B</strong><span>Prototype release context</span>
+            </button>
+          </div>
+
+          <h3 id="trackHeading">All prototype tracks</h3>
+          <div class="track-list" aria-labelledby="trackHeading">
+            <article class="track" data-release="Release A" data-search="track one release a">
+              <div><strong>Track one</strong><span>Executable prototype row · Release A</span></div>
+              <button type="button" data-listen="Track one" data-release="Release A">Listen</button>
+            </article>
+            <article class="track" data-release="Release A" data-search="track two release a">
+              <div><strong>Track two</strong><span>Executable prototype row · Release A</span></div>
+              <button type="button" data-listen="Track two" data-release="Release A">Listen</button>
+            </article>
+            <article class="track" data-release="Release B" data-search="track three release b">
+              <div><strong>Track three</strong><span>Executable prototype row · Release B</span></div>
+              <button type="button" data-listen="Track three" data-release="Release B">Listen</button>
+            </article>
+            <article class="track" data-release="Release B" data-search="unavailable track release b">
+              <div><strong>Unavailable track</strong><span>No verified route in this prototype</span></div>
+              <button type="button" disabled>Not available</button>
+            </article>
+          </div>
+
+          <div style="height:220px" aria-hidden="true"></div>
+          <div class="continuity-readout" id="continuityReadout" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const state = {
+        playing: true,
+        activeTrack: 'Current verified song',
+        queue: ['Queued song 1', 'Queued song 2'],
+        release: '',
+        selectedRelease: '',
+        search: '',
+        scrollTop: 0,
+        exploreOpen: false,
+      };
+
+      const byId = (id) => document.getElementById(id);
+      const activeTrack = byId('activeTrack');
+      const playbackState = byId('playbackState');
+      const queueCount = byId('queueCount');
+      const releaseContext = byId('releaseContext');
+      const togglePlay = byId('togglePlay');
+      const openExplore = byId('openExplore');
+      const exploreSurface = byId('exploreSurface');
+      const closeExplore = byId('closeExplore');
+      const exploreSearch = byId('exploreSearch');
+      const exploreScroll = byId('exploreScroll');
+      const trackHeading = byId('trackHeading');
+      const continuityReadout = byId('continuityReadout');
+      let returnFocus = openExplore;
+
+      function renderPlayer() {
+        activeTrack.textContent = state.activeTrack;
+        playbackState.textContent = state.playing ? 'Playing' : 'Paused';
+        queueCount.textContent = String(state.queue.length);
+        releaseContext.textContent = state.release || 'None';
+        togglePlay.textContent = state.playing ? 'Pause' : 'Play';
+        togglePlay.setAttribute('aria-pressed', String(state.playing));
+      }
+
+      function renderExplore() {
+        const query = state.search.trim().toLowerCase();
+        document.querySelectorAll('.release-card').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.release === state.selectedRelease));
+        });
+        document.querySelectorAll('.track').forEach((row) => {
+          const releaseMatch = !state.selectedRelease || row.dataset.release === state.selectedRelease;
+          const searchMatch = !query || row.dataset.search.includes(query);
+          row.hidden = !(releaseMatch && searchMatch);
+        });
+        trackHeading.textContent = state.selectedRelease ? `${state.selectedRelease} tracks` : 'All prototype tracks';
+        continuityReadout.textContent = `Parent state: ${state.playing ? 'playing' : 'paused'} · queue ${state.queue.length} · active ${state.activeTrack}. Explore state: release ${state.selectedRelease || 'all'} · search ${state.search || 'empty'} · saved scroll ${Math.round(state.scrollTop)}px.`;
+      }
+
+      function showExplore({ fromHistory = false } = {}) {
+        if (state.exploreOpen) return;
+        state.exploreOpen = true;
+        exploreSurface.hidden = false;
+        exploreSearch.value = state.search;
+        renderExplore();
+        requestAnimationFrame(() => {
+          exploreScroll.scrollTop = state.scrollTop;
+          exploreSearch.focus({ preventScroll: true });
+        });
+        if (!fromHistory && location.hash !== '#explore') {
+          history.pushState({ playgarbaSurface: 'explore' }, '', '#explore');
+        }
+      }
+
+      function hideExplore({ restoreFocus = true, fromHistory = false } = {}) {
+        if (!state.exploreOpen) return;
+        state.scrollTop = exploreScroll.scrollTop;
+        state.exploreOpen = false;
+        exploreSurface.hidden = true;
+        renderExplore();
+        if (restoreFocus) returnFocus?.focus({ preventScroll: true });
+        if (!fromHistory && location.hash === '#explore') history.back();
+      }
+
+      togglePlay.addEventListener('click', () => {
+        state.playing = !state.playing;
+        renderPlayer();
+        renderExplore();
+      });
+
+      openExplore.addEventListener('click', () => {
+        returnFocus = openExplore;
+        showExplore();
+      });
+
+      closeExplore.addEventListener('click', () => hideExplore());
+
+      exploreSearch.addEventListener('input', () => {
+        state.search = exploreSearch.value;
+        renderExplore();
+      });
+
+      exploreScroll.addEventListener('scroll', () => {
+        state.scrollTop = exploreScroll.scrollTop;
+        renderExplore();
+      }, { passive: true });
+
+      document.querySelectorAll('.release-card').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedRelease = state.selectedRelease === button.dataset.release ? '' : button.dataset.release;
+          renderExplore();
+        });
+      });
+
+      document.querySelectorAll('[data-listen]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.activeTrack = button.dataset.listen;
+          state.release = button.dataset.release;
+          state.playing = true;
+          renderPlayer();
+          renderExplore();
+          hideExplore({ restoreFocus: false });
+          togglePlay.focus({ preventScroll: true });
+        });
+      });
+
+      window.addEventListener('popstate', () => {
+        const shouldOpen = location.hash === '#explore';
+        if (shouldOpen) showExplore({ fromHistory: true });
+        else hideExplore({ fromHistory: true });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape' || !state.exploreOpen) return;
+        event.preventDefault();
+        hideExplore();
+      });
+
+      renderPlayer();
+      renderExplore();
+      if (location.hash === '#explore') showExplore({ fromHistory: true });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+[
+  {
+    "id":"maadi-tara-mandiriye-falguni-sudesh-2000",
+    "title":"Maadi Tara Mandiriye (Non Stop Dandiya Mix)",
+    "displayTitle":"Maadi Tara Mandiriye (Nonstop Dandiya Mix)",
+    "description":"A 10-track Gujarati Garba and Dandiya programme led by Falguni Pathak and Sudesh Bhosle, preserved as the original 2000 Nonstop Dandiya Mix edition with exact Sony YouTube chapter playback.",
+    "aliases":["Maadi Tara Mandiriye Nonstop Dandiya Mix"],
+    "artist":"Various Artists",
+    "releaseDate":"2000-08-17",
+    "originalReleaseYear":2000,
+    "label":"Sony Music Entertainment India Pvt. Ltd.",
+    "categories":["traditional-garba","raas-dandiya","mataji-devotional","krishna-garba","folk-lokgeet"],
+    "visualGenre":"dandiya",
+    "entryType":"album",
+    "songCount":10,
+    "durationSeconds":3584,
+    "series":"Maadi Tara Mandiriye",
+    "volume":"Non Stop Dandiya Mix",
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.com/albums/B003UY4Z6I","kind":"official-10-track-album"},
+      {"platform":"Apple Music","url":"https://music.apple.com/us/song/302404959","kind":"official-track-album-evidence"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=5OBEhHqrw1A","kind":"verified-label-channel-full-programme"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-with-regional-date-and-edition-variance",
+    "audioAvailability":"youtube-official",
+    "durationPrecision":"amazon-displayed-track-sum",
+    "notes":"Amazon publishes the 10-track Non Stop Dandiya Mix as a Various Artists release with exact per-track performers; regional pages show August 17 or August 18, 2000. Apple independently places Dholida Dhol Dhimo Dhimo on Maadi Tara Mandiriye on August 17, 2000, so 2000-08-17 is retained as the canonical release date while the regional one-day variance remains documented. Some later provider track pages display September 1, 2008, indicating a later digital/reissue surface rather than a new original recording date. Falguni Pathak performs on tracks 3, 4, 6, 7, 8, 9 and 10; tracks 1, 2 and 5 are Sudesh Bhosle solo, so the release is not falsely normalized to a Falguni-only artist credit. Sony Music Bhakti's 2025 official full-programme upload publishes all ten song names, exact singers and centisecond-resolved chapter starts; chapter gaps match the provider track durations, allowing truthful YouTube chapter routing without inferred boundaries."
+  }
+]

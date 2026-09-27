@@ -1,0 +1,252 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-09-07",
+  "allowedStates": [
+    "route-discovery",
+    "authority-confirmation",
+    "ready-to-contact",
+    "contacted",
+    "awaiting-response",
+    "negotiating",
+    "closed-no-deal",
+    "agreement-executed"
+  ],
+  "policy": "This queue tracks licensing operations only. Contact discovery, outreach, negotiation, or even an executed catalogue agreement does not by itself mark any GARBA recording cleared. Track-level rights and authorised masters remain gated by data/hosting-rights.json and data/master-intake.json.",
+  "items": [
+    {
+      "id": "sur-sagar-catalogue-direct-streaming",
+      "contactBatchId": "hardik-rahul-sur-sagar",
+      "entity": "Sur Sagar Music",
+      "priority": 1,
+      "state": "ready-to-contact",
+      "catalogueSignal": {
+        "label": "Sur Sagar",
+        "rows": 271,
+        "releases": 16,
+        "metadataSignalOnly": true
+      },
+      "objective": "Confirm current master-licensing authority and request a machine-readable Garba/Raas catalogue plus direct interactive-streaming terms.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [100, 250, 500],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "label", "phonogramOwner"]
+      },
+      "notes": "Largest current release-label concentration in GARBA. Treat the 271 rows as prioritisation metadata, not ownership proof."
+    },
+    {
+      "id": "soor-mandir-catalogue-licensor-confirmation",
+      "contactBatchId": "strategic-label-soor-mandir",
+      "entity": "Soor Mandir",
+      "priority": 2,
+      "state": "ready-to-contact",
+      "catalogueSignal": {
+        "label": "Soor Mandir",
+        "rows": 245,
+        "releases": 12,
+        "separatePossibleAliasRows": 15,
+        "metadataSignalOnly": true
+      },
+      "objective": "Identify the present legal person/entity authorised to license the active Soor Mandir master catalogue, then reconcile the Soor Mandir and Soor Mandir / SM Digital subsets.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [100, 250, 500],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "label", "phonogramOwner", "currentLicensor"]
+      },
+      "notes": "Do not assume the struck-off historical company is the current contracting entity. First response must establish present licensing authority."
+    },
+    {
+      "id": "jigar-studio-catalogue-discovery",
+      "contactBatchId": "strategic-label-jigar-studio",
+      "entity": "Jigar Studio",
+      "priority": 3,
+      "state": "ready-to-contact",
+      "catalogueSignal": {
+        "label": null,
+        "rows": null,
+        "releases": null,
+        "metadataSignalOnly": true
+      },
+      "objective": "Obtain a machine-readable export of the licensable Gujarati catalogue, measure Garba/Raas overlap, then request direct-streaming terms for the useful subset.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [100, 250, 500],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "genre", "label", "phonogramOwner"]
+      },
+      "notes": "Strategic expansion lane. Do not quote a useful-track count until a catalogue export is matched with the vendor catalogue matcher."
+    },
+    {
+      "id": "rutumbhara-atul-catalogue-authority",
+      "contactBatchId": "atul-purohit-rutumbhara",
+      "entity": "Rutumbhara Entertainment Private Limited",
+      "priority": 4,
+      "state": "authority-confirmation",
+      "catalogueSignal": {
+        "label": "Rutumbhara Entertainment Pvt. Ltd.",
+        "rows": 43,
+        "releases": 6,
+        "metadataSignalOnly": true
+      },
+      "objective": "Confirm the authorised digital master-licensing representative and exact Atul Purohit/Rutumbhara recording catalogue before commercial negotiation.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [25, 50, 100],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Corporate route is useful for authority discovery but is not itself a verified licensing desk."
+    },
+    {
+      "id": "tseries-gujarati-digital-scope",
+      "contactBatchId": "hemant-chauhan-label-split",
+      "entity": "T-Series / Super Cassettes Industries Private Limited",
+      "priority": 5,
+      "state": "ready-to-contact",
+      "catalogueSignal": {
+        "label": null,
+        "rows": null,
+        "releases": null,
+        "metadataSignalOnly": true
+      },
+      "objective": "Request digital-platform licensing terms only for recordings that T-Series confirms it controls and that match the GARBA catalogue.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [25, 50, 100],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Do not send a generic Hemant Chauhan catalogue claim. Ask T-Series to identify the exact sound recordings it controls."
+    },
+    {
+      "id": "saregama-gujarati-custom-streaming",
+      "contactBatchId": "strategic-label-saregama-gujarati",
+      "entity": "Saregama India Limited",
+      "priority": 6,
+      "state": "ready-to-contact",
+      "catalogueSignal": {
+        "label": null,
+        "rows": null,
+        "releases": null,
+        "metadataSignalOnly": true
+      },
+      "objective": "Request bespoke interactive on-demand streaming terms for a Gujarati/Garba subset rather than relying on self-service social/sync licensing products.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [50, 100, 250],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Custom licence inquiry only. Existing self-service licensing descriptions must not be treated as permission for GARBA's interactive player."
+    },
+    {
+      "id": "aditya-gadhvi-2245114-authority",
+      "contactBatchId": "aditya-gadhvi-2245114",
+      "entity": "Aditya Gadhvi / management",
+      "priority": 7,
+      "state": "authority-confirmation",
+      "catalogueSignal": {
+        "label": "2245114 Records DK",
+        "rows": 28,
+        "releases": 4,
+        "metadataSignalOnly": true
+      },
+      "objective": "Identify who currently owns or is authorised to license the 2245114 Records DK masters before requesting commercial terms.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [10, 25, 50],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Artist/management route is for owner identification first."
+    },
+    {
+      "id": "rutvi-pandya-official-contact-discovery",
+      "contactBatchId": "rutvi-pandya-ramzat",
+      "entity": "Rutvi Pandya / management",
+      "priority": 8,
+      "state": "route-discovery",
+      "catalogueSignal": {
+        "label": "Rutvi Pandya",
+        "rows": 64,
+        "releases": 8,
+        "metadataSignalOnly": true
+      },
+      "objective": "Find and verify an authoritative business/licensing contact before any rights request is sent.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [25, 50, 64],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Strong owner/label metadata signal is not a substitute for an authoritative contact route."
+    },
+    {
+      "id": "geeta-rabari-official-contact-discovery",
+      "contactBatchId": "geeta-rabari-official",
+      "entity": "Geeta Rabari Official / management",
+      "priority": 9,
+      "state": "route-discovery",
+      "catalogueSignal": {
+        "label": "Geeta Rabari Official",
+        "rows": 59,
+        "releases": 6,
+        "metadataSignalOnly": true
+      },
+      "objective": "Find and verify the official licensing/management route for the self-label subset before requesting terms.",
+      "request": {
+        "catalogueExport": true,
+        "pilotTrackCounts": [25, 50, 59],
+        "directInteractiveStreaming": true,
+        "directHosting": true,
+        "technicalTranscoding": true,
+        "ordinaryStreamingCache": true,
+        "offlinePlaybackQuoteSeparately": true,
+        "losslessMasters": true,
+        "requiredRecordingFields": ["title", "artist", "release", "isrc", "duration", "phonogramOwner"]
+      },
+      "notes": "Only the Geeta Rabari Official subset is in scope for this lane; the broader artist catalogue is mixed-owner."
+    }
+  ]
+}

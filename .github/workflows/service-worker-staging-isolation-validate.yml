@@ -1,0 +1,37 @@
+name: Service worker staging isolation validate
+
+on:
+  pull_request:
+    paths:
+      - 'sw.js'
+      - 'scripts/lib/test-service-worker-staging-isolation.mjs'
+      - '.github/workflows/service-worker-staging-isolation-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: service-worker-staging-isolation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax check
+        run: |
+          node --check sw.js
+          node --check scripts/lib/test-service-worker-staging-isolation.mjs
+
+      - name: Run staging isolation regression
+        run: node scripts/lib/test-service-worker-staging-isolation.mjs

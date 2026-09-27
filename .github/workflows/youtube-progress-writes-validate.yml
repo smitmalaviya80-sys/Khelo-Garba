@@ -1,0 +1,26 @@
+name: YouTube progress write validate
+
+on:
+  pull_request:
+    paths:
+      - youtube-player-runtime.js
+      - scripts/lib/validate-youtube-progress-writes.mjs
+      - .github/workflows/youtube-progress-writes-validate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate bounded progress writes
+        run: node scripts/lib/validate-youtube-progress-writes.mjs

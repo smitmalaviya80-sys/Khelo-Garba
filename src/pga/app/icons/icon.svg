@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-labelledby="title">
+  <title id="title">PGA</title>
+  <rect x="8" y="8" width="176" height="176" rx="34" fill="#151412"/>
+  <path d="M96 43 149 96 96 149 43 96Z" fill="none" stroke="#f4eedf" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="96" cy="96" r="10" fill="#f4eedf"/>
+  <rect x="58" y="104" width="76" height="31" rx="6" fill="#151412"/>
+  <text x="96" y="127" fill="#f4eedf" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" text-anchor="middle">PGA</text>
+</svg>

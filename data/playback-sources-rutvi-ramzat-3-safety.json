@@ -1,0 +1,6 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-08",
+  "note": "The prior Apple Music safety fallbacks are no longer needed. All 22 canonical Rutvi Ni Ramzat 3.0 songs now have exact Rutvi Pandya Official Artist Channel chapter routes in playback-sources-rutvi-ramzat-3-exact.json using the artist-published timestamps. This manifest remains indexed as an explicit historical safety layer but contains no executable or provider fallback rows.",
+  "songSources": {}
+}

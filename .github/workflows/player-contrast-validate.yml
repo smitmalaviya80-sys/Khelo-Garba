@@ -1,0 +1,33 @@
+name: Player contrast validate
+
+on:
+  pull_request:
+    paths:
+      - 'styles/00-foundation-and-player.css'
+      - 'scripts/lib/validate-player-contrast.mjs'
+      - '.github/workflows/player-contrast-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'styles/00-foundation-and-player.css'
+      - 'scripts/lib/validate-player-contrast.mjs'
+      - '.github/workflows/player-contrast-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contrast-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Validate player contrast contract
+        run: node scripts/lib/validate-player-contrast.mjs

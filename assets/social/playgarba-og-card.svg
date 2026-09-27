@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">PlayGarba.com social sharing card</title>
+  <desc id="desc">PlayGarba.com. All the Garba in the world.</desc>
+  <defs>
+    <radialGradient id="text-backdrop" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="0.44" stop-color="#000000" stop-opacity="0.28"/>
+      <stop offset="0.74" stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="title-shadow" x="-20%" y="-35%" width="140%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.50"/>
+    </filter>
+    <filter id="tagline-shadow" x="-20%" y="-35%" width="140%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.50"/>
+    </filter>
+  </defs>
+
+  <image href="og-background.png" x="0" y="0" width="1200" height="630" preserveAspectRatio="xMidYMid slice"/>
+
+  <ellipse cx="600" cy="326" rx="535" ry="194" fill="url(#text-backdrop)"/>
+
+  <g transform="translate(600 307)" text-anchor="middle">
+    <text x="0" y="0" fill="#ffffff" font-family="GFS Didot, Didot, 'Times New Roman', serif" font-size="132" font-weight="400" letter-spacing="-0.4" filter="url(#title-shadow)">Play<tspan fill="#f2c744">Garba</tspan>.com</text>
+
+    <g transform="translate(0 58)" fill="none" stroke="#f3d486" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.98">
+      <path d="M-205 0H-50"/>
+      <path d="M50 0H205"/>
+      <path d="M-18 0C-12-7-6-7 0 0C6-7 12-7 18 0C12 7 6 7 0 0C-6 7-12 7-18 0Z"/>
+      <path d="M0-15C7-9 7-3 0 3C-7-3-7-9 0-15Z"/>
+      <path d="M0 3C7 9 7 15 0 19C-7 15-7 9 0 3Z"/>
+      <path d="M-28 0L-20-4L-12 0L-20 4Z"/>
+      <path d="M28 0L20-4L12 0L20 4Z"/>
+    </g>
+
+    <text x="0" y="138" fill="#ffffff" font-family="GFS Didot, Didot, 'Times New Roman', serif" font-size="48" font-weight="400" letter-spacing="1.1" filter="url(#tagline-shadow)">All the Garba in the world.</text>
+  </g>
+</svg>

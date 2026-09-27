@@ -1,0 +1,32 @@
+name: RAAS graph core validate
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/lib/raas-graph.mjs'
+      - 'scripts/lib/raas-graph.test.mjs'
+      - '.github/workflows/raas-graph-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax check graph core
+        run: |
+          node --check scripts/lib/raas-graph.mjs
+          node --check scripts/lib/raas-graph.test.mjs
+
+      - name: Run graph core regression fixtures
+        run: node scripts/lib/raas-graph.test.mjs

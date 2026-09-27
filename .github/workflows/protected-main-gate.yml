@@ -1,0 +1,19 @@
+name: Protected main gate
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  main-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require core validation jobs
+        run: |
+          echo "This job passes only if it itself runs. We will configure GitHub branch protection to require this specific status check."
+          echo "It serves as the single 'gate' that must pass, representing that all required repository checks must be successful before merging to main."

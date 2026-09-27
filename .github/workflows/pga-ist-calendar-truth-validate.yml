@@ -1,0 +1,41 @@
+name: Validate PGA IST calendar truth
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/backend/lib/time.js'
+      - 'src/pga/backend/tests/ist-calendar-truth.test.mjs'
+      - '.github/workflows/pga-ist-calendar-truth-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/backend/lib/time.js'
+      - 'src/pga/backend/tests/ist-calendar-truth.test.mjs'
+      - '.github/workflows/pga-ist-calendar-truth-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-ist-calendar-truth-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax-check IST time helper
+        run: node --check src/pga/backend/lib/time.js
+
+      - name: Run IST calendar truth regression tests
+        run: node --test src/pga/backend/tests/ist-calendar-truth.test.mjs

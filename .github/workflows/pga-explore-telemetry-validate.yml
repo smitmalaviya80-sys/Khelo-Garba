@@ -1,0 +1,39 @@
+name: PGA Explore telemetry validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/catalogue/index.html'
+      - 'src/catalogue/explore-telemetry.js'
+      - 'src/pga/telemetry/**'
+      - 'scripts/lib/validate-pga-explore-telemetry.mjs'
+      - '.github/workflows/pga-explore-telemetry-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/catalogue/index.html'
+      - 'src/catalogue/explore-telemetry.js'
+      - 'src/pga/telemetry/**'
+      - 'scripts/lib/validate-pga-explore-telemetry.mjs'
+      - '.github/workflows/pga-explore-telemetry-validate.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-explore-telemetry-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Validate truthful Explore telemetry integration
+        run: node scripts/lib/validate-pga-explore-telemetry.mjs

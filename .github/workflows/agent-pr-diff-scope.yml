@@ -1,0 +1,273 @@
+name: Agent PR diff claim scope
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  claim-diff-scope:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify actual PR diff is inside active claim
+        uses: actions/github-script@v7
+        env:
+          LEGACY_PR_MAX: "378"
+          BOARD_ISSUE: "364"
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const legacyPrMax = Number(process.env.LEGACY_PR_MAX);
+            const boardIssue = Number(process.env.BOARD_ISSUE);
+            const pr = context.payload.pull_request;
+
+            if (!pr || pr.number <= legacyPrMax) return;
+
+            const claimRe = /<!--\s*agent-claim\s*\n([\s\S]*?)-->/i;
+            const releaseRe = /<!--\s*agent-release\s*\n([\s\S]*?)-->/i;
+            const overrideRe = /<!--\s*agent-claim-override\s*\n([\s\S]*?)-->/i;
+
+            function bodyField(body, name) {
+              const match = String(body || '').match(new RegExp(`^${name}:\\s*(.+?)\\s*$`, 'mi'));
+              return match ? match[1].trim() : '';
+            }
+
+            function metadataIssue(body) {
+              const match = String(body || '').match(/^Agent-Claim:\s*#(\d+)\s*$/mi);
+              return match ? Number(match[1]) : null;
+            }
+
+            function metadataAgent(body) {
+              const match = String(body || '').match(/^Agent-ID:\s*(.+?)\s*$/mi);
+              return match ? match[1].trim() : '';
+            }
+
+            function parseEvent(comment) {
+              const body = comment.body || '';
+              const override = body.match(overrideRe);
+              if (override) {
+                return {
+                  type: 'override',
+                  author: comment.user?.login || 'unknown',
+                };
+              }
+
+              const release = body.match(releaseRe);
+              if (release) {
+                return {
+                  type: 'release',
+                  agent: bodyField(release[1], 'agent'),
+                  branch: bodyField(release[1], 'branch'),
+                };
+              }
+
+              const claim = body.match(claimRe);
+              if (claim) {
+                return {
+                  type: 'claim',
+                  agent: bodyField(claim[1], 'agent'),
+                  branch: bodyField(claim[1], 'branch'),
+                  scope: bodyField(claim[1], 'scope'),
+                  files: bodyField(claim[1], 'files'),
+                };
+              }
+
+              return null;
+            }
+
+            function validClaim(event) {
+              return event?.type === 'claim' && event.agent && event.branch && event.scope && event.files;
+            }
+
+            function sameOwner(a, b) {
+              return Boolean(a && b && a.agent === b.agent && a.branch === b.branch);
+            }
+
+            function deriveActiveClaim(comments) {
+              let active = null;
+
+              for (const comment of [...comments].sort((a, b) => a.id - b.id)) {
+                const event = parseEvent(comment);
+                if (!event) continue;
+
+                if (event.type === 'override') {
+                  if (event.author === owner) active = null;
+                  continue;
+                }
+
+                if (event.type === 'release') {
+                  if (active && sameOwner(active, event)) active = null;
+                  continue;
+                }
+
+                if (!validClaim(event)) continue;
+
+                if (!active) {
+                  active = event;
+                } else if (sameOwner(active, event)) {
+                  active = event;
+                }
+              }
+
+              return active;
+            }
+
+            function normalizeFileToken(raw) {
+              let token = String(raw || '').trim().replace(/^`+|`+$/g, '').replace(/^\.\//, '');
+              token = token.replace(/^(?:expected|likely)\s+/i, '').trim();
+              return token;
+            }
+
+            function filePatterns(raw) {
+              return String(raw || '')
+                .split(';')
+                .map(normalizeFileToken)
+                .filter(Boolean)
+                .filter(token => !/^research-only\b/i.test(token))
+                .filter(token => !/^(?:none|n\/a)$/i.test(token));
+            }
+
+            function escapeRegex(char) {
+              return /[\\^$+?.()|{}[\]]/.test(char) ? `\\${char}` : char;
+            }
+
+            function globRegex(pattern) {
+              let out = '^';
+              for (let i = 0; i < pattern.length; i += 1) {
+                const char = pattern[i];
+                if (char === '*') {
+                  if (pattern[i + 1] === '*') {
+                    out += '.*';
+                    i += 1;
+                  } else {
+                    out += '[^/]*';
+                  }
+                } else if (char === '?') {
+                  out += '[^/]';
+                } else {
+                  out += escapeRegex(char);
+                }
+              }
+              return new RegExp(`${out}$`);
+            }
+
+            function claimCoversPath(rawFiles, path) {
+              const normalized = normalizeFileToken(path);
+              return filePatterns(rawFiles).some(pattern => {
+                if (!/[*?]/.test(pattern)) return pattern === normalized;
+                return globRegex(pattern).test(normalized);
+              });
+            }
+
+            function touchedPaths(changedFiles) {
+              const paths = [];
+              for (const file of changedFiles) {
+                if (file.filename && !paths.includes(file.filename)) paths.push(file.filename);
+                if (
+                  file.status === 'renamed' &&
+                  file.previous_filename &&
+                  !paths.includes(file.previous_filename)
+                ) {
+                  paths.push(file.previous_filename);
+                }
+              }
+              return paths;
+            }
+
+            function unclaimedPaths(rawFiles, changedFiles) {
+              return touchedPaths(changedFiles).filter(path => !claimCoversPath(rawFiles, path));
+            }
+
+            function assert(condition, message) {
+              if (!condition) throw new Error(`Agent PR diff scope self-test failed: ${message}`);
+            }
+
+            function runSelfTests() {
+              assert(claimCoversPath('app.js', 'app.js'), 'exact path is covered');
+              assert(claimCoversPath('data/catalogue/**', 'data/catalogue/releases/a.json'), 'tree glob covers nested path');
+              assert(claimCoversPath('data/releases/*falguni*.json', 'data/releases/2022-falguni-a.json'), 'filename glob covers exact file');
+              assert(!claimCoversPath('research-only', 'app.js'), 'research-only covers no repository path');
+              assert(!claimCoversPath('app.js', 'provider-runtime.js'), 'undeclared exact path is rejected');
+
+              const rename = [
+                {
+                  filename: 'docs/new-name.md',
+                  previous_filename: 'docs/old-name.md',
+                  status: 'renamed',
+                },
+              ];
+              const missingOld = unclaimedPaths('docs/new-name.md', rename);
+              assert(
+                missingOld.length === 1 && missingOld[0] === 'docs/old-name.md',
+                'rename requires both old and new paths to be declared'
+              );
+              assert(
+                unclaimedPaths('docs/*.md', rename).length === 0,
+                'one declared glob may cover both rename paths'
+              );
+            }
+
+            runSelfTests();
+
+            const issueNumber = metadataIssue(pr.body);
+            if (!issueNumber) return;
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+            const active = deriveActiveClaim(comments);
+
+            if (!active) {
+              core.setFailed(
+                `Agent-Claim #${issueNumber} has no active machine-readable claim. Reclaim the lane before changing repository files.`
+              );
+              return;
+            }
+
+            const agentId = metadataAgent(pr.body);
+            if (agentId && agentId !== active.agent) {
+              core.setFailed(
+                `PR Agent-ID ${agentId} does not match active claim owner ${active.agent} on issue #${issueNumber}.`
+              );
+              return;
+            }
+
+            if (pr.head?.ref && pr.head.ref !== active.branch) {
+              core.setFailed(
+                `PR branch ${pr.head.ref} does not match active claim branch ${active.branch} on issue #${issueNumber}.`
+              );
+              return;
+            }
+
+            const changedFiles = await github.paginate(github.rest.pulls.listFiles, {
+              owner,
+              repo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+            const unclaimed = unclaimedPaths(active.files, changedFiles);
+
+            core.summary
+              .addHeading('Agent PR diff claim scope')
+              .addRaw(
+                `${touchedPaths(changedFiles).length} touched path(s) checked against Agent-Claim #${issueNumber}; ${unclaimed.length} outside the active claim.`
+              )
+              .write();
+
+            if (!unclaimed.length) return;
+
+            core.setFailed(
+              [
+                `PR #${pr.number} changes path(s) outside active Agent-Claim #${issueNumber}: ${unclaimed.join(', ')}.`,
+                `Declared files: ${active.files}.`,
+                `Do not blindly widen the claim. Check board #${boardIssue} and earlier ownership first, then either remove the unrelated diff, narrow/reconcile the PR, or update the claim only for genuinely unowned paths.`,
+              ].join(' ')
+            );

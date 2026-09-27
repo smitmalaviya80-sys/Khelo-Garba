@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0b10" />
+  <meta name="color-scheme" content="dark" />
+  <title>Explore Gujarati Garba · PlayGarba</title>
+  <meta name="description" content="Explore PlayGarba through visual Gujarati Garba catalogues, then open releases and songs without leaving the experience." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://playgarba.com/explore/" />
+  <link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PlayGarba" />
+  <meta property="og:title" content="Explore Gujarati Garba · PlayGarba" />
+  <meta property="og:description" content="Visual Gujarati Garba catalogues for traditions, artists, eras, live performances and nonstop sets." />
+  <meta property="og:url" content="https://playgarba.com/explore/" />
+  <meta property="og:image" content="https://playgarba.com/assets/backgrounds/library/11-master-dark-courtyard.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="catalogue.css" />
+  <style>
+    @media (max-width: 560px) {
+      body::before { transform: none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Explore Gujarati Garba · PlayGarba","url":"https://playgarba.com/explore/","isPartOf":{"@type":"WebSite","name":"PlayGarba","url":"https://playgarba.com/"}}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <span class="topbar-spacer" aria-hidden="true"></span>
+    <h1 class="explore-title" id="catalogueTitle">Explore</h1>
+    <a class="close-explore" href="../" aria-label="Close Explore and return to the PlayGarba player">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+    </a>
+  </header>
+
+  <main aria-labelledby="catalogueTitle">
+    <section class="catalogue-status" aria-hidden="true">
+      <label>
+        <span class="sr-only">Search the catalogue</span>
+        <input id="catalogueSearch" type="search" autocomplete="off" tabindex="-1" />
+      </label>
+      <p id="catalogueCount" aria-live="polite">Loading catalogue…</p>
+    </section>
+
+
+    <section id="collectionHome" class="collection-home" aria-label="Garba catalogues">
+      <div id="catalogueSections"></div>
+    </section>
+
+    <section id="collectionDetail" class="collection-detail" hidden aria-live="polite">
+      <button class="back-button" id="backToCollections" type="button">← All catalogues</button>
+
+      <header class="detail-head">
+        <p class="eyebrow" id="detailKicker">Catalogue</p>
+        <h2 id="detailTitle" tabindex="-1"></h2>
+        <p id="detailDescription"></p>
+        <div class="detail-meta" id="detailMeta"></div>
+      </header>
+
+      <section class="release-section" id="releaseSection">
+        <div class="section-heading">
+          <div><p class="eyebrow">Albums & releases</p><h3>From this catalogue</h3></div>
+          <button id="showAllSongs" type="button" class="quiet-button" hidden>Show all songs</button>
+        </div>
+        <div class="release-rail" id="releaseRail" role="group" aria-label="Albums and releases"></div>
+      </section>
+
+      <section class="songs-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">Songs</p><h3 id="songSectionTitle">All songs</h3></div>
+          <div class="section-heading-actions">
+            <label class="catalogue-sort" id="catalogueSortField">
+              <span>Sort</span>
+              <select id="catalogueSort" aria-label="Sort catalogue songs">
+                <option value="playable-first">Playable first</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+              </select>
+            </label>
+            <span id="songCount"></span>
+          </div>
+        </div>
+        <div class="song-list" id="catalogueSongList" role="list"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="collectionCardTemplate">
+    <button class="collection-card" type="button">
+      <span class="collection-image" aria-hidden="true"></span>
+      <span class="collection-shade" aria-hidden="true"></span>
+      <span class="collection-copy">
+        <small></small>
+        <strong></strong>
+        <span></span>
+      </span>
+    </button>
+  </template>
+
+  <script src="../assets/runtime/catalogue-ordering.js"></script>
+  <script type="module" src="catalogue.js"></script>
+  <script type="module" src="explore-continuity-bridge.js"></script>
+  <script type="module" src="listening-library.js"></script>
+  <script type="module">
+    // The repository browser fixture intentionally serves only the source-native
+    // Explore shell. Keep production analytics out of loopback fixtures/local dev,
+    // while preserving the same UI and interaction code under test.
+    if (!['localhost', '127.0.0.1', '::1'].includes(location.hostname)) {
+      import('./explore-telemetry.js').catch(() => {});
+    }
+  </script>
+  <script src="../assets/runtime/explore-search.js" defer></script>
+  <script type="module">
+    (() => {
+      const releaseRail = document.getElementById('releaseRail');
+      if (!(releaseRail instanceof HTMLElement)) return;
+
+      const railStyle = document.createElement('style');
+      railStyle.dataset.playgarbaExploreRailInteraction = '';
+      railStyle.textContent = `
+        .release-rail[data-scroll-left="true"][data-scroll-right="true"],.essential-release-rail[data-scroll-left="true"][data-scroll-right="true"]{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}
+        .release-rail[data-scroll-left="true"][data-scroll-right="false"],.essential-release-rail[data-scroll-left="true"][data-scroll-right="false"]{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 100%);mask-image:linear-gradient(to right,transparent 0,#000 18px,#000 100%)}
+        .release-rail[data-scroll-left="false"][data-scroll-right="true"],.essential-release-rail[data-scroll-left="false"][data-scroll-right="true"]{-webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 18px),transparent 100%)}
+      `;
+      document.head.append(railStyle);
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let pendingReleaseFocusId = '';
+
+      function cardsFor(rail) {
+        return [...rail.querySelectorAll(':scope > .release-card:not([disabled])')]
+          .filter((card) => card instanceof HTMLElement);
+      }
+
+      function revealHorizontally(rail, target) {
+        if (!(target instanceof HTMLElement)) return;
+        const railRect = rail.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const inset = 6;
+        let delta = 0;
+        if (targetRect.left < railRect.left + inset) delta = targetRect.left - railRect.left - inset;
+        else if (targetRect.right > railRect.right - inset) delta = targetRect.right - railRect.right + inset;
+        if (Math.abs(delta) < 1) return;
+        rail.scrollTo({
+          left: Math.max(0, rail.scrollLeft + delta),
+          behavior: reduced.matches ? 'auto' : 'smooth',
+        });
+      }
+
+      function updateOverflow(rail) {
+        const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
+        rail.dataset.scrollLeft = rail.scrollLeft > 4 ? 'true' : 'false';
+        rail.dataset.scrollRight = rail.scrollLeft < max - 4 ? 'true' : 'false';
+      }
+
+      function bindRail(rail, label) {
+        if (!(rail instanceof HTMLElement)) return;
+        rail.setAttribute('role', 'group');
+        rail.setAttribute('aria-label', label);
+        cardsFor(rail).forEach((card) => card.removeAttribute('role'));
+        updateOverflow(rail);
+        if (rail.dataset.keyboardRailBound === 'true') return;
+        rail.dataset.keyboardRailBound = 'true';
+
+        rail.addEventListener('keydown', (event) => {
+          if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          const current = event.target instanceof Element ? event.target.closest('.release-card') : null;
+          if (!(current instanceof HTMLElement) || current.parentElement !== rail) return;
+          const cards = cardsFor(rail);
+          const index = cards.indexOf(current);
+          if (index < 0 || !cards.length) return;
+          let nextIndex = index;
+          if (event.key === 'ArrowLeft') nextIndex = Math.max(0, index - 1);
+          if (event.key === 'ArrowRight') nextIndex = Math.min(cards.length - 1, index + 1);
+          if (event.key === 'Home') nextIndex = 0;
+          if (event.key === 'End') nextIndex = cards.length - 1;
+          const next = cards[nextIndex];
+          if (!next) return;
+          event.preventDefault();
+          next.focus({ preventScroll: true });
+          revealHorizontally(rail, next);
+        });
+
+        rail.addEventListener('scroll', () => requestAnimationFrame(() => updateOverflow(rail)), { passive: true });
+      }
+
+      function bindAllRails() {
+        bindRail(releaseRail, 'Albums and releases');
+        document.querySelectorAll('.essential-release-rail').forEach((rail) => {
+          bindRail(rail, 'Essential Garba releases');
+        });
+        if (!pendingReleaseFocusId) return;
+        const target = releaseRail.querySelector(`.release-card[data-release-id="${CSS.escape(pendingReleaseFocusId)}"]`);
+        if (!(target instanceof HTMLElement)) return;
+        pendingReleaseFocusId = '';
+        target.focus({ preventScroll: true });
+        revealHorizontally(releaseRail, target);
+      }
+
+      document.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target : null;
+        const releaseCard = target?.closest('.release-card[data-release-id]');
+        if (releaseCard instanceof HTMLElement && releaseCard.parentElement === releaseRail && document.activeElement === releaseCard) {
+          pendingReleaseFocusId = releaseCard.dataset.releaseId || '';
+        }
+        if (target?.closest('.collection-card, .back-button, .release-card, .quiet-button')) {
+          requestAnimationFrame(bindAllRails);
+        }
+      }, { capture: true });
+
+      window.addEventListener('hashchange', () => requestAnimationFrame(bindAllRails), { passive: true });
+      window.addEventListener('pageshow', () => requestAnimationFrame(bindAllRails), { passive: true });
+      window.addEventListener('resize', () => requestAnimationFrame(bindAllRails), { passive: true });
+      requestAnimationFrame(bindAllRails);
+      window.setTimeout(bindAllRails, 250);
+    })();
+  </script>
+</body>
+</html>

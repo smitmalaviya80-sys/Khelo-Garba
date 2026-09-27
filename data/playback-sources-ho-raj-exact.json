@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-09-08",
+  "note": "Conservative exact-song mappings for Ho Raj (Non Stop Fusion Garba). Only Apple Music song pages that independently resolve to the 2001 Ho Raj catalogue are included. Ghor Andhari Re intentionally remains on its stronger existing exact route; all other unverified songs remain release-reference fallbacks rather than inferring Apple IDs.",
+  "songSources": {
+    "ho-raj-fusion-2001-07-aasmani-rang-ni-chundadi": {"provider":"apple-music","sourceUrl":"https://music.apple.com/in/song/1649969312","sourceType":"verified-track-source","releaseId":"ho-raj-fusion-2001","trackNumber":7,"evidenceType":"official-apple-music-song-page"},
+    "ho-raj-fusion-2001-12-ha-re-maa-aarasur-thi": {"provider":"apple-music","sourceUrl":"https://music.apple.com/us/song/1649969930","sourceType":"verified-track-source","releaseId":"ho-raj-fusion-2001","trackNumber":12,"evidenceType":"official-apple-music-song-page"},
+    "ho-raj-fusion-2001-18-khamma-re-khamma": {"provider":"apple-music","sourceUrl":"https://music.apple.com/ca/song/1649970065","sourceType":"verified-track-source","releaseId":"ho-raj-fusion-2001","trackNumber":18,"evidenceType":"official-apple-music-song-page"}
+  }
+}

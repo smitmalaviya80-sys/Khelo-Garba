@@ -1,0 +1,41 @@
+name: PGA Home + Live validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/home/live-snapshot.js'
+      - 'src/pga/home/tests/live-snapshot.test.mjs'
+      - 'src/pga/home/model.js'
+      - 'src/pga/presence/model.js'
+      - 'scripts/lib/validate-pga-home-live.mjs'
+      - '.github/workflows/pga-home-live-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/pga/home/live-snapshot.js'
+      - 'src/pga/home/tests/live-snapshot.test.mjs'
+      - 'src/pga/home/model.js'
+      - 'src/pga/presence/model.js'
+      - 'scripts/lib/validate-pga-home-live.mjs'
+      - '.github/workflows/pga-home-live-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Run Home + Live snapshot fixtures
+        run: node src/pga/home/tests/live-snapshot.test.mjs
+      - name: Validate composition purity and delegation
+        run: node scripts/lib/validate-pga-home-live.mjs

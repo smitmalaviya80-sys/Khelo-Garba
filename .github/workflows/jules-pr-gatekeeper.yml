@@ -1,0 +1,44 @@
+name: PR Gatekeeper
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  gatekeeper-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Request Jules Review
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+
+            // Wait a little bit to ensure PR is fully created and tests might have started
+            await new Promise(r => setTimeout(r, 5000));
+
+            // Only invoke if not already invoked by this bot to avoid infinite loops on synchronize,
+            // though synchronize implies new commits, so we probably do want a new review.
+            // Let's just always request it, but we can instruct Jules not to spam.
+
+            // Read the prompt
+            const fs = require('fs');
+            const prompt = fs.readFileSync('.raas/roles/jules-pr-gatekeeper.md', 'utf8');
+
+            const body = `@google-labs-jules Please review this PR.\n\n${prompt}`;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number,
+              body
+            });

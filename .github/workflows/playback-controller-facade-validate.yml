@@ -1,0 +1,41 @@
+name: Playback controller facade
+
+on:
+  pull_request:
+    paths:
+      - 'src/playback/playback-controller-facade.js'
+      - 'scripts/lib/test-playback-controller-facade.mjs'
+      - '.github/workflows/playback-controller-facade-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/playback/playback-controller-facade.js'
+      - 'scripts/lib/test-playback-controller-facade.mjs'
+      - '.github/workflows/playback-controller-facade-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: playback-controller-facade-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Syntax check
+        run: node --check src/playback/playback-controller-facade.js && node --check scripts/lib/test-playback-controller-facade.mjs
+
+      - name: Focused facade tests
+        run: node scripts/lib/test-playback-controller-facade.mjs

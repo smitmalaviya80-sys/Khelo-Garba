@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "policy": "Featured releases are intentionally ordered PlayGarba entry points. Every release must exist in the canonical catalogue and have verified artwork before it can appear here.",
+  "featuredReleaseIds": [
+    "atul-maro-garbo-2000",
+    "re-lol-vol7-2000",
+    "anand-vol8-2001",
+    "jay-ho-vol9-2002",
+    "jagran-vol11-2004",
+    "ude-re-gulal-vol12-2005",
+    "taali-vol13-2006",
+    "chandaliyo-vol16-2009",
+    "thanganat-vol16-2012"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "version": "0.4.0",
+  "updated": "2026-09-26",
+  "note": "Verified Soor Mandir continuous release upload (yOg4-pyIIHU) with label-published chapter timestamps for all tracks of Tara Vina Shyam (2000), preserving existing standalone verified videos where present.",
+  "songSources": {
+    "atul-tara-vina-shyam-2000-01": {
+      "provider": "youtube",
+      "videoId": "uMzGIMulZGs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=uMzGIMulZGs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-tara-vina-shyam-2000-02": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 213,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 2,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-03": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 406,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 3,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-04": {
+      "provider": "youtube",
+      "videoId": "Sbl8ChSqf0M",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Sbl8ChSqf0M",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-same-album-track"
+    },
+    "atul-tara-vina-shyam-2000-05": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 945,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-06": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 1263,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 6,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-07": {
+      "provider": "youtube",
+      "videoId": "RcSNFQ0bsT4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=RcSNFQ0bsT4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-tara-vina-shyam-2000-08": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 1641,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-09": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 1807,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 9,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-10": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 1968,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 10,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-11": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2102,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-12": {
+      "provider": "youtube",
+      "videoId": "qvKJ01bO8Mo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=qvKJ01bO8Mo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 12,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-tara-vina-shyam-2000-13": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2410,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 13,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-14": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2528,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 14,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-15": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2671,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 15,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-16": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2892,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 16,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-17": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 2956,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 17,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-18": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 3129,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 18,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "atul-tara-vina-shyam-2000-19": {
+      "provider": "youtube",
+      "videoId": "yOg4-pyIIHU",
+      "startSeconds": 3262,
+      "sourceUrl": "https://www.youtube.com/watch?v=yOg4-pyIIHU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "atul-tara-vina-shyam-2000",
+      "trackNumber": 19,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "rosterSource": "data/discovery/artists-2026-01.json",
+  "updated": "2026-09-26",
+  "rosterEntryCount": 58,
+  "humanPortraitCount": 54,
+  "excludedGroupActs": [
+    "Aghori Muzik",
+    "Bandish Projekt",
+    "Maati Baani"
+  ],
+  "imageFormat": "Transparent WebP; 32 portraits are 512×512 and 22 existing portraits are 256×256",
+  "style": "AI-reimagined realistic vector-style face and head cutouts with transparent backgrounds, stopping at the neck, based on multiple identity-reference images; catalogue portraits use the shared gold-toned background",
+  "artists": [
+    {
+      "artist": "Aditya Gadhvi",
+      "artistId": "aditya-gadhvi",
+      "tier": "core-current",
+      "songCount": 93,
+      "portrait": "aditya-gadhvi.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/movies/aditya-gadhavi-is-honing-his-culinary-skills-and-his-social-media-posts-are-a-proof/articleshow/75949877.cms",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/video-aditya-gadhvi-records-a-new-song/articleshow/98627641.cms",
+        "https://media.indulgexpress.com/indulgexpress/2024-10-11/y4qz6icy/202410113241037.jpeg"
+      ]
+    },
+    {
+      "artist": "Geeta Rabari",
+      "artistId": "geeta-rabari",
+      "tier": "core-current",
+      "songCount": 209,
+      "portrait": "geeta-rabari.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Geeta-Rabari-pic.jpg",
+        "https://www.aajtak.in/india/gujarat/story/gujrat-top-singer-geeta-ben-rabari-met-prime-minister-modi-667183-2019-07-08"
+      ]
+    },
+    {
+      "artist": "Rajesh Ahir",
+      "artistId": "rajesh-ahir",
+      "tier": "core-current",
+      "songCount": 1,
+      "portrait": "rajesh-ahir.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/rajesh-ahir-on-the-release-of-dwarika-ni-sheriye-such-folk-songs-stay-evergreen-exclusive/articleshow/86782706.cms",
+        "https://open.spotify.com/artist/5pCm4zS3WzChwe92mm9kKO"
+      ]
+    },
+    {
+      "artist": "Sabhiben Ahir",
+      "artistId": "sabhiben-ahir",
+      "tier": "core-current",
+      "songCount": 1,
+      "portrait": "sabhiben-ahir.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/37qq7B8QoTb2PT9cGVu0aC",
+        "https://open.spotify.com/album/5CYSqoNtv6JM73AEv3wFv5"
+      ]
+    },
+    {
+      "artist": "Ishani Dave",
+      "artistId": "ishani-dave",
+      "tier": "core-current",
+      "songCount": 2,
+      "portrait": "ishani-dave.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Ishani-dave.jpg",
+        "https://www.redbull.com/in-en/best-garba-songs"
+      ]
+    },
+    {
+      "artist": "Kairavi Buch",
+      "artistId": "kairavi-buch",
+      "tier": "core-current",
+      "songCount": 32,
+      "portrait": "kairavi-buch.webp",
+      "sourceReferences": [
+        "https://www.partymap.in/singer-kairavi-buch/",
+        "https://platinumlist.net/artist/1929/kairavi-buch/"
+      ]
+    },
+    {
+      "artist": "Jigardan Gadhavi",
+      "artistId": "jigardan-gadhavi",
+      "tier": "core-current",
+      "songCount": 38,
+      "portrait": "jigardan-gadhavi.webp",
+      "sourceReferences": [
+        "https://www.district.in/events/jigardan-gadhavi/artist",
+        "https://timesofindia.indiatimes.com/2021/ahmedabad/ahmedabad-most-desirable-men/jigardan-gadhavi/articleshow/88581644.cms",
+        "https://timesofindia.indiatimes.com/ahmedabad-times/most-desirable-men/jigardan-gadhavi/articleshow/72258160.cms"
+      ]
+    },
+    {
+      "artist": "Kinjal Dave",
+      "artistId": "kinjal-dave",
+      "tier": "core-current",
+      "songCount": 52,
+      "portrait": "kinjal-dave.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/city/ahmedabad/gujarati-singer-kinjal-dave-fined-1l-for-singing-char-bangadi-wali-gaadi-news/amp_articleshow/106912612.cms",
+        "https://open.spotify.com/artist/26qILArN7gTOjFRTbOTKbJ"
+      ]
+    },
+    {
+      "artist": "Alpa Patel",
+      "artistId": "alpa-patel",
+      "songCount": 21,
+      "portrait": "alpa-patel.webp",
+      "sourceReferences": [
+        "https://music.apple.com/in/album/gopi-bhan-bhuli-gai-single/1765486380",
+        "https://music.apple.com/in/album/ame-gujarati-single/1767962642"
+      ],
+      "portraitNotes": "AI-generated stylized portrait; reference pages guide likeness only and are not licenses for the generated artwork.",
+      "tier": "current"
+    },
+    {
+      "artist": "Santvani Trivedi",
+      "artistId": "santvani-trivedi",
+      "tier": "core-current",
+      "songCount": 33,
+      "portrait": "santvani-trivedi.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/3N43nYjyzU5Uj9ZFabgdpJ",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/santvani-trivedi-delights-fans-with-vichhudo-from-non-stop-garba-track/articleshow/113876578.cms",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/santvani-trivedi-looks-regal-in-a-pink-saree-sets-social-media-abuzz/articleshow/99962987.cms"
+      ]
+    },
+    {
+      "artist": "Umesh Barot",
+      "artistId": "umesh-barot",
+      "tier": "core-current",
+      "songCount": 23,
+      "portrait": "umesh-barot.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/did-you-know-gujarati-folk-singer-umesh-barot-is-an-actor-as-well/articleshow/77741030.cms",
+        "https://www.premiertickets.co/artist/umesh-barot/"
+      ]
+    },
+    {
+      "artist": "Jignesh Barot",
+      "artistId": "jignesh-barot",
+      "tier": "core-current",
+      "songCount": 1,
+      "portrait": "jignesh-barot.webp",
+      "sourceReferences": [
+        "https://www.desiticketwala.com/artist-detail/jignesh-barot",
+        "https://www.tring.co.in/jignesh-barot"
+      ]
+    },
+    {
+      "artist": "Bhoomi Trivedi",
+      "artistId": "bhoomi-trivedi",
+      "tier": "core",
+      "songCount": 47,
+      "portrait": "bhoomi-trivedi.webp",
+      "sourceReferences": [
+        "https://bookingagentinfo.com/celebrity/bhoomi-trivedi/",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/heres-what-singer-bhoomi-is-doing-this-navratri/articleshow/70293971.cms"
+      ]
+    },
+    {
+      "artist": "Aishwarya Majmudar",
+      "artistId": "aishwarya-majmudar",
+      "tier": "core",
+      "songCount": 98,
+      "portrait": "aishwarya-majmudar.webp",
+      "sourceReferences": [
+        "https://www.shazam.com/song/1597882272/nathni",
+        "https://starclinch.com/aishwarya-majmudar"
+      ]
+    },
+    {
+      "artist": "Kirtidan Gadhvi",
+      "artistId": "kirtidan-gadhvi",
+      "tier": "core",
+      "songCount": 140,
+      "portrait": "kirtidan-gadhvi.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Kirtidan_Gadhavi.jpg",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/kirtidan-gadhvi-extends-dhanteras-wishes-to-his-fans-with-a-musical-performance/articleshow/87484070.cms"
+      ]
+    },
+    {
+      "artist": "Atul Purohit",
+      "artistId": "atul-purohit",
+      "tier": "legacy-core",
+      "songCount": 128,
+      "portrait": "atul-purohit.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/city/vadodara/gujarat-copyright-curbs-on-tara-vina-shyam/articleshow/94312854.cms",
+        "https://www.partymap.in/singer-atul-purohit/"
+      ]
+    },
+    {
+      "artist": "Falguni Pathak",
+      "artistId": "falguni-pathak",
+      "tier": "legacy-core",
+      "songCount": 66,
+      "portrait": "falguni-pathak.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Falguni_Pathak_at_her_dandiya_show_in_Goregaon_Sports.jpg",
+        "https://www.viberate.com/artist/falguni-pathak/"
+      ]
+    },
+    {
+      "artist": "Parth Oza",
+      "artistId": "parth-oza",
+      "tier": "live-current",
+      "songCount": 2,
+      "portrait": "parth-oza.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/26USIc2MZPhDd5poifl0O1",
+        "https://timesofindia.indiatimes.com/entertainment/events/ahmedabad/singer-actor-parth-oza-to-speak-on-how-music-can-help-reduce-stress/articleshow/65091557.cms"
+      ]
+    },
+    {
+      "artist": "Purva Mantri",
+      "artistId": "purva-mantri",
+      "tier": "emerging-current",
+      "songCount": 5,
+      "portrait": "purva-mantri.webp",
+      "sourceReferences": [
+        "https://www.indulgexpress.com/culture/music/2024/Apr/13/music-is-like-oxygen-to-me-says-singer-purva-mantri",
+        "https://www.hindustantimes.com/lifestyle/brunch/get-to-know-purva-mantri-101749155566843.html"
+      ]
+    },
+    {
+      "artist": "Parth Bharat Thakkar",
+      "artistId": "parth-bharat-thakkar",
+      "tier": "current-collaborator",
+      "songCount": 1,
+      "portrait": "parth-bharat-thakkar.webp",
+      "sourceReferences": [
+        "https://x.com/parthmusic",
+        "https://open.spotify.com/artist/0NilspPVgbgzAJrUgLRgt5"
+      ]
+    },
+    {
+      "artist": "Rutvi Pandya",
+      "artistId": "rutvi-pandya",
+      "tier": "emerging-current",
+      "songCount": 65,
+      "portrait": "rutvi-pandya.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/watch-singer-rutvi-pandya-sets-the-stage-on-fire-as-she-croons-ek-jaad-maathe-jhumakdu/articleshow/100957058.cms",
+        "https://www.district.in/events/rutvi-pandya/artist"
+      ]
+    },
+    {
+      "artist": "Osman Mir",
+      "artistId": "osman-mir",
+      "tier": "core",
+      "songCount": 41,
+      "portrait": "osman-mir.webp",
+      "sourceReferences": [
+        "https://www.partymap.in/how-to-contact-singer-osman-mir/",
+        "https://www.district.in/events/osman-mir/artist"
+      ]
+    },
+    {
+      "artist": "Jahnvi Shrimankar",
+      "artistId": "jahnvi-shrimankar",
+      "tier": "current",
+      "songCount": 1,
+      "portrait": "jahnvi-shrimankar.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/6HWLgNliaSzF438T7Hk755",
+        "https://www.divyabhaskar.co.in/dvb-original/news/exclusive-interview-with-singer-jahnvi-shrimankar-who-made-his-bollywood-debut-by-singing-dholida-song-129471784.html"
+      ]
+    },
+    {
+      "artist": "Pamela Jain",
+      "artistId": "pamela-jain",
+      "tier": "core-current",
+      "songCount": 169,
+      "portrait": "pamela-jain.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/4BBdp811wrWrr1zk9dENUE"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Hemant Chauhan",
+      "artistId": "hemant-chauhan",
+      "tier": "legacy-core",
+      "songCount": 146,
+      "portrait": "hemant-chauhan.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Hemant_Chauhan_Gujrat_(4).jpg",
+        "https://indianexpress.com/article/cities/ahmedabad/padma-shri-hemant-chauhan-felicitated-ahmedabad-sc-leaders-gujarat-8626677/"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Maulik Mehta",
+      "artistId": "maulik-mehta",
+      "tier": "current-collaborator",
+      "songCount": 79,
+      "portrait": "maulik-mehta.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/maulik-mehta-gujarati-music-director-maulik-mehta-composes-for-a-bollywood-comedy/articleshow/38475958.cms"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. The duo-photo identity mapping follows left/right placement in the cited source image and remains an inference."
+    },
+    {
+      "artist": "Kajal Maheriya",
+      "artistId": "kajal-maheriya",
+      "tier": "core-current",
+      "songCount": 62,
+      "portrait": "kajal-maheriya.webp",
+      "sourceReferences": [
+        "https://www.saregama.com/artist/kajal-maheriya_59415/hits/songs",
+        "https://special-gujarati.blogspot.com/2021/01/hd-latests-kajal-mahereiya-photos-home.html"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Gaman Santhal",
+      "artistId": "gaman-santhal",
+      "tier": "core-current",
+      "songCount": 61,
+      "portrait": "gaman-santhal.webp",
+      "sourceReferences": [
+        "https://music.amazon.com/artists/B00VCALXPI/gaman-santhal",
+        "https://www.saregama.com/artist/gaman-santhal_76114/hits/songs"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Praful Dave",
+      "artistId": "praful-dave",
+      "tier": "legacy-core",
+      "songCount": 54,
+      "portrait": "praful-dave.webp",
+      "sourceReferences": [
+        "https://music.amazon.com/artists/B000QKLJWC/praful-dave",
+        "https://prasarbharati.gov.in/music_artists/airahmedabad.pdf"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Hardik Dave",
+      "artistId": "hardik-dave",
+      "tier": "live-current",
+      "songCount": 46,
+      "portrait": "hardik-dave.webp",
+      "sourceReferences": [
+        "https://soundcloud.com/hardikdavemusic",
+        "https://music.apple.com/us/artist/hardik-dave/1199762575"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Rahul Munjariya",
+      "artistId": "rahul-munjariya",
+      "tier": "current-collaborator",
+      "songCount": 46,
+      "portrait": "rahul-munjariya.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/maulik-mehta-gujarati-music-director-maulik-mehta-composes-for-a-bollywood-comedy/articleshow/38475958.cms"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. The duo-photo identity mapping follows left/right placement in the cited source image and remains an inference."
+    },
+    {
+      "artist": "Tushaar Trivedi",
+      "artistId": "tushaar-trivedi",
+      "tier": "current",
+      "songCount": 43,
+      "portrait": "tushaar-trivedi.webp",
+      "sourceReferences": [
+        "https://music.apple.com/us/artist/tushaar-trivedi/1646301064"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Dharmesh Barot",
+      "artistId": "dharmesh-barot",
+      "tier": "current",
+      "songCount": 40,
+      "portrait": "dharmesh-barot.webp",
+      "sourceReferences": [
+        "https://allevents.in/performer/dharmesh-barot"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Rashmita Rabari",
+      "artistId": "rashmita-rabari",
+      "tier": "current",
+      "songCount": 36,
+      "portrait": "rashmita-rabari.webp",
+      "sourceReferences": [
+        "https://liveclefs.com/artists/rashmita-rabari/"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Himali Vora",
+      "artistId": "himali-vora",
+      "tier": "current",
+      "songCount": 35,
+      "portrait": "himali-vora.webp",
+      "sourceReferences": [
+        "https://music.apple.com/us/artist/himali-vora/1606308503",
+        "https://www.swadeshishakti.com/video/bahuchar-maa-na-dera-atul-purohit-himali-vora-iqbal-meer-atulpurohitgarba-navratri2023"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Pooja Kalyani",
+      "artistId": "pooja-kalyani",
+      "tier": "current",
+      "songCount": 27,
+      "portrait": "pooja-kalyani.webp",
+      "sourceReferences": [
+        "https://www.tring.co.in/pooja-kalyani",
+        "https://music.apple.com/in/album/ochintu-koi-mane-raste-male-single/1685958812"
+      ],
+      "portraitNotes": "AI-generated stylized face/head cutout with transparent background; no torso or clothing below the neck. References guide likeness only and are not included as portrait assets."
+    },
+    {
+      "artist": "Hariom Gadhavi",
+      "artistId": "hariom-gadhavi",
+      "tier": "core-current",
+      "songCount": 29,
+      "portrait": "hariom-gadhavi.webp",
+      "sourceReferences": [
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/hariom-gadhavi-sets-the-stage-ablaze-with-a-dance-video-promises-a-power-packed-navratri-2025/articleshow/121635398.cms"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Kishor Manraja",
+      "artistId": "kishore-manraja",
+      "tier": "legacy-core",
+      "songCount": 36,
+      "portrait": "kishore-manraja.webp",
+      "sourceReferences": [
+        "https://www.jesalmanraja.com/",
+        "https://music.apple.com/in/song/1580199670",
+        "https://www.youtube.com/watch?v=IGkT3OCxKVo"
+      ],
+      "portraitNotes": "Catalogue credits use both Kishor and Kishore spellings; this portrait follows the existing Kishore Manraja discovery identity. Generated face-only illustration; reference pages guide likeness and are not licenses."
+    },
+    {
+      "artist": "Rushabh Ahir",
+      "artistId": "rushabh-ahir",
+      "tier": "core-current",
+      "songCount": 27,
+      "portrait": "rushabh-ahir.webp",
+      "sourceReferences": [
+        "https://music.apple.com/us/artist/rushabh-ahir/1607051465",
+        "https://www.youtube.com/watch?v=iaxk7aywb3c"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Anita Pandit",
+      "artistId": "anita-pandit",
+      "tier": "core-current",
+      "songCount": 25,
+      "portrait": "anita-pandit.webp",
+      "sourceReferences": [
+        "https://music.apple.com/us/artist/anita-pandit/393992324",
+        "https://i1.sndcdn.com/artworks-000235898201-gik26o-t1080x1080.jpg"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Parthiv Gohil",
+      "artistId": "parthiv-gohil",
+      "tier": "core-current",
+      "songCount": 24,
+      "portrait": "parthiv-gohil.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/3TPlDqL7bezoe6zi0wb0P7",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/parthiv-gohil-shares-rehearsal-clip-featuring-tu-hai-toh-dil-dhadakta-dai-watch/articleshow/118334424.cms"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Dhara Shah",
+      "artistId": "dhara-shah",
+      "tier": "emerging-current",
+      "songCount": 24,
+      "portrait": "dhara-shah.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/4ph9NiFrsLrhFaZ6BeCfTz",
+        "https://www.tring.co.in/dhara-shah"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Shailendra Bharti",
+      "artistId": "shailendra-bharti",
+      "tier": "legacy-core",
+      "songCount": 23,
+      "portrait": "shailendra-bharti.webp",
+      "sourceReferences": [
+        "https://music.apple.com/in/artist/shailendra-bharti/251036422"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Vikram Thakor",
+      "artistId": "vikram-thakor",
+      "tier": "core-current",
+      "songCount": 20,
+      "portrait": "vikram-thakor.webp",
+      "sourceReferences": [
+        "https://pbs.twimg.com/profile_images/1231441274227568642/m6be1NzD_400x400.jpg",
+        "https://open.spotify.com/artist/1JG9IqksUz2jJw6J6Rku0o",
+        "https://timesofindia.indiatimes.com/entertainment/gujarati/music/vikram-thakor-singer/actor-ready-with-new-religious-album/articleshow/39536877.cms"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Trupti Gadhvi",
+      "artistId": "trupti-gadhvi",
+      "tier": "core-current",
+      "songCount": 19,
+      "portrait": "trupti-gadhvi.webp",
+      "sourceReferences": [
+        "https://open.spotify.com/artist/5xvW7o54b3p0nfXCgH5EBi",
+        "https://music.apple.com/us/artist/trupti-gadhvi/1389015801",
+        "https://www.oneindia.com/entertainment/trupti-gadhvi-earns-gifa-2025-nomination-for-best-playback-singer-female-8011573.html"
+      ],
+      "portraitNotes": "AI-generated face-only portrait; the reference pages guide likeness only and do not license the generated artwork. Cutout stops at the jaw, with no neck or body."
+    },
+    {
+      "artist": "Nisha Upadhyay",
+      "artistId": "nisha-upadhyay",
+      "tier": "legacy-core",
+      "songCount": 18,
+      "portrait": "nisha-upadhyay.webp",
+      "sourceReferences": [
+        "https://www.gujaratimidday.com/entertainment-news/dhollywood-news/photo/ramzat-ni-ratna-superstar-gujarati-singer-nisha-kapadia-upadhyay-says-vadodara-is-the-only-city-where-there-is-no-bollywood-song-entry-12334",
+        "https://in.bookmyshow.com/person/nisha-upadhyaya-kapadia/1058790"
+      ],
+      "portraitNotes": "Also billed as Nisha Upadhyay Kapadia and Nisha Kapadia Upadhyay; catalog songs credit Nisha Upadhyay. AI-generated face-only illustration; reference pages guide likeness and are not licenses."
+    },
+    {
+      "artist": "Musa Paik",
+      "artistId": "musa-paik",
+      "tier": "legacy-core",
+      "songCount": 18,
+      "portrait": "musa-paik.webp",
+      "sourceReferences": [
+        "https://www.gujaratimidday.com/columns/article/navratri-2024-legendary-singers-musa-paik-rajendra-gadhvi-and-daksha-vegda-who-use-to-spread-their-magic-with-their-voice-in-garba-events-229028",
+        "https://music.apple.com/ca/artist/musa-paik/857269144"
+      ],
+      "portraitNotes": "AI-generated face-only illustration; reference pages guide likeness and are not licenses."
+    },
+    {
+      "artist": "Kailash Kher",
+      "artistId": "kailash-kher",
+      "tier": "core-current",
+      "songCount": 20,
+      "portrait": "kailash-kher.webp",
+      "sourceReferences": [
+        "https://commons.wikimedia.org/wiki/File:Kailash_Kher_2011.jpg",
+        "https://kailashkher.com/"
+      ],
+      "portraitNotes": "AI-generated face-only illustration; reference pages guide likeness and are not licenses."
+    },
+    {
+      "artist": "Tejas Shishangiya",
+      "artistId": "tejas-shishangiya",
+      "tier": "core-current",
+      "songCount": 14,
+      "portrait": "tejas-shishangiya.webp",
+      "sourceReferences": [
+        "https://music.apple.com/za/artist/tejas-shishangiya/1455132270",
+        "https://open.spotify.com/album/6MesqgJKvQpOI5ghswYIAI"
+      ],
+      "portraitNotes": "AI-generated face-only illustration. The Spotify single artwork identifies the singer and provides a visual reference; it is not used as this illustration's license."
+    },
+    {
+      "artist": "Balraj Shastri",
+      "artistId": "balraj-shastri",
+      "tier": "live-current",
+      "songCount": 13,
+      "portrait": "balraj-shastri.webp",
+      "sourceReferences": [
+        "https://blueeyeentertainment.in/artists/balraj-shastri",
+        "https://music.apple.com/us/artist/balraj-shastri/1158892246",
+        "https://pycnavratri.com/"
+      ],
+      "portraitNotes": "AI-generated face-only illustration; the booking profile and artist catalogue guide identity and are not licenses."
+    },
+    {
+      "artist": "Anushka Pandit",
+      "artistId": "anushka-pandit",
+      "tier": "live-current",
+      "songCount": 21,
+      "portrait": "anushka-pandit.webp",
+      "sourceReferences": [
+        "https://music.apple.com/us/artist/anushka-pandit/1162464967",
+        "https://music.apple.com/us/album/khamma-2/1772501511",
+        "https://icamn.org/2025-garba-performers"
+      ],
+      "portraitNotes": "AI-generated face-only illustration, based on Anushka Pandit's credited appearance on the Khamma 2 cover (woman on the left); the cover guides likeness and is not a license."
+    },
+    {
+      "artist": "Shruti Ahir",
+      "artistId": "shruti-ahir",
+      "tier": "core-current",
+      "songCount": 18,
+      "portrait": "shruti-ahir.webp",
+      "sourceReferences": [
+        "https://www.youtube.com/watch?v=DTTFFwO52kU",
+        "https://music.apple.com/us/artist/shruti-ahir/694800477",
+        "https://www.shazam.com/song/1765466628/bhala-bhanejada-sarovar-javu"
+      ],
+      "portraitNotes": "AI-generated face-only illustration; the Gujarati folk artist interview identifies Shrutiben Ahir and provides a current visual reference. Reference imagery does not license this generated artwork."
+    },
+    {
+      "artist": "Achal Maheta",
+      "artistId": "achal-maheta",
+      "tier": "legacy-core",
+      "songCount": 14,
+      "portrait": "achal-maheta.webp",
+      "sourceReferences": [
+        "https://events.sulekha.com/achal-mehta_tickets_artist_279",
+        "https://drytickets.com.au/celebrity/achal-mehta/"
+      ],
+      "portraitNotes": "Catalogue credits use Achal Maheta; event profiles spell the singer Achal Mehta. AI-generated face-only portrait uses those profiles as identity references, not as licenses."
+    },
+    {
+      "artist": "Damayanti Bardai",
+      "artistId": "damayanti-bardai",
+      "tier": "legacy-core",
+      "songCount": 14,
+      "portrait": "damayanti-bardai.webp",
+      "sourceReferences": [
+        "https://www.shazam.com/artist/damyanti-bardai/1120781037",
+        "https://www.divyabhaskar.co.in/news/dshr-lcl-damyanti-bardai-musical-journey-gujarati-news-5931026-nor.html",
+        "https://music.amazon.in/artists/B000QKW8ZE/damayanti-bardai"
+      ],
+      "portraitNotes": "AI-generated face-only illustration; the album art and profile sources verify the singer's identity and guide likeness, without licensing the generated portrait."
+    }
+  ]
+}

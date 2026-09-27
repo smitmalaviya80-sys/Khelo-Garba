@@ -1,0 +1,58 @@
+name: Validate PGA Health collector
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/health/collector.js'
+      - 'src/pga/health/tests/collector.test.mjs'
+      - 'src/pga/health/COLLECTOR.md'
+      - '.github/workflows/pga-health-collector-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/health/collector.js'
+      - 'src/pga/health/tests/collector.test.mjs'
+      - 'src/pga/health/COLLECTOR.md'
+      - '.github/workflows/pga-health-collector-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-health-collector-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  health-collector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Syntax-check Health collector
+        run: node --check src/pga/health/collector.js
+
+      - name: Run Health collector fixtures
+        run: node --test src/pga/health/tests/collector.test.mjs
+
+      - name: Re-run canonical Health snapshot fixtures
+        run: node --test src/pga/health/tests/snapshot.test.mjs
+
+      - name: Guard collector network and secret boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F "const CANONICAL_ORIGIN = 'https://playgarba.com'" src/pga/health/collector.js
+          grep -F "const GITHUB_API_ORIGIN = 'https://api.github.com'" src/pga/health/collector.js
+          grep -F "redirect: 'manual'" src/pga/health/collector.js
+          grep -F "cache: 'no-store'" src/pga/health/collector.js
+          grep -F "body_too_large" src/pga/health/collector.js
+          grep -F "composeHealthSnapshot" src/pga/health/collector.js
+          ! grep -E '(document\.|window\.|localStorage|sessionStorage|navigator\.|innerHTML|outerHTML|insertAdjacentHTML|process\.env)' src/pga/health/collector.js

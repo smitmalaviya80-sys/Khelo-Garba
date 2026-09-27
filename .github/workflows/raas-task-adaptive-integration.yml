@@ -1,0 +1,40 @@
+name: RAAS task adaptive integration
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/raas-task.mjs'
+      - 'scripts/raas-task.test.mjs'
+      - 'scripts/raas-adaptive.mjs'
+      - 'scripts/raas-adaptive.test.mjs'
+      - 'scripts/lib/raas-cto-runtime.mjs'
+      - 'scripts/lib/raas-cto-runtime.test.mjs'
+      - '.raas/adaptive-cto.json'
+      - '.github/workflows/raas-task-adaptive-integration.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  integration-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Check canonical task CLI
+        run: node --check scripts/raas-task.mjs
+
+      - name: Run task CLI integration tests
+        run: node scripts/raas-task.test.mjs
+
+      - name: Run adaptive classifier regression suite
+        run: node scripts/raas-adaptive.test.mjs
+
+      - name: Run closed-loop runtime regression suite
+        run: node scripts/lib/raas-cto-runtime.test.mjs

@@ -1,0 +1,42 @@
+name = "playgarba-pga-ingest"
+main = "ingest-worker.js"
+compatibility_date = "2026-09-09"
+
+[vars]
+PUBLIC_ORIGIN = "https://playgarba.com"
+EDGE_RATE_LIMIT_REQUIRED = "true"
+
+[[analytics_engine_datasets]]
+binding = "EVENTS"
+dataset = "playgarba_events_v1"
+
+[[analytics_engine_datasets]]
+binding = "PRESENCE"
+dataset = "playgarba_presence_v1"
+
+# Primary per-browser limiter. Choose an unused positive-integer namespace ID
+# in the Cloudflare account.
+[[ratelimits]]
+name = "BROWSER_RATE_LIMITER"
+namespace_id = "REPLACE_WITH_UNIQUE_NAMESPACE_ID"
+
+  [ratelimits.simple]
+  limit = 120
+  period = 60
+
+# High-ceiling edge-source flood backstop. This is deliberately much looser
+# than the browser limiter because many legitimate listeners may share one
+# network address. The Worker HMAC-pseudonymises CF-Connecting-IP before this
+# binding sees the key; raw IP is never written to PGA analytics storage.
+# Use a different namespace ID from BROWSER_RATE_LIMITER.
+[[ratelimits]]
+name = "EDGE_RATE_LIMITER"
+namespace_id = "REPLACE_WITH_EDGE_NAMESPACE_ID"
+
+  [ratelimits.simple]
+  limit = 6000
+  period = 60
+
+# Set PGA_HMAC_SECRET with `wrangler secret put PGA_HMAC_SECRET`.
+# Bind the deployed Worker to events.playgarba.com as a custom domain outside
+# this example file so a copied template cannot accidentally claim production DNS.

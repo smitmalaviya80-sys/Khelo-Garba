@@ -1,0 +1,177 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Verified Soor Mandir continuous release upload (nAtpEjfZN2w) with label-published chapter timestamps for all 18 tracks of Anand (Tahuko 8 Non Stop Garba).",
+  "songSources": {
+    "anand-vol8-2001-01-abil-gulal": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-02-dhanya-maa-tu-jogni": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 145,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 2,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-03-aevo-maa-ambano-darbar": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 435,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 3,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-04-padvethi-pahelu": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 673,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-05-lila-te-rangni-chundadi": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 910,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-06-maa-amba-te-ramva": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1095,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 6,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-07-khodiyar-chhe-jogmaya": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1259,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 7,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-08-eva-rumzumta-kadika": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1423,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-09-ame-aavya-ramva-ne-raas": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1622,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 9,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-10-kumkum-pagle-re": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1829,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 10,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-11-maro-garbo": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 1947,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 11,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-12-garbe-rame-ambe": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 2197,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 12,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-13-maa-sundargadhthi-utrya": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 2435,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 13,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-15-chotu-chotu-re": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 2840,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 15,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-16-navrangi-odhni-chundadi-ma": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 2989,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 16,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-17-chundaladi-odho-ho-rangni": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 3210,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 17,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    },
+    "anand-vol8-2001-18-gabbarna-gokhe-aaj-amba-ghume": {
+      "provider": "youtube",
+      "videoId": "nAtpEjfZN2w",
+      "startSeconds": 3531,
+      "sourceUrl": "https://www.youtube.com/watch?v=nAtpEjfZN2w",
+      "sourceType": "verified-label-channel",
+      "releaseId": "anand-vol8-2001",
+      "trackNumber": 18,
+      "evidenceType": "verified-label-continuous-album-chapter"
+    }
+  }
+}

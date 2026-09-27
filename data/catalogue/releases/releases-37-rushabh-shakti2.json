@@ -1,0 +1,31 @@
+[
+  {
+    "id": "shakti-2-rushabh-santvani-2022",
+    "title": "Shakti-2 NonStop Garba",
+    "displayTitle": "Shakti-2 Nonstop Garba",
+    "artist": "Rushabh Ahir, Santvani Trivedi",
+    "releaseDate": "2022-09-18",
+    "originalReleaseYear": 2022,
+    "label": "Zen Music Gujarati",
+    "description": "A verified 2022 Zen Music Gujarati Shakti Vol. 2 edition by Rushabh Ahir and Santvani Trivedi, combining one continuous master with 25 component tracks across Mataji devotional, dakla, hinch, folk, traditional and modern Gujarati Garba.",
+    "categories": ["modern-gujarati-garba", "mataji-devotional", "dakla", "hinch", "folk-lokgeet", "traditional-garba"],
+    "visualGenre": "devotional",
+    "entryType": "album-with-continuous-master",
+    "songCount": 26,
+    "durationSeconds": 5725,
+    "series": "Shakti",
+    "volume": "2",
+    "live": {"isLive": false, "venue": null},
+    "sources": [
+      {"platform": "Apple Music", "url": "https://music.apple.com/us/album/shakti-2-nonstop-garba/1646666973", "kind": "official-26-song-edition"},
+      {"platform": "YouTube", "url": "https://www.youtube.com/watch?v=iaxk7aywb3c", "kind": "verified-label-continuous-performance"},
+      {"platform": "Amazon Music", "url": "https://music.amazon.in/tracks/B0BGBR495B", "kind": "official-track-and-album-context"}
+    ],
+    "trackImportComplete": true,
+    "rightsStatus": "commercial-catalogue",
+    "audioBundled": false,
+    "metadataStatus": "verified-multi-source",
+    "audioAvailability": "external-source-only",
+    "notes": "Apple exposes a 26-song edition containing a 47:18 continuous master plus 25 individually released component tracks. The verified Zen Music Gujarati YouTube performance contains additional chaptered songs such as Rude Garbe Rame Chhe Devi Ambika that are not individually exposed in that 26-song provider edition. Those performance-only segments remain in the separate live/nonstop set rather than being invented as studio tracks."
+  }
+]

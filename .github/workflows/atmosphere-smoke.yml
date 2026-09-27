@@ -1,0 +1,43 @@
+name: Atmosphere browser smoke
+
+on:
+  pull_request:
+    paths:
+      - 'assets/runtime/immersive-atmosphere.js'
+      - '.github/browser/atmosphere-smoke.mjs'
+      - '.github/workflows/atmosphere-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/runtime/immersive-atmosphere.js'
+      - '.github/browser/atmosphere-smoke.mjs'
+      - '.github/workflows/atmosphere-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atmosphere-smoke-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  atmosphere:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium webkit
+
+      - name: Run Atmosphere interaction smoke
+        run: node .github/browser/atmosphere-smoke.mjs

@@ -1,0 +1,56 @@
+name: Fullscreen facts validate
+
+on:
+  pull_request:
+    paths:
+      - 'src/navigation/fullscreen-facts.js'
+      - 'scripts/lib/test-fullscreen-facts.mjs'
+      - '.github/workflows/fullscreen-facts-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/navigation/fullscreen-facts.js'
+      - 'scripts/lib/test-fullscreen-facts.mjs'
+      - '.github/workflows/fullscreen-facts-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Check fullscreen fact source syntax
+        run: node --check src/navigation/fullscreen-facts.js
+      - name: Test fullscreen fact source
+        run: node scripts/lib/test-fullscreen-facts.mjs
+      - name: Guard fact-source boundary
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+
+          const source = await readFile('src/navigation/fullscreen-facts.js', 'utf8');
+          const forbidden = [
+            /\buserAgent\b/,
+            /\bplatform\b/,
+            /requestFullscreen\s*\(/,
+            /exitFullscreen\s*\(/,
+            /addEventListener\s*\(/,
+            /localStorage/,
+            /sessionStorage/,
+          ];
+
+          for (const pattern of forbidden) {
+            assert.equal(pattern.test(source), false, `fullscreen fact source crossed its boundary: ${pattern}`);
+          }
+          NODE

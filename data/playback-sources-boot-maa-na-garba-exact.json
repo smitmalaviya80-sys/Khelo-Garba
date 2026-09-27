@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-09-26",
+  "note": "Verified official YouTube track routes for all 7 tracks of Boot Maa Na Garba (Super Cassettes / T-Series / Praful Dave Topic).",
+  "songSources": {
+    "boot-maa-na-garba-2008-01": {"provider":"youtube","videoId":"CO1YbWdah4U","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=CO1YbWdah4U","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":1,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-02": {"provider":"youtube","videoId":"fGAWGoSaTsM","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=fGAWGoSaTsM","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":2,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-03": {"provider":"youtube","videoId":"-8-4dfJmMpw","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=-8-4dfJmMpw","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":3,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-04": {"provider":"youtube","videoId":"A-WRMrVUx3U","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=A-WRMrVUx3U","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":4,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-05": {"provider":"youtube","videoId":"aJGExBNsxiQ","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=aJGExBNsxiQ","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":5,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-06": {"provider":"youtube","videoId":"NHZue2-pteU","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=NHZue2-pteU","sourceType":"official-topic","releaseId":"boot-maa-na-garba-2008","trackNumber":6,"evidenceType":"official-youtube-auto-generated-original-album-track"},
+    "boot-maa-na-garba-2008-07": {"provider":"youtube","videoId":"jeiC2XdIUdk","startSeconds":0,"sourceUrl":"https://www.youtube.com/watch?v=jeiC2XdIUdk","sourceType":"verified-label-channel","releaseId":"boot-maa-na-garba-2008","trackNumber":7,"evidenceType":"official-youtube-auto-generated-original-album-track"}
+  }
+}

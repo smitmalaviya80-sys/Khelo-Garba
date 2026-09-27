@@ -1,0 +1,41 @@
+name: Direct audio rights validate
+
+on:
+  pull_request:
+    paths:
+      - 'data/direct-audio.json'
+      - 'data/catalogue/index.json'
+      - 'data/catalogue/songs/**'
+      - 'scripts/lib/validate-direct-audio-rights.mjs'
+      - 'scripts/lib/validate-direct-audio-rights.test.mjs'
+      - '.github/workflows/direct-audio-rights-validate.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/direct-audio.json'
+      - 'data/catalogue/index.json'
+      - 'data/catalogue/songs/**'
+      - 'scripts/lib/validate-direct-audio-rights.mjs'
+      - 'scripts/lib/validate-direct-audio-rights.test.mjs'
+      - '.github/workflows/direct-audio-rights-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Test direct-audio rights validator
+        run: node scripts/lib/validate-direct-audio-rights.test.mjs
+      - name: Validate production direct-audio manifest
+        run: node scripts/lib/validate-direct-audio-rights.mjs

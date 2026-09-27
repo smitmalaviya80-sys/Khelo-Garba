@@ -1,0 +1,31 @@
+[
+  {
+    "id":"amber-gaje-aditya-shruti-2024",
+    "title":"Amber Gaje",
+    "artist":"Aditya Gadhvi & Shruti Ahir",
+    "releaseDate":"2024-08-28",
+    "originalReleaseYear":2024,
+    "label":"Jhankar Music",
+    "description":"An 18-track 2024 expanded Amber Gaje album by Aditya Gadhvi and Shruti Ahir, catalogued across modern Gujarati Garba, traditional Garba, Krishna Garba and folk/lokgeet; the catalogue preserves documented source and edition variance rather than treating older Amber Gaje releases as identical masters.",
+    "categories":["modern-gujarati-garba","traditional-garba","krishna-garba","folk-lokgeet"],
+    "visualGenre":"traditional",
+    "entryType":"album",
+    "songCount":18,
+    "durationSeconds":3885,
+    "series":"Amber Gaje",
+    "volume":"2024 expanded edition",
+    "live":{"isLive":false,"venue":null},
+    "sources":[
+      {"platform":"Amazon Music","url":"https://music.amazon.in/albums/B0DFLQ2N3D","kind":"official-18-track-album"},
+      {"platform":"Apple Music","url":"https://music.apple.com/us/album/amber-gaje/1765466235","kind":"official-18-track-album"},
+      {"platform":"YouTube","url":"https://www.youtube.com/watch?v=AWe9rkzdjkA","kind":"official-artist-channel-distribution-example"}
+    ],
+    "trackImportComplete":true,
+    "rightsStatus":"commercial-catalogue",
+    "audioBundled":false,
+    "metadataStatus":"verified-expanded-edition-with-source-variance",
+    "audioAvailability":"youtube-official",
+    "durationPrecision":"provider-displayed-track-sum",
+    "notes":"Amazon and Apple publish this 18-track expanded Amber Gaje edition on August 28, 2024, while exact Aditya Gadhvi Official YouTube deliveries for verified songs identify Amber Gaje and report a May 21, 2024 delivery date. YouTube/Shazam identify Jhankar Music, while Amazon/Apple copyright metadata names Maarss Movies And Music LLP; both are preserved as source-level provenance rather than silently normalized. Amber Gaje material also appeared in older catalogues, including a five-track 2012 Amber Gaje listing and the nine-track 2014 Krishan Kanaiyo release. Several 2024 track durations differ from those earlier listings, so matching titles are not treated as proof of an identical master. Wave D8 models the 2024 18-track edition as a distinct canonical release and keeps unresolved recording-history questions in the audit. Nine tracks currently have exact verified official YouTube identities; the other nine remain non-playable under the YouTube-only execution policy until exact 2024-edition identities are verified."
+  }
+]

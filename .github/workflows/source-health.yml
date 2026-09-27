@@ -1,0 +1,29 @@
+name: Source Health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * *'
+  push:
+    paths:
+      - 'data/playback-sources*.json'
+      - 'data/discovery/sets/**'
+      - 'scripts/audit-youtube-health.mjs'
+      - '.github/workflows/source-health.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  youtube-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Build catalogue routes
+        run: npm run catalogue
+      - name: Audit YouTube sources
+        run: node scripts/audit-youtube-health.mjs

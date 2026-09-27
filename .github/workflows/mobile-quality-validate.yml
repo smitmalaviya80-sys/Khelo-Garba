@@ -1,0 +1,187 @@
+name: Mobile quality acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'provider-runtime.js'
+      - 'player-continuity.js'
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'styles.css'
+      - 'styles/**'
+      - 'src/catalogue/**'
+      - 'assets/runtime/explore-search.js'
+      - 'assets/runtime/seek-state.js'
+      - 'assets/runtime/continuous-set-state.js'
+      - 'scripts/mobile-quality/**'
+      - '.github/workflows/mobile-quality-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'simple-runtime.js'
+      - 'provider-runtime.js'
+      - 'player-continuity.js'
+      - 'youtube-player-runtime.js'
+      - 'nonstop-browser.js'
+      - 'styles.css'
+      - 'styles/**'
+      - 'src/catalogue/**'
+      - 'assets/runtime/explore-search.js'
+      - 'assets/runtime/seek-state.js'
+      - 'assets/runtime/continuous-set-state.js'
+      - 'scripts/mobile-quality/**'
+      - '.github/workflows/mobile-quality-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mobile-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Build catalogue data
+        run: npm run catalogue
+
+      - name: Prepare production-equivalent mobile fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _mobile_quality
+          mkdir -p _mobile_quality/explore _mobile_quality/catalogue
+
+          cp \
+            index.html \
+            app.js \
+            simple-runtime.js \
+            provider-runtime.js \
+            player-continuity.js \
+            youtube-player-runtime.js \
+            nonstop-browser.js \
+            sw.js \
+            manifest.webmanifest \
+            offline.html \
+            _mobile_quality/
+          cp -R assets data _mobile_quality/
+
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            _mobile_quality/explore/
+          cp \
+            src/catalogue/index.html \
+            src/catalogue/catalogue.css \
+            src/catalogue/catalogue.js \
+            src/catalogue/listening-library.js \
+            _mobile_quality/catalogue/
+
+          cat \
+            styles/00-foundation-and-player.css \
+            styles/10-browser-and-shell.css \
+            styles/20-responsive-and-accessibility.css \
+            styles/30-product-polish.css \
+            styles/40-accessibility-states.css \
+            styles/50-discovery-and-performance.css \
+            styles/60-runtime-and-provider.css \
+            styles/70-mobile-playback-coordination.css \
+            styles/80-genre-icon-images.css \
+            > _mobile_quality/styles.css
+
+          # Match Pages packaging for player-state runtimes.
+          cat \
+            app.js \
+            assets/runtime/seek-state.js \
+            assets/runtime/continuous-set-state.js \
+            > _mobile_quality/app.js
+
+          # Keep the browser matrix bounded while preserving real generated catalogue rows.
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
+          const writeJson = (file, value) => writeFileSync(file, `${JSON.stringify(value)}\n`);
+          const songsPath = '_mobile_quality/data/songs.json';
+          const indexPath = '_mobile_quality/data/catalogue/index.json';
+          const allSongs = readJson(songsPath);
+          const requiredIds = new Set([
+            'bollywood-dandiya-2014-01-non-stop-bollywood-dandiya-garbe-ki-raat-hai-2014',
+            'ochhav-2023-01-ochhav-theme',
+          ]);
+          const selected = [];
+          const selectedIds = new Set();
+          const genreCounts = new Map();
+          const keep = (song) => {
+            if (!song?.id || selectedIds.has(song.id)) return;
+            selected.push(song);
+            selectedIds.add(song.id);
+          };
+          for (const song of allSongs) {
+            if (requiredIds.has(song?.id)) keep(song);
+            const genre = String(song?.genre || 'traditional');
+            const count = genreCounts.get(genre) || 0;
+            if (count >= 24) continue;
+            keep(song);
+            genreCounts.set(genre, count + 1);
+          }
+          for (const id of requiredIds) {
+            if (!selectedIds.has(id)) throw new Error(`Required mobile-quality song missing: ${id}`);
+          }
+          const index = readJson(indexPath);
+          writeJson(songsPath, selected);
+          writeJson(indexPath, { ...index, discovery: { ...(index.discovery || {}), artists: [] } });
+          console.log(`Mobile quality catalogue: ${allSongs.length} -> ${selected.length} real songs.`);
+          NODE
+
+      - name: Install Playwright
+        run: npm install --no-save --no-package-lock playwright@1.55.0
+
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Start mobile fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory _mobile_quality >/tmp/playgarba-mobile-quality.log 2>&1 &
+          echo $! > /tmp/playgarba-mobile-quality.pid
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/playgarba-mobile-quality.log
+          exit 1
+
+      - name: Run bounded phone acceptance matrix
+        run: node scripts/mobile-quality/mobile-quality-smoke.mjs
+
+      - name: Upload mobile quality failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: mobile-quality-diagnostics
+          path: |
+            artifacts/mobile-quality
+            /tmp/playgarba-mobile-quality.log
+          if-no-files-found: ignore
+          retention-days: 7

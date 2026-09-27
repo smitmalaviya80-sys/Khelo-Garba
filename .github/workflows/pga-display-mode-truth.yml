@@ -1,0 +1,46 @@
+name: PGA display mode truth
+
+on:
+  pull_request:
+    paths:
+      - 'src/pga/app/analytics.js'
+      - 'scripts/lib/test-pga-display-mode-truth.mjs'
+      - '.github/workflows/pga-display-mode-truth.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/pga/app/analytics.js'
+      - 'scripts/lib/test-pga-display-mode-truth.mjs'
+      - '.github/workflows/pga-display-mode-truth.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pga-display-mode-truth-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Syntax-check analytics truth files
+        run: |
+          node --check src/pga/app/analytics.js
+          node --check scripts/lib/test-pga-display-mode-truth.mjs
+
+      - name: Validate display-mode truth
+        run: node scripts/lib/test-pga-display-mode-truth.mjs
+
+      - name: Re-run metric truth baseline
+        run: node scripts/lib/test-pga-analytics-metric-truth.mjs

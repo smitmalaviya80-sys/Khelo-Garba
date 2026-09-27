@@ -1,0 +1,1383 @@
+{
+  "version": "0.6.3",
+  "updated": "2026-09-26",
+  "note": "Current exact playback overrides. Ramzat 2 additions use exact YouTube auto-generated tracks for the original 2018 Sur Sagar album only. Ramzat 5 additions use independently verified exact split recordings tied directly to the 2024 Sur Sagar album. Ramzat 2017 now includes twelve independently verified split recordings from Sur Sagar label uploads or Official Artist Channel/distributor album tracks. Continuous Ramzat masters remain discovery/full-release evidence only; no continuous-set chapter timestamp is promoted to a split track.",
+  "songSources": {
+    "khalasi-coke-studio-bharat-2023": {
+      "provider": "youtube",
+      "videoId": "t7wSjy9Lv-o",
+      "sourceUrl": "https://www.youtube.com/watch?v=t7wSjy9Lv-o",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/5LSAafg2oH9YPgf3EG17iw",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "meetha-khaara-coke-studio-bharat-2025": {
+      "provider": "youtube",
+      "videoId": "Tfq1HDteETY",
+      "sourceUrl": "https://www.youtube.com/watch?v=Tfq1HDteETY",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/intl-es/track/3K5KK5oFQ3IENpO9TMb5U6",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "kaanuda-bhoomi-2026": {
+      "provider": "youtube",
+      "videoId": "HjRUF3vH4ow",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=HjRUF3vH4ow",
+      "sourceType": "official-topic",
+      "releaseId": "kaanuda-bhoomi-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/607I5slijGW2N1IEwlGrkX",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "garbe-haal-geeta-rabari-2026": {
+      "provider": "youtube",
+      "videoId": "zYCiZidm_jY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=zYCiZidm_jY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "garbe-haal-geeta-rabari-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/2et9J632SIb5fZv68LfsHZ",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "gori-geeta-rabari-2025": {
+      "provider": "youtube",
+      "videoId": "6ZNVKQqR23M",
+      "sourceUrl": "https://www.youtube.com/watch?v=6ZNVKQqR23M",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/5Yjd7NcKz5lmhAKVVP3mTZ",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "charan-kanya-aditya-gadhvi-2022": {
+      "provider": "youtube",
+      "videoId": "Tu9cLEYEvoc",
+      "sourceUrl": "https://www.youtube.com/watch?v=Tu9cLEYEvoc",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/2Ei4tMfs5lmcJSq8GhJA4L",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "parth-oza-nonstop-garbe-ghoome-2023": {
+      "provider": "youtube",
+      "videoId": "-Y8ueSkgvmA",
+      "sourceUrl": "https://www.youtube.com/watch?v=-Y8ueSkgvmA",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/58kG6ezhlvQZAD3EIys7Ks",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "dwarika-no-nath-jaysinh-2023": {
+      "provider": "spotify",
+      "sourceUrl": "https://open.spotify.com/track/6rDfvqRnfbNqsBLF5LtJSw",
+      "sourceType": "official-streaming-catalogue"
+    },
+    "dwarika-no-naath-laalo-2025": {
+      "provider": "youtube",
+      "videoId": "hoQZjs3yQVY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=hoQZjs3yQVY",
+      "sourceType": "official-topic",
+      "releaseId": "dwarika-no-naath-laalo-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/1PjDIgS9KwbkQUV6wQd0qX",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "moti-veraana-amit-trivedi-osman-mir-2020": {
+      "provider": "youtube",
+      "videoId": "Jv8KRwF1zQs",
+      "sourceUrl": "https://www.youtube.com/watch?v=Jv8KRwF1zQs",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/6qhTVtHIsK8WVf7biagk7O",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "tari-madh-mithi-jigardan-gadhavi-2021": {
+      "provider": "spotify",
+      "sourceUrl": "https://open.spotify.com/track/6k0xnvHw4ZUZZDmITYkmPR",
+      "sourceType": "official-streaming-catalogue",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/7oZLTlEoKwOhGQENUNWpJx",
+        "sourceType": "rangtaali-2-version"
+      }
+    },
+    "unchi-talavdi-santvani-trivedi-aakash-parmar-2020": {
+      "provider": "youtube",
+      "videoId": "9xgXS_FJd28",
+      "sourceUrl": "https://www.youtube.com/watch?v=9xgXS_FJd28",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/3QrI8iXofOMXXRfqkSHHgi",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "vichudo-kinjal-dave-2024": {
+      "provider": "youtube",
+      "videoId": "NpiD70ZrZTc",
+      "sourceUrl": "https://www.youtube.com/watch?v=NpiD70ZrZTc",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/6okl6K7GqLehjY1my9CmdQ",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "manda-lidha-mohi-raj-ishani-umesh-2022": {
+      "provider": "youtube",
+      "videoId": "pGG_Zosn-qo",
+      "sourceUrl": "https://www.youtube.com/watch?v=pGG_Zosn-qo",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/1Yn60ZK1Fan2VhUYYgCFV7",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "ramo-ramo-v4-kushal-2025": {
+      "provider": "youtube",
+      "videoId": "AZwMOzoVPsQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=AZwMOzoVPsQ",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "amazon-music",
+        "sourceUrl": "https://music.amazon.in/tracks/B0FDZ11GWF",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "aavi-nav-navratri-re-kinjal-2022": {
+      "provider": "youtube",
+      "videoId": "zIeoBGKJ0sw",
+      "sourceUrl": "https://www.youtube.com/watch?v=zIeoBGKJ0sw",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "apple-music",
+        "sourceUrl": "https://music.apple.com/us/song/1654122986",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "dholida-gangubai-2022": {
+      "provider": "youtube",
+      "videoId": "uv9Dv6fzg9w",
+      "sourceUrl": "https://www.youtube.com/watch?v=uv9Dv6fzg9w",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "apple-music",
+        "sourceUrl": "https://music.apple.com/us/album/dholida-from-gangubai-kathiawadi-single/1609214197",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "kesariyo-rang-lijo-asees-dev-2022": {
+      "provider": "youtube",
+      "videoId": "v0Q56geMlkk",
+      "sourceUrl": "https://www.youtube.com/watch?v=v0Q56geMlkk",
+      "sourceType": "official-topic",
+      "alternate": {
+        "provider": "apple-music",
+        "sourceUrl": "https://music.apple.com/us/album/kesariyo-rang-single/1644080826",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "odhani-made-in-china-2019": {
+      "provider": "youtube",
+      "videoId": "bEzczY4hPLk",
+      "sourceUrl": "https://www.youtube.com/watch?v=bEzczY4hPLk",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "apple-music",
+        "sourceUrl": "https://music.apple.com/us/music-video/odhani-from-made-in-china/1481186835",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "nagada-sang-dhol-ramleela-2013": {
+      "provider": "youtube",
+      "videoId": "wTFGQVQCGN8",
+      "sourceUrl": "https://www.youtube.com/watch?v=wTFGQVQCGN8",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/5s9Kd33ExIhpe1JJSj5zLZ",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "shubhaarambh-kai-po-che-2013": {
+      "provider": "youtube",
+      "videoId": "IC29Um1VTxo",
+      "sourceUrl": "https://www.youtube.com/watch?v=IC29Um1VTxo",
+      "sourceType": "official-artist-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/6qGCJLF0V7SuHTOOGUcDsv",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "dholi-taro-dhol-baaje-hddcs-1999": {
+      "provider": "youtube",
+      "videoId": "gQfDmimYgaw",
+      "sourceUrl": "https://www.youtube.com/watch?v=gQfDmimYgaw",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/5MHqNesgY5VngoCITqsZGh",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "maine-payal-hai-chhankai-falguni-1999": {
+      "provider": "youtube",
+      "videoId": "Rbz1qFlRL_Y",
+      "sourceUrl": "https://www.youtube.com/watch?v=Rbz1qFlRL_Y",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "spotify",
+        "sourceUrl": "https://open.spotify.com/track/4LWKCiC61rzEPhLgLa7TAn",
+        "sourceType": "original-1999-stream"
+      }
+    },
+    "garbo-dhvani-tanishk-2023": {
+      "provider": "youtube",
+      "videoId": "65o5Q_SmIww",
+      "sourceUrl": "https://www.youtube.com/watch?v=65o5Q_SmIww",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "apple-music",
+        "sourceUrl": "https://music.apple.com/us/song/1711648175",
+        "sourceType": "official-streaming-catalogue"
+      }
+    },
+    "sun-sajni-satyaprem-2023": {
+      "provider": "youtube",
+      "videoId": "AxA2xYbMCVo",
+      "sourceUrl": "https://www.youtube.com/watch?v=AxA2xYbMCVo",
+      "sourceType": "verified-label-channel",
+      "alternate": {
+        "provider": "youtube",
+        "videoId": "iKbsZJ3Qn9g",
+        "sourceUrl": "https://www.youtube.com/watch?v=iKbsZJ3Qn9g",
+        "sourceType": "verified-label-full-song-video"
+      }
+    },
+    "non-stop-garba-mix-dj-rink-2020": {
+      "provider": "youtube",
+      "videoId": "IHAlyDOgebw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=IHAlyDOgebw",
+      "sourceType": "verified-label-channel",
+      "releaseId": "non-stop-garba-mix-dj-rink-2020",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-youtube-video",
+      "alternate": {
+        "provider": "external",
+        "sourceUrl": "https://www.saregama.com/song/non-stop-garba-mix-by-dj-rink_149409",
+        "sourceType": "official-label-catalogue"
+      }
+    },
+    "ramzat-2-tran-taali-2018-04-rame-ambe-maa-chachar-na": {
+      "provider": "youtube",
+      "videoId": "vE5m0oiuOdI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vE5m0oiuOdI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-05-maa-no-garbo-re": {
+      "provider": "youtube",
+      "videoId": "EuBsrm3Ga84",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=EuBsrm3Ga84",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 5,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-10-mogal-aavo-maa-ramva": {
+      "provider": "youtube",
+      "videoId": "5hyxotBnxn8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5hyxotBnxn8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-16-rudi-ne-rangili-re-vala-tari": {
+      "provider": "youtube",
+      "videoId": "0gU5yZCE6Iw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=0gU5yZCE6Iw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 16,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-17-garbe-ramo-tran-taali": {
+      "provider": "youtube",
+      "videoId": "35jL-M67wiM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=35jL-M67wiM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 17,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-24-hun-to-vari-re-girdhari-laal": {
+      "provider": "youtube",
+      "videoId": "sY49RkpCoAw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=sY49RkpCoAw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 24,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-29-vari-jau-e-balihari-jau-re": {
+      "provider": "youtube",
+      "videoId": "-kHE1FqYEYo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=-kHE1FqYEYo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 29,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-34-latke-halo-ne-nandlal": {
+      "provider": "youtube",
+      "videoId": "kAQyWHniTRc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=kAQyWHniTRc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 34,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2-tran-taali-2018-35-vijali-ne-chamkare": {
+      "provider": "youtube",
+      "videoId": "rzbAKtrrZ28",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=rzbAKtrrZ28",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2-tran-taali-2018",
+      "trackNumber": 35,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-03": {
+      "provider": "youtube",
+      "videoId": "FAznu0LijyA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FAznu0LijyA",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat5-2024-12": {
+      "provider": "youtube",
+      "videoId": "eCXMFBqBJQk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=eCXMFBqBJQk",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 12,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat5-2024-24": {
+      "provider": "youtube",
+      "videoId": "Pahi_oYc89o",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Pahi_oYc89o",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat5-album-2024",
+      "trackNumber": 24,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-02-mangal-divada-ni-mangal": {
+      "provider": "youtube",
+      "videoId": "Nd1TaITnDh8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Nd1TaITnDh8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-03-kumkum-pagle": {
+      "provider": "youtube",
+      "videoId": "vnx8pubS-v0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vnx8pubS-v0",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 3,
+      "evidenceType": "official-label-album-track-video"
+    },
+    "ramzat-2017-04-aavi-aaso-ni-radhhiyali": {
+      "provider": "youtube",
+      "videoId": "AHGAfUfcWoU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=AHGAfUfcWoU",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 4,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat-2017-05-maa-dilde-jo-dhabkar-aashapura": {
+      "provider": "youtube",
+      "videoId": "JIkxwdBqnLo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=JIkxwdBqnLo",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 5,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat-2017-06-ambe-maa-palakhadi-shangaro": {
+      "provider": "youtube",
+      "videoId": "_bHgXjgZJZc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=_bHgXjgZJZc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 6,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-08-navrang-chundadi-ma": {
+      "provider": "youtube",
+      "videoId": "6RCiJnUgVxs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=6RCiJnUgVxs",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 8,
+      "evidenceType": "verified-label-full-song-original-album-track"
+    },
+    "ramzat-2017-09-maa-taro-garbo": {
+      "provider": "youtube",
+      "videoId": "ns11xQxskAE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ns11xQxskAE",
+      "sourceType": "verified-label-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 9,
+      "evidenceType": "official-label-album-track-video"
+    },
+    "ramzat-2017-10-maa-tu-chaud-bhuvan-ma-mogal-maa": {
+      "provider": "youtube",
+      "videoId": "we3ekP9LRQY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=we3ekP9LRQY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-13-tame-hincho-to-tamne": {
+      "provider": "youtube",
+      "videoId": "zCgaPVxvBxU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=zCgaPVxvBxU",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 13,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "ramzat-2017-18-bedo-tindho-paar-aashapura": {
+      "provider": "youtube",
+      "videoId": "GeYwVJaT1as",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=GeYwVJaT1as",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 18,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2017-19-range-rame-aanande-rame": {
+      "provider": "youtube",
+      "videoId": "yMhbiTDEee0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=yMhbiTDEee0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 19,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "ramzat-2017-26-pavli-lai-ne-hun-to": {
+      "provider": "youtube",
+      "videoId": "8vZtCazXqpo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=8vZtCazXqpo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 26,
+      "evidenceType": "official-youtube-auto-generated-album-track"
+    },
+    "killol2-02-jay-jay-aarasur-ni-rani-2022": {
+      "provider": "youtube",
+      "videoId": "Sjlgy57I-pg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Sjlgy57I-pg",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-03-sathiya-puravo-dware-2022": {
+      "provider": "youtube",
+      "videoId": "NLDrcdGSHYk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=NLDrcdGSHYk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-04-sadhguru-aangan-aaya-2022": {
+      "provider": "youtube",
+      "videoId": "ck_ySMZi_m4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ck_ySMZi_m4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-05-unchi-talavdi-kinjal-2022": {
+      "provider": "youtube",
+      "videoId": "xSgvMKkY4bw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=xSgvMKkY4bw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 5,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-06-dhara-nagar-thi-utari-2022": {
+      "provider": "youtube",
+      "videoId": "XgBcMwnUn5s",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=XgBcMwnUn5s",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 6,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-07-maa-no-garbo-re-2022": {
+      "provider": "youtube",
+      "videoId": "hcksLeHuLd0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=hcksLeHuLd0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 7,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-08-he-mathurane-marge-2022": {
+      "provider": "youtube",
+      "videoId": "n2vGWqhOJdc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=n2vGWqhOJdc",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 8,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-09-ha-ha-re-ghaduliyo-2022": {
+      "provider": "youtube",
+      "videoId": "FvyNBWeQnSE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FvyNBWeQnSE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-10-ek-jad-mathe-zumkadu-2022": {
+      "provider": "youtube",
+      "videoId": "ED2aucqlkBU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ED2aucqlkBU",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 10,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-11-pavagadh-no-dungar-dolyo-2022": {
+      "provider": "youtube",
+      "videoId": "SqTy8vf9SGI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=SqTy8vf9SGI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 11,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-12-zulan-morali-vagi-re-2022": {
+      "provider": "youtube",
+      "videoId": "5O-wSxmikfw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=5O-wSxmikfw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 12,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-13-banna-re-baga-me-jhula-dalya-2022": {
+      "provider": "youtube",
+      "videoId": "RWryBnuFyxw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=RWryBnuFyxw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 13,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-14-sawariyo-ghat-mai-re-2022": {
+      "provider": "youtube",
+      "videoId": "Tj9uRwlURNo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Tj9uRwlURNo",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 14,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-15-laving-keri-lakadiye-kinjal-2022": {
+      "provider": "youtube",
+      "videoId": "-bDMWX7Q6jY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=-bDMWX7Q6jY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 15,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-16-gogo-gogo-maro-kinjal-2022": {
+      "provider": "youtube",
+      "videoId": "KTlKwrEclo0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=KTlKwrEclo0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 16,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-18-tran-tran-tali-pade-2022": {
+      "provider": "youtube",
+      "videoId": "zSAx2BTOk4U",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=zSAx2BTOk4U",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 18,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-19-gajiyo-munjo-jor-jalano-2022": {
+      "provider": "youtube",
+      "videoId": "zu4--DQu8LQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=zu4--DQu8LQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 19,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-20-jay-jay-bolo-anande-ambe-maat-2022": {
+      "provider": "youtube",
+      "videoId": "OxuS5RASHnY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=OxuS5RASHnY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 20,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "killol2-22-ghor-andhari-re-rataldi-kinjal-2022": {
+      "provider": "youtube",
+      "videoId": "AgD7ixRmiew",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=AgD7ixRmiew",
+      "sourceType": "official-artist-channel",
+      "releaseId": "killol-2-kinjal-dave-2022",
+      "trackNumber": 22,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "sanedo-sanedo-2007-01-rang-pichkari": {
+      "provider": "youtube",
+      "videoId": "mvvAaVDD_uQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=mvvAaVDD_uQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "sanedo-sanedo-2007",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "sanedo-sanedo-2007-03-ashmani-rang-ni-chundani": {
+      "provider": "youtube",
+      "videoId": "dL8uMi4J5E8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=dL8uMi4J5E8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "sanedo-sanedo-2007",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "sanedo-sanedo-2007-04-jai-jai-aarasur-rani": {
+      "provider": "youtube",
+      "videoId": "xZ1QVe_pfSg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=xZ1QVe_pfSg",
+      "sourceType": "official-artist-channel",
+      "releaseId": "sanedo-sanedo-2007",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "jhanjariyu-umesh-barot-2024": {
+      "provider": "youtube",
+      "videoId": "NmLej1uLzeU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=NmLej1uLzeU",
+      "sourceType": "official-topic",
+      "releaseId": "jhanjariyu-umesh-barot-2024",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-cheharmaana-garba-part-1-2025": {
+      "provider": "youtube",
+      "videoId": "I6owPJihKBY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=I6owPJihKBY",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-cheharmaana-garba-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-cheharmaana-garba-part-2-2025": {
+      "provider": "youtube",
+      "videoId": "hAEYPh0HAC4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=hAEYPh0HAC4",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-cheharmaana-garba-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-cheharmaana-garba-part-3-2025": {
+      "provider": "youtube",
+      "videoId": "QkrjI7JsS4Y",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=QkrjI7JsS4Y",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-cheharmaana-garba-2025",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-cheharmaana-garba-part-4-2025": {
+      "provider": "youtube",
+      "videoId": "lt6wIEnXYTE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lt6wIEnXYTE",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-cheharmaana-garba-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-garbani-moj-part-1-2025": {
+      "provider": "youtube",
+      "videoId": "9BxZj1_S5ak",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9BxZj1_S5ak",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-garbani-moj-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-garbani-moj-part-2-2025": {
+      "provider": "youtube",
+      "videoId": "9KwSWaLF410",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9KwSWaLF410",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-garbani-moj-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-garbani-moj-part-3-2025": {
+      "provider": "youtube",
+      "videoId": "VxEM8sIdcYc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=VxEM8sIdcYc",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-garbani-moj-2025",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-garbani-moj-part-4-2025": {
+      "provider": "youtube",
+      "videoId": "tQnFMTNZJQ8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=tQnFMTNZJQ8",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-garbani-moj-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "chogada-loveyatri-2018": {
+      "provider": "youtube",
+      "videoId": "d4OGZZ0EsAI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=d4OGZZ0EsAI",
+      "sourceType": "verified-label-channel",
+      "releaseId": "chogada-loveyatri-2018",
+      "trackNumber": 1,
+      "evidenceType": "official-label-youtube-track-video"
+    },
+    "kamariya-mitron-2018": {
+      "provider": "youtube",
+      "videoId": "vUHWmOkYk_I",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=vUHWmOkYk_I",
+      "sourceType": "verified-label-channel",
+      "releaseId": "kamariya-mitron-2018",
+      "trackNumber": 1,
+      "evidenceType": "official-label-youtube-track-video"
+    },
+    "chaniyacholi-jigardan-2024": {
+      "provider": "youtube",
+      "videoId": "EG4gFxczkH8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=EG4gFxczkH8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "chaniyacholi-jigardan-2024",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "raataladi-aditya-aishwarya-2023": {
+      "provider": "youtube",
+      "videoId": "4_1S4Jmlgeg",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=4_1S4Jmlgeg",
+      "sourceType": "verified-label-channel",
+      "releaseId": "raataladi-aditya-aishwarya-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-label-youtube-track-video"
+    },
+    "tedo-tedo-amit-kirtidan-2021": {
+      "provider": "youtube",
+      "videoId": "uuri-6Vr5uk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=uuri-6Vr5uk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "tedo-tedo-amit-kirtidan-2021",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-7-2022-01-dakla-7-feat-maulik-nayak": {
+      "provider": "youtube",
+      "videoId": "IWYCXnclv3E",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=IWYCXnclv3E",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-7-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-7-ext-2022-01-dakla-7-feat-maulik-nayak-extended-dance": {
+      "provider": "youtube",
+      "videoId": "A7-AtIoe0Ow",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=A7-AtIoe0Ow",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-7-ext-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-8-2023-01-dakla-8-feat-maulik-nayak": {
+      "provider": "youtube",
+      "videoId": "YJP9WwGmnG0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=YJP9WwGmnG0",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-8-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-9-2024-01-dakla-9-feat-maulik-nayak": {
+      "provider": "youtube",
+      "videoId": "Mw2rGJpCe_I",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Mw2rGJpCe_I",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-9-2024",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "gaman-bhavya-ras-garba-part-1-2025": {
+      "provider": "youtube",
+      "videoId": "6yqKpFnOiRs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=6yqKpFnOiRs",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-bhavya-ras-garba-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-bhavya-ras-garba-part-2-2025": {
+      "provider": "youtube",
+      "videoId": "lTIL17k6PtE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=lTIL17k6PtE",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-bhavya-ras-garba-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-bhavya-ras-garba-part-3-2025": {
+      "provider": "youtube",
+      "videoId": "_4RNzceFYrE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=_4RNzceFYrE",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-bhavya-ras-garba-2025",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "gaman-bhavya-ras-garba-part-4-2025": {
+      "provider": "youtube",
+      "videoId": "XQy3hZ5y3hw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=XQy3hZ5y3hw",
+      "sourceType": "official-topic",
+      "releaseId": "gaman-bhavya-ras-garba-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "atul-ramjo-re-2026-06": {
+      "provider": "youtube",
+      "videoId": "3SOoJYkA8D0",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=3SOoJYkA8D0",
+      "sourceType": "official-topic",
+      "releaseId": "atul-ramjo-re-2026",
+      "trackNumber": 6,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "apexa-be-taali-2025-01-non-stop-garba-be-taali-01": {
+      "provider": "youtube",
+      "videoId": "wRbWCGnrPjw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=wRbWCGnrPjw",
+      "sourceType": "official-topic",
+      "releaseId": "apexa-be-taali-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "apexa-be-taali-2025-02-non-stop-garba-be-taali-02": {
+      "provider": "youtube",
+      "videoId": "683TSbD8QzY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=683TSbD8QzY",
+      "sourceType": "official-topic",
+      "releaseId": "apexa-be-taali-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "apexa-be-taali-2025-03-non-stop-garba-be-taali-03": {
+      "provider": "youtube",
+      "videoId": "36AWQaEaSNo",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=36AWQaEaSNo",
+      "sourceType": "official-topic",
+      "releaseId": "apexa-be-taali-2025",
+      "trackNumber": 3,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "apexa-be-taali-2025-04-non-stop-garba-be-taali-04": {
+      "provider": "youtube",
+      "videoId": "4dF96YKURRI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=4dF96YKURRI",
+      "sourceType": "official-topic",
+      "releaseId": "apexa-be-taali-2025",
+      "trackNumber": 4,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saiyar-mori-re-jignesh-barot-2022": {
+      "provider": "youtube",
+      "videoId": "-pGPdR11AiE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=-pGPdR11AiE",
+      "sourceType": "official-artist-channel",
+      "releaseId": "saiyar-mori-re-2022",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "ansaro-abhay-jodhpurkar-2022": {
+      "provider": "youtube",
+      "videoId": "F4mhtcRP53w",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=F4mhtcRP53w",
+      "sourceType": "official-artist-channel",
+      "releaseId": "saiyar-mori-re-2022",
+      "trackNumber": 2,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "traditional-garba-taal-2025-01-navratri-dodiyo-garba": {
+      "provider": "youtube",
+      "videoId": "H7Erssh9aQU",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=H7Erssh9aQU",
+      "sourceType": "official-topic",
+      "releaseId": "traditional-garba-taal-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "traditional-garba-taal-2025-02-navratri-dodiyo-garba-special": {
+      "provider": "youtube",
+      "videoId": "nw3fWq7QBJQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=nw3fWq7QBJQ",
+      "sourceType": "official-topic",
+      "releaseId": "traditional-garba-taal-2025",
+      "trackNumber": 2,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "aavo-navlakh-aghori-himanshu-2023": {
+      "provider": "youtube",
+      "videoId": "_0YYIjzhncc",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=_0YYIjzhncc",
+      "sourceType": "official-topic",
+      "releaseId": "aavo-navlakh-aghori-himanshu-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "dakla-2016-01-dakla-feat-aishwarya-joshi-mc-tod-fod-swadesi": {
+      "provider": "youtube",
+      "videoId": "gBeBK9QQtv8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gBeBK9QQtv8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-2016",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-2-video-2017-01-dakla-2-feat-aishwarya-joshi-maulik-nayak-video-edit": {
+      "provider": "youtube",
+      "videoId": "9dQpdk7iKH4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=9dQpdk7iKH4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-2-video-2017",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-3-2020-01-dakla-3-feat-aishwarya-joshi": {
+      "provider": "youtube",
+      "videoId": "1uvnQMH1E1o",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=1uvnQMH1E1o",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-3-2020",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-4-2019-01-dakla-4-feat-aishwarya-joshi": {
+      "provider": "youtube",
+      "videoId": "dsdcDr8BOTw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=dsdcDr8BOTw",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-4-2019",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "dakla-5-2020-01-dakla-5-feat-maulik-nayak": {
+      "provider": "youtube",
+      "videoId": "HI8rUfSOCm8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=HI8rUfSOCm8",
+      "sourceType": "official-artist-channel",
+      "releaseId": "dakla-5-2020",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "gori-sang-janak-ramta-2025": {
+      "provider": "youtube",
+      "videoId": "kwavf_y_dzQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=kwavf_y_dzQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "gori-sang-janak-ramta-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "jilan-jilva-gya-ta-jahnvi-2025": {
+      "provider": "youtube",
+      "videoId": "sV_MvRu7CGQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=sV_MvRu7CGQ",
+      "sourceType": "official-artist-channel",
+      "releaseId": "jilan-jilva-gya-ta-jahnvi-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "kairavi-radha-rani-laage-2020": {
+      "provider": "youtube",
+      "videoId": "hE8mvgRqSdI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=hE8mvgRqSdI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "kairavi-radha-rani-laage-2020",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "kairavi-taro-maro-sath-2020": {
+      "provider": "youtube",
+      "videoId": "uHZ806Ee3xI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=uHZ806Ee3xI",
+      "sourceType": "official-artist-channel",
+      "releaseId": "kairavi-taro-maro-sath-2020",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "kanji-tari-krupa-2026-01-kanji-tari-krupa": {
+      "provider": "youtube",
+      "videoId": "fXVmRTGH7KA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=fXVmRTGH7KA",
+      "sourceType": "official-artist-channel",
+      "releaseId": "kanji-tari-krupa-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "pooja-garba-ni-ramzat-2021": {
+      "provider": "youtube",
+      "videoId": "55KgOAIQGQk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=55KgOAIQGQk",
+      "sourceType": "official-topic",
+      "releaseId": "pooja-garba-ni-ramzat-2021",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "pooja-garba-ni-ramzat-2-0-2023": {
+      "provider": "youtube",
+      "videoId": "gPNuHFtXRzw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gPNuHFtXRzw",
+      "sourceType": "official-topic",
+      "releaseId": "pooja-garba-ni-ramzat-2-0-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "pooja-garba-ni-ramzat-3-0-2024": {
+      "provider": "youtube",
+      "videoId": "tu3N6uMFdP8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=tu3N6uMFdP8",
+      "sourceType": "verified-label-channel",
+      "releaseId": "pooja-garba-ni-ramzat-3-0-2024",
+      "trackNumber": 1,
+      "evidenceType": "verified-label-youtube-video"
+    },
+    "ranjhaniyu-kinjal-dave-2024": {
+      "provider": "youtube",
+      "videoId": "LPil3MjFDAM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=LPil3MjFDAM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ranjhaniyu-kinjal-dave-2024",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-single"
+    },
+    "rankar-2-3-tali-nonstop-2026": {
+      "provider": "youtube",
+      "videoId": "rwnemDtSICE",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=rwnemDtSICE",
+      "sourceType": "official-topic",
+      "releaseId": "rankar-2-3-tali-nonstop-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "saanwariya-geeta-jhala-raj-gadhvi-2025": {
+      "provider": "youtube",
+      "videoId": "ir_Xlh26CYk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ir_Xlh26CYk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "saanwariya-geeta-jhala-raj-gadhvi-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-single"
+    },
+    "taal4-continuous-2025": {
+      "provider": "youtube",
+      "videoId": "Z5uZWdByrrk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=Z5uZWdByrrk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "taal4-continuous-2025",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-continuous-master"
+    },
+    "tamara-dalda-ne-vaaro-2026": {
+      "provider": "youtube",
+      "videoId": "XKOpQ_MYjtM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=XKOpQ_MYjtM",
+      "sourceType": "official-artist-channel",
+      "releaseId": "tamara-dalda-ne-vaaro-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-single"
+    },
+    "vela-vhalam-aavjo-raj-geeta-2026": {
+      "provider": "youtube",
+      "videoId": "GuwozwgGJD4",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=GuwozwgGJD4",
+      "sourceType": "official-artist-channel",
+      "releaseId": "vela-vhalam-aavjo-raj-geeta-2026",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-single"
+    },
+    "zankaar2-continuous-2023": {
+      "provider": "youtube",
+      "videoId": "nL1v4x7rszs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=nL1v4x7rszs",
+      "sourceType": "official-artist-channel",
+      "releaseId": "zankaar2-continuous-2023",
+      "trackNumber": 1,
+      "evidenceType": "official-artist-continuous-master"
+    },
+    "ramzat-2017-12-garbe-ramzat-machave-bahuchara": {
+      "provider": "youtube",
+      "videoId": "87I4olJGkEk",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=87I4olJGkEk",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 12,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "ramzat-2017-15-kesariyo-rang-tane": {
+      "provider": "youtube",
+      "videoId": "iUB8Aj6-KSY",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=iUB8Aj6-KSY",
+      "sourceType": "official-artist-channel",
+      "releaseId": "ramzat-2017",
+      "trackNumber": 15,
+      "evidenceType": "official-artist-youtube-video"
+    },
+    "rass-ni-ramzat-pt5-2020-01-titel-slow-hinch-dandia": {
+      "provider": "youtube",
+      "videoId": "w9ccFpcQin8",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=w9ccFpcQin8",
+      "sourceType": "youtube-topic",
+      "releaseId": "rass-ni-ramzat-pt5-2020",
+      "trackNumber": 1,
+      "evidenceType": "individual-song-topic-upload"
+    },
+    "rass-ni-ramzat-pt5-2020-02-halo-mari-saiyaro-medium-hinch-garba": {
+      "provider": "youtube",
+      "videoId": "49otdG9jbtw",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=49otdG9jbtw",
+      "sourceType": "youtube-topic",
+      "releaseId": "rass-ni-ramzat-pt5-2020",
+      "trackNumber": 2,
+      "evidenceType": "individual-song-topic-upload"
+    },
+    "rass-ni-ramzat-pt5-2020-03-lakh-lakh-divdani-medium-waltz-dandia": {
+      "provider": "youtube",
+      "videoId": "yaAt0yg6Qes",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=yaAt0yg6Qes",
+      "sourceType": "youtube-topic",
+      "releaseId": "rass-ni-ramzat-pt5-2020",
+      "trackNumber": 3,
+      "evidenceType": "individual-song-topic-upload"
+    },
+    "rass-ni-ramzat-pt5-2020-04-aabh-ma-ugyo-chhe-chandlo-sugam-garba": {
+      "provider": "youtube",
+      "videoId": "ncKuhxPqQXA",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=ncKuhxPqQXA",
+      "sourceType": "youtube-topic",
+      "releaseId": "rass-ni-ramzat-pt5-2020",
+      "trackNumber": 4,
+      "evidenceType": "individual-song-topic-upload"
+    },
+    "rass-ni-ramzat-pt5-2020-05-kathiyawad-ma-bhulo-pad-bhagwan-chalti-dandia": {
+      "provider": "youtube",
+      "videoId": "wNm67bcZ_xI",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=wNm67bcZ_xI",
+      "sourceType": "youtube-topic",
+      "releaseId": "rass-ni-ramzat-pt5-2020",
+      "trackNumber": 5,
+      "evidenceType": "individual-song-topic-upload"
+    },
+    "amber-gaje-2024-09-he-sohe-radha-ne-kan-ola-gol": {
+      "provider": "youtube",
+      "videoId": "FXV6wFP7TFs",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=FXV6wFP7TFs",
+      "sourceType": "official-topic",
+      "releaseId": "amber-gaje-aditya-shruti-2024",
+      "trackNumber": 9,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "amber-gaje-2024-13-sad-karu-lya-aavje-sami": {
+      "provider": "youtube",
+      "videoId": "gti9BdvKKSQ",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=gti9BdvKKSQ",
+      "sourceType": "official-topic",
+      "releaseId": "amber-gaje-aditya-shruti-2024",
+      "trackNumber": 13,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    },
+    "amber-gaje-2024-18-sukha-sarni-dholi-da": {
+      "provider": "youtube",
+      "videoId": "UXa27Li5rCM",
+      "startSeconds": 0,
+      "sourceUrl": "https://www.youtube.com/watch?v=UXa27Li5rCM",
+      "sourceType": "official-topic",
+      "releaseId": "amber-gaje-aditya-shruti-2024",
+      "trackNumber": 18,
+      "evidenceType": "official-youtube-auto-generated-original-album-track"
+    }
+  }
+}
