@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node scripts/build-vercel-site.mjs",
+  "buildCommand": "npm run catalogue && node scripts/build-vercel-site.mjs",
   "outputDirectory": "_site",
   "installCommand": "",
   "trailingSlash": true,
