@@ -50,5 +50,8 @@
     "raas:doctor": "node scripts/lib/raas-doctor.mjs",
     "raas:verify": "node scripts/lib/raas-verify.mjs",
     "raas:test": "node scripts/lib/test-raas-verify.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
